@@ -16,4 +16,8 @@ function getCenter ( object ) {
 	return box.getCenter();
 }
 
+function lightsDiff ( lights, oldLights ) {
+
+}
+
 export { getSize, getCenter }

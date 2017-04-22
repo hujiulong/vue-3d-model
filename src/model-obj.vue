@@ -1,57 +1,40 @@
 <template>
-    <div v-show="false"></div>
+    <div></div>
 </template>
 
 <script>
-
+import { OBJLoader } from './loaders/OBJLoader'
 import mixin from './model-mixin'
 import { getSize, getCenter } from './util'
-import { OBJLoader } from './loaders/OBJLoader'
 
 export default {
     name: 'model-obj',
     mixins: [ mixin ],
+    props: {
+        lights: {
+            type: Array,
+            default () {
+                return [
+                    {
+                        type: 'HemisphereLight',
+                        position: { x: 0, y: 1, z: 0 },
+                        skyColor: 0xaaaaff,
+                        groundColor: 0x806060,
+                        intensity: 0.2
+                    },
+                    {
+                        type: 'DirectionalLight',
+                        position: { x: 1, y: 1, z: 1 },
+                        color: 0xffffff,
+                        intensity: 0.8
+                    }
+                ]
+            }
+        }
+    },
     data () {
         return {
-            object: null,
-            loader: new OBJLoader(),
-            modelSrc: null
-        }
-    },
-    created () {
-        this.modelSrc = this.src;
-    },
-    watch: {
-        src ( val ) {
-
-            this.modelSrc = src;
-
-            if ( !val ) return;
-
-        },
-        modelSrc ( val ) {
-
-            if ( !val ) return;
-
-            this.loader.load( val, object => {
-
-                console.log( object )
-
-                this.object = object;
-
-                if ( this.scene ) {
-                    this.scene.add( this.object );
-                }
-
-            } );
-        }
-    },
-    computed: {
-        scene () {
-            if ( this.$parent && this.$parent.scene ) {
-                return this.$parent.scene;
-            }
-            return null;
+            loader: new OBJLoader
         }
     }
 }
