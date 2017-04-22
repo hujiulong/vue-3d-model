@@ -1,11 +1,12 @@
 import {
     Vector3,
+    Color,
     Scene,
     WebGLRenderer,
     PerspectiveCamera,
     AmbientLight,
     HemisphereLight,
-    DirectionalLight 
+    DirectionalLight
 } from 'three'
 
 import { getSize, getCenter } from './util'
@@ -58,82 +59,106 @@ export default {
         },
         cameraLookAt: {
             type: Object
+        },
+        backgroundColor: {
+            default: 0xffffff
+        },
+        backgroundAlpha: {
+            type: Number,
+            default: 1
         }
     },
-    data () {
+    data() {
         return {
             object: null,
             camera: new PerspectiveCamera( 45, 1, 0.001, 100000 ),
             scene: new Scene(),
-            renderer: new WebGLRenderer( { antialias: true } ),
+            renderer: new WebGLRenderer( { antialias: true, alpha: true } ),
             control: null
         }
     },
-    created () {
+    created() {
 
         this.renderer.shadowMap.enabled = true;
-        this.renderer.setSize( this.width, this.height );
+
         this.load();
         this.update();
     },
-    mounted () {
+    mounted() {
         this.$el.appendChild( this.renderer.domElement );
     },
     watch: {
-        src () {
+        src() {
             this.load();
         },
-        object () {
+        object() {
             this.render();
         },
         lights: {
             deep: true,
-            handler ( val, oldVal ) {
+            handler( val, oldVal ) {
                 this.updateLights();
             }
         },
-        width () {
-            this.updateSize();
+        width() {
+            this.updateRenderer();
         },
-        height () {
-            this.updateSize();
+        height() {
+            this.updateRenderer();
         }
     },
     methods: {
-        update () {
+        update() {
+
+            this.updateRenderer();
             this.updateModel();
             this.updateCamera();
             this.updateLights();
+
             this.render();
+            
         },
         updateModel() {
-            if ( !this.object ) return;
-            this.object.position.copy( this.position );
-            this.object.rotation.copy( this.rotation );
-            this.object.scale.copy( this.scale );
+
+            let object = this.object;
+
+            if ( !object ) return;
+
+            object.position.copy( this.position );
+            object.rotation.copy( this.rotation );
+            object.scale.copy( this.scale );
+
         },
-        updateSize() {
-            this.renderer.setSize( this.width, this.height );
-            this.camera.aspect = this.width / this.height;
+        updateRenderer() {
+
+            let renderer = this.renderer;
+
+            renderer.setSize( this.width, this.height );
+            renderer.setPixelRatio( window.devicePixelRatio || 1 );
+            renderer.setClearColor( new Color( this.backgroundColor ).getHex() );
+            renderer.setClearAlpha( this.backgroundAlpha );
         },
         updateCamera() {
 
-            this.camera.aspect = this.width / this.height;
+            let camera = this.camera;
+            let object = this.object;
+
+            camera.aspect = this.width / this.height;
 
             if ( !this.cameraLookAt && !this.cameraPosition && !this.cameraRotation && !this.cameraUp ) {
 
-                if ( !this.object ) return;
+                if ( !object ) return;
 
-                let distance = getSize( this.object ).length();
-                let center = getCenter( this.object );
+                let distance = getSize( object ).length();
+                let center = getCenter( object );
 
-                this.camera.position.set( 0, 0, 0 );
-                this.camera.position.z = distance;
-                this.camera.position.add( center );
-                this.camera.lookAt( center );
+                camera.position.set( 0, 0, 0 );
+                camera.position.z = distance;
+                camera.position.add( center );
+                camera.lookAt( center );
 
             } else {
-
+                // TODO
             }
         },
         updateLights() {
