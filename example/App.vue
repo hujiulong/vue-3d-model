@@ -1,5 +1,5 @@
 <template>
-    <model-obj src="example/models/obj/LeePerrySmith.obj"></model-obj>
+    <model-obj src="static/models/obj/LeePerrySmith.obj"></model-obj>
 </template>
 
 <script>
