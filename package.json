@@ -1,9 +1,9 @@
 {
   "name": "vue-3d-model",
-  "description": "",
-  "version": "1.0.0",
+  "description": "3D models viewer with vue.js",
+  "version": "0.0.1",
   "author": "hujiulong <me@hujiulong.com>",
-  "private": true,
+  "main": "src/main.js",
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
@@ -47,6 +47,13 @@
     "webpack-dev-middleware": "^1.10.0",
     "webpack-hot-middleware": "^2.18.0",
     "webpack-merge": "^4.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hujiulong/vue-3d-model.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hujiulong/vue-3d-model/issues"
   },
   "engines": {
     "node": ">= 4.0.0",
