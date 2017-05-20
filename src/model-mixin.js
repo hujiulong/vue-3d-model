@@ -1,15 +1,18 @@
 import {
+    Object3D,
+    Vector2,
     Vector3,
     Color,
     Scene,
+    Raycaster,
     WebGLRenderer,
     PerspectiveCamera,
     AmbientLight,
     HemisphereLight,
     DirectionalLight
 } from 'three'
-
 import { getSize, getCenter } from './util'
+import { OrbitControls } from './controls/OrbitControls'
 
 export default {
     props: {
@@ -66,32 +69,51 @@ export default {
         backgroundAlpha: {
             type: Number,
             default: 1
+        },
+        controllable: {
+            type: Boolean,
+            default: true
         }
     },
-    data() {
+    data () {
         return {
             object: null,
+            raycaster: new Raycaster(),
+            mouse: new Vector2(),
             camera: new PerspectiveCamera( 45, 1, 0.001, 100000 ),
             scene: new Scene(),
-            renderer: new WebGLRenderer( { antialias: true, alpha: true } ),
-            control: null
+            renderer: null,
+            controls: null,
+            allLights: [],
+            renderHandler: null
         }
     },
-    created() {
+    mounted () {
 
+        this.renderer = new WebGLRenderer( { antialias: true, alpha: true, canvas: this.$el } )
         this.renderer.shadowMap.enabled = true;
 
         this.load();
         this.update();
+
+        this.$el.addEventListener( 'mousedown', this.onMouseDown, false );
+        this.$el.addEventListener( 'mousemove', this.onMouseMove, false );
+        this.$el.addEventListener( 'mouseup', this.onMouseUp, false );
+        this.$el.addEventListener( 'click', this.onClick, false );
     },
-    mounted() {
-        this.$el.appendChild( this.renderer.domElement );
+    beforeDestroy () {
+
+        this.$el.removeEventListener( 'mousedown', this.onMouseDown, false );
+        this.$el.removeEventListener( 'mousemove', this.onMouseMove, false );
+        this.$el.removeEventListener( 'mouseup', this.onMouseUp, false );
+        this.$el.removeEventListener( 'click', this.onClick, false );
+
     },
     watch: {
-        src() {
+        src () {
             this.load();
         },
-        object() {
+        object () {
             this.render();
         },
         lights: {
@@ -100,25 +122,72 @@ export default {
                 this.updateLights();
             }
         },
-        width() {
+        width () {
             this.updateRenderer();
         },
-        height() {
+        height () {
             this.updateRenderer();
+        },
+        controllable () {
+            this.updateControls();
         }
     },
     methods: {
-        update() {
+        onMouseDown ( event ) {
+
+            const intersected = this.pick( event.clientX, event.clientY );
+            this.$emit( 'on-mousedown', intersected );
+
+        },
+        onMouseMove ( event ) {
+
+            const intersected = this.pick( event.clientX, event.clientY );
+            this.$emit( 'on-mousemove', intersected );
+
+        },
+        onMouseUp ( event ) {
+
+            const intersected = this.pick( event.clientX, event.clientY );
+            this.$emit( 'on-mouseup', intersected );
+
+        },
+        onClick ( event ) {
+
+            const intersected = this.pick( event.clientX, event.clientY );
+            this.$emit( 'on-click', intersected );
+
+        },
+        pick ( x, y ) {
+
+            if ( !this.object ) return;
+
+            const rect = this.$el.getBoundingClientRect();
+
+            x -= rect.left;
+            y -= rect.top;
+
+            this.mouse.x = ( x / this.width ) * 2 - 1;
+            this.mouse.y = - ( y / this.height ) * 2 + 1;
+
+            this.raycaster.setFromCamera( this.mouse, this.camera );
+
+            const intersects = this.raycaster.intersectObject( this.object, true );
+
+            return ( intersects && intersects.length ) > 0 ? intersects[ 0 ] : null;
+
+        },
+        update () {
 
             this.updateRenderer();
             this.updateModel();
             this.updateCamera();
             this.updateLights();
+            this.updateControls();
 
             this.render();
             
         },
-        updateModel() {
+        updateModel () {
 
             let object = this.object;
 
@@ -129,19 +198,22 @@ export default {
             object.scale.copy( this.scale );
 
         },
-        updateRenderer() {
+        updateRenderer () {
 
             let renderer = this.renderer;
 
             renderer.setSize( this.width, this.height );
             renderer.setPixelRatio( window.devicePixelRatio || 1 );
-            renderer.setClearColor( new Color( this.backgroundColor ).getHex() );
+            // renderer.setClearColor( new Color( this.backgroundColor ).getHex() );
             renderer.setClearAlpha( this.backgroundAlpha );
         },
-        updateCamera() {
+        updateCamera () {
 
             let camera = this.camera;
             let object = this.object;
+
+            let distance = 0;
+            let center = null;
 
             camera.aspect = this.width / this.height;
 
@@ -149,8 +221,8 @@ export default {
 
                 if ( !object ) return;
 
-                let distance = getSize( object ).length();
-                let center = getCenter( object );
+                distance = getSize( object ).length();
+                center = getCenter( object );
 
                 camera.position.set( 0, 0, 0 );
                 camera.position.z = distance;
@@ -160,8 +232,15 @@ export default {
             } else {
                 // TODO
             }
+
+            if ( this.controls ) this.controls.target.copy( center );
+
         },
-        updateLights() {
+        updateLights () {
+
+            this.scene.remove.apply( this.scene, this.allLights );
+
+            this.allLights = [];
 
             this.lights.forEach( item => {
 
@@ -169,14 +248,14 @@ export default {
 
                 const type = item.type.toLowerCase();
 
+                let light = null;
+
                 if ( type === 'ambient' || type === 'ambientlight' ) {
 
                     const color = item.color || 0x404040;
                     const intensity = item.intensity || 1;
 
-                    let light = new AmbientLight( color, intensity );
-
-                    this.scene.add( light );
+                    light = new AmbientLight( color, intensity );
 
                 } else if ( type === 'point' || type === 'pointlight' ) {
 
@@ -185,20 +264,18 @@ export default {
                     const distance = item.distance || 0;
                     const decay = item.decay || 1;
 
-                    let light = new PointLight( color, intensity, distance, decay );
+                    light = new PointLight( color, intensity, distance, decay );
 
                     if ( item.position ) {
                         light.position.copy( item.position );
                     }
-
-                    this.scene.add( light );
 
                 } else if ( type === 'directional' || type === 'directionallight' ) {
 
                     const color = item.color || 0xffffff;
                     const intensity = item.intensity || 1;
 
-                    let light = new DirectionalLight( color, intensity );
+                    light = new DirectionalLight( color, intensity );
 
                     if ( item.position ) {
                         light.position.copy( item.position );
@@ -208,27 +285,51 @@ export default {
                         light.target.copy( item.target );
                     }
 
-                    this.scene.add( light );
-
                 } else if ( type === 'hemisphere' || type === 'hemispherelight' ) {
 
                     const skyColor = item.skyColor || 0xffffff;
                     const groundColor = item.groundColor || 0xffffff;
                     const intensity = item.intensity || 1;
 
-                    let light = new HemisphereLight( skyColor, groundColor, intensity );
+                    light = new HemisphereLight( skyColor, groundColor, intensity );
 
                     if ( item.position ) {
                         light.position.copy( item.position );
                     }
 
-                    this.scene.add( light );
                 }
+
+                this.allLights.push( light );
+                this.scene.add( light );
 
             } )
 
         },
-        load() {
+        updateControls () {
+
+            if ( this.controllable && this.controls ) reutrn;
+
+            if ( this.controllable ) {
+
+                if ( this.controls ) return;
+
+                this.controls = new OrbitControls( this.camera, this.$el );
+                this.controls.addEventListener( 'change', this.render, false );
+                this.controls.type = 'orbit';
+
+            } else {
+
+                if ( this.controls ) {
+
+                    this.controls.dispose();
+                    this.controls = null;
+
+                }
+
+            }
+
+        },
+        load () {
 
             if ( !this.src ) return;
 
@@ -247,8 +348,16 @@ export default {
             } );
 
         },
-        render() {
+        animate () {
+            requestAnimationFrame( this.animate );
+            this.render();
+        },
+        immediateRender () {
             this.renderer.render( this.scene, this.camera );
+        },
+        render () {
+            cancelAnimationFrame( this.renderHandler );
+            this.renderHandler = requestAnimationFrame( this.immediateRender );
         }
     }
 }

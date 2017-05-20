@@ -1,8 +1,8 @@
-import * as THREE from 'three/build/three.module.js';
+import * as THREE from 'three';
 
 // https://github.com/mrdoob/three.js/blob/dev/examples/js/loaders/OBJLoader.js
 
-var OBJLoader = function ( manager ) {
+const OBJLoader = function ( manager ) {
 
 	this.manager = ( manager !== undefined ) ? manager : THREE.DefaultLoadingManager;
 
