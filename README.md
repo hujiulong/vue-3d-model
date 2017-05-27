@@ -15,6 +15,7 @@ Or using script tag for global use
 ```
 
 ## Usage
+
 ```vue
 <template>
     <model-obj src="example/models/obj/LeePerrySmith.obj"></model-obj>
@@ -27,6 +28,27 @@ Or using script tag for global use
     }
 </script>
 ```
+Or
+```vue
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div id="app">
+        <model-obj src="example/models/obj/LeePerrySmith.obj"></model-obj>
+    </div>
+    <script src="vue.js"></script>
+    <script src="vue-3d-model.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+```
+
 
 ## Browser Support
 Modern browsers and IE 11.
