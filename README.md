@@ -1,6 +1,8 @@
 # vue-3d-model
 vue.js 3D model viewer component, based on three.js
 
+support obj, dae and other model formats.
+
 ## Example
 // TODO
 
@@ -48,7 +50,10 @@ Or
     </script>
 </body>
 ```
+## Model Format Support [other model formats](#formats)
+OBJ(.obj)
 
+//TODO: collada(.dae), obj and mtl, etc
 
 ## Browser Support
 Modern browsers and IE 11.
