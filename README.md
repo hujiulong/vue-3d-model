@@ -50,7 +50,7 @@ Or
     </script>
 </body>
 ```
-## Model Format Support [other model formats](#formats)
+## Model Format Support
 OBJ(.obj)
 
 //TODO: collada(.dae), obj and mtl, etc
