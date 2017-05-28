@@ -16,6 +16,14 @@ module.exports = {
   entry: {
     'vue-3d-model': './src/index.js'
   },
+  externals: {
+    vue: {
+        root: 'Vue',
+        commonjs: 'vue',
+        commonjs2: 'vue',
+        amd: 'vue'
+    }
+  },
   output: {
     path: config.release.assetsRoot,
     filename: '[name].js',

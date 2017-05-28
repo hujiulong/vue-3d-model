@@ -1,5 +1,5 @@
 <template>
-    <canvas></canvas>
+    <canvas :style="styleObj"></canvas>
 </template>
 
 <script>
