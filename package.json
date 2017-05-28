@@ -1,7 +1,7 @@
 {
   "name": "vue-3d-model",
   "description": "3D models viewer with vue.js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "hujiulong <me@hujiulong.com>",
   "main": "src/index.js",
   "scripts": {
