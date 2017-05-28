@@ -4,7 +4,7 @@ vue.js 3D model viewer component, based on three.js
 support obj, dae and other model formats.
 
 ## Example
-// TODO
+[示例页面DEMO](https://hujiulong.github.io/vue-3d-model/#/demo-basic)
 
 ## Install
 using npm

@@ -20,12 +20,10 @@ export default {
             type: String
         },
         width: {
-            type: Number,
-            default: 400
+            type: Number
         },
         height: {
-            type: Number,
-            default: 400
+            type: Number
         },
         position: {
             type: Object,
@@ -77,6 +75,10 @@ export default {
     },
     data () {
         return {
+            size: {
+                width: this.width,
+                height: this.height
+            },
             object: null,
             raycaster: new Raycaster(),
             mouse: new Vector2(),
@@ -88,7 +90,27 @@ export default {
             renderHandler: null
         }
     },
+    computed: {
+        styleObj () {
+            return {
+                width: this.width !== undefined ? this.width + 'px' : '100%',
+                height: this.height !== undefined ? this.height + 'px' : '100%',
+            }
+        }
+    },
+    created () {
+        if ( window ) {
+            window.addEventListener( 'resize', this.onResize, false );
+        }
+    },
     mounted () {
+
+        if ( this.width === undefined || this.height === undefined ) {
+            this.size = {
+                width: this.$el.offsetWidth,
+                height: this.$el.offsetHeight
+            }
+        }
 
         this.renderer = new WebGLRenderer( { antialias: true, alpha: true, canvas: this.$el } )
         this.renderer.shadowMap.enabled = true;
@@ -122,17 +144,31 @@ export default {
                 this.updateLights();
             }
         },
-        width () {
-            this.updateRenderer();
-        },
-        height () {
-            this.updateRenderer();
+        size: {
+            deep: true,
+            handler ( val ) {
+                this.updateCamera();
+                this.updateRenderer();
+            }
         },
         controllable () {
             this.updateControls();
         }
     },
     methods: {
+        onResize () {
+
+            if ( this.width === undefined || this.height === undefined ) {
+
+                this.$nextTick( () => {
+                    this.size = {
+                        width: this.$el.offsetWidth,
+                        height: this.$el.offsetHeight
+                    }
+                } )
+                
+            }
+        },
         onMouseDown ( event ) {
 
             const intersected = this.pick( event.clientX, event.clientY );
@@ -166,8 +202,8 @@ export default {
             x -= rect.left;
             y -= rect.top;
 
-            this.mouse.x = ( x / this.width ) * 2 - 1;
-            this.mouse.y = - ( y / this.height ) * 2 + 1;
+            this.mouse.x = ( x / this.size.width ) * 2 - 1;
+            this.mouse.y = - ( y / this.size.height ) * 2 + 1;
 
             this.raycaster.setFromCamera( this.mouse, this.camera );
 
@@ -202,7 +238,7 @@ export default {
 
             let renderer = this.renderer;
 
-            renderer.setSize( this.width, this.height );
+            renderer.setSize( this.size.width, this.size.height );
             renderer.setPixelRatio( window.devicePixelRatio || 1 );
             // renderer.setClearColor( new Color( this.backgroundColor ).getHex() );
             renderer.setClearAlpha( this.backgroundAlpha );
@@ -215,7 +251,8 @@ export default {
             let distance = 0;
             let center = null;
 
-            camera.aspect = this.width / this.height;
+            camera.aspect = this.size.width / this.size.height;
+            camera.updateProjectionMatrix();
 
             if ( !this.cameraLookAt && !this.cameraPosition && !this.cameraRotation && !this.cameraUp ) {
 
