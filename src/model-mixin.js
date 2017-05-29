@@ -96,6 +96,18 @@ export default {
                 width: this.width !== undefined ? this.width + 'px' : '100%',
                 height: this.height !== undefined ? this.height + 'px' : '100%',
             }
+        },
+        hasListener () {
+
+            // 判断是否有鼠标事件监听，用于减少不必要的拾取判断
+            const events = this._events;
+            let result = {};
+
+            [ 'on-mousemove', 'on-mouseup', 'on-mousedown', 'on-click' ].forEach( name => {
+                result[ name ] = !!events[ name ] && events[ name ].length > 0;
+            } )
+
+            return result;
         }
     },
     created () {
@@ -171,11 +183,15 @@ export default {
         },
         onMouseDown ( event ) {
 
+            if ( !this.hasListener[ 'on-mousedown' ] ) return;
+
             const intersected = this.pick( event.clientX, event.clientY );
             this.$emit( 'on-mousedown', intersected );
 
         },
         onMouseMove ( event ) {
+
+            if ( !this.hasListener[ 'on-mousemove' ] ) return;
 
             const intersected = this.pick( event.clientX, event.clientY );
             this.$emit( 'on-mousemove', intersected );
@@ -183,11 +199,15 @@ export default {
         },
         onMouseUp ( event ) {
 
+            if ( !this.hasListener[ 'on-mouseup' ] ) return;
+
             const intersected = this.pick( event.clientX, event.clientY );
             this.$emit( 'on-mouseup', intersected );
 
         },
         onClick ( event ) {
+
+            if ( !this.hasListener[ 'on-click' ] ) return;
 
             const intersected = this.pick( event.clientX, event.clientY );
             this.$emit( 'on-click', intersected );
