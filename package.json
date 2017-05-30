@@ -3,7 +3,7 @@
   "description": "3D models viewer with vue.js",
   "version": "0.0.3",
   "author": "hujiulong <me@hujiulong.com>",
-  "main": "src/index.js",
+  "main": "dist/vue-3d-model.min.js",
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",

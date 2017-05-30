@@ -1,2 +1,19 @@
 import ModelObj from './model-obj.vue'
-export { ModelObj }
+import ModelThree from './model-three.vue'
+
+const components = [
+    ModelObj,
+    ModelThree
+]
+
+const install = ( Vue ) => {
+    components.map( component => {
+        Vue.component( component.name, component );
+    } );
+};
+
+if ( typeof window !== 'undefined' && window.Vue ) {
+    install( window.Vue );
+};
+
+export { ModelObj, ModelThree }

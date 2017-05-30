@@ -5,7 +5,6 @@
 <script>
 import { OBJLoader } from './loaders/OBJLoader'
 import mixin from './model-mixin'
-import { getSize, getCenter } from './util'
 
 export default {
     name: 'model-obj',
