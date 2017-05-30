@@ -3,6 +3,8 @@ vue.js 3D model viewer component, based on threejs.
 
 一个展示三维模型的Vue组件，支持模型操作和模型点击事件，目前支持obj格式的模型。
 
+![preview](./preview.gif)
+
 ## Example
 [示例页面DEMO](https://hujiulong.github.io/vue-3d-model/#/demo-basic)
 

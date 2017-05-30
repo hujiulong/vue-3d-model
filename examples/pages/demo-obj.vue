@@ -2,8 +2,8 @@
     <div class="demo-basic">
         <demo-block :code="code">
             <template slot="preview">
-                <model-three :backgroundAlpha="0"
-                    src="static/models/json/scene.json"></model-three>
+                <model-obj :backgroundAlpha="0"
+                    src="static/models/obj/tree.obj"></model-obj>
             </template>
         </demo-block>
     </div>
@@ -12,20 +12,20 @@
 <script>
 import DemoBlock from '../components/demo-block';
 import hljs from 'highlight.js'
-import ModelThree from '../../src/model-three.vue'
+import ModelObj from '../../src/model-obj.vue'
 
 const code = `
 
 <template>
-    <model-three src="static/models/json/scene.json"></model-three>
+    <model-obj src="static/models/obj/tree.obj"></model-obj>
 </template>
 
 <script>
-    import { ModelThree } from 'vue-3d-model'
+    import { ModelObj } from 'vue-3d-model'
 
     export default {
         components: {
-            ModelThree
+            ModelObj
         }
     }
 <\/script>
@@ -33,14 +33,14 @@ const code = `
 `
 
 export default {
-    name: 'demo-basic',
+    name: 'demo-obj',
     data () {
     	return {
             code
     	}
     },
     components: {
-        ModelThree,
+        ModelObj,
         DemoBlock
     }
 }

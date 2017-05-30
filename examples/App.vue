@@ -8,6 +8,9 @@
             <li class="examples-nav-item">
                 <router-link to="demo-basic">Basic</router-link>
             </li>
+            <li class="examples-nav-item">
+                <router-link to="demo-obj">OBJ Model (.obj)</router-link>
+            </li>
         </ul>
         <div class="examples-content">
             <router-view></router-view>
