@@ -52,6 +52,28 @@ Or
     </script>
 </body>
 ```
+
+## Documents
+
+### props
+* src (String)
+* width (Number)
+* height (Number)
+* position (Object) eg: { x: 100, y: 200, z: 0 }
+* rotation (Object) eg: { x: 0, y: Math.PI / 2, z: 0 }
+* scale (Object) eg: { x: 10, y: 10, z: 10 }
+* lights (Array)
+* backgroundColor (Number) eg: 0xffffff
+* backgroundAlpha (Number) eg: 0.5
+* controllable (Boolean)
+
+### events
+* on-mousedown
+* on-mousemove
+* on-mouseup
+* on-click
+* on-load (TODO)
+
 ## Model Format Support
 OBJ(.obj)
 
