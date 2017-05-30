@@ -1,7 +1,7 @@
 # vue-3d-model
 vue.js 3D model viewer component, based on threejs.
 
-一个展示三维模型的Vue组件，支持模型操作和模型点击事件，目前支持obj格式的模型。
+一个展示三维模型的Vue组件，支持模型操作和模型点击事件，目前支持obj格式和json格式的模型。
 
 ![preview](./preview.gif)
 
@@ -59,12 +59,12 @@ Or
 * src (String)
 * width (Number)
 * height (Number)
-* position (Object) eg: { x: 100, y: 200, z: 0 }
-* rotation (Object) eg: { x: 0, y: Math.PI / 2, z: 0 }
-* scale (Object) eg: { x: 10, y: 10, z: 10 }
+* position (Object) e.g: { x: 100, y: 200, z: 0 }
+* rotation (Object) e.g: { x: 0, y: Math.PI / 2, z: 0 }
+* scale (Object) e.g: { x: 10, y: 10, z: 10 }
 * lights (Array)
-* backgroundColor (Number) eg: 0xffffff
-* backgroundAlpha (Number) eg: 0.5
+* backgroundColor (Number) e.g: 0xffffff
+* backgroundAlpha (Number) e.g: 0.5
 * controllable (Boolean)
 
 ### events
@@ -75,7 +75,7 @@ Or
 * on-load (TODO)
 
 ## Model Format Support
-OBJ(.obj)
+OBJ(.obj) three/json(.json)
 
 //TODO: collada(.dae), obj and mtl, etc
 
