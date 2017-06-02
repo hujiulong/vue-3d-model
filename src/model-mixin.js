@@ -402,6 +402,12 @@ export default {
 
                 this.updateCamera();
 
+                this.$emit( 'on-load' );
+
+            }, err => {
+
+                this.$emit( 'on-error', err );
+
             } );
 
         },

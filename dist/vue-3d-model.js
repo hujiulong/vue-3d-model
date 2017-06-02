@@ -44324,6 +44324,11 @@ module.exports = function(it){
                 _this3.scene.add(_this3.object);
 
                 _this3.updateCamera();
+
+                _this3.$emit('on-load');
+            }, function (err) {
+
+                _this3.$emit('on-error', err);
             });
         },
         animate: function animate() {
