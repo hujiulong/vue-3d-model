@@ -72,7 +72,8 @@ Or
 * on-mousemove
 * on-mouseup
 * on-click
-* on-load (TODO)
+* on-load
+* on-error
 
 ## Model Format Support
 OBJ(.obj) three/json(.json)
