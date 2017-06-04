@@ -1,4 +1,4 @@
-import { Box3, Vector3, Vector2, BufferAttribute } from 'three/build/three.module.js';
+import { Box3, Vector3, Vector2, BufferAttribute } from 'three';
 
 let box = new Box3();
 
