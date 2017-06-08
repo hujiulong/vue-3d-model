@@ -36,8 +36,6 @@ const suportWebGL = ( () => {
 
 } )();
 
-console.log( suportWebGL );
-
 export default {
     props: {
         src: {
@@ -389,7 +387,7 @@ export default {
         },
         updateControls () {
 
-            if ( this.controllable && this.controls ) reutrn;
+            if ( this.controllable && this.controls ) return;
 
             if ( this.controllable ) {
 

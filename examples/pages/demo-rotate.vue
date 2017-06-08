@@ -11,7 +11,6 @@
 
 <script>
 import DemoBlock from '../components/demo-block';
-import hljs from 'highlight.js'
 import ModelObj from '../../src/model-obj.vue'
 
 const code = `
@@ -47,7 +46,7 @@ export default {
 }
 </script>
 <style>
-	.demo-basic {
+	.demo-rotate {
         padding: 20px;
         background: #fff;
         box-shadow: 0 2px 4px 0 rgba(0,0,0,.1), 0 16px 24px 0 rgba(81,129,228,.1);

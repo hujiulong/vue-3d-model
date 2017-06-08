@@ -13,7 +13,6 @@
 
 <script>
 import DemoBlock from '../components/demo-block';
-import hljs from 'highlight.js'
 import ModelThree from '../../src/model-three.vue'
 
 const code = `
