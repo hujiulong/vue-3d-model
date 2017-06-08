@@ -52,6 +52,7 @@ export default {
     }
 
     .demo-block .demo-block-preview {
+        position: relative;
         width: 500px;
         height: 500px;
         float: left;

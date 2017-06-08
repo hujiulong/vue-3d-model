@@ -3,7 +3,9 @@
         <demo-block :code="code">
             <template slot="preview">
                 <model-three :backgroundAlpha="0"
+                    @on-load="onLoad"
                     src="static/models/json/scene.json"></model-three>
+                <div class="example-loading" v-show="loading"></div>
             </template>
         </demo-block>
     </div>
@@ -36,8 +38,14 @@ export default {
     name: 'demo-basic',
     data () {
     	return {
-            code
+            code,
+            loading: true
     	}
+    },
+    methods: {
+        onLoad () {
+            this.loading = false;
+        }
     },
     components: {
         ModelThree,

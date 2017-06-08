@@ -3,7 +3,9 @@
         <demo-block :code="code">
             <template slot="preview">
                 <model-obj :backgroundAlpha="0"
+                    @on-load="onLoad"
                     src="static/models/obj/tree.obj"></model-obj>
+                <div class="example-loading" v-show="loading"></div>
             </template>
         </demo-block>
     </div>
@@ -36,8 +38,14 @@ export default {
     name: 'demo-obj',
     data () {
     	return {
-            code
+            code,
+            loading: false
     	}
+    },
+    methods: {
+        onLoad () {
+            this.loading = false;
+        }
     },
     components: {
         ModelObj,

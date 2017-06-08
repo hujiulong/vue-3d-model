@@ -1,7 +1,3 @@
-<template>
-    <canvas :style="styleObj"></canvas>
-</template>
-
 <script>
 import { OBJLoader } from './loaders/OBJLoader'
 import mixin from './model-mixin'

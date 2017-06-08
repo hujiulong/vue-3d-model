@@ -1,3 +1,14 @@
+<template>
+    <canvas :style="styleObj" v-if="suportWebGL"></canvas>
+    <div v-else>
+        <slot>
+            Your browser does not seem to support <a href="http://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation" style="color:#000">WebGL</a>.<br/>'
+        </slot>
+    </div>
+</template>
+
+<script>
+
 import {
     Object3D,
     Vector2,
@@ -13,6 +24,19 @@ import {
 } from 'three'
 import { getSize, getCenter } from './util'
 import { OrbitControls } from './controls/OrbitControls'
+
+const suportWebGL = ( () => {
+
+    try {
+        var canvas = document.createElement( 'canvas' ); 
+        return !! ( window.WebGLRenderingContext && ( canvas.getContext( 'webgl' ) || canvas.getContext( 'experimental-webgl' ) ) );
+    } catch ( e ) {
+        return false;
+    }
+
+} )();
+
+console.log( suportWebGL );
 
 export default {
     props: {
@@ -75,6 +99,7 @@ export default {
     },
     data () {
         return {
+            suportWebGL,
             size: {
                 width: this.width,
                 height: this.height
@@ -424,3 +449,6 @@ export default {
         }
     }
 }
+
+</script>
+<style></style>

@@ -1,7 +1,3 @@
-<template>
-    <canvas :style="styleObj"></canvas>
-</template>
-
 <script>
 import { ObjectLoader } from 'three'
 import mixin from './model-mixin'
