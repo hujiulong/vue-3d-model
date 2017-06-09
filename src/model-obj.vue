@@ -1,6 +1,6 @@
 <script>
 import { OBJLoader } from './loaders/OBJLoader'
-import mixin from './model-mixin'
+import mixin from './model-mixin.vue'
 
 export default {
     name: 'model-obj',
