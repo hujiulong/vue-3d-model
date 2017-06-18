@@ -1,6 +1,6 @@
 <script>
 import { STLLoader } from './loaders/STLLoader'
-import mixin from './model-mixin'
+import mixin from './model-mixin.vue'
 import {
     Mesh,
     MeshPhongMaterial
@@ -50,6 +50,8 @@ export default {
                 this.object = new Mesh( geometry, new MeshPhongMaterial() );
 
                 this.scene.add( this.object );
+
+                
 
                 this.updateCamera();
 

@@ -1,6 +1,6 @@
 <script>
 import { ObjectLoader } from 'three'
-import mixin from './model-mixin'
+import mixin from './model-mixin.vue'
 
 export default {
     name: 'model-three',

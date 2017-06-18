@@ -1,6 +1,6 @@
 <script>
 import { GLTFLoader } from './loaders/GLTFLoader'
-import mixin from './model-mixin'
+import mixin from './model-mixin.vue'
 
 export default {
     name: 'model-gltf',

@@ -1,6 +1,6 @@
 <script>
 import { SEA3DLoader } from './loaders/SEA3DLoader'
-import mixin from './model-mixin'
+import mixin from './model-mixin.vue'
 
 export default {
     name: 'model-sea3d',
