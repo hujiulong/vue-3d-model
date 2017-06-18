@@ -36,6 +36,8 @@ const suportWebGL = ( () => {
 
 } )();
 
+let oldTime = 0;
+
 export default {
     props: {
         src: {
@@ -110,7 +112,7 @@ export default {
             renderer: null,
             controls: null,
             allLights: [],
-            renderHandler: null
+            clock: typeof performance === 'undefined' ? Date : performance
         }
     },
     computed: {
@@ -172,6 +174,30 @@ export default {
         },
         object () {
             this.render();
+        },
+        rotation: {
+            deep: true,
+            handler( val ) {
+                if ( !this.object ) return;
+                this.object.rotation.set( val.x, val.y, val.z );
+                this.render();
+            }
+        },
+        position: {
+            deep: true,
+            handler( val ) {
+                if ( !this.object ) return;
+                this.object.position.set( val.x, val.y, val.z );
+                this.render();
+            }
+        },
+        scale: {
+            deep: true,
+            handler( val ) {
+                if ( !this.object ) return;
+                this.object.scale.set( val.x, val.y, val.z );
+                this.render();
+            }
         },
         lights: {
             deep: true,
@@ -442,8 +468,12 @@ export default {
             this.renderer.render( this.scene, this.camera );
         },
         render () {
-            cancelAnimationFrame( this.renderHandler );
-            this.renderHandler = requestAnimationFrame( this.immediateRender );
+            // throttle
+            let currTime = this.clock.now();
+            if ( currTime - oldTime > 16 ) {
+                this.immediateRender();
+                oldTime = currTime;
+            }
         }
     }
 }

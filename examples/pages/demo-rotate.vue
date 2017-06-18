@@ -1,9 +1,19 @@
+<style>
+    .demo-basic {
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,.1), 0 16px 24px 0 rgba(81,129,228,.1);
+    }
+</style>
 <template>
     <div class="demo-basic">
         <demo-block :code="code">
             <template slot="preview">
                 <model-obj :backgroundAlpha="0"
-                    src="static/models/obj/LeePerrySmith.obj"></model-obj>
+                    @on-load="onLoad"
+                    :rotation="rotation"
+                    src="static/models/obj/tree.obj"></model-obj>
+                <div class="example-loading" v-show="loading"></div>
             </template>
         </demo-block>
     </div>
@@ -16,13 +26,31 @@ import ModelObj from '../../src/model-obj.vue'
 const code = `
 
 <template>
-    <model-obj src="static/models/obj/LeePerrySmith.obj"></model-obj>
+    <model-obj
+        :rotation="rotation"
+        src="static/models/obj/tree.obj"></model-obj>
 </template>
 
 <script>
     import { ModelObj } from 'vue-3d-model'
 
     export default {
+        data: {
+            rotation: {
+                x: 0,
+                y: 0,
+                z: 0
+            }
+        },
+        created () {
+            this.rotate();
+        },
+        methods: {
+            rotate () {
+                this.rotation.y += 0.01;
+                requestAnimationFrame( this.rotate );
+            }
+        },
         components: {
             ModelObj
         }
@@ -32,12 +60,27 @@ const code = `
 `
 
 export default {
-    name: 'demo-basic',
+    name: 'demo-obj',
     data () {
-    	return {
+        return {
             code,
-    		intersected: null
-    	}
+            loading: false,
+            rotation: {
+                x: 0,
+                y: 0,
+                z: 0
+            }
+        }
+    },
+    methods: {
+        onLoad () {
+            this.loading = false;
+            this.rotate();
+        },
+        rotate () {
+            this.rotation.y += 0.01;
+            requestAnimationFrame( this.rotate );
+        }
     },
     components: {
         ModelObj,
@@ -46,9 +89,9 @@ export default {
 }
 </script>
 <style>
-	.demo-rotate {
+    .demo-basic {
         padding: 20px;
         background: #fff;
         box-shadow: 0 2px 4px 0 rgba(0,0,0,.1), 0 16px 24px 0 rgba(81,129,228,.1);
-	}
+    }
 </style>

@@ -7,7 +7,7 @@ export default {
     mixins: [ mixin ],
     data () {
         return {
-            loader: new ObjectLoader
+            loader: new ObjectLoader()
         }
     }
 }
