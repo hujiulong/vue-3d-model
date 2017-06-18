@@ -1,7 +1,8 @@
 {
   "name": "vue-3d-model",
   "description": "3D models viewer with vue.js",
-  "version": "0.0.5",
+  "keywords":["vue","three.js","component"],
+  "version": "0.0.6",
   "author": "hujiulong <me@hujiulong.com>",
   "main": "dist/vue-3d-model.min.js",
   "scripts": {
@@ -59,6 +60,7 @@
   "bugs": {
     "url": "https://github.com/hujiulong/vue-3d-model/issues"
   },
+  "license":"MIT",
   "engines": {
     "node": ">= 4.0.0",
     "npm": ">= 3.0.0"
@@ -66,6 +68,6 @@
   "browserslist": [
     "> 1%",
     "last 2 versions",
-    "not ie <= 8"
+    "not ie < 11"
   ]
 }
