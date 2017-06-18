@@ -173,6 +173,9 @@ export default {
         object () {
             this.render();
         },
+        rotation ( val ) {
+            this.object.rotation.copy( val );
+        },
         lights: {
             deep: true,
             handler( val, oldVal ) {

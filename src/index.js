@@ -1,9 +1,11 @@
 import ModelObj from './model-obj.vue'
 import ModelThree from './model-three.vue'
+import ModelStl from './model-stl.vue'
 
 const components = [
     ModelObj,
-    ModelThree
+    ModelThree,
+    ModelStl
 ]
 
 const install = ( Vue ) => {

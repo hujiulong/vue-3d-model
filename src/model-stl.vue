@@ -1,9 +1,13 @@
 <script>
-import { OBJLoader } from './loaders/OBJLoader'
+import { STLLoader } from './loaders/STLLoader'
 import mixin from './model-mixin'
+import {
+    Mesh,
+    MeshPhongMaterial
+} from 'three'
 
 export default {
-    name: 'model-obj',
+    name: 'model-stl',
     mixins: [ mixin ],
     props: {
         lights: {
@@ -29,7 +33,34 @@ export default {
     },
     data () {
         return {
-            loader: new OBJLoader()
+            loader: new STLLoader()
+        }
+    },
+    methods: {
+        load () {
+
+            if ( !this.src ) return;
+
+            if ( this.object ) {
+                this.scene.remove( this.object );
+            }
+
+            this.loader.load( this.src, geometry => {
+
+                this.object = new Mesh( geometry, new MeshPhongMaterial() );
+
+                this.scene.add( this.object );
+
+                this.updateCamera();
+
+                this.$emit( 'on-load' );
+
+            }, err => {
+
+                this.$emit( 'on-error', err );
+
+            } );
+
         }
     }
 }

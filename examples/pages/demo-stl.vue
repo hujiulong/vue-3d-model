@@ -4,7 +4,6 @@
             <template slot="preview">
                 <model-stl :backgroundAlpha="0"
                     @on-load="onLoad"
-                    :rotation="rotation"
                     src="static/models/stl/gear.stl"></model-stl>
                 <div class="example-loading" v-show="loading"></div>
             </template>
@@ -37,25 +36,14 @@ const code = `
 export default {
     name: 'demo-stl',
     data () {
-        return {
+    	return {
             code,
-            loading: false,
-            rotation: {
-                x: 0,
-                y: 0,
-                z: 0
-            }
-        }
+            loading: false
+    	}
     },
     methods: {
         onLoad () {
             this.loading = false;
-            this.rotate();
-        },
-        rotate () {
-            setInterval( () => {
-                this.rotation.x += 0.01;
-            }, 16 );
         }
     },
     components: {
@@ -65,9 +53,9 @@ export default {
 }
 </script>
 <style>
-    .demo-basic {
+	.demo-basic {
         padding: 20px;
         background: #fff;
         box-shadow: 0 2px 4px 0 rgba(0,0,0,.1), 0 16px 24px 0 rgba(81,129,228,.1);
-    }
+	}
 </style>
