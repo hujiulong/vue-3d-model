@@ -1,11 +1,18 @@
+<style>
+    .demo-basic {
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,.1), 0 16px 24px 0 rgba(81,129,228,.1);
+    }
+</style>
 <template>
     <div class="demo-basic">
         <demo-block :code="code">
             <template slot="preview">
-                <model-stl :backgroundAlpha="0"
+                <model-obj :backgroundAlpha="0"
                     @on-load="onLoad"
                     :rotation="rotation"
-                    src="static/models/stl/gear.stl"></model-stl>
+                    src="static/models/obj/tree.obj"></model-obj>
                 <div class="example-loading" v-show="loading"></div>
             </template>
         </demo-block>
@@ -14,28 +21,30 @@
 
 <script>
 import DemoBlock from '../components/demo-block';
-import ModelStl from '../../src/model-stl.vue'
+import ModelObj from '../../src/model-obj.vue'
 
 const code = `
 
 <template>
-    <model-stl src="static/models/stl/slotted_disk.stl"></model-stl>
+    <model-obj src="static/models/obj/tree.obj"></model-obj>
 </template>
 
 <script>
-    import { ModelStl } from 'vue-3d-model'
+    import { ModelObj } from 'vue-3d-model'
 
     export default {
         components: {
-            ModelStl
+            ModelObj
         }
     }
 <\/script>
 
 `
 
+var k = 0;
+
 export default {
-    name: 'demo-stl',
+    name: 'demo-obj',
     data () {
         return {
             code,
@@ -53,13 +62,19 @@ export default {
             this.rotate();
         },
         rotate () {
-            setInterval( () => {
-                this.rotation.x += 0.01;
-            }, 16 );
+            // console.log( this )
+            k++;
+            this.rotation.y += 0.01;
+            var rotate = this.rotate;
+            // if ( k < 1000 )
+            requestAnimationFrame( this.rotate );
+            // setInterval( () => {
+            //     this.rotation.y += 0.01;
+            // }, 16 );
         }
     },
     components: {
-        ModelStl,
+        ModelObj,
         DemoBlock
     }
 }
