@@ -26,13 +26,31 @@ import ModelObj from '../../src/model-obj.vue'
 const code = `
 
 <template>
-    <model-obj src="static/models/obj/tree.obj"></model-obj>
+    <model-obj
+        :rotation="rotation"
+        src="static/models/obj/tree.obj"></model-obj>
 </template>
 
 <script>
     import { ModelObj } from 'vue-3d-model'
 
     export default {
+        data: {
+            rotation: {
+                x: 0,
+                y: 0,
+                z: 0
+            }
+        },
+        created () {
+            this.rotate();
+        },
+        methods: {
+            rotate () {
+                this.rotation.y += 0.01;
+                requestAnimationFrame( this.rotate );
+            }
+        },
         components: {
             ModelObj
         }
@@ -40,8 +58,6 @@ const code = `
 <\/script>
 
 `
-
-var k = 0;
 
 export default {
     name: 'demo-obj',
@@ -62,15 +78,8 @@ export default {
             this.rotate();
         },
         rotate () {
-            // console.log( this )
-            k++;
             this.rotation.y += 0.01;
-            var rotate = this.rotate;
-            // if ( k < 1000 )
             requestAnimationFrame( this.rotate );
-            // setInterval( () => {
-            //     this.rotation.y += 0.01;
-            // }, 16 );
         }
     },
     components: {

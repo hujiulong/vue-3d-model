@@ -178,6 +178,7 @@ export default {
         rotation: {
             deep: true,
             handler( val ) {
+                if ( !this.object ) return;
                 this.object.rotation.set( val.x, val.y, val.z );
                 this.render();
             }
@@ -185,6 +186,7 @@ export default {
         position: {
             deep: true,
             handler( val ) {
+                if ( !this.object ) return;
                 this.object.position.set( val.x, val.y, val.z );
                 this.render();
             }
@@ -192,6 +194,7 @@ export default {
         scale: {
             deep: true,
             handler( val ) {
+                if ( !this.object ) return;
                 this.object.scale.set( val.x, val.y, val.z );
                 this.render();
             }
