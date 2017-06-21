@@ -11,7 +11,7 @@ import DemoStl from '../pages/demo-stl'
 Vue.use( Router )
 
 export default new Router( {
-    routes: [ 
+    routes: [
         {
             path: '/demo-basic',
             name: 'demo-basic',
@@ -46,6 +46,10 @@ export default new Router( {
         //     path: '/demo-gltf',
         //     name: 'demo-gltf',
         //     component: DemoGltf
-        // }
+        // },
+        {
+            path: '*',
+            redirect: '/demo-basic'
+        }
     ]
 } )
