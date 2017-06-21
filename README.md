@@ -12,8 +12,6 @@ vue.js 3D model viewer component, based on threejs, inspired by [model-tag](http
 
 ![preview](./preview.gif)
 
-inspired by [model-tag](https://github.com/mrdoob/model-tag)
-
 ## Example
 [示例页面DEMO](https://hujiulong.github.io/vue-3d-model/#/demo-basic)
 
