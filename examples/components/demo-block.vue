@@ -16,7 +16,7 @@
                 <h3>HTML & JS</h3>
                 <div class="demo-block-code-box-content">
                     <pre>
-                        <code ref="htmlCode" v-text="code" class="html"></code>
+                        <code ref="htmlCode" v-text="htmlCode" class="html"></code>
                     </pre>
                 </div>
             </div>
@@ -31,7 +31,11 @@ import hljs from 'highlight.js'
 export default {
     name: 'app',
     props: {
-        code: String
+        code: String,
+        htmlCode: {
+            type: String,
+            default: '// TODO'
+        }
     },
     mounted () {
         hljs.highlightBlock( this.$refs.vueCode );
