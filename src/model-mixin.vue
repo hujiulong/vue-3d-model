@@ -1,9 +1,11 @@
 <template>
-    <canvas :style="styleObj" v-if="suportWebGL"></canvas>
-    <div v-else>
-        <slot>
-            Your browser does not seem to support <a href="http://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation" style="color:#000">WebGL</a>.<br/>'
-        </slot>
+    <div style="width: 100%; height: 100%;">
+        <canvas v-if="suportWebGL" ref="canvas" style="width: 100%; height: 100%;"></canvas>
+        <div v-else>
+            <slot>
+                Your browser does not seem to support <a href="http://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation" style="color:#000">WebGL</a>.<br/>'
+            </slot>
+        </div>
     </div>
 </template>
 
@@ -116,12 +118,6 @@ export default {
         }
     },
     computed: {
-        styleObj () {
-            return {
-                width: this.width !== undefined ? this.width + 'px' : '100%',
-                height: this.height !== undefined ? this.height + 'px' : '100%',
-            }
-        },
         hasListener () {
 
             // 判断是否有鼠标事件监听，用于减少不必要的拾取判断
@@ -136,9 +132,7 @@ export default {
         }
     },
     created () {
-        if ( window ) {
-            window.addEventListener( 'resize', this.onResize, false );
-        }
+        window.addEventListener( 'resize', this.onResize, false );
     },
     mounted () {
 
@@ -149,7 +143,7 @@ export default {
             }
         }
 
-        this.renderer = new WebGLRenderer( { antialias: true, alpha: true, canvas: this.$el } )
+        this.renderer = new WebGLRenderer( { antialias: true, alpha: true, canvas: this.$refs.canvas } )
         this.renderer.shadowMap.enabled = true;
 
         this.load();
@@ -210,6 +204,7 @@ export default {
             handler ( val ) {
                 this.updateCamera();
                 this.updateRenderer();
+                this.render();
             }
         },
         controllable () {
@@ -339,7 +334,7 @@ export default {
                 // TODO
             }
 
-            if ( this.controls ) this.controls.target.copy( center );
+            if ( this.controls && center ) this.controls.target.copy( center );
 
         },
         updateLights () {
