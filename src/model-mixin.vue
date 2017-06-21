@@ -38,7 +38,7 @@ const suportWebGL = ( () => {
 
 } )();
 
-let oldTime = 0;
+let handler = null;
 
 export default {
     props: {
@@ -464,11 +464,11 @@ export default {
         },
         render () {
             // throttle
-            let currTime = this.clock.now();
-            if ( currTime - oldTime > 16 ) {
+            if ( handler ) return;
+            handler = requestAnimationFrame( () => {
+                handler = null;
                 this.immediateRender();
-                oldTime = currTime;
-            }
+            } )
         }
     }
 }
