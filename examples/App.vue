@@ -1,28 +1,33 @@
 <template>
     <div class="examples">
         <div class="examples-header">
-            <h2>Vue 3D Model</h2>
-            <a href="https://github.com/hujiulong/vue-3d-model">Github</a>
+            <a href="https://github.com/hujiulong/vue-3d-model" class="title">Vue3DModel</a>
+            <a href="https://github.com/hujiulong/vue-3d-model" class="github">GitHub</a>
         </div>
-        <ul class="examples-nav">
-            <li class="examples-nav-item">
-                <router-link to="demo-basic">Basic</router-link>
-            </li>
-            <li class="examples-nav-item">
-                <router-link to="demo-event">Event (mousemove)</router-link>
-            </li>
-            <li class="examples-nav-item">
-                <router-link to="demo-rotate">rotate</router-link>
-            </li>
-            <li class="examples-nav-item">
-                <router-link to="demo-obj">OBJ Model (.obj)</router-link>
-            </li>
-            <li class="examples-nav-item">
-                <router-link to="demo-stl">STL Model (.stl)</router-link>
-            </li>
-        </ul>
         <div class="examples-content">
-            <router-view></router-view>
+            <ul class="examples-menu">
+                <li class="examples-menu-title">Examples</li>
+                <li class="examples-menu-item">
+                    <router-link to="demo-basic">Basic</router-link>
+                </li>
+                <li class="examples-menu-item">
+                    <router-link to="demo-rotate">rotate</router-link>
+                </li>
+                <li class="examples-menu-title">Events</li>
+                <li class="examples-menu-item">
+                    <router-link to="demo-event">mousemove</router-link>
+                </li>
+                <li class="examples-menu-title">Model Formats</li>
+                <li class="examples-menu-item">
+                    <router-link to="demo-obj">OBJ Model (.obj)</router-link>
+                </li>
+                <li class="examples-menu-item">
+                    <router-link to="demo-stl">STL Model (.stl)</router-link>
+                </li>
+            </ul>
+            <div class="examples-pages">
+                <router-view></router-view>
+            </div>
         </div>
     </div>
 </template>
@@ -38,6 +43,7 @@ export default {
     margin: 0;
     border: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 ul, ol, li {
@@ -57,45 +63,81 @@ html, body, .examples {
 
 body {
     background: #eee;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+                 SimSun, sans-serif;
+    background: #fff;
 }
 
 .examples-header {
-    padding: 20px 40px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: #f3f6fb;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+    border-bottom: solid 1px #dfe2e7;
+    padding: 15px 15px 15px 30px;
+    line-height: 20px;
 }
 
-.examples-header h2 {
+.examples-header .title {
+    font-weight: bold;
+    font-size: 18px;
     display: inline-block;
 }
 
-.examples-header > a {
+.examples-header .github {
     color: #39f;
     display: inline-block;
+    font-size: 12px;
     float: right;
 }
 
-.examples-nav {
-    position: fixed;
-    left: 40px;
-    top: 100px;
+.examples-content {
+    width: 100%;
+    height: 100%;
+    padding-top: 52px;
+    overflow: hidden;
 }
 
-.examples-nav .examples-nav-item {
+.examples-menu {
+    float: left;
+    width: 230px;
+    height: 100%;
+    border-right: solid 1px #dfe2e7;
+    padding: 10px 30px;
+}
+
+.examples-menu .examples-menu-item {
     display: block;
     width: 100%;
-    padding: 12px 16px;
-    font-size: 16px;
+    padding: 6px 0;
+    font-size: 14px;
+    cursor: pointer;
 }
 
-.examples-nav .examples-nav-item:hover > a {
+.examples-menu .examples-menu-item > a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.examples-menu .examples-menu-title {
+    display: block;
+    width: 100%;
+    padding: 6px 0;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.examples-menu .examples-menu-item:hover > a {
     color: #39f;
 }
 
-.examples-content {
-    width: 90%;
-    max-width: 1100px;
-    min-width: 900px;
-    margin: 30px auto 20px;
-    padding: 10px;
+.examples-pages {
+    height: 100%;
+    overflow: hidden;
 }
 
 .example-loading {

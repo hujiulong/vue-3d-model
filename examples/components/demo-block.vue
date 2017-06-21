@@ -4,9 +4,22 @@
             <slot name="preview"></slot>
         </div>
         <div class="demo-block-code">
-            <pre>
-                <code ref="code" v-text="code" class="html"></code>
-            </pre>
+            <div class="demo-block-code-box">
+                <h3>Vue Component & Webpack</h3>
+                <div class="demo-block-code-box-content">
+                    <pre>
+                        <code ref="vueCode" v-text="code" class="html"></code>
+                    </pre>
+                </div>
+            </div>
+            <div class="demo-block-code-box">
+                <h3>HTML & JS</h3>
+                <div class="demo-block-code-box-content">
+                    <pre>
+                        <code ref="htmlCode" v-text="code" class="html"></code>
+                    </pre>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -21,7 +34,8 @@ export default {
         code: String
     },
     mounted () {
-        hljs.highlightBlock( this.$refs.code );
+        hljs.highlightBlock( this.$refs.vueCode );
+        hljs.highlightBlock( this.$refs.htmlCode );
     },
     data () {
     	return {}
@@ -35,39 +49,71 @@ export default {
 }
 </script>
 <style>
-    .demo-block, .demo-block * {
-        box-sizing: border-box;
-    }
-
     .demo-block {
+        width: 100%;
+        height: 100%;
         background-color: #fff;
         border-radius: 3px;
         border: 1px solid #eee;
     }
 
-	.demo-block::after {
-        content: '';
-        display: block;
-        clear: both;
-    }
-
     .demo-block .demo-block-preview {
-        position: relative;
-        width: 500px;
-        height: 500px;
+        width: 50%;
+        height: 100%;
         float: left;
+        position: relative;
     }
 
     .demo-block .demo-block-code {
-        height: 500px;
-        overflow: auto;
-        padding: 20px;
+        width: 50%;
+        height: 100%;
         background: #f9fafc;
-        border-left: 1px dashed #aaa;
+        border-left: solid 1px #dfe2e7;
         font-family: Menlo,Monaco,Consolas,Courier,monospace;
         font-size: 13px;
+        float: left;
     }
-    
+
+    .demo-block .demo-block-code .demo-block-code-box {
+        width: 100%;
+        height: 50%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .demo-block .demo-block-code-box::after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 90%;
+        height: 1px;
+        background: -webkit-linear-gradient(left, #dfe2e7 80%, rgba(223,226,231,0) 100%);
+    }
+
+    .demo-block .demo-block-code-box h3 {
+        width: 100%;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        position: absolute;
+    }
+
+    .demo-block .demo-block-code-box-content {
+        position: absolute;
+        top: 40px;
+        bottom: 10px;
+        left: 20px;
+        right: 20px;
+        overflow: auto;
+    }
+
+    .demo-block .demo-block-code code {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
 
     .demo-block .demo-block-code .hljs {
         background: #f9fafc;

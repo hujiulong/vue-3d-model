@@ -1,22 +1,13 @@
-<style>
-    .demo-basic {
-        padding: 20px;
-        background: #fff;
-        box-shadow: 0 2px 4px 0 rgba(0,0,0,.1), 0 16px 24px 0 rgba(81,129,228,.1);
-    }
-</style>
 <template>
-    <div class="demo-basic">
-        <demo-block :code="code">
-            <template slot="preview">
-                <model-obj :backgroundAlpha="0"
-                    @on-load="onLoad"
-                    :rotation="rotation"
-                    src="static/models/obj/tree.obj"></model-obj>
-                <div class="example-loading" v-show="loading"></div>
-            </template>
-        </demo-block>
-    </div>
+    <demo-block :code="code">
+        <template slot="preview">
+            <model-obj :backgroundAlpha="0"
+                @on-load="onLoad"
+                :rotation="rotation"
+                src="static/models/obj/tree.obj"></model-obj>
+            <div class="example-loading" v-show="loading"></div>
+        </template>
+    </demo-block>
 </template>
 
 <script>
@@ -60,7 +51,7 @@ const code = `
 `
 
 export default {
-    name: 'demo-obj',
+    name: 'demo-rotate',
     data () {
         return {
             code,
@@ -88,10 +79,3 @@ export default {
     }
 }
 </script>
-<style>
-    .demo-basic {
-        padding: 20px;
-        background: #fff;
-        box-shadow: 0 2px 4px 0 rgba(0,0,0,.1), 0 16px 24px 0 rgba(81,129,228,.1);
-    }
-</style>
