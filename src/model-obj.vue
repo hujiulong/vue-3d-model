@@ -1,5 +1,6 @@
 <script>
 import { OBJLoader } from './loaders/OBJLoader'
+import { toIndexed } from './util'
 import mixin from './model-mixin.vue'
 
 export default {
@@ -25,11 +26,27 @@ export default {
                     }
                 ]
             }
+        },
+        smoothing: {
+            type: Boolean,
+            default: false
         }
     },
     data () {
         return {
             loader: new OBJLoader()
+        }
+    },
+    methods: {
+        process ( object ) {
+            if ( this.smoothing ) {
+                object.traverse( child => {
+                    if ( child.geometry ) {
+                        child.geometry = toIndexed( child.geometry );
+                        child.geometry.computeVertexNormals();
+                    }
+                } )
+            }
         }
     }
 }

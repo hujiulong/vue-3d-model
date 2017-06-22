@@ -440,6 +440,10 @@ export default {
 
             this.loader.load( this.src, object => {
 
+                if ( this.process ) {
+                    this.process ( object );
+                }
+
                 this.object = object;
 
                 this.scene.add( this.object );
