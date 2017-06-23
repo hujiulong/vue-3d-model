@@ -304,7 +304,7 @@ export default {
 
             renderer.setSize( this.size.width, this.size.height );
             renderer.setPixelRatio( window.devicePixelRatio || 1 );
-            // renderer.setClearColor( new Color( this.backgroundColor ).getHex() );
+            renderer.setClearColor( new Color( this.backgroundColor ).getHex() );
             renderer.setClearAlpha( this.backgroundAlpha );
         },
         updateCamera () {

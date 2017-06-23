@@ -98,11 +98,11 @@ return /******/ (function(modules) { // webpackBootstrap
 /* unused harmony export Skeleton */
 /* unused harmony export Bone */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Mesh; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "A", function() { return LineSegments; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "B", function() { return LineSegments; });
 /* unused harmony export LineLoop */
 /* unused harmony export Line */
 /* unused harmony export Points */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return Group; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "x", function() { return Group; });
 /* unused harmony export VideoTexture */
 /* unused harmony export DataTexture */
 /* unused harmony export CompressedTexture */
@@ -114,7 +114,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* unused harmony export DataTextureLoader */
 /* unused harmony export CubeTextureLoader */
 /* unused harmony export TextureLoader */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return ObjectLoader; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return ObjectLoader; });
 /* unused harmony export MaterialLoader */
 /* unused harmony export BufferGeometryLoader */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return DefaultLoadingManager; });
@@ -130,15 +130,15 @@ return /******/ (function(modules) { // webpackBootstrap
 /* unused harmony export SpotLight */
 /* unused harmony export PointLight */
 /* unused harmony export RectAreaLight */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return HemisphereLight; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return HemisphereLight; });
 /* unused harmony export DirectionalLightShadow */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return DirectionalLight; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return AmbientLight; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return DirectionalLight; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return AmbientLight; });
 /* unused harmony export LightShadow */
 /* unused harmony export Light */
 /* unused harmony export StereoCamera */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return PerspectiveCamera; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return OrthographicCamera; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return OrthographicCamera; });
 /* unused harmony export CubeCamera */
 /* unused harmony export ArrayCamera */
 /* unused harmony export Camera */
@@ -173,7 +173,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* unused harmony export Object3D */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return Raycaster; });
 /* unused harmony export Layers */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return EventDispatcher; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return EventDispatcher; });
 /* unused harmony export Clock */
 /* unused harmony export QuaternionLinearInterpolant */
 /* unused harmony export LinearInterpolant */
@@ -182,7 +182,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* unused harmony export Interpolant */
 /* unused harmony export Triangle */
 /* unused harmony export Math */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return Spherical; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return Spherical; });
 /* unused harmony export Cylindrical */
 /* unused harmony export Plane */
 /* unused harmony export Frustum */
@@ -190,15 +190,15 @@ return /******/ (function(modules) { // webpackBootstrap
 /* unused harmony export Ray */
 /* unused harmony export Matrix4 */
 /* unused harmony export Matrix3 */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return Box3; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return Box3; });
 /* unused harmony export Box2 */
 /* unused harmony export Line3 */
 /* unused harmony export Euler */
 /* unused harmony export Vector4 */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return Vector3; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return Vector2; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return Quaternion; });
-/* unused harmony export Color */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return Quaternion; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return Color; });
 /* unused harmony export MorphBlendMesh */
 /* unused harmony export ImmediateRenderObject */
 /* unused harmony export VertexNormalsHelper */
@@ -289,7 +289,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* unused harmony export MeshDepthMaterial */
 /* unused harmony export MeshBasicMaterial */
 /* unused harmony export LineDashedMaterial */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "x", function() { return LineBasicMaterial; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "y", function() { return LineBasicMaterial; });
 /* unused harmony export Material */
 /* unused harmony export Float64BufferAttribute */
 /* unused harmony export Float32BufferAttribute */
@@ -302,7 +302,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* unused harmony export Int8BufferAttribute */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return BufferAttribute; });
 /* unused harmony export REVISION */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return MOUSE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return MOUSE; });
 /* unused harmony export CullFaceNone */
 /* unused harmony export CullFaceBack */
 /* unused harmony export CullFaceFront */
@@ -315,8 +315,8 @@ return /******/ (function(modules) { // webpackBootstrap
 /* unused harmony export FrontSide */
 /* unused harmony export BackSide */
 /* unused harmony export DoubleSide */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "z", function() { return FlatShading; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "y", function() { return SmoothShading; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "A", function() { return FlatShading; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "z", function() { return SmoothShading; });
 /* unused harmony export NoColors */
 /* unused harmony export FaceColors */
 /* unused harmony export VertexColors */
@@ -43989,7 +43989,7 @@ module.exports = function(it){
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_three_build_three_module_js__ = __webpack_require__(0);
 
 
-var box = new __WEBPACK_IMPORTED_MODULE_0_three_build_three_module_js__["u" /* Box3 */]();
+var box = new __WEBPACK_IMPORTED_MODULE_0_three_build_three_module_js__["v" /* Box3 */]();
 
 function getSize(object) {
 
@@ -44957,7 +44957,7 @@ var handler = null;
 
             renderer.setSize(this.size.width, this.size.height);
             renderer.setPixelRatio(window.devicePixelRatio || 1);
-
+            renderer.setClearColor(new __WEBPACK_IMPORTED_MODULE_0_three__["m" /* Color */](this.backgroundColor).getHex());
             renderer.setClearAlpha(this.backgroundAlpha);
         },
         updateCamera: function updateCamera() {
@@ -45006,7 +45006,7 @@ var handler = null;
                     var color = item.color || 0x404040;
                     var intensity = item.intensity || 1;
 
-                    light = new __WEBPACK_IMPORTED_MODULE_0_three__["m" /* AmbientLight */](color, intensity);
+                    light = new __WEBPACK_IMPORTED_MODULE_0_three__["n" /* AmbientLight */](color, intensity);
                 } else if (type === 'point' || type === 'pointlight') {
 
                     var _color = item.color || 0xffffff;
@@ -45024,7 +45024,7 @@ var handler = null;
                     var _color2 = item.color || 0xffffff;
                     var _intensity2 = item.intensity || 1;
 
-                    light = new __WEBPACK_IMPORTED_MODULE_0_three__["n" /* DirectionalLight */](_color2, _intensity2);
+                    light = new __WEBPACK_IMPORTED_MODULE_0_three__["o" /* DirectionalLight */](_color2, _intensity2);
 
                     if (item.position) {
                         light.position.copy(item.position);
@@ -45039,7 +45039,7 @@ var handler = null;
                     var groundColor = item.groundColor || 0xffffff;
                     var _intensity3 = item.intensity || 1;
 
-                    light = new __WEBPACK_IMPORTED_MODULE_0_three__["o" /* HemisphereLight */](skyColor, groundColor, _intensity3);
+                    light = new __WEBPACK_IMPORTED_MODULE_0_three__["p" /* HemisphereLight */](skyColor, groundColor, _intensity3);
 
                     if (item.position) {
                         light.position.copy(item.position);
@@ -45265,7 +45265,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mixins: [__WEBPACK_IMPORTED_MODULE_1__model_mixin_vue___default.a],
     data: function data() {
         return {
-            loader: new __WEBPACK_IMPORTED_MODULE_0_three__["v" /* ObjectLoader */]()
+            loader: new __WEBPACK_IMPORTED_MODULE_0_three__["w" /* ObjectLoader */]()
         };
     }
 });
@@ -45319,7 +45319,7 @@ var OrbitControls = function OrbitControls(object, domElement) {
 
 	this.keys = { LEFT: 37, UP: 38, RIGHT: 39, BOTTOM: 40 };
 
-	this.mouseButtons = { ORBIT: __WEBPACK_IMPORTED_MODULE_1_three__["p" /* MOUSE */].LEFT, ZOOM: __WEBPACK_IMPORTED_MODULE_1_three__["p" /* MOUSE */].MIDDLE, PAN: __WEBPACK_IMPORTED_MODULE_1_three__["p" /* MOUSE */].RIGHT };
+	this.mouseButtons = { ORBIT: __WEBPACK_IMPORTED_MODULE_1_three__["q" /* MOUSE */].LEFT, ZOOM: __WEBPACK_IMPORTED_MODULE_1_three__["q" /* MOUSE */].MIDDLE, PAN: __WEBPACK_IMPORTED_MODULE_1_three__["q" /* MOUSE */].RIGHT };
 
 	this.target0 = this.target.clone();
 	this.position0 = this.object.position.clone();
@@ -45360,11 +45360,11 @@ var OrbitControls = function OrbitControls(object, domElement) {
 
 		var offset = new __WEBPACK_IMPORTED_MODULE_1_three__["g" /* Vector3 */]();
 
-		var quat = new __WEBPACK_IMPORTED_MODULE_1_three__["q" /* Quaternion */]().setFromUnitVectors(object.up, new __WEBPACK_IMPORTED_MODULE_1_three__["g" /* Vector3 */](0, 1, 0));
+		var quat = new __WEBPACK_IMPORTED_MODULE_1_three__["r" /* Quaternion */]().setFromUnitVectors(object.up, new __WEBPACK_IMPORTED_MODULE_1_three__["g" /* Vector3 */](0, 1, 0));
 		var quatInverse = quat.clone().inverse();
 
 		var lastPosition = new __WEBPACK_IMPORTED_MODULE_1_three__["g" /* Vector3 */]();
-		var lastQuaternion = new __WEBPACK_IMPORTED_MODULE_1_three__["q" /* Quaternion */]();
+		var lastQuaternion = new __WEBPACK_IMPORTED_MODULE_1_three__["r" /* Quaternion */]();
 
 		return function update() {
 
@@ -45459,8 +45459,8 @@ var OrbitControls = function OrbitControls(object, domElement) {
 
 	var EPS = 0.000001;
 
-	var spherical = new __WEBPACK_IMPORTED_MODULE_1_three__["r" /* Spherical */]();
-	var sphericalDelta = new __WEBPACK_IMPORTED_MODULE_1_three__["r" /* Spherical */]();
+	var spherical = new __WEBPACK_IMPORTED_MODULE_1_three__["s" /* Spherical */]();
+	var sphericalDelta = new __WEBPACK_IMPORTED_MODULE_1_three__["s" /* Spherical */]();
 
 	var scale = 1;
 	var panOffset = new __WEBPACK_IMPORTED_MODULE_1_three__["g" /* Vector3 */]();
@@ -45541,7 +45541,7 @@ var OrbitControls = function OrbitControls(object, domElement) {
 
 				panLeft(2 * deltaX * targetDistance / element.clientHeight, scope.object.matrix);
 				panUp(2 * deltaY * targetDistance / element.clientHeight, scope.object.matrix);
-			} else if (scope.object instanceof __WEBPACK_IMPORTED_MODULE_1_three__["s" /* OrthographicCamera */]) {
+			} else if (scope.object instanceof __WEBPACK_IMPORTED_MODULE_1_three__["t" /* OrthographicCamera */]) {
 				panLeft(deltaX * (scope.object.right - scope.object.left) / scope.object.zoom / element.clientWidth, scope.object.matrix);
 				panUp(deltaY * (scope.object.top - scope.object.bottom) / scope.object.zoom / element.clientHeight, scope.object.matrix);
 			} else {
@@ -45556,7 +45556,7 @@ var OrbitControls = function OrbitControls(object, domElement) {
 		if (scope.object instanceof __WEBPACK_IMPORTED_MODULE_1_three__["j" /* PerspectiveCamera */]) {
 
 			scale /= dollyScale;
-		} else if (scope.object instanceof __WEBPACK_IMPORTED_MODULE_1_three__["s" /* OrthographicCamera */]) {
+		} else if (scope.object instanceof __WEBPACK_IMPORTED_MODULE_1_three__["t" /* OrthographicCamera */]) {
 
 			scope.object.zoom = Math.max(scope.minZoom, Math.min(scope.maxZoom, scope.object.zoom * dollyScale));
 			scope.object.updateProjectionMatrix();
@@ -45573,7 +45573,7 @@ var OrbitControls = function OrbitControls(object, domElement) {
 		if (scope.object instanceof __WEBPACK_IMPORTED_MODULE_1_three__["j" /* PerspectiveCamera */]) {
 
 			scale *= dollyScale;
-		} else if (scope.object instanceof __WEBPACK_IMPORTED_MODULE_1_three__["s" /* OrthographicCamera */]) {
+		} else if (scope.object instanceof __WEBPACK_IMPORTED_MODULE_1_three__["t" /* OrthographicCamera */]) {
 
 			scope.object.zoom = Math.max(scope.minZoom, Math.min(scope.maxZoom, scope.object.zoom / dollyScale));
 			scope.object.updateProjectionMatrix();
@@ -46004,7 +46004,7 @@ var OrbitControls = function OrbitControls(object, domElement) {
 	this.update();
 };
 
-OrbitControls.prototype = __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_create___default()(__WEBPACK_IMPORTED_MODULE_1_three__["t" /* EventDispatcher */].prototype);
+OrbitControls.prototype = __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_create___default()(__WEBPACK_IMPORTED_MODULE_1_three__["u" /* EventDispatcher */].prototype);
 OrbitControls.prototype.constructor = OrbitControls;
 
 
@@ -46532,7 +46532,7 @@ OBJLoader.prototype = {
 
 		state.finalize();
 
-		var container = new __WEBPACK_IMPORTED_MODULE_0_three__["w" /* Group */]();
+		var container = new __WEBPACK_IMPORTED_MODULE_0_three__["x" /* Group */]();
 		container.materialLibraries = [].concat(state.materialLibraries);
 
 		for (var i = 0, l = state.objects.length; i < l; i++) {
@@ -46572,9 +46572,9 @@ OBJLoader.prototype = {
 
 					material = this.materials.create(sourceMaterial.name);
 
-					if (isLine && material && !(material instanceof __WEBPACK_IMPORTED_MODULE_0_three__["x" /* LineBasicMaterial */])) {
+					if (isLine && material && !(material instanceof __WEBPACK_IMPORTED_MODULE_0_three__["y" /* LineBasicMaterial */])) {
 
-						var materialLine = new __WEBPACK_IMPORTED_MODULE_0_three__["x" /* LineBasicMaterial */]();
+						var materialLine = new __WEBPACK_IMPORTED_MODULE_0_three__["y" /* LineBasicMaterial */]();
 						materialLine.copy(material);
 						material = materialLine;
 					}
@@ -46582,11 +46582,11 @@ OBJLoader.prototype = {
 
 				if (!material) {
 
-					material = !isLine ? new __WEBPACK_IMPORTED_MODULE_0_three__["b" /* MeshPhongMaterial */]() : new __WEBPACK_IMPORTED_MODULE_0_three__["x" /* LineBasicMaterial */]();
+					material = !isLine ? new __WEBPACK_IMPORTED_MODULE_0_three__["b" /* MeshPhongMaterial */]() : new __WEBPACK_IMPORTED_MODULE_0_three__["y" /* LineBasicMaterial */]();
 					material.name = sourceMaterial.name;
 				}
 
-				material.shading = sourceMaterial.smooth ? __WEBPACK_IMPORTED_MODULE_0_three__["y" /* SmoothShading */] : __WEBPACK_IMPORTED_MODULE_0_three__["z" /* FlatShading */];
+				material.shading = sourceMaterial.smooth ? __WEBPACK_IMPORTED_MODULE_0_three__["z" /* SmoothShading */] : __WEBPACK_IMPORTED_MODULE_0_three__["A" /* FlatShading */];
 
 				createdMaterials.push(material);
 			}
@@ -46601,10 +46601,10 @@ OBJLoader.prototype = {
 					buffergeometry.addGroup(sourceMaterial.groupStart, sourceMaterial.groupCount, mi);
 				}
 
-				mesh = !isLine ? new __WEBPACK_IMPORTED_MODULE_0_three__["a" /* Mesh */](buffergeometry, createdMaterials) : new __WEBPACK_IMPORTED_MODULE_0_three__["A" /* LineSegments */](buffergeometry, createdMaterials);
+				mesh = !isLine ? new __WEBPACK_IMPORTED_MODULE_0_three__["a" /* Mesh */](buffergeometry, createdMaterials) : new __WEBPACK_IMPORTED_MODULE_0_three__["B" /* LineSegments */](buffergeometry, createdMaterials);
 			} else {
 
-				mesh = !isLine ? new __WEBPACK_IMPORTED_MODULE_0_three__["a" /* Mesh */](buffergeometry, createdMaterials[0]) : new __WEBPACK_IMPORTED_MODULE_0_three__["A" /* LineSegments */](buffergeometry, createdMaterials[0]);
+				mesh = !isLine ? new __WEBPACK_IMPORTED_MODULE_0_three__["a" /* Mesh */](buffergeometry, createdMaterials[0]) : new __WEBPACK_IMPORTED_MODULE_0_three__["B" /* LineSegments */](buffergeometry, createdMaterials[0]);
 			}
 
 			mesh.name = object.name;
