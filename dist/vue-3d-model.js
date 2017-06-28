@@ -44869,6 +44869,14 @@ var handler = null;
         },
         controllable: function controllable() {
             this.updateControls();
+        },
+        backgroundAlpha: function backgroundAlpha() {
+            this.updateRenderer();
+            this.render();
+        },
+        backgroundColor: function backgroundColor() {
+            this.updateRenderer();
+            this.render();
         }
     },
     methods: {
