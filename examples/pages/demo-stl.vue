@@ -1,5 +1,5 @@
 <template>
-    <demo-block :code="code">
+    <demo-block :vue-code="code" :html-code="htmlCode">
         <template slot="preview">
             <model-stl :backgroundAlpha="0"
                 @on-load="onLoad"
@@ -14,7 +14,6 @@ import DemoBlock from '../components/demo-block';
 import ModelStl from '../../src/model-stl.vue'
 
 const code = `
-
 <template>
     <model-stl src="static/models/stl/slotted_disk.stl"></model-stl>
 </template>
@@ -28,7 +27,20 @@ const code = `
         }
     }
 <\/script>
+`
 
+const htmlCode = `
+<body>
+    <div id="app">
+        <model-stl src="static/models/stl/slotted_disk.stl"></model-stl>
+    </div>
+    #scripts#
+    <script>
+        new Vue({
+            el: '#app'
+        })
+    <\/script>
+</body>
 `
 
 export default {
@@ -36,7 +48,8 @@ export default {
     data () {
     	return {
             code,
-            loading: false
+            htmlCode,
+            loading: true
     	}
     },
     methods: {

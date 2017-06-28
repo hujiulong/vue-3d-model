@@ -209,6 +209,14 @@ export default {
         },
         controllable () {
             this.updateControls();
+        },
+        backgroundAlpha () {
+            this.updateRenderer();
+            this.render();
+        },
+        backgroundColor () {
+            this.updateRenderer();
+            this.render();
         }
     },
     methods: {

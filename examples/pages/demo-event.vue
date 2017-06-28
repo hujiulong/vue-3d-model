@@ -1,5 +1,5 @@
 <template>
-    <demo-block :code="code">
+    <demo-block :vue-code="code" :html-code="htmlCode">
         <template slot="preview">
             <model-obj :backgroundAlpha="0"
                 ref="model"
@@ -62,12 +62,54 @@ const code = `
 
 `
 
+const htmlCode = `
+<body>
+    <div id="app">
+        <model-obj 
+            src="static/models/obj/tree.obj"
+            @on-mousemove="onMouseMove">
+        </model-obj>
+    </div>
+    #scripts#
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                intersected: null
+            },
+            methods: {
+                onMouseMove ( event ) {
+
+                    console.log( event );   // event: { distance, face, faceIndex, point, index, uv, object }
+
+                    if ( !event ) {
+
+                        if ( this.intersected ) {
+                            this.intersected.material.color.setStyle( '#fff' );
+                            this.$refs.model.render();  // 当在外部修改模型时，必须调用render，否则不会更新画面
+                        }
+
+                        this.intersected = null;
+                        return;
+                    }
+
+                    this.intersected = event.object;
+                    this.intersected.material.color.setStyle( '#13ce66' );
+                    this.$refs.model.render();  // render
+                }
+            }
+        })
+    <\/script>
+</body>
+`
+
 export default {
     name: 'demo-gltf',
     data () {
         return {
             code,
-            loading: false,
+            htmlCode,
+            loading: true,
             intersected: null
         }
     },

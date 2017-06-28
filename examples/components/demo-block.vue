@@ -8,7 +8,7 @@
                 <h3>Vue Component & Webpack</h3>
                 <div class="demo-block-code-box-content">
                     <pre>
-                        <code ref="vueCode" v-text="code" class="html"></code>
+                        <code ref="vueCode" class="html">{{ vueCode | code }}</code>
                     </pre>
                 </div>
             </div>
@@ -16,7 +16,7 @@
                 <h3>HTML & JS</h3>
                 <div class="demo-block-code-box-content">
                     <pre>
-                        <code ref="htmlCode" v-text="htmlCode" class="html"></code>
+                        <code ref="htmlCode" class="html">{{ htmlCode | code }}</code>
                     </pre>
                 </div>
             </div>
@@ -28,10 +28,17 @@
 import 'highlight.js/styles/color-brewer.css';
 import hljs from 'highlight.js'
 
+const codeHandler = code => {
+    const scripts = `<script src="vue.js"><\/script>
+    <script src="vue-3d-model.min.js"><\/script>`;
+
+    return code.replace( /#scripts#/ig, scripts );
+}
+
 export default {
     name: 'app',
     props: {
-        code: String,
+        vueCode: String,
         htmlCode: {
             type: String,
             default: '// TODO'
@@ -44,8 +51,10 @@ export default {
     data () {
     	return {}
     },
-    methods: {
-
+    filters: {
+        code ( val ) {
+            return codeHandler( val );
+        }
     },
     components: {
 
@@ -58,7 +67,6 @@ export default {
         height: 100%;
         background-color: #fff;
         border-radius: 3px;
-        border: 1px solid #eee;
     }
 
     .demo-block .demo-block-preview {

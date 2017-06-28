@@ -1,5 +1,5 @@
 <template>
-    <demo-block :code="code">
+    <demo-block :vue-code="code" :html-code="htmlCode">
         <template slot="preview">
             <model-three :backgroundAlpha="0"
                 @on-load="onLoad"
@@ -14,7 +14,6 @@ import DemoBlock from '../components/demo-block';
 import ModelThree from '../../src/model-three.vue'
 
 const code = `
-
 <template>
     <model-three src="static/models/json/scene.json"></model-three>
 </template>
@@ -28,7 +27,20 @@ const code = `
         }
     }
 <\/script>
+`
 
+const htmlCode = `
+<body>
+    <div id="app">
+        <model-three src="static/models/json/scene.json"></model-three>
+    </div>
+    #scripts#
+    <script>
+        new Vue({
+            el: '#app'
+        })
+    <\/script>
+</body>
 `
 
 export default {
@@ -36,6 +48,7 @@ export default {
     data () {
     	return {
             code,
+            htmlCode,
             loading: true
     	}
     },

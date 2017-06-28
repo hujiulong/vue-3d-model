@@ -36,7 +36,7 @@ export default {
     data () {
     	return {
             code,
-            loading: false
+            loading: true
     	}
     },
     methods: {

@@ -1,5 +1,5 @@
 <template>
-    <demo-block :code="code">
+    <demo-block :vue-code="code" :html-code="htmlCode">
         <template slot="preview">
             <model-obj :backgroundAlpha="0"
                 @on-load="onLoad"
@@ -14,7 +14,6 @@ import DemoBlock from '../components/demo-block';
 import ModelObj from '../../src/model-obj.vue'
 
 const code = `
-
 <template>
     <model-obj src="static/models/obj/tree.obj"></model-obj>
 </template>
@@ -28,7 +27,20 @@ const code = `
         }
     }
 <\/script>
+`
 
+const htmlCode = `
+<body>
+    <div id="app">
+        <model-obj src="static/models/obj/tree.obj"></model-obj>
+    </div>
+    #scripts#
+    <script>
+        new Vue({
+            el: '#app'
+        })
+    <\/script>
+</body>
 `
 
 export default {
@@ -36,7 +48,8 @@ export default {
     data () {
     	return {
             code,
-            loading: false
+            htmlCode,
+            loading: true
     	}
     },
     methods: {

@@ -2,7 +2,7 @@
     <div class="examples">
         <div class="examples-header">
             <a href="https://github.com/hujiulong/vue-3d-model" class="title">Vue3DModel</a>
-            <a href="https://github.com/hujiulong/vue-3d-model" class="github">GitHub</a>
+            <a href="https://github.com/hujiulong/vue-3d-model" class="github">View on GitHub</a>
         </div>
         <div class="examples-content">
             <ul class="examples-menu">
@@ -13,11 +13,17 @@
                 <li class="examples-menu-item">
                     <router-link to="demo-rotate">rotate</router-link>
                 </li>
+                <li class="examples-menu-item">
+                    <router-link to="demo-background">background</router-link>
+                </li>
                 <li class="examples-menu-title">Events</li>
                 <li class="examples-menu-item">
                     <router-link to="demo-event">mousemove</router-link>
                 </li>
                 <li class="examples-menu-title">Model Formats</li>
+                <li class="examples-menu-item">
+                    <router-link to="demo-basic">JSON Model (.json)</router-link>
+                </li>
                 <li class="examples-menu-item">
                     <router-link to="demo-obj">OBJ Model (.obj)</router-link>
                 </li>
@@ -111,7 +117,8 @@ body {
 .examples-menu .examples-menu-item {
     display: block;
     width: 100%;
-    padding: 6px 0;
+    height: 30px;
+    line-height: 30px;
     font-size: 14px;
     cursor: pointer;
 }

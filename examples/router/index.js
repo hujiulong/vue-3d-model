@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import DemoBasic from '../pages/demo-basic'
 import DemoEvent from '../pages/demo-event'
+import DemoBackground from '../pages/demo-background'
 import DemoRotate from '../pages/demo-rotate'
 import DemoObj from '../pages/demo-obj'
 // import DemoGltf from '../pages/demo-gltf'
@@ -21,6 +22,11 @@ export default new Router( {
             path: '/demo-event',
             name: 'demo-event',
             component: DemoEvent
+        },
+        {
+            path: '/demo-background',
+            name: 'demo-background',
+            component: DemoBackground
         },
         {
             path: '/demo-rotate',
