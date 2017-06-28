@@ -22,10 +22,10 @@ npm install vue-3d-model --save
 ```
 Or using script tag for global use
 ```html
-<script type="text/javascript" src="https://unpkg.com/vue-3d-model/dist/vue-3d-model.min.js"></script>
+<script src="https://unpkg.com/vue-3d-model/dist/vue-3d-model.min.js"></script>
 ```
 
-Download <a href="https://unpkg.com/vue-3d-model/dist/vue-3d-model.min.js" download>vue-3d-model.min.js</a>
+Or Download <a href="https://unpkg.com/vue-3d-model/dist/vue-3d-model.min.js">vue-3d-model.min.js</a> and include it in your html
 
 ## Usage
 
