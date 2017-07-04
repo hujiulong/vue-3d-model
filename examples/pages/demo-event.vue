@@ -42,7 +42,6 @@ const code = `
 
                     if ( this.intersected ) {
                         this.intersected.material.color.setStyle( '#fff' );
-                        this.$refs.model.render();  // 当在外部修改模型时，必须调用render，否则不会更新画面
                     }
 
                     this.intersected = null;
@@ -51,7 +50,6 @@ const code = `
 
                 this.intersected = event.object;
                 this.intersected.material.color.setStyle( '#13ce66' );
-                this.$refs.model.render();  // render
             }
         },
         components: {
@@ -86,7 +84,6 @@ const htmlCode = `
 
                         if ( this.intersected ) {
                             this.intersected.material.color.setStyle( '#fff' );
-                            this.$refs.model.render();  // 当在外部修改模型时，必须调用render，否则不会更新画面
                         }
 
                         this.intersected = null;
@@ -95,7 +92,6 @@ const htmlCode = `
 
                     this.intersected = event.object;
                     this.intersected.material.color.setStyle( '#13ce66' );
-                    this.$refs.model.render();  // render
                 }
             }
         })
@@ -125,7 +121,6 @@ export default {
 
                 if ( this.intersected ) {
                     this.intersected.material.color.setStyle( '#fff' );
-                    this.$refs.model.render();
                 }
 
                 this.intersected = null;
@@ -134,7 +129,6 @@ export default {
 
             this.intersected = event.object;
             this.intersected.material.color.setStyle( '#13ce66' );
-            this.$refs.model.render();
         }
     },
     components: {

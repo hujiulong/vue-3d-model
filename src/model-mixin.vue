@@ -153,6 +153,8 @@ export default {
         this.$el.addEventListener( 'mousemove', this.onMouseMove, false );
         this.$el.addEventListener( 'mouseup', this.onMouseUp, false );
         this.$el.addEventListener( 'click', this.onClick, false );
+
+        this.animate();
     },
     beforeDestroy () {
 
@@ -166,15 +168,11 @@ export default {
         src () {
             this.load();
         },
-        object () {
-            this.render();
-        },
         rotation: {
             deep: true,
             handler( val ) {
                 if ( !this.object ) return;
                 this.object.rotation.set( val.x, val.y, val.z );
-                this.render();
             }
         },
         position: {
@@ -182,7 +180,6 @@ export default {
             handler( val ) {
                 if ( !this.object ) return;
                 this.object.position.set( val.x, val.y, val.z );
-                this.render();
             }
         },
         scale: {
@@ -190,7 +187,6 @@ export default {
             handler( val ) {
                 if ( !this.object ) return;
                 this.object.scale.set( val.x, val.y, val.z );
-                this.render();
             }
         },
         lights: {
@@ -204,7 +200,6 @@ export default {
             handler ( val ) {
                 this.updateCamera();
                 this.updateRenderer();
-                this.render();
             }
         },
         controllable () {
@@ -212,11 +207,9 @@ export default {
         },
         backgroundAlpha () {
             this.updateRenderer();
-            this.render();
         },
         backgroundColor () {
             this.updateRenderer();
-            this.render();
         }
     },
     methods: {
@@ -291,8 +284,6 @@ export default {
             this.updateCamera();
             this.updateLights();
             this.updateControls();
-
-            this.render();
             
         },
         updateModel () {
@@ -423,7 +414,6 @@ export default {
                 if ( this.controls ) return;
 
                 this.controls = new OrbitControls( this.camera, this.$el );
-                this.controls.addEventListener( 'change', this.render, false );
                 this.controls.type = 'orbit';
 
             } else {
@@ -471,17 +461,17 @@ export default {
             requestAnimationFrame( this.animate );
             this.render();
         },
-        immediateRender () {
+        render () {
             this.renderer.render( this.scene, this.camera );
         },
-        render () {
-            // throttle
-            if ( handler ) return;
-            handler = requestAnimationFrame( () => {
-                handler = null;
-                this.immediateRender();
-            } )
-        }
+        // render () {
+        //     // throttle
+        //     if ( handler ) return;
+        //     handler = requestAnimationFrame( () => {
+        //         handler = null;
+        //         this.immediateRender();
+        //     } )
+        // }
     }
 }
 
