@@ -13,7 +13,6 @@
 <script>
 import DemoBlock from '../components/demo-block';
 import ModelObj from '../../src/model-obj.vue'
-
 const code = `
 <template>
     <model-obj
@@ -21,10 +20,8 @@ const code = `
         :on-load="onLoad"
         src="static/models/obj/tree.obj"></model-obj>
 </template>
-
 <script>
     import { ModelObj } from 'vue-3d-model'
-
     export default {
         data: {
             rotation: {
@@ -48,7 +45,6 @@ const code = `
     }
 <\/script>
 `
-
 const htmlCode = `
 <body>
     <div id="app">
@@ -81,7 +77,6 @@ const htmlCode = `
     <\/script>
 </body>
 `
-
 export default {
     name: 'demo-rotate',
     data () {

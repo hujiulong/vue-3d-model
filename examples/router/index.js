@@ -7,6 +7,7 @@ import DemoRotate from '../pages/demo-rotate'
 import DemoObj from '../pages/demo-obj'
 // import DemoGltf from '../pages/demo-gltf'
 import DemoStl from '../pages/demo-stl'
+import DemoCollada from '../pages/demo-collada'
 // import DemoSea3d from '../pages/demo-sea3d'
 
 Vue.use( Router )
@@ -47,6 +48,11 @@ export default new Router( {
             path: '/demo-stl',
             name: 'demo-stl',
             component: DemoStl
+        },
+        {
+            path: '/demo-collada',
+            name: 'demo-collada',
+            component: DemoCollada
         },
         // {
         //     path: '/demo-gltf',

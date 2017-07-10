@@ -296,6 +296,8 @@ export default {
             object.rotation.copy( this.rotation );
             object.scale.copy( this.scale );
 
+            object.matrixWorldNeedsUpdate = true;
+
         },
         updateRenderer () {
 
@@ -463,15 +465,7 @@ export default {
         },
         render () {
             this.renderer.render( this.scene, this.camera );
-        },
-        // render () {
-        //     // throttle
-        //     if ( handler ) return;
-        //     handler = requestAnimationFrame( () => {
-        //         handler = null;
-        //         this.immediateRender();
-        //     } )
-        // }
+        }
     }
 }
 

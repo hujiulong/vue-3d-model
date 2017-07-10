@@ -30,6 +30,9 @@
                 <li class="examples-menu-item">
                     <router-link to="demo-stl">STL Model (.stl)</router-link>
                 </li>
+                <li class="examples-menu-item">
+                    <router-link to="demo-collada">Collada Model (.dae)</router-link>
+                </li>
             </ul>
             <div class="examples-pages">
                 <router-view></router-view>
