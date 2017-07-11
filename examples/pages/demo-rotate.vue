@@ -1,10 +1,10 @@
 <template>
     <demo-block :vue-code="code" :html-code="htmlCode">
         <template slot="preview">
-            <model-obj :backgroundAlpha="0"
-                @on-load="onLoad"
+            <model-collada
                 :rotation="rotation"
-                src="static/models/obj/tree.obj"></model-obj>
+                @on-load="onLoad"
+                src="static/models/collada/elf/elf.dae"></model-collada>
             <div class="example-loading" v-show="loading"></div>
         </template>
     </demo-block>
@@ -12,16 +12,19 @@
 
 <script>
 import DemoBlock from '../components/demo-block';
-import ModelObj from '../../src/model-obj.vue'
+import ModelCollada from '../../src/model-collada.vue'
+
 const code = `
 <template>
-    <model-obj
+    <model-collada
         :rotation="rotation"
-        :on-load="onLoad"
-        src="static/models/obj/tree.obj"></model-obj>
+        @on-load="onLoad"
+        src="static/models/collada/elf.dae"></model-collada>
 </template>
+
 <script>
-    import { ModelObj } from 'vue-3d-model'
+    import { ModelCollada } from 'vue-3d-model'
+
     export default {
         data: {
             rotation: {
@@ -40,18 +43,19 @@ const code = `
             }
         },
         components: {
-            ModelObj
+            ModelCollada
         }
     }
 <\/script>
 `
+
 const htmlCode = `
 <body>
     <div id="app">
-        <model-obj
+        <model-collada
             :rotation="rotation"
-            :on-load="onLoad"
-            src="static/models/obj/tree.obj"></model-obj>
+            @on-load="onLoad"
+            src="static/models/collada/elf.dae"></model-collada>
     </div>
     #scripts#
     <script>
@@ -77,6 +81,7 @@ const htmlCode = `
     <\/script>
 </body>
 `
+
 export default {
     name: 'demo-rotate',
     data () {
@@ -97,12 +102,12 @@ export default {
             this.rotate();
         },
         rotate () {
-            this.rotation.y += 0.01;
             requestAnimationFrame( this.rotate );
+            this.rotation.y += 0.01;
         }
     },
     components: {
-        ModelObj,
+        ModelCollada,
         DemoBlock
     }
 }
