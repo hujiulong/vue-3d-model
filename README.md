@@ -87,7 +87,7 @@ Or
 ## Model Format Support
 OBJ(.obj) three/json(.json)
 
-//TODO: collada(.dae), obj and mtl, etc
+//TODO: obj and mtl, etc
 
 ## Browser Support
 Modern browsers and IE 11.
