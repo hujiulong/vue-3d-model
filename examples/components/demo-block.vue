@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import 'highlight.js/styles/color-brewer.css';
+import 'highlight.js/styles/github.css';
 import hljs from 'highlight.js'
 
 const codeHandler = code => {
@@ -81,10 +81,15 @@ export default {
         height: 100%;
         background: #f9fafc;
         border-left: solid 1px #dfe2e7;
-        font-family: Menlo,Monaco,Consolas,Courier,monospace;
         font-size: 13px;
         float: left;
     }
+    
+
+    .demo-block .demo-block-code pre code {
+        font: normal 10pt Consolas, Monaco, monospace;
+    }
+
 
     .demo-block .demo-block-code .demo-block-code-box {
         width: 100%;
@@ -125,10 +130,6 @@ export default {
         position: absolute;
         top: 0;
         left: 0;
-    }
-
-    .demo-block .demo-block-code .hljs {
-        background: #f9fafc;
     }
 
 </style>

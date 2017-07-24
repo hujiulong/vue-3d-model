@@ -8,7 +8,7 @@
             <ul class="examples-menu">
                 <li class="examples-menu-title">Examples</li>
                 <li class="examples-menu-item">
-                    <router-link to="demo-basic">Basic</router-link>
+                    <router-link to="demo-basic">basic</router-link>
                 </li>
                 <li class="examples-menu-item">
                     <router-link to="demo-rotate">rotate</router-link>
