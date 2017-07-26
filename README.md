@@ -10,7 +10,9 @@ vue.js 3D model viewer component, based on threejs, inspired by [model-tag](http
 
 一个展示三维模型的Vue组件，支持模型操作和模型点击事件，能自动缩放模型到合适大小并校正偏移，目前支持obj、stl、dae和json格式的模型。
 
-![preview](./preview.gif)
+<p align="center">
+  <img src="./preview.gif">
+</p>
 
 ## Example
 [示例页面DEMO](https://hujiulong.github.io/vue-3d-model/#/demo-basic)
@@ -65,29 +67,45 @@ Or
 ## Documents
 
 ### props
-* src (String)
-* width (Number)
-* height (Number)
-* position (Object) e.g: { x: 100, y: 200, z: 0 }
-* rotation (Object) e.g: { x: 0, y: Math.PI / 2, z: 0 }
-* scale (Object) e.g: { x: 10, y: 10, z: 10 }
-* lights (Array)
-* backgroundColor (Number) e.g: 0xffffff
-* backgroundAlpha (Number) e.g: 0.5
-* controllable (Boolean)
+| prop            | type          | default              |  example                                   |
+| --------------- |---------------|----------------------|--------------------------------------------|
+| src             | string        | —                    | './exapmle.obj'                            |
+| width           | number        | -                    | 300                                        |
+| height          | number        | -                    | 300                                        |
+| position        | object        | { x: 0, y: 0, z: 0 } | { x: 100, y: 20, z: -10 }                  |
+| rotation        | object        | { x: 0, y: 0, z: 0 } | { x: Math.PI / 2, y: 0, z: - Math.PI / 4 } |
+| scale           | object        | { x: 1, y: 1, z: 1 } | { x: 2, y: 2, z: 3 }                       |
+| lights          | array         | -                    |                                            |
+| backgroundColor | number/string | 0xffffff             | 0xffffff/'#f00'/'rgb(255,255,255)'         |
+| backgroundAlpha | number        | 1                    | 0.5                                        |
+| controllable    | boolean       | true                 | true/false                                 |
 
 ### events
-* on-mousedown
-* on-mousemove
-* on-mouseup
-* on-click
-* on-load
-* on-error
+
+| event         |
+| ------------- |
+| on-mousedown  |
+| on-mousemove  |
+| on-mouseup    |
+| on-click      |
+| on-load       |
+| on-error      |
 
 ## Model Format Support
-OBJ(.obj) three/json(.json)
-
-//TODO: obj and mtl, etc
+| model format  | component tag     |
+| ------------- |-------------------|
+| obj           | \<model-obj>      |
+| json          | \<model-three>    |
+| stl           | \<model-stl>      |
+| dae           | \<model-collada>  |
+| obj           | \<model-obj>      |
 
 ## Browser Support
 Modern browsers and IE 11.
+
+You can click on [this](http://caniuse.com/#search=webgl) for more information
+
+## TODO List
+* Support for more model formats
+* Animation
+* Postprocessing
