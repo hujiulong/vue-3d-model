@@ -109,3 +109,6 @@ You can click on [this](http://caniuse.com/#search=webgl) for more information
 * Support for more model formats
 * Animation
 * Postprocessing
+
+## LICENSE
+MIT
