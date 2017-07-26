@@ -69,7 +69,7 @@ Or
 ### props
 | prop            | type          | default              |  example                                   |
 | --------------- |---------------|----------------------|--------------------------------------------|
-| src             | string        | —                    | './exapmle.obj'                            |
+| src             | string        | -                    | './exapmle.obj'                            |
 | width           | number        | -                    | 300                                        |
 | height          | number        | -                    | 300                                        |
 | position        | object        | { x: 0, y: 0, z: 0 } | { x: 100, y: 20, z: -10 }                  |
