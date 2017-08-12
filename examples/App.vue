@@ -28,6 +28,9 @@
                     <router-link to="demo-obj">OBJ Model (.obj)</router-link>
                 </li>
                 <li class="examples-menu-item">
+                    <router-link to="demo-obj-mtl">OBJ + MTL (.obj + .mtl)</router-link>
+                </li>
+                <li class="examples-menu-item">
                     <router-link to="demo-stl">STL Model (.stl)</router-link>
                 </li>
                 <li class="examples-menu-item">

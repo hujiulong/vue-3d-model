@@ -1,5 +1,6 @@
 <script>
 import { OBJLoader } from './loaders/OBJLoader'
+import { MTLLoader } from './loaders/MTLLoader'
 import { toIndexed } from './util'
 import mixin from './model-mixin.vue'
 
@@ -30,11 +31,23 @@ export default {
         smoothing: {
             type: Boolean,
             default: false
+        },
+        mtlPath: {
+            type: String
+        },
+        mtl: {
+            type: String
         }
     },
     data () {
         return {
-            loader: new OBJLoader()
+            loader: new OBJLoader(),
+            mtlLoader: new MTLLoader()
+        }
+    },
+    watch: {
+        mtl () {
+            this.load();
         }
     },
     methods: {
@@ -47,7 +60,74 @@ export default {
                     }
                 } )
             }
-        }
+        },
+        load () {
+
+            if ( !this.src ) return;
+
+            if ( this.object ) {
+                this.scene.remove( this.object );
+            }
+
+            const onLoad = object => {
+                
+                if ( this.process ) {
+                    this.process ( object );
+                }
+
+                this.object = object;
+
+                this.scene.add( this.object );
+
+                this.updateCamera();
+
+                this.$emit( 'on-load' );
+
+            }
+
+            const onError = err => {
+
+                this.$emit( 'on-error', err );
+
+            }
+
+            if ( this.mtl ) {
+
+                let mtlPath = this.mtlPath;
+                let mtlSrc = this.mtl;
+                
+                if ( !this.mtlPath ) {
+
+                    const result = /^(.*\/)([^/]*)$/.exec( this.mtl );
+
+                    if ( result ) {
+                        mtlPath = result[ 1 ];
+                        mtlSrc = result[ 2 ];
+                    }
+
+                }
+
+                if ( mtlPath ) {
+                    this.mtlLoader.setPath( mtlPath )
+                }
+
+                this.mtlLoader.load( mtlSrc, materials => {
+
+                    materials.preload();
+
+                    this.loader.setMaterials( materials );
+
+                    this.loader.load( this.src, onLoad, onError );
+
+                }, onError );
+
+            } else {
+    
+                this.loader.load( this.src, onLoad, onError );
+
+            }
+
+        },
     }
 }
 </script>
