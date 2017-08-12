@@ -98,7 +98,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* unused harmony export Skeleton */
 /* unused harmony export Bone */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return Mesh; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "X", function() { return LineSegments; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_4", function() { return LineSegments; });
 /* unused harmony export LineLoop */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return Line; });
 /* unused harmony export Points */
@@ -110,10 +110,10 @@ return /******/ (function(modules) { // webpackBootstrap
 /* unused harmony export CanvasTexture */
 /* unused harmony export DepthTexture */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "z", function() { return Texture; });
-/* unused harmony export CompressedTextureLoader */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "W", function() { return CompressedTextureLoader; });
 /* unused harmony export DataTextureLoader */
 /* unused harmony export CubeTextureLoader */
-/* unused harmony export TextureLoader */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "V", function() { return TextureLoader; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "U", function() { return ObjectLoader; });
 /* unused harmony export MaterialLoader */
 /* unused harmony export BufferGeometryLoader */
@@ -289,7 +289,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* unused harmony export MeshDepthMaterial */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "E", function() { return MeshBasicMaterial; });
 /* unused harmony export LineDashedMaterial */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "V", function() { return LineBasicMaterial; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_2", function() { return LineBasicMaterial; });
 /* unused harmony export Material */
 /* unused harmony export Float64BufferAttribute */
 /* unused harmony export Float32BufferAttribute */
@@ -315,7 +315,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return FrontSide; });
 /* unused harmony export BackSide */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return DoubleSide; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "W", function() { return FlatShading; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_3", function() { return FlatShading; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SmoothShading; });
 /* unused harmony export NoColors */
 /* unused harmony export FaceColors */
@@ -389,21 +389,21 @@ return /******/ (function(modules) { // webpackBootstrap
 /* unused harmony export UnsignedInt248Type */
 /* unused harmony export AlphaFormat */
 /* unused harmony export RGBFormat */
-/* unused harmony export RGBAFormat */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_1", function() { return RGBAFormat; });
 /* unused harmony export LuminanceFormat */
 /* unused harmony export LuminanceAlphaFormat */
 /* unused harmony export RGBEFormat */
 /* unused harmony export DepthFormat */
 /* unused harmony export DepthStencilFormat */
-/* unused harmony export RGB_S3TC_DXT1_Format */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "X", function() { return RGB_S3TC_DXT1_Format; });
 /* unused harmony export RGBA_S3TC_DXT1_Format */
-/* unused harmony export RGBA_S3TC_DXT3_Format */
-/* unused harmony export RGBA_S3TC_DXT5_Format */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Y", function() { return RGBA_S3TC_DXT3_Format; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Z", function() { return RGBA_S3TC_DXT5_Format; });
 /* unused harmony export RGB_PVRTC_4BPPV1_Format */
 /* unused harmony export RGB_PVRTC_2BPPV1_Format */
 /* unused harmony export RGBA_PVRTC_4BPPV1_Format */
 /* unused harmony export RGBA_PVRTC_2BPPV1_Format */
-/* unused harmony export RGB_ETC1_Format */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_0", function() { return RGB_ETC1_Format; });
 /* unused harmony export LoopOnce */
 /* unused harmony export LoopRepeat */
 /* unused harmony export LoopPingPong */
@@ -43841,7 +43841,7 @@ var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(22),
   /* template */
-  __webpack_require__(54),
+  __webpack_require__(56),
   /* scopeId */
   null,
   /* cssModules */
@@ -44042,25 +44042,25 @@ function toIndexed(bufferGeometry) {
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(7);
+module.exports = { "default": __webpack_require__(33), __esModule: true };
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__(8);
 module.exports = function(it){
   if(!isObject(it))throw TypeError(it + ' is not an object!');
   return it;
 };
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports) {
 
 module.exports = function(it){
   return typeof it === 'object' ? it !== null : typeof it === 'function';
 };
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(31), __esModule: true };
 
 /***/ }),
 /* 9 */
@@ -44073,7 +44073,7 @@ if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(7)
+var isObject = __webpack_require__(8)
   , document = __webpack_require__(3).document
   // in old IE typeof document.createElement is 'object'
   , is = isObject(document) && isObject(document.createElement);
@@ -44106,9 +44106,9 @@ module.exports = function(exec){
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject       = __webpack_require__(6)
-  , IE8_DOM_DEFINE = __webpack_require__(41)
-  , toPrimitive    = __webpack_require__(51)
+var anObject       = __webpack_require__(7)
+  , IE8_DOM_DEFINE = __webpack_require__(43)
+  , toPrimitive    = __webpack_require__(53)
   , dP             = Object.defineProperty;
 
 exports.f = __webpack_require__(2) ? Object.defineProperty : function defineProperty(O, P, Attributes){
@@ -44127,8 +44127,8 @@ exports.f = __webpack_require__(2) ? Object.defineProperty : function defineProp
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var shared = __webpack_require__(48)('keys')
-  , uid    = __webpack_require__(52);
+var shared = __webpack_require__(50)('keys')
+  , uid    = __webpack_require__(54);
 module.exports = function(key){
   return shared[key] || (shared[key] = uid(key));
 };
@@ -44149,8 +44149,8 @@ module.exports = function(it){
 /***/ (function(module, exports, __webpack_require__) {
 
 // to indexed object, toObject with fallback for non-array-like ES3 strings
-var IObject = __webpack_require__(42)
-  , defined = __webpack_require__(36);
+var IObject = __webpack_require__(44)
+  , defined = __webpack_require__(38);
 module.exports = function(it){
   return IObject(defined(it));
 };
@@ -44805,10 +44805,12 @@ var handler = null;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__loaders_OBJLoader__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__model_mixin_vue__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__model_mixin_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__model_mixin_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__loaders_OBJLoader__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__loaders_MTLLoader__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__model_mixin_vue__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__model_mixin_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__model_mixin_vue__);
+
 
 
 
@@ -44816,7 +44818,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'model-obj',
-    mixins: [__WEBPACK_IMPORTED_MODULE_2__model_mixin_vue___default.a],
+    mixins: [__WEBPACK_IMPORTED_MODULE_3__model_mixin_vue___default.a],
     props: {
         lights: {
             type: Array,
@@ -44838,23 +44840,96 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         smoothing: {
             type: Boolean,
             default: false
+        },
+        mtlPath: {
+            type: String
+        },
+        mtl: {
+            type: String
         }
     },
     data: function data() {
         return {
-            loader: new __WEBPACK_IMPORTED_MODULE_0__loaders_OBJLoader__["a" /* OBJLoader */]()
+            loader: new __WEBPACK_IMPORTED_MODULE_0__loaders_OBJLoader__["a" /* OBJLoader */](),
+            mtlLoader: new __WEBPACK_IMPORTED_MODULE_1__loaders_MTLLoader__["a" /* MTLLoader */]()
         };
     },
 
+    watch: {
+        mtl: function mtl() {
+            this.load();
+        }
+    },
     methods: {
         process: function process(object) {
             if (this.smoothing) {
                 object.traverse(function (child) {
                     if (child.geometry) {
-                        child.geometry = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__util__["c" /* toIndexed */])(child.geometry);
+                        child.geometry = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util__["c" /* toIndexed */])(child.geometry);
                         child.geometry.computeVertexNormals();
                     }
                 });
+            }
+        },
+        load: function load() {
+            var _this = this;
+
+            if (!this.src) return;
+
+            if (this.object) {
+                this.scene.remove(this.object);
+            }
+
+            var onLoad = function onLoad(object) {
+
+                if (_this.process) {
+                    _this.process(object);
+                }
+
+                _this.object = object;
+
+                _this.scene.add(_this.object);
+
+                _this.updateCamera();
+
+                _this.$emit('on-load');
+            };
+
+            var onError = function onError(err) {
+
+                _this.$emit('on-error', err);
+            };
+
+            if (this.mtl) {
+
+                var mtlPath = this.mtlPath;
+                var mtlSrc = this.mtl;
+
+                if (!this.mtlPath) {
+
+                    var result = /^(.*\/)([^/]*)$/.exec(this.mtl);
+
+                    if (result) {
+                        mtlPath = result[1];
+                        mtlSrc = result[2];
+                    }
+                }
+
+                if (mtlPath) {
+                    this.mtlLoader.setPath(mtlPath);
+                }
+
+                this.mtlLoader.load(mtlSrc, function (materials) {
+
+                    materials.preload();
+
+                    _this.loader.setMaterials(materials);
+
+                    _this.loader.load(_this.src, onLoad, onError);
+                }, onError);
+            } else {
+
+                this.loader.load(this.src, onLoad, onError);
             }
         }
     }
@@ -44866,7 +44941,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__loaders_STLLoader__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__loaders_STLLoader__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__model_mixin_vue__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__model_mixin_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__model_mixin_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_three__ = __webpack_require__(0);
@@ -44959,7 +45034,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OrbitControls; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_create__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_create__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_create___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_create__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_three__ = __webpack_require__(0);
 
@@ -45735,7 +45810,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ColladaLoader; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_create__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_create__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_create___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_create__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_three__ = __webpack_require__(0);
 
@@ -45743,4909 +45818,5566 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 var ColladaLoader = function ColladaLoader() {
 
-	var COLLADA = null;
-	var scene = null;
-	var visualScene;
-	var kinematicsModel;
+		var COLLADA = null;
+		var scene = null;
+		var visualScene;
+		var kinematicsModel;
 
-	var readyCallbackFunc = null;
+		var readyCallbackFunc = null;
 
-	var sources = {};
-	var images = {};
-	var animations = {};
-	var controllers = {};
-	var geometries = {};
-	var materials = {};
-	var effects = {};
-	var cameras = {};
-	var lights = {};
+		var sources = {};
+		var images = {};
+		var animations = {};
+		var controllers = {};
+		var geometries = {};
+		var materials = {};
+		var effects = {};
+		var cameras = {};
+		var lights = {};
 
-	var animData;
-	var kinematics;
-	var visualScenes;
-	var kinematicsModels;
-	var baseUrl;
-	var morphs;
-	var skins;
+		var animData;
+		var kinematics;
+		var visualScenes;
+		var kinematicsModels;
+		var baseUrl;
+		var morphs;
+		var skins;
 
-	var flip_uv = true;
-	var preferredShading = __WEBPACK_IMPORTED_MODULE_1_three__["a" /* SmoothShading */];
+		var flip_uv = true;
+		var preferredShading = __WEBPACK_IMPORTED_MODULE_1_three__["a" /* SmoothShading */];
 
-	var options = {
-		centerGeometry: false,
+		var options = {
+				centerGeometry: false,
 
-		convertUpAxis: false,
+				convertUpAxis: false,
 
-		subdivideFaces: true,
+				subdivideFaces: true,
 
-		upAxis: 'Y',
+				upAxis: 'Y',
 
-		defaultEnvMap: null
-
-	};
-
-	var colladaUnit = 1.0;
-	var colladaUp = 'Y';
-	var upConversion = null;
-
-	function load(url, readyCallback, progressCallback, failCallback) {
-
-		var length = 0;
-
-		if (document.implementation && document.implementation.createDocument) {
-
-			var request = new XMLHttpRequest();
-
-			request.onreadystatechange = function () {
-
-				if (request.readyState === 4) {
-
-					if (request.status === 0 || request.status === 200) {
-
-						if (request.response) {
-
-							readyCallbackFunc = readyCallback;
-							parse(request.response, undefined, url);
-						} else {
-
-							if (failCallback) {
-
-								failCallback({ type: 'error', url: url });
-							} else {
-
-								console.error("ColladaLoader: Empty or non-existing file (" + url + ")");
-							}
-						}
-					} else {
-
-						if (failCallback) {
-
-							failCallback({ type: 'error', url: url });
-						} else {
-
-							console.error('ColladaLoader: Couldn\'t load "' + url + '" (' + request.status + ')');
-						}
-					}
-				} else if (request.readyState === 3) {
-
-					if (progressCallback) {
-
-						if (length === 0) {
-
-							length = request.getResponseHeader("Content-Length");
-						}
-
-						progressCallback({ total: length, loaded: request.responseText.length });
-					}
-				}
-			};
-
-			request.open("GET", url, true);
-			request.send(null);
-		} else {
-
-			alert("Don't know how to parse XML!");
-		}
-	}
-
-	function parse(text, callBack, url) {
-
-		COLLADA = new DOMParser().parseFromString(text, 'text/xml');
-		callBack = callBack || readyCallbackFunc;
-
-		if (url !== undefined) {
-
-			var parts = url.split('/');
-			parts.pop();
-			baseUrl = (parts.length < 1 ? '.' : parts.join('/')) + '/';
-		}
-
-		parseAsset();
-		setUpConversion();
-		images = parseLib("library_images image", _Image, "image");
-		materials = parseLib("library_materials material", Material, "material");
-		effects = parseLib("library_effects effect", Effect, "effect");
-		geometries = parseLib("library_geometries geometry", Geometry, "geometry");
-		cameras = parseLib("library_cameras camera", Camera, "camera");
-		lights = parseLib("library_lights light", Light, "light");
-		controllers = parseLib("library_controllers controller", Controller, "controller");
-		animations = parseLib("library_animations animation", Animation, "animation");
-		visualScenes = parseLib("library_visual_scenes visual_scene", VisualScene, "visual_scene");
-		kinematicsModels = parseLib("library_kinematics_models kinematics_model", KinematicsModel, "kinematics_model");
-
-		morphs = [];
-		skins = [];
-
-		visualScene = parseScene();
-		scene = new __WEBPACK_IMPORTED_MODULE_1_three__["b" /* Group */]();
-
-		for (var i = 0; i < visualScene.nodes.length; i++) {
-
-			scene.add(createSceneGraph(visualScene.nodes[i]));
-		}
-
-		scene.scale.multiplyScalar(colladaUnit);
-
-		createAnimations();
-
-		kinematicsModel = parseKinematicsModel();
-		createKinematics();
-
-		var result = {
-
-			scene: scene,
-			morphs: morphs,
-			skins: skins,
-			animations: animData,
-			kinematics: kinematics,
-			dae: {
-				images: images,
-				materials: materials,
-				cameras: cameras,
-				lights: lights,
-				effects: effects,
-				geometries: geometries,
-				controllers: controllers,
-				animations: animations,
-				visualScenes: visualScenes,
-				visualScene: visualScene,
-				scene: visualScene,
-				kinematicsModels: kinematicsModels,
-				kinematicsModel: kinematicsModel
-			}
+				defaultEnvMap: null
 
 		};
 
-		if (callBack) {
+		var colladaUnit = 1.0;
+		var colladaUp = 'Y';
+		var upConversion = null;
 
-			callBack(result);
+		function load(url, readyCallback, progressCallback, failCallback) {
+
+				var length = 0;
+
+				if (document.implementation && document.implementation.createDocument) {
+
+						var request = new XMLHttpRequest();
+
+						request.onreadystatechange = function () {
+
+								if (request.readyState === 4) {
+
+										if (request.status === 0 || request.status === 200) {
+
+												if (request.response) {
+
+														readyCallbackFunc = readyCallback;
+														parse(request.response, undefined, url);
+												} else {
+
+														if (failCallback) {
+
+																failCallback({ type: 'error', url: url });
+														} else {
+
+																console.error("ColladaLoader: Empty or non-existing file (" + url + ")");
+														}
+												}
+										} else {
+
+												if (failCallback) {
+
+														failCallback({ type: 'error', url: url });
+												} else {
+
+														console.error('ColladaLoader: Couldn\'t load "' + url + '" (' + request.status + ')');
+												}
+										}
+								} else if (request.readyState === 3) {
+
+										if (progressCallback) {
+
+												if (length === 0) {
+
+														length = request.getResponseHeader("Content-Length");
+												}
+
+												progressCallback({ total: length, loaded: request.responseText.length });
+										}
+								}
+						};
+
+						request.open("GET", url, true);
+						request.send(null);
+				} else {
+
+						alert("Don't know how to parse XML!");
+				}
 		}
 
-		return result;
-	}
+		function parse(text, callBack, url) {
 
-	function setPreferredShading(shading) {
+				COLLADA = new DOMParser().parseFromString(text, 'text/xml');
+				callBack = callBack || readyCallbackFunc;
 
-		preferredShading = shading;
-	}
+				if (url !== undefined) {
 
-	function parseAsset() {
+						var parts = url.split('/');
+						parts.pop();
+						baseUrl = (parts.length < 1 ? '.' : parts.join('/')) + '/';
+				}
 
-		var elements = COLLADA.querySelectorAll('asset');
+				parseAsset();
+				setUpConversion();
+				images = parseLib("library_images image", _Image, "image");
+				materials = parseLib("library_materials material", Material, "material");
+				effects = parseLib("library_effects effect", Effect, "effect");
+				geometries = parseLib("library_geometries geometry", Geometry, "geometry");
+				cameras = parseLib("library_cameras camera", Camera, "camera");
+				lights = parseLib("library_lights light", Light, "light");
+				controllers = parseLib("library_controllers controller", Controller, "controller");
+				animations = parseLib("library_animations animation", Animation, "animation");
+				visualScenes = parseLib("library_visual_scenes visual_scene", VisualScene, "visual_scene");
+				kinematicsModels = parseLib("library_kinematics_models kinematics_model", KinematicsModel, "kinematics_model");
 
-		var element = elements[0];
+				morphs = [];
+				skins = [];
 
-		if (element && element.childNodes) {
+				visualScene = parseScene();
+				scene = new __WEBPACK_IMPORTED_MODULE_1_three__["b" /* Group */]();
 
-			for (var i = 0; i < element.childNodes.length; i++) {
+				for (var i = 0; i < visualScene.nodes.length; i++) {
 
-				var child = element.childNodes[i];
+						scene.add(createSceneGraph(visualScene.nodes[i]));
+				}
 
-				switch (child.nodeName) {
+				scene.scale.multiplyScalar(colladaUnit);
 
-					case 'unit':
+				createAnimations();
 
-						var meter = child.getAttribute('meter');
+				kinematicsModel = parseKinematicsModel();
+				createKinematics();
 
-						if (meter) {
+				var result = {
 
-							colladaUnit = parseFloat(meter);
+						scene: scene,
+						morphs: morphs,
+						skins: skins,
+						animations: animData,
+						kinematics: kinematics,
+						dae: {
+								images: images,
+								materials: materials,
+								cameras: cameras,
+								lights: lights,
+								effects: effects,
+								geometries: geometries,
+								controllers: controllers,
+								animations: animations,
+								visualScenes: visualScenes,
+								visualScene: visualScene,
+								scene: visualScene,
+								kinematicsModels: kinematicsModels,
+								kinematicsModel: kinematicsModel
 						}
 
-						break;
+				};
 
-					case 'up_axis':
+				if (callBack) {
 
-						colladaUp = child.textContent.charAt(0);
-						break;
-
+						callBack(result);
 				}
-			}
-		}
-	}
 
-	function parseLib(q, classSpec, prefix) {
-
-		var elements = COLLADA.querySelectorAll(q);
-
-		var lib = {};
-
-		var i = 0;
-
-		var elementsLength = elements.length;
-
-		for (var j = 0; j < elementsLength; j++) {
-
-			var element = elements[j];
-			var daeElement = new classSpec().parse(element);
-
-			if (!daeElement.id || daeElement.id.length === 0) daeElement.id = prefix + i++;
-			lib[daeElement.id] = daeElement;
+				return result;
 		}
 
-		return lib;
-	}
+		function setPreferredShading(shading) {
 
-	function parseScene() {
-
-		var sceneElement = COLLADA.querySelectorAll('scene instance_visual_scene')[0];
-
-		if (sceneElement) {
-
-			var url = sceneElement.getAttribute('url').replace(/^#/, '');
-			return visualScenes[url.length > 0 ? url : 'visual_scene0'];
-		} else {
-
-			return null;
-		}
-	}
-
-	function parseKinematicsModel() {
-
-		var kinematicsModelElement = COLLADA.querySelectorAll('instance_kinematics_model')[0];
-
-		if (kinematicsModelElement) {
-
-			var url = kinematicsModelElement.getAttribute('url').replace(/^#/, '');
-			return kinematicsModels[url.length > 0 ? url : 'kinematics_model0'];
-		} else {
-
-			return null;
-		}
-	}
-
-	function createAnimations() {
-
-		animData = [];
-
-		recurseHierarchy(scene);
-	}
-
-	function recurseHierarchy(node) {
-
-		var n = visualScene.getChildById(node.colladaId, true),
-		    newData = null;
-
-		if (n && n.keys) {
-
-			newData = {
-				fps: 60,
-				hierarchy: [{
-					node: n,
-					keys: n.keys,
-					sids: n.sids
-				}],
-				node: node,
-				name: 'animation_' + node.name,
-				length: 0
-			};
-
-			animData.push(newData);
-
-			for (var i = 0, il = n.keys.length; i < il; i++) {
-
-				newData.length = Math.max(newData.length, n.keys[i].time);
-			}
-		} else {
-
-			newData = {
-				hierarchy: [{
-					keys: [],
-					sids: []
-				}]
-			};
+				preferredShading = shading;
 		}
 
-		for (var i = 0, il = node.children.length; i < il; i++) {
+		function parseAsset() {
 
-			var d = recurseHierarchy(node.children[i]);
+				var elements = COLLADA.querySelectorAll('asset');
 
-			for (var j = 0, jl = d.hierarchy.length; j < jl; j++) {
+				var element = elements[0];
 
-				newData.hierarchy.push({
-					keys: [],
-					sids: []
-				});
-			}
-		}
+				if (element && element.childNodes) {
 
-		return newData;
-	}
+						for (var i = 0; i < element.childNodes.length; i++) {
 
-	function calcAnimationBounds() {
+								var child = element.childNodes[i];
 
-		var start = 1000000;
-		var end = -start;
-		var frames = 0;
-		var ID;
-		for (var id in animations) {
+								switch (child.nodeName) {
 
-			var animation = animations[id];
-			ID = ID || animation.id;
-			for (var i = 0; i < animation.sampler.length; i++) {
+										case 'unit':
 
-				var sampler = animation.sampler[i];
+												var meter = child.getAttribute('meter');
 
-				sampler.create();
+												if (meter) {
 
-				start = Math.min(start, sampler.startTime);
-				end = Math.max(end, sampler.endTime);
-				frames = Math.max(frames, sampler.input.length);
-			}
-		}
+														colladaUnit = parseFloat(meter);
+												}
 
-		return { start: start, end: end, frames: frames, ID: ID };
-	}
+												break;
 
-	function createMorph(geometry, ctrl) {
+										case 'up_axis':
 
-		var morphCtrl = ctrl instanceof InstanceController ? controllers[ctrl.url] : ctrl;
+												colladaUp = child.textContent.charAt(0);
+												break;
 
-		if (!morphCtrl || !morphCtrl.morph) {
-
-			console.log("could not find morph controller!");
-			return;
-		}
-
-		var morph = morphCtrl.morph;
-
-		for (var i = 0; i < morph.targets.length; i++) {
-
-			var target_id = morph.targets[i];
-			var daeGeometry = geometries[target_id];
-
-			if (!daeGeometry.mesh || !daeGeometry.mesh.primitives || !daeGeometry.mesh.primitives.length) {
-				continue;
-			}
-
-			var target = daeGeometry.mesh.primitives[0].geometry;
-
-			if (target.vertices.length === geometry.vertices.length) {
-
-				geometry.morphTargets.push({ name: "target_1", vertices: target.vertices });
-			}
-		}
-
-		geometry.morphTargets.push({ name: "target_Z", vertices: geometry.vertices });
-	}
-
-	function createSkin(geometry, ctrl, applyBindShape) {
-
-		var skinCtrl = controllers[ctrl.url];
-
-		if (!skinCtrl || !skinCtrl.skin) {
-
-			console.log("could not find skin controller!");
-			return;
-		}
-
-		if (!ctrl.skeleton || !ctrl.skeleton.length) {
-
-			console.log("could not find the skeleton for the skin!");
-			return;
-		}
-
-		var skin = skinCtrl.skin;
-		var skeleton = visualScene.getChildById(ctrl.skeleton[0]);
-		var hierarchy = [];
-
-		applyBindShape = applyBindShape !== undefined ? applyBindShape : true;
-
-		var bones = [];
-		geometry.skinWeights = [];
-		geometry.skinIndices = [];
-
-		if (applyBindShape) {
-
-			for (var i = 0; i < geometry.vertices.length; i++) {
-
-				geometry.vertices[i].applyMatrix4(skin.bindShapeMatrix);
-			}
-		}
-	}
-
-	function setupSkeleton(node, bones, frame, parent) {
-
-		node.world = node.world || new __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]();
-		node.localworld = node.localworld || new __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]();
-		node.world.copy(node.matrix);
-		node.localworld.copy(node.matrix);
-
-		if (node.channels && node.channels.length) {
-
-			var channel = node.channels[0];
-			var m = channel.sampler.output[frame];
-
-			if (m instanceof __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]) {
-
-				node.world.copy(m);
-				node.localworld.copy(m);
-				if (frame === 0) node.matrix.copy(m);
-			}
-		}
-
-		if (parent) {
-
-			node.world.multiplyMatrices(parent, node.world);
-		}
-
-		bones.push(node);
-
-		for (var i = 0; i < node.nodes.length; i++) {
-
-			setupSkeleton(node.nodes[i], bones, frame, node.world);
-		}
-	}
-
-	function setupSkinningMatrices(bones, skin) {
-
-		for (var i = 0; i < bones.length; i++) {
-
-			var bone = bones[i];
-			var found = -1;
-
-			if (bone.type != 'JOINT') continue;
-
-			for (var j = 0; j < skin.joints.length; j++) {
-
-				if (bone.sid === skin.joints[j]) {
-
-					found = j;
-					break;
-				}
-			}
-
-			if (found >= 0) {
-
-				var inv = skin.invBindMatrices[found];
-
-				bone.invBindMatrix = inv;
-				bone.skinningMatrix = new __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]();
-				bone.skinningMatrix.multiplyMatrices(bone.world, inv);
-				bone.animatrix = new __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]();
-
-				bone.animatrix.copy(bone.localworld);
-				bone.weights = [];
-
-				for (var j = 0; j < skin.weights.length; j++) {
-
-					for (var k = 0; k < skin.weights[j].length; k++) {
-
-						var w = skin.weights[j][k];
-
-						if (w.joint === found) {
-
-							bone.weights.push(w);
+								}
 						}
-					}
 				}
-			} else {
-
-				console.warn("ColladaLoader: Could not find joint '" + bone.sid + "'.");
-
-				bone.skinningMatrix = new __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]();
-				bone.weights = [];
-			}
-		}
-	}
-
-	function flattenSkeleton(skeleton) {
-
-		var list = [];
-		var walk = function walk(parentid, node, list) {
-
-			var bone = {};
-			bone.name = node.sid;
-			bone.parent = parentid;
-			bone.matrix = node.matrix;
-			var data = [new __WEBPACK_IMPORTED_MODULE_1_three__["d" /* Vector3 */](), new __WEBPACK_IMPORTED_MODULE_1_three__["e" /* Quaternion */](), new __WEBPACK_IMPORTED_MODULE_1_three__["d" /* Vector3 */]()];
-			bone.matrix.decompose(data[0], data[1], data[2]);
-
-			bone.pos = [data[0].x, data[0].y, data[0].z];
-
-			bone.scl = [data[2].x, data[2].y, data[2].z];
-			bone.rotq = [data[1].x, data[1].y, data[1].z, data[1].w];
-			list.push(bone);
-
-			for (var i in node.nodes) {
-
-				walk(node.sid, node.nodes[i], list);
-			}
-		};
-
-		walk(-1, skeleton, list);
-		return list;
-	}
-
-	function skinToBindPose(geometry, skeleton, skinController) {
-
-		var bones = [];
-		setupSkeleton(skeleton, bones, -1);
-		setupSkinningMatrices(bones, skinController.skin);
-		var v = new __WEBPACK_IMPORTED_MODULE_1_three__["d" /* Vector3 */]();
-		var skinned = [];
-
-		for (var i = 0; i < geometry.vertices.length; i++) {
-
-			skinned.push(new __WEBPACK_IMPORTED_MODULE_1_three__["d" /* Vector3 */]());
 		}
 
-		for (i = 0; i < bones.length; i++) {
+		function parseLib(q, classSpec, prefix) {
 
-			if (bones[i].type != 'JOINT') continue;
+				var elements = COLLADA.querySelectorAll(q);
 
-			for (var j = 0; j < bones[i].weights.length; j++) {
+				var lib = {};
 
-				var w = bones[i].weights[j];
-				var vidx = w.index;
-				var weight = w.weight;
+				var i = 0;
 
-				var o = geometry.vertices[vidx];
-				var s = skinned[vidx];
+				var elementsLength = elements.length;
 
-				v.x = o.x;
-				v.y = o.y;
-				v.z = o.z;
+				for (var j = 0; j < elementsLength; j++) {
 
-				v.applyMatrix4(bones[i].skinningMatrix);
+						var element = elements[j];
+						var daeElement = new classSpec().parse(element);
 
-				s.x += v.x * weight;
-				s.y += v.y * weight;
-				s.z += v.z * weight;
-			}
-		}
-
-		for (var i = 0; i < geometry.vertices.length; i++) {
-
-			geometry.vertices[i] = skinned[i];
-		}
-	}
-
-	function applySkin(geometry, instanceCtrl, frame) {
-
-		if (frame === undefined) frame = 40;
-
-		var skinController = controllers[instanceCtrl.url];
-
-		if (!skinController || !skinController.skin) {
-
-			console.log('ColladaLoader: Could not find skin controller.');
-			return;
-		}
-
-		if (!instanceCtrl.skeleton || !instanceCtrl.skeleton.length) {
-
-			console.log('ColladaLoader: Could not find the skeleton for the skin. ');
-			return;
-		}
-
-		var animationBounds = calcAnimationBounds();
-		var skeleton = visualScene.getChildById(instanceCtrl.skeleton[0], true) || visualScene.getChildBySid(instanceCtrl.skeleton[0], true);
-
-		var bonelist = flattenSkeleton(skeleton);
-		var joints = skinController.skin.joints;
-
-		var sortedbones = [];
-		for (var i = 0; i < joints.length; i++) {
-
-			for (var j = 0; j < bonelist.length; j++) {
-
-				if (bonelist[j].name === joints[i]) {
-
-					sortedbones[i] = bonelist[j];
+						if (!daeElement.id || daeElement.id.length === 0) daeElement.id = prefix + i++;
+						lib[daeElement.id] = daeElement;
 				}
-			}
+
+				return lib;
 		}
 
-		for (var i = 0; i < sortedbones.length; i++) {
+		function parseScene() {
 
-			for (var j = 0; j < sortedbones.length; j++) {
+				var sceneElement = COLLADA.querySelectorAll('scene instance_visual_scene')[0];
 
-				if (sortedbones[i].parent === sortedbones[j].name) {
+				if (sceneElement) {
 
-					sortedbones[i].parent = j;
+						var url = sceneElement.getAttribute('url').replace(/^#/, '');
+						return visualScenes[url.length > 0 ? url : 'visual_scene0'];
+				} else {
+
+						return null;
 				}
-			}
 		}
 
-		var i, j, w, vidx, weight;
-		var v = new __WEBPACK_IMPORTED_MODULE_1_three__["d" /* Vector3 */](),
-		    o,
-		    s;
+		function parseKinematicsModel() {
 
-		for (i = 0; i < geometry.vertices.length; i++) {
-			geometry.vertices[i].applyMatrix4(skinController.skin.bindShapeMatrix);
+				var kinematicsModelElement = COLLADA.querySelectorAll('instance_kinematics_model')[0];
+
+				if (kinematicsModelElement) {
+
+						var url = kinematicsModelElement.getAttribute('url').replace(/^#/, '');
+						return kinematicsModels[url.length > 0 ? url : 'kinematics_model0'];
+				} else {
+
+						return null;
+				}
 		}
 
-		var skinIndices = [];
-		var skinWeights = [];
-		var weights = skinController.skin.weights;
+		function createAnimations() {
 
-		for (var i = 0; i < weights.length; i++) {
+				animData = [];
 
-			var indicies = new __WEBPACK_IMPORTED_MODULE_1_three__["f" /* Vector4 */](weights[i][0] ? weights[i][0].joint : 0, weights[i][1] ? weights[i][1].joint : 0, weights[i][2] ? weights[i][2].joint : 0, weights[i][3] ? weights[i][3].joint : 0);
-			var weight = new __WEBPACK_IMPORTED_MODULE_1_three__["f" /* Vector4 */](weights[i][0] ? weights[i][0].weight : 0, weights[i][1] ? weights[i][1].weight : 0, weights[i][2] ? weights[i][2].weight : 0, weights[i][3] ? weights[i][3].weight : 0);
-
-			skinIndices.push(indicies);
-			skinWeights.push(weight);
+				recurseHierarchy(scene);
 		}
 
-		geometry.skinIndices = skinIndices;
-		geometry.skinWeights = skinWeights;
-		geometry.bones = sortedbones;
+		function recurseHierarchy(node) {
 
-		var animationdata = { "name": animationBounds.ID, "fps": 30, "length": animationBounds.frames / 30, "hierarchy": [] };
+				var n = visualScene.getChildById(node.colladaId, true),
+				    newData = null;
 
-		for (var j = 0; j < sortedbones.length; j++) {
+				if (n && n.keys) {
 
-			animationdata.hierarchy.push({ parent: sortedbones[j].parent, name: sortedbones[j].name, keys: [] });
+						newData = {
+								fps: 60,
+								hierarchy: [{
+										node: n,
+										keys: n.keys,
+										sids: n.sids
+								}],
+								node: node,
+								name: 'animation_' + node.name,
+								length: 0
+						};
+
+						animData.push(newData);
+
+						for (var i = 0, il = n.keys.length; i < il; i++) {
+
+								newData.length = Math.max(newData.length, n.keys[i].time);
+						}
+				} else {
+
+						newData = {
+								hierarchy: [{
+										keys: [],
+										sids: []
+								}]
+						};
+				}
+
+				for (var i = 0, il = node.children.length; i < il; i++) {
+
+						var d = recurseHierarchy(node.children[i]);
+
+						for (var j = 0, jl = d.hierarchy.length; j < jl; j++) {
+
+								newData.hierarchy.push({
+										keys: [],
+										sids: []
+								});
+						}
+				}
+
+				return newData;
 		}
 
-		console.log('ColladaLoader:', animationBounds.ID + ' has ' + sortedbones.length + ' bones.');
+		function calcAnimationBounds() {
 
-		skinToBindPose(geometry, skeleton, skinController);
+				var start = 1000000;
+				var end = -start;
+				var frames = 0;
+				var ID;
+				for (var id in animations) {
 
-		for (frame = 0; frame < animationBounds.frames; frame++) {
+						var animation = animations[id];
+						ID = ID || animation.id;
+						for (var i = 0; i < animation.sampler.length; i++) {
 
-			var bones = [];
-			var skinned = [];
+								var sampler = animation.sampler[i];
 
+								sampler.create();
 
-			setupSkeleton(skeleton, bones, frame);
-			setupSkinningMatrices(bones, skinController.skin);
+								start = Math.min(start, sampler.startTime);
+								end = Math.max(end, sampler.endTime);
+								frames = Math.max(frames, sampler.input.length);
+						}
+				}
 
-			for (var i = 0; i < bones.length; i++) {
+				return { start: start, end: end, frames: frames, ID: ID };
+		}
 
-				for (var j = 0; j < animationdata.hierarchy.length; j++) {
+		function createMorph(geometry, ctrl) {
 
-					if (animationdata.hierarchy[j].name === bones[i].sid) {
+				var morphCtrl = ctrl instanceof InstanceController ? controllers[ctrl.url] : ctrl;
 
-						var key = {};
-						key.time = frame / 30;
-						key.matrix = bones[i].animatrix;
+				if (!morphCtrl || !morphCtrl.morph) {
 
-						if (frame === 0) bones[i].matrix = key.matrix;
+						console.log("could not find morph controller!");
+						return;
+				}
 
+				var morph = morphCtrl.morph;
+
+				for (var i = 0; i < morph.targets.length; i++) {
+
+						var target_id = morph.targets[i];
+						var daeGeometry = geometries[target_id];
+
+						if (!daeGeometry.mesh || !daeGeometry.mesh.primitives || !daeGeometry.mesh.primitives.length) {
+								continue;
+						}
+
+						var target = daeGeometry.mesh.primitives[0].geometry;
+
+						if (target.vertices.length === geometry.vertices.length) {
+
+								geometry.morphTargets.push({ name: "target_1", vertices: target.vertices });
+						}
+				}
+
+				geometry.morphTargets.push({ name: "target_Z", vertices: geometry.vertices });
+		}
+
+		function createSkin(geometry, ctrl, applyBindShape) {
+
+				var skinCtrl = controllers[ctrl.url];
+
+				if (!skinCtrl || !skinCtrl.skin) {
+
+						console.log("could not find skin controller!");
+						return;
+				}
+
+				if (!ctrl.skeleton || !ctrl.skeleton.length) {
+
+						console.log("could not find the skeleton for the skin!");
+						return;
+				}
+
+				var skin = skinCtrl.skin;
+				var skeleton = visualScene.getChildById(ctrl.skeleton[0]);
+				var hierarchy = [];
+
+				applyBindShape = applyBindShape !== undefined ? applyBindShape : true;
+
+				var bones = [];
+				geometry.skinWeights = [];
+				geometry.skinIndices = [];
+
+				if (applyBindShape) {
+
+						for (var i = 0; i < geometry.vertices.length; i++) {
+
+								geometry.vertices[i].applyMatrix4(skin.bindShapeMatrix);
+						}
+				}
+		}
+
+		function setupSkeleton(node, bones, frame, parent) {
+
+				node.world = node.world || new __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]();
+				node.localworld = node.localworld || new __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]();
+				node.world.copy(node.matrix);
+				node.localworld.copy(node.matrix);
+
+				if (node.channels && node.channels.length) {
+
+						var channel = node.channels[0];
+						var m = channel.sampler.output[frame];
+
+						if (m instanceof __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]) {
+
+								node.world.copy(m);
+								node.localworld.copy(m);
+								if (frame === 0) node.matrix.copy(m);
+						}
+				}
+
+				if (parent) {
+
+						node.world.multiplyMatrices(parent, node.world);
+				}
+
+				bones.push(node);
+
+				for (var i = 0; i < node.nodes.length; i++) {
+
+						setupSkeleton(node.nodes[i], bones, frame, node.world);
+				}
+		}
+
+		function setupSkinningMatrices(bones, skin) {
+
+				for (var i = 0; i < bones.length; i++) {
+
+						var bone = bones[i];
+						var found = -1;
+
+						if (bone.type != 'JOINT') continue;
+
+						for (var j = 0; j < skin.joints.length; j++) {
+
+								if (bone.sid === skin.joints[j]) {
+
+										found = j;
+										break;
+								}
+						}
+
+						if (found >= 0) {
+
+								var inv = skin.invBindMatrices[found];
+
+								bone.invBindMatrix = inv;
+								bone.skinningMatrix = new __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]();
+								bone.skinningMatrix.multiplyMatrices(bone.world, inv);
+								bone.animatrix = new __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]();
+
+								bone.animatrix.copy(bone.localworld);
+								bone.weights = [];
+
+								for (var j = 0; j < skin.weights.length; j++) {
+
+										for (var k = 0; k < skin.weights[j].length; k++) {
+
+												var w = skin.weights[j][k];
+
+												if (w.joint === found) {
+
+														bone.weights.push(w);
+												}
+										}
+								}
+						} else {
+
+								console.warn("ColladaLoader: Could not find joint '" + bone.sid + "'.");
+
+								bone.skinningMatrix = new __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]();
+								bone.weights = [];
+						}
+				}
+		}
+
+		function flattenSkeleton(skeleton) {
+
+				var list = [];
+				var walk = function walk(parentid, node, list) {
+
+						var bone = {};
+						bone.name = node.sid;
+						bone.parent = parentid;
+						bone.matrix = node.matrix;
 						var data = [new __WEBPACK_IMPORTED_MODULE_1_three__["d" /* Vector3 */](), new __WEBPACK_IMPORTED_MODULE_1_three__["e" /* Quaternion */](), new __WEBPACK_IMPORTED_MODULE_1_three__["d" /* Vector3 */]()];
-						key.matrix.decompose(data[0], data[1], data[2]);
+						bone.matrix.decompose(data[0], data[1], data[2]);
 
-						key.pos = [data[0].x, data[0].y, data[0].z];
+						bone.pos = [data[0].x, data[0].y, data[0].z];
 
-						key.scl = [data[2].x, data[2].y, data[2].z];
-						key.rot = data[1];
+						bone.scl = [data[2].x, data[2].y, data[2].z];
+						bone.rotq = [data[1].x, data[1].y, data[1].z, data[1].w];
+						list.push(bone);
 
-						animationdata.hierarchy[j].keys.push(key);
-					}
-				}
-			}
+						for (var i in node.nodes) {
 
-			geometry.animation = animationdata;
-		}
-	}
+								walk(node.sid, node.nodes[i], list);
+						}
+				};
 
-	function createKinematics() {
-
-		if (kinematicsModel && kinematicsModel.joints.length === 0) {
-			kinematics = undefined;
-			return;
+				walk(-1, skeleton, list);
+				return list;
 		}
 
-		var jointMap = {};
+		function skinToBindPose(geometry, skeleton, skinController) {
 
-		var _addToMap = function _addToMap(jointIndex, parentVisualElement) {
+				var bones = [];
+				setupSkeleton(skeleton, bones, -1);
+				setupSkinningMatrices(bones, skinController.skin);
+				var v = new __WEBPACK_IMPORTED_MODULE_1_three__["d" /* Vector3 */]();
+				var skinned = [];
 
-			var parentVisualElementId = parentVisualElement.getAttribute('id');
-			var colladaNode = visualScene.getChildById(parentVisualElementId, true);
-			var joint = kinematicsModel.joints[jointIndex];
+				for (var i = 0; i < geometry.vertices.length; i++) {
 
-			scene.traverse(function (node) {
-
-				if (node.colladaId == parentVisualElementId) {
-
-					jointMap[jointIndex] = {
-						node: node,
-						transforms: colladaNode.transforms,
-						joint: joint,
-						position: joint.zeroPosition
-					};
+						skinned.push(new __WEBPACK_IMPORTED_MODULE_1_three__["d" /* Vector3 */]());
 				}
-			});
-		};
 
-		kinematics = {
+				for (i = 0; i < bones.length; i++) {
 
-			joints: kinematicsModel && kinematicsModel.joints,
+						if (bones[i].type != 'JOINT') continue;
 
-			getJointValue: function getJointValue(jointIndex) {
+						for (var j = 0; j < bones[i].weights.length; j++) {
 
-				var jointData = jointMap[jointIndex];
+								var w = bones[i].weights[j];
+								var vidx = w.index;
+								var weight = w.weight;
 
-				if (jointData) {
+								var o = geometry.vertices[vidx];
+								var s = skinned[vidx];
 
-					return jointData.position;
-				} else {
+								v.x = o.x;
+								v.y = o.y;
+								v.z = o.z;
 
-					console.log('getJointValue: joint ' + jointIndex + ' doesn\'t exist');
+								v.applyMatrix4(bones[i].skinningMatrix);
+
+								s.x += v.x * weight;
+								s.y += v.y * weight;
+								s.z += v.z * weight;
+						}
 				}
-			},
 
-			setJointValue: function setJointValue(jointIndex, value) {
+				for (var i = 0; i < geometry.vertices.length; i++) {
 
-				var jointData = jointMap[jointIndex];
+						geometry.vertices[i] = skinned[i];
+				}
+		}
 
-				if (jointData) {
+		function applySkin(geometry, instanceCtrl, frame) {
 
-					var joint = jointData.joint;
+				if (frame === undefined) frame = 40;
 
-					if (value > joint.limits.max || value < joint.limits.min) {
+				var skinController = controllers[instanceCtrl.url];
 
-						console.log('setJointValue: joint ' + jointIndex + ' value ' + value + ' outside of limits (min: ' + joint.limits.min + ', max: ' + joint.limits.max + ')');
-					} else if (joint.static) {
+				if (!skinController || !skinController.skin) {
 
-						console.log('setJointValue: joint ' + jointIndex + ' is static');
-					} else {
+						console.log('ColladaLoader: Could not find skin controller.');
+						return;
+				}
 
-						var threejsNode = jointData.node;
-						var axis = joint.axis;
-						var transforms = jointData.transforms;
+				if (!instanceCtrl.skeleton || !instanceCtrl.skeleton.length) {
 
-						var matrix = new __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]();
-						var m1 = new __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]();
+						console.log('ColladaLoader: Could not find the skeleton for the skin. ');
+						return;
+				}
 
-						for (i = 0; i < transforms.length; i++) {
+				var animationBounds = calcAnimationBounds();
+				var skeleton = visualScene.getChildById(instanceCtrl.skeleton[0], true) || visualScene.getChildBySid(instanceCtrl.skeleton[0], true);
 
-							var transform = transforms[i];
+				var bonelist = flattenSkeleton(skeleton);
+				var joints = skinController.skin.joints;
 
-							if (transform.sid && transform.sid.indexOf('joint' + jointIndex) !== -1) {
-								switch (joint.type) {
+				var sortedbones = [];
+				for (var i = 0; i < joints.length; i++) {
 
-									case 'revolute':
+						for (var j = 0; j < bonelist.length; j++) {
 
-										matrix.multiply(m1.makeRotationAxis(axis, __WEBPACK_IMPORTED_MODULE_1_three__["g" /* Math */].degToRad(value)));
-										break;
+								if (bonelist[j].name === joints[i]) {
 
-									case 'prismatic':
-
-										matrix.multiply(m1.makeTranslation(axis.x * value, axis.y * value, axis.z * value));
-										break;
-
-									default:
-
-										console.warn('setJointValue: unknown joint type: ' + joint.type);
-										break;
-
+										sortedbones[i] = bonelist[j];
 								}
-							} else {
+						}
+				}
 
-								switch (transform.type) {
+				for (var i = 0; i < sortedbones.length; i++) {
 
-									case 'matrix':
+						for (var j = 0; j < sortedbones.length; j++) {
 
-										matrix.multiply(transform.obj);
+								if (sortedbones[i].parent === sortedbones[j].name) {
 
-										break;
-
-									case 'translate':
-
-										matrix.multiply(m1.makeTranslation(transform.obj.x, transform.obj.y, transform.obj.z));
-
-										break;
-
-									case 'rotate':
-
-										matrix.multiply(m1.makeRotationAxis(transform.obj, transform.angle));
-
-										break;
-
+										sortedbones[i].parent = j;
 								}
-							}
+						}
+				}
+
+				var i, j, w, vidx, weight;
+				var v = new __WEBPACK_IMPORTED_MODULE_1_three__["d" /* Vector3 */](),
+				    o,
+				    s;
+
+				for (i = 0; i < geometry.vertices.length; i++) {
+						geometry.vertices[i].applyMatrix4(skinController.skin.bindShapeMatrix);
+				}
+
+				var skinIndices = [];
+				var skinWeights = [];
+				var weights = skinController.skin.weights;
+
+				for (var i = 0; i < weights.length; i++) {
+
+						var indicies = new __WEBPACK_IMPORTED_MODULE_1_three__["f" /* Vector4 */](weights[i][0] ? weights[i][0].joint : 0, weights[i][1] ? weights[i][1].joint : 0, weights[i][2] ? weights[i][2].joint : 0, weights[i][3] ? weights[i][3].joint : 0);
+						var weight = new __WEBPACK_IMPORTED_MODULE_1_three__["f" /* Vector4 */](weights[i][0] ? weights[i][0].weight : 0, weights[i][1] ? weights[i][1].weight : 0, weights[i][2] ? weights[i][2].weight : 0, weights[i][3] ? weights[i][3].weight : 0);
+
+						skinIndices.push(indicies);
+						skinWeights.push(weight);
+				}
+
+				geometry.skinIndices = skinIndices;
+				geometry.skinWeights = skinWeights;
+				geometry.bones = sortedbones;
+
+				var animationdata = { "name": animationBounds.ID, "fps": 30, "length": animationBounds.frames / 30, "hierarchy": [] };
+
+				for (var j = 0; j < sortedbones.length; j++) {
+
+						animationdata.hierarchy.push({ parent: sortedbones[j].parent, name: sortedbones[j].name, keys: [] });
+				}
+
+				console.log('ColladaLoader:', animationBounds.ID + ' has ' + sortedbones.length + ' bones.');
+
+				skinToBindPose(geometry, skeleton, skinController);
+
+				for (frame = 0; frame < animationBounds.frames; frame++) {
+
+						var bones = [];
+						var skinned = [];
+
+
+						setupSkeleton(skeleton, bones, frame);
+						setupSkinningMatrices(bones, skinController.skin);
+
+						for (var i = 0; i < bones.length; i++) {
+
+								for (var j = 0; j < animationdata.hierarchy.length; j++) {
+
+										if (animationdata.hierarchy[j].name === bones[i].sid) {
+
+												var key = {};
+												key.time = frame / 30;
+												key.matrix = bones[i].animatrix;
+
+												if (frame === 0) bones[i].matrix = key.matrix;
+
+												var data = [new __WEBPACK_IMPORTED_MODULE_1_three__["d" /* Vector3 */](), new __WEBPACK_IMPORTED_MODULE_1_three__["e" /* Quaternion */](), new __WEBPACK_IMPORTED_MODULE_1_three__["d" /* Vector3 */]()];
+												key.matrix.decompose(data[0], data[1], data[2]);
+
+												key.pos = [data[0].x, data[0].y, data[0].z];
+
+												key.scl = [data[2].x, data[2].y, data[2].z];
+												key.rot = data[1];
+
+												animationdata.hierarchy[j].keys.push(key);
+										}
+								}
 						}
 
-						var elementsFloat32Arr = matrix.elements;
-						var elements = Array.prototype.slice.call(elementsFloat32Arr);
-
-						var elementsRowMajor = [elements[0], elements[4], elements[8], elements[12], elements[1], elements[5], elements[9], elements[13], elements[2], elements[6], elements[10], elements[14], elements[3], elements[7], elements[11], elements[15]];
-
-						threejsNode.matrix.set.apply(threejsNode.matrix, elementsRowMajor);
-						threejsNode.matrix.decompose(threejsNode.position, threejsNode.quaternion, threejsNode.scale);
-
-						jointMap[jointIndex].position = value;
-					}
-				} else {
-
-					console.log('setJointValue: joint ' + jointIndex + ' doesn\'t exist');
+						geometry.animation = animationdata;
 				}
-			}
-
-		};
-
-		var element = COLLADA.querySelector('scene instance_kinematics_scene');
-
-		if (element) {
-
-			for (var i = 0; i < element.childNodes.length; i++) {
-
-				var child = element.childNodes[i];
-
-				if (child.nodeType != 1) continue;
-
-				switch (child.nodeName) {
-
-					case 'bind_joint_axis':
-
-						var visualTarget = child.getAttribute('target').split('/').pop();
-						var axis = child.querySelector('axis param').textContent;
-						var jointIndex = parseInt(axis.split('joint').pop().split('.')[0]);
-						var visualTargetElement = COLLADA.querySelector('[sid="' + visualTarget + '"]');
-
-						if (visualTargetElement) {
-							var parentVisualElement = visualTargetElement.parentElement;
-							_addToMap(jointIndex, parentVisualElement);
-						}
-
-						break;
-
-					default:
-
-						break;
-
-				}
-			}
-		}
-	}
-
-	function createSceneGraph(node, parent) {
-
-		var obj = new __WEBPACK_IMPORTED_MODULE_1_three__["h" /* Object3D */]();
-		var skinned = false;
-		var skinController;
-		var morphController;
-		var i, j;
-
-		for (i = 0; i < node.controllers.length; i++) {
-
-			var controller = controllers[node.controllers[i].url];
-
-			switch (controller.type) {
-
-				case 'skin':
-
-					if (geometries[controller.skin.source]) {
-
-						var inst_geom = new InstanceGeometry();
-
-						inst_geom.url = controller.skin.source;
-						inst_geom.instance_material = node.controllers[i].instance_material;
-
-						node.geometries.push(inst_geom);
-						skinned = true;
-						skinController = node.controllers[i];
-					} else if (controllers[controller.skin.source]) {
-
-						var second = controllers[controller.skin.source];
-						morphController = second;
-
-
-						if (second.morph && geometries[second.morph.source]) {
-
-							var inst_geom = new InstanceGeometry();
-
-							inst_geom.url = second.morph.source;
-							inst_geom.instance_material = node.controllers[i].instance_material;
-
-							node.geometries.push(inst_geom);
-						}
-					}
-
-					break;
-
-				case 'morph':
-
-					if (geometries[controller.morph.source]) {
-
-						var inst_geom = new InstanceGeometry();
-
-						inst_geom.url = controller.morph.source;
-						inst_geom.instance_material = node.controllers[i].instance_material;
-
-						node.geometries.push(inst_geom);
-						morphController = node.controllers[i];
-					}
-
-					console.log('ColladaLoader: Morph-controller partially supported.');
-
-				default:
-					break;
-
-			}
 		}
 
-		var double_sided_materials = {};
+		function createKinematics() {
 
-		for (i = 0; i < node.geometries.length; i++) {
-
-			var instance_geometry = node.geometries[i];
-			var instance_materials = instance_geometry.instance_material;
-			var geometry = geometries[instance_geometry.url];
-			var used_materials = {};
-			var used_materials_array = [];
-			var num_materials = 0;
-			var first_material;
-
-			if (geometry) {
-
-				if (!geometry.mesh || !geometry.mesh.primitives) continue;
-
-				if (obj.name.length === 0) {
-
-					obj.name = geometry.id;
+				if (kinematicsModel && kinematicsModel.joints.length === 0) {
+						kinematics = undefined;
+						return;
 				}
 
-				if (instance_materials) {
+				var jointMap = {};
 
-					for (j = 0; j < instance_materials.length; j++) {
+				var _addToMap = function _addToMap(jointIndex, parentVisualElement) {
 
-						var instance_material = instance_materials[j];
-						var mat = materials[instance_material.target];
-						var effect_id = mat.instance_effect.url;
-						var shader = effects[effect_id].shader;
-						var material3js = shader.material;
+						var parentVisualElementId = parentVisualElement.getAttribute('id');
+						var colladaNode = visualScene.getChildById(parentVisualElementId, true);
+						var joint = kinematicsModel.joints[jointIndex];
 
-						if (geometry.doubleSided) {
+						scene.traverse(function (node) {
 
-							if (!(instance_material.symbol in double_sided_materials)) {
+								if (node.colladaId == parentVisualElementId) {
 
-								var _copied_material = material3js.clone();
-								_copied_material.side = __WEBPACK_IMPORTED_MODULE_1_three__["i" /* DoubleSide */];
-								double_sided_materials[instance_material.symbol] = _copied_material;
-							}
+										jointMap[jointIndex] = {
+												node: node,
+												transforms: colladaNode.transforms,
+												joint: joint,
+												position: joint.zeroPosition
+										};
+								}
+						});
+				};
 
-							material3js = double_sided_materials[instance_material.symbol];
-						}
+				kinematics = {
 
-						material3js.opacity = !material3js.opacity ? 1 : material3js.opacity;
-						used_materials[instance_material.symbol] = num_materials;
-						used_materials_array.push(material3js);
-						first_material = material3js;
-						first_material.name = mat.name === null || mat.name === '' ? mat.id : mat.name;
-						num_materials++;
-					}
-				}
+						joints: kinematicsModel && kinematicsModel.joints,
 
-				var mesh;
-				var material = first_material || new __WEBPACK_IMPORTED_MODULE_1_three__["j" /* MeshLambertMaterial */]({ color: 0xdddddd, side: geometry.doubleSided ? __WEBPACK_IMPORTED_MODULE_1_three__["i" /* DoubleSide */] : __WEBPACK_IMPORTED_MODULE_1_three__["k" /* FrontSide */] });
-				var geom = geometry.mesh.geometry3js;
+						getJointValue: function getJointValue(jointIndex) {
 
-				if (num_materials > 1) {
+								var jointData = jointMap[jointIndex];
 
-					material = new __WEBPACK_IMPORTED_MODULE_1_three__["l" /* MultiMaterial */](used_materials_array);
+								if (jointData) {
 
-					for (j = 0; j < geom.faces.length; j++) {
-
-						var face = geom.faces[j];
-						face.materialIndex = used_materials[face.daeMaterial];
-					}
-				}
-
-				if (skinController !== undefined) {
-
-					applySkin(geom, skinController);
-
-					if (geom.morphTargets.length > 0) {
-
-						material.morphTargets = true;
-						material.skinning = false;
-					} else {
-
-						material.morphTargets = false;
-						material.skinning = true;
-					}
-
-					mesh = new __WEBPACK_IMPORTED_MODULE_1_three__["m" /* SkinnedMesh */](geom, material, false);
-
-					mesh.name = 'skin_' + skins.length;
-
-					skins.push(mesh);
-				} else if (morphController !== undefined) {
-
-					createMorph(geom, morphController);
-
-					material.morphTargets = true;
-
-					mesh = new __WEBPACK_IMPORTED_MODULE_1_three__["n" /* Mesh */](geom, material);
-					mesh.name = 'morph_' + morphs.length;
-
-					morphs.push(mesh);
-				} else {
-
-					if (geom.isLineStrip === true) {
-
-						mesh = new __WEBPACK_IMPORTED_MODULE_1_three__["o" /* Line */](geom);
-					} else {
-
-						mesh = new __WEBPACK_IMPORTED_MODULE_1_three__["n" /* Mesh */](geom, material);
-					}
-				}
-
-				obj.add(mesh);
-			}
-		}
-
-		for (i = 0; i < node.cameras.length; i++) {
-
-			var instance_camera = node.cameras[i];
-			var cparams = cameras[instance_camera.url];
-
-			var cam = new __WEBPACK_IMPORTED_MODULE_1_three__["p" /* PerspectiveCamera */](cparams.yfov, parseFloat(cparams.aspect_ratio), parseFloat(cparams.znear), parseFloat(cparams.zfar));
-
-			obj.add(cam);
-		}
-
-		for (i = 0; i < node.lights.length; i++) {
-
-			var light = null;
-			var instance_light = node.lights[i];
-			var lparams = lights[instance_light.url];
-
-			if (lparams && lparams.technique) {
-
-				var color = lparams.color.getHex();
-				var intensity = lparams.intensity;
-				var distance = lparams.distance;
-				var angle = lparams.falloff_angle;
-
-				switch (lparams.technique) {
-
-					case 'directional':
-
-						light = new __WEBPACK_IMPORTED_MODULE_1_three__["q" /* DirectionalLight */](color, intensity, distance);
-						light.position.set(0, 0, 1);
-						break;
-
-					case 'point':
-
-						light = new __WEBPACK_IMPORTED_MODULE_1_three__["r" /* PointLight */](color, intensity, distance);
-						break;
-
-					case 'spot':
-
-						light = new __WEBPACK_IMPORTED_MODULE_1_three__["s" /* SpotLight */](color, intensity, distance, angle);
-						light.position.set(0, 0, 1);
-						break;
-
-					case 'ambient':
-
-						light = new __WEBPACK_IMPORTED_MODULE_1_three__["t" /* AmbientLight */](color);
-						break;
-
-				}
-			}
-
-			if (light) {
-				obj.add(light);
-			}
-		}
-
-		obj.name = node.name || node.id || "";
-		obj.colladaId = node.id || "";
-		obj.layer = node.layer || "";
-		obj.matrix = node.matrix;
-		obj.matrix.decompose(obj.position, obj.quaternion, obj.scale);
-
-		if (options.centerGeometry && obj.geometry) {
-
-			var delta = obj.geometry.center();
-			delta.multiply(obj.scale);
-			delta.applyQuaternion(obj.quaternion);
-
-			obj.position.sub(delta);
-		}
-
-		for (i = 0; i < node.nodes.length; i++) {
-
-			obj.add(createSceneGraph(node.nodes[i], node));
-		}
-
-		return obj;
-	}
-
-	function getJointId(skin, id) {
-
-		for (var i = 0; i < skin.joints.length; i++) {
-
-			if (skin.joints[i] === id) {
-
-				return i;
-			}
-		}
-	}
-
-	function getLibraryNode(id) {
-
-		var nodes = COLLADA.querySelectorAll('library_nodes node');
-
-		for (var i = 0; i < nodes.length; i++) {
-
-			var attObj = nodes[i].attributes.getNamedItem('id');
-
-			if (attObj && attObj.value === id) {
-
-				return nodes[i];
-			}
-		}
-
-		return undefined;
-	}
-
-	function getChannelsForNode(node) {
-
-		var channels = [];
-		var startTime = 1000000;
-		var endTime = -1000000;
-
-		for (var id in animations) {
-
-			var animation = animations[id];
-
-			for (var i = 0; i < animation.channel.length; i++) {
-
-				var channel = animation.channel[i];
-				var sampler = animation.sampler[i];
-				var id = channel.target.split('/')[0];
-
-				if (id == node.id) {
-
-					sampler.create();
-					channel.sampler = sampler;
-					startTime = Math.min(startTime, sampler.startTime);
-					endTime = Math.max(endTime, sampler.endTime);
-					channels.push(channel);
-				}
-			}
-		}
-
-		if (channels.length) {
-
-			node.startTime = startTime;
-			node.endTime = endTime;
-		}
-
-		return channels;
-	}
-
-	function calcFrameDuration(node) {
-
-		var minT = 10000000;
-
-		for (var i = 0; i < node.channels.length; i++) {
-
-			var sampler = node.channels[i].sampler;
-
-			for (var j = 0; j < sampler.input.length - 1; j++) {
-
-				var t0 = sampler.input[j];
-				var t1 = sampler.input[j + 1];
-				minT = Math.min(minT, t1 - t0);
-			}
-		}
-
-		return minT;
-	}
-
-	function calcMatrixAt(node, t) {
-
-		var animated = {};
-
-		var i, j;
-
-		for (i = 0; i < node.channels.length; i++) {
-
-			var channel = node.channels[i];
-			animated[channel.sid] = channel;
-		}
-
-		var matrix = new __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]();
-
-		for (i = 0; i < node.transforms.length; i++) {
-
-			var transform = node.transforms[i];
-			var channel = animated[transform.sid];
-
-			if (channel !== undefined) {
-
-				var sampler = channel.sampler;
-				var value;
-
-				for (j = 0; j < sampler.input.length - 1; j++) {
-
-					if (sampler.input[j + 1] > t) {
-
-						value = sampler.output[j];
-
-						break;
-					}
-				}
-
-				if (value !== undefined) {
-
-					if (value instanceof __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]) {
-
-						matrix.multiplyMatrices(matrix, value);
-					} else {
-
-						matrix.multiplyMatrices(matrix, transform.matrix);
-					}
-				} else {
-
-					matrix.multiplyMatrices(matrix, transform.matrix);
-				}
-			} else {
-
-				matrix.multiplyMatrices(matrix, transform.matrix);
-			}
-		}
-
-		return matrix;
-	}
-
-	function bakeAnimations(node) {
-
-		if (node.channels && node.channels.length) {
-
-			var keys = [],
-			    sids = [];
-
-			for (var i = 0, il = node.channels.length; i < il; i++) {
-
-				var channel = node.channels[i],
-				    fullSid = channel.fullSid,
-				    sampler = channel.sampler,
-				    input = sampler.input,
-				    transform = node.getTransformBySid(channel.sid),
-				    member;
-
-				if (channel.arrIndices) {
-
-					member = [];
-
-					for (var j = 0, jl = channel.arrIndices.length; j < jl; j++) {
-
-						member[j] = getConvertedIndex(channel.arrIndices[j]);
-					}
-				} else {
-
-					member = getConvertedMember(channel.member);
-				}
-
-				if (transform) {
-
-					if (sids.indexOf(fullSid) === -1) {
-
-						sids.push(fullSid);
-					}
-
-					for (var j = 0, jl = input.length; j < jl; j++) {
-
-						var time = input[j],
-						    data = sampler.getData(transform.type, j, member),
-						    key = findKey(keys, time);
-
-						if (!key) {
-
-							key = new Key(time);
-							var timeNdx = findTimeNdx(keys, time);
-							keys.splice(timeNdx === -1 ? keys.length : timeNdx, 0, key);
-						}
-
-						key.addTarget(fullSid, transform, member, data);
-					}
-				} else {
-
-					console.log('Could not find transform "' + channel.sid + '" in node ' + node.id);
-				}
-			}
-
-			for (var i = 0; i < sids.length; i++) {
-
-				var sid = sids[i];
-
-				for (var j = 0; j < keys.length; j++) {
-
-					var key = keys[j];
-
-					if (!key.hasTarget(sid)) {
-
-						interpolateKeys(keys, key, j, sid);
-					}
-				}
-			}
-
-			node.keys = keys;
-			node.sids = sids;
-		}
-	}
-
-	function findKey(keys, time) {
-
-		var retVal = null;
-
-		for (var i = 0, il = keys.length; i < il && retVal === null; i++) {
-
-			var key = keys[i];
-
-			if (key.time === time) {
-
-				retVal = key;
-			} else if (key.time > time) {
-
-				break;
-			}
-		}
-
-		return retVal;
-	}
-
-	function findTimeNdx(keys, time) {
-
-		var ndx = -1;
-
-		for (var i = 0, il = keys.length; i < il && ndx === -1; i++) {
-
-			var key = keys[i];
-
-			if (key.time >= time) {
-
-				ndx = i;
-			}
-		}
-
-		return ndx;
-	}
-
-	function interpolateKeys(keys, key, ndx, fullSid) {
-
-		var prevKey = getPrevKeyWith(keys, fullSid, ndx ? ndx - 1 : 0),
-		    nextKey = getNextKeyWith(keys, fullSid, ndx + 1);
-
-		if (prevKey && nextKey) {
-
-			var scale = (key.time - prevKey.time) / (nextKey.time - prevKey.time),
-			    prevTarget = prevKey.getTarget(fullSid),
-			    nextData = nextKey.getTarget(fullSid).data,
-			    prevData = prevTarget.data,
-			    data;
-
-			if (prevTarget.type === 'matrix') {
-
-				data = prevData;
-			} else if (prevData.length) {
-
-				data = [];
-
-				for (var i = 0; i < prevData.length; ++i) {
-
-					data[i] = prevData[i] + (nextData[i] - prevData[i]) * scale;
-				}
-			} else {
-
-				data = prevData + (nextData - prevData) * scale;
-			}
-
-			key.addTarget(fullSid, prevTarget.transform, prevTarget.member, data);
-		}
-	}
-
-	function getNextKeyWith(keys, fullSid, ndx) {
-
-		for (; ndx < keys.length; ndx++) {
-
-			var key = keys[ndx];
-
-			if (key.hasTarget(fullSid)) {
-
-				return key;
-			}
-		}
-
-		return null;
-	}
-
-	function getPrevKeyWith(keys, fullSid, ndx) {
-
-		ndx = ndx >= 0 ? ndx : ndx + keys.length;
-
-		for (; ndx >= 0; ndx--) {
-
-			var key = keys[ndx];
-
-			if (key.hasTarget(fullSid)) {
-
-				return key;
-			}
-		}
-
-		return null;
-	}
-
-	function _Image() {
-
-		this.id = "";
-		this.init_from = "";
-	}
-
-	_Image.prototype.parse = function (element) {
-
-		this.id = element.getAttribute('id');
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-
-			if (child.nodeName === 'init_from') {
-
-				this.init_from = child.textContent;
-			}
-		}
-
-		return this;
-	};
-
-	function Controller() {
-
-		this.id = "";
-		this.name = "";
-		this.type = "";
-		this.skin = null;
-		this.morph = null;
-	}
-
-	Controller.prototype.parse = function (element) {
-
-		this.id = element.getAttribute('id');
-		this.name = element.getAttribute('name');
-		this.type = "none";
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-
-			switch (child.nodeName) {
-
-				case 'skin':
-
-					this.skin = new Skin().parse(child);
-					this.type = child.nodeName;
-					break;
-
-				case 'morph':
-
-					this.morph = new Morph().parse(child);
-					this.type = child.nodeName;
-					break;
-
-				default:
-					break;
-
-			}
-		}
-
-		return this;
-	};
-
-	function Morph() {
-
-		this.method = null;
-		this.source = null;
-		this.targets = null;
-		this.weights = null;
-	}
-
-	Morph.prototype.parse = function (element) {
-
-		var sources = {};
-		var inputs = [];
-		var i;
-
-		this.method = element.getAttribute('method');
-		this.source = element.getAttribute('source').replace(/^#/, '');
-
-		for (i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-			if (child.nodeType != 1) continue;
-
-			switch (child.nodeName) {
-
-				case 'source':
-
-					var source = new Source().parse(child);
-					sources[source.id] = source;
-					break;
-
-				case 'targets':
-
-					inputs = this.parseInputs(child);
-					break;
-
-				default:
-
-					console.log(child.nodeName);
-					break;
-
-			}
-		}
-
-		for (i = 0; i < inputs.length; i++) {
-
-			var input = inputs[i];
-			var source = sources[input.source];
-
-			switch (input.semantic) {
-
-				case 'MORPH_TARGET':
-
-					this.targets = source.read();
-					break;
-
-				case 'MORPH_WEIGHT':
-
-					this.weights = source.read();
-					break;
-
-				default:
-					break;
-
-			}
-		}
-
-		return this;
-	};
-
-	Morph.prototype.parseInputs = function (element) {
-
-		var inputs = [];
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-			if (child.nodeType != 1) continue;
-
-			switch (child.nodeName) {
-
-				case 'input':
-
-					inputs.push(new Input().parse(child));
-					break;
-
-				default:
-					break;
-			}
-		}
-
-		return inputs;
-	};
-
-	function Skin() {
-
-		this.source = "";
-		this.bindShapeMatrix = null;
-		this.invBindMatrices = [];
-		this.joints = [];
-		this.weights = [];
-	}
-
-	Skin.prototype.parse = function (element) {
-
-		var sources = {};
-		var joints, weights;
-
-		this.source = element.getAttribute('source').replace(/^#/, '');
-		this.invBindMatrices = [];
-		this.joints = [];
-		this.weights = [];
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-			if (child.nodeType != 1) continue;
-
-			switch (child.nodeName) {
-
-				case 'bind_shape_matrix':
-
-					var f = _floats(child.textContent);
-					this.bindShapeMatrix = getConvertedMat4(f);
-					break;
-
-				case 'source':
-
-					var src = new Source().parse(child);
-					sources[src.id] = src;
-					break;
-
-				case 'joints':
-
-					joints = child;
-					break;
-
-				case 'vertex_weights':
-
-					weights = child;
-					break;
-
-				default:
-
-					console.log(child.nodeName);
-					break;
-
-			}
-		}
-
-		this.parseJoints(joints, sources);
-		this.parseWeights(weights, sources);
-
-		return this;
-	};
-
-	Skin.prototype.parseJoints = function (element, sources) {
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-			if (child.nodeType != 1) continue;
-
-			switch (child.nodeName) {
-
-				case 'input':
-
-					var input = new Input().parse(child);
-					var source = sources[input.source];
-
-					if (input.semantic === 'JOINT') {
-
-						this.joints = source.read();
-					} else if (input.semantic === 'INV_BIND_MATRIX') {
-
-						this.invBindMatrices = source.read();
-					}
-
-					break;
-
-				default:
-					break;
-			}
-		}
-	};
-
-	Skin.prototype.parseWeights = function (element, sources) {
-
-		var v,
-		    vcount,
-		    inputs = [];
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-			if (child.nodeType != 1) continue;
-
-			switch (child.nodeName) {
-
-				case 'input':
-
-					inputs.push(new Input().parse(child));
-					break;
-
-				case 'v':
-
-					v = _ints(child.textContent);
-					break;
-
-				case 'vcount':
-
-					vcount = _ints(child.textContent);
-					break;
-
-				default:
-					break;
-
-			}
-		}
-
-		var index = 0;
-
-		for (var i = 0; i < vcount.length; i++) {
-
-			var numBones = vcount[i];
-			var vertex_weights = [];
-
-			for (var j = 0; j < numBones; j++) {
-
-				var influence = {};
-
-				for (var k = 0; k < inputs.length; k++) {
-
-					var input = inputs[k];
-					var value = v[index + input.offset];
-
-					switch (input.semantic) {
-
-						case 'JOINT':
-
-							influence.joint = value;
-							break;
-
-						case 'WEIGHT':
-
-							influence.weight = sources[input.source].data[value];
-							break;
-
-						default:
-							break;
-
-					}
-				}
-
-				vertex_weights.push(influence);
-				index += inputs.length;
-			}
-
-			for (var j = 0; j < vertex_weights.length; j++) {
-
-				vertex_weights[j].index = i;
-			}
-
-			this.weights.push(vertex_weights);
-		}
-	};
-
-	function VisualScene() {
-
-		this.id = "";
-		this.name = "";
-		this.nodes = [];
-		this.scene = new __WEBPACK_IMPORTED_MODULE_1_three__["b" /* Group */]();
-	}
-
-	VisualScene.prototype.getChildById = function (id, recursive) {
-
-		for (var i = 0; i < this.nodes.length; i++) {
-
-			var node = this.nodes[i].getChildById(id, recursive);
-
-			if (node) {
-
-				return node;
-			}
-		}
-
-		return null;
-	};
-
-	VisualScene.prototype.getChildBySid = function (sid, recursive) {
-
-		for (var i = 0; i < this.nodes.length; i++) {
-
-			var node = this.nodes[i].getChildBySid(sid, recursive);
-
-			if (node) {
-
-				return node;
-			}
-		}
-
-		return null;
-	};
-
-	VisualScene.prototype.parse = function (element) {
-
-		this.id = element.getAttribute('id');
-		this.name = element.getAttribute('name');
-		this.nodes = [];
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-			if (child.nodeType != 1) continue;
-
-			switch (child.nodeName) {
-
-				case 'node':
-
-					this.nodes.push(new Node().parse(child));
-					break;
-
-				default:
-					break;
-
-			}
-		}
-
-		return this;
-	};
-
-	function Node() {
-
-		this.id = "";
-		this.name = "";
-		this.sid = "";
-		this.nodes = [];
-		this.controllers = [];
-		this.transforms = [];
-		this.geometries = [];
-		this.channels = [];
-		this.matrix = new __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]();
-	}
-
-	Node.prototype.getChannelForTransform = function (transformSid) {
-
-		for (var i = 0; i < this.channels.length; i++) {
-
-			var channel = this.channels[i];
-			var parts = channel.target.split('/');
-			var id = parts.shift();
-			var sid = parts.shift();
-			var dotSyntax = sid.indexOf(".") >= 0;
-			var arrSyntax = sid.indexOf("(") >= 0;
-			var arrIndices;
-
-			if (dotSyntax) {
-
-				parts = sid.split(".");
-				sid = parts.shift();
-			} else if (arrSyntax) {
-
-				arrIndices = sid.split("(");
-				sid = arrIndices.shift();
-
-				for (var j = 0; j < arrIndices.length; j++) {
-
-					arrIndices[j] = parseInt(arrIndices[j].replace(/\)/, ''));
-				}
-			}
-
-			if (sid === transformSid) {
-
-				channel.info = { sid: sid, dotSyntax: dotSyntax, arrSyntax: arrSyntax, arrIndices: arrIndices };
-				return channel;
-			}
-		}
-
-		return null;
-	};
-
-	Node.prototype.getChildById = function (id, recursive) {
-
-		if (this.id === id) {
-
-			return this;
-		}
-
-		if (recursive) {
-
-			for (var i = 0; i < this.nodes.length; i++) {
-
-				var n = this.nodes[i].getChildById(id, recursive);
-
-				if (n) {
-
-					return n;
-				}
-			}
-		}
-
-		return null;
-	};
-
-	Node.prototype.getChildBySid = function (sid, recursive) {
-
-		if (this.sid === sid) {
-
-			return this;
-		}
-
-		if (recursive) {
-
-			for (var i = 0; i < this.nodes.length; i++) {
-
-				var n = this.nodes[i].getChildBySid(sid, recursive);
-
-				if (n) {
-
-					return n;
-				}
-			}
-		}
-
-		return null;
-	};
-
-	Node.prototype.getTransformBySid = function (sid) {
-
-		for (var i = 0; i < this.transforms.length; i++) {
-
-			if (this.transforms[i].sid === sid) return this.transforms[i];
-		}
-
-		return null;
-	};
-
-	Node.prototype.parse = function (element) {
-
-		var url;
-
-		this.id = element.getAttribute('id');
-		this.sid = element.getAttribute('sid');
-		this.name = element.getAttribute('name');
-		this.type = element.getAttribute('type');
-		this.layer = element.getAttribute('layer');
-
-		this.type = this.type === 'JOINT' ? this.type : 'NODE';
-
-		this.nodes = [];
-		this.transforms = [];
-		this.geometries = [];
-		this.cameras = [];
-		this.lights = [];
-		this.controllers = [];
-		this.matrix = new __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]();
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-			if (child.nodeType != 1) continue;
-
-			switch (child.nodeName) {
-
-				case 'node':
-
-					this.nodes.push(new Node().parse(child));
-					break;
-
-				case 'instance_camera':
-
-					this.cameras.push(new InstanceCamera().parse(child));
-					break;
-
-				case 'instance_controller':
-
-					this.controllers.push(new InstanceController().parse(child));
-					break;
-
-				case 'instance_geometry':
-
-					this.geometries.push(new InstanceGeometry().parse(child));
-					break;
-
-				case 'instance_light':
-
-					this.lights.push(new InstanceLight().parse(child));
-					break;
-
-				case 'instance_node':
-
-					url = child.getAttribute('url').replace(/^#/, '');
-					var iNode = getLibraryNode(url);
-
-					if (iNode) {
-
-						this.nodes.push(new Node().parse(iNode));
-					}
-
-					break;
-
-				case 'rotate':
-				case 'translate':
-				case 'scale':
-				case 'matrix':
-				case 'lookat':
-				case 'skew':
-
-					this.transforms.push(new Transform().parse(child));
-					break;
-
-				case 'extra':
-					break;
-
-				default:
-
-					console.log(child.nodeName);
-					break;
-
-			}
-		}
-
-		this.channels = getChannelsForNode(this);
-		bakeAnimations(this);
-
-		this.updateMatrix();
-
-		return this;
-	};
-
-	Node.prototype.updateMatrix = function () {
-
-		this.matrix.identity();
-
-		for (var i = 0; i < this.transforms.length; i++) {
-
-			this.transforms[i].apply(this.matrix);
-		}
-	};
-
-	function Transform() {
-
-		this.sid = "";
-		this.type = "";
-		this.data = [];
-		this.obj = null;
-	}
-
-	Transform.prototype.parse = function (element) {
-
-		this.sid = element.getAttribute('sid');
-		this.type = element.nodeName;
-		this.data = _floats(element.textContent);
-		this.convert();
-
-		return this;
-	};
-
-	Transform.prototype.convert = function () {
-
-		switch (this.type) {
-
-			case 'matrix':
-
-				this.obj = getConvertedMat4(this.data);
-				break;
-
-			case 'rotate':
-
-				this.angle = __WEBPACK_IMPORTED_MODULE_1_three__["g" /* Math */].degToRad(this.data[3]);
-
-			case 'translate':
-
-				fixCoords(this.data, -1);
-				this.obj = new __WEBPACK_IMPORTED_MODULE_1_three__["d" /* Vector3 */](this.data[0], this.data[1], this.data[2]);
-				break;
-
-			case 'scale':
-
-				fixCoords(this.data, 1);
-				this.obj = new __WEBPACK_IMPORTED_MODULE_1_three__["d" /* Vector3 */](this.data[0], this.data[1], this.data[2]);
-				break;
-
-			default:
-				console.log('Can not convert Transform of type ' + this.type);
-				break;
-
-		}
-	};
-
-	Transform.prototype.apply = function () {
-
-		var m1 = new __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]();
-
-		return function (matrix) {
-
-			switch (this.type) {
-
-				case 'matrix':
-
-					matrix.multiply(this.obj);
-
-					break;
-
-				case 'translate':
-
-					matrix.multiply(m1.makeTranslation(this.obj.x, this.obj.y, this.obj.z));
-
-					break;
-
-				case 'rotate':
-
-					matrix.multiply(m1.makeRotationAxis(this.obj, this.angle));
-
-					break;
-
-				case 'scale':
-
-					matrix.scale(this.obj);
-
-					break;
-
-			}
-		};
-	}();
-
-	Transform.prototype.update = function (data, member) {
-
-		var members = ['X', 'Y', 'Z', 'ANGLE'];
-
-		switch (this.type) {
-
-			case 'matrix':
-
-				if (!member) {
-
-					this.obj.copy(data);
-				} else if (member.length === 1) {
-
-					switch (member[0]) {
-
-						case 0:
-
-							this.obj.n11 = data[0];
-							this.obj.n21 = data[1];
-							this.obj.n31 = data[2];
-							this.obj.n41 = data[3];
-
-							break;
-
-						case 1:
-
-							this.obj.n12 = data[0];
-							this.obj.n22 = data[1];
-							this.obj.n32 = data[2];
-							this.obj.n42 = data[3];
-
-							break;
-
-						case 2:
-
-							this.obj.n13 = data[0];
-							this.obj.n23 = data[1];
-							this.obj.n33 = data[2];
-							this.obj.n43 = data[3];
-
-							break;
-
-						case 3:
-
-							this.obj.n14 = data[0];
-							this.obj.n24 = data[1];
-							this.obj.n34 = data[2];
-							this.obj.n44 = data[3];
-
-							break;
-
-					}
-				} else if (member.length === 2) {
-
-					var propName = 'n' + (member[0] + 1) + (member[1] + 1);
-					this.obj[propName] = data;
-				} else {
-
-					console.log('Incorrect addressing of matrix in transform.');
-				}
-
-				break;
-
-			case 'translate':
-			case 'scale':
-
-				if (Object.prototype.toString.call(member) === '[object Array]') {
-
-					member = members[member[0]];
-				}
-
-				switch (member) {
-
-					case 'X':
-
-						this.obj.x = data;
-						break;
-
-					case 'Y':
-
-						this.obj.y = data;
-						break;
-
-					case 'Z':
-
-						this.obj.z = data;
-						break;
-
-					default:
-
-						this.obj.x = data[0];
-						this.obj.y = data[1];
-						this.obj.z = data[2];
-						break;
-
-				}
-
-				break;
-
-			case 'rotate':
-
-				if (Object.prototype.toString.call(member) === '[object Array]') {
-
-					member = members[member[0]];
-				}
-
-				switch (member) {
-
-					case 'X':
-
-						this.obj.x = data;
-						break;
-
-					case 'Y':
-
-						this.obj.y = data;
-						break;
-
-					case 'Z':
-
-						this.obj.z = data;
-						break;
-
-					case 'ANGLE':
-
-						this.angle = __WEBPACK_IMPORTED_MODULE_1_three__["g" /* Math */].degToRad(data);
-						break;
-
-					default:
-
-						this.obj.x = data[0];
-						this.obj.y = data[1];
-						this.obj.z = data[2];
-						this.angle = __WEBPACK_IMPORTED_MODULE_1_three__["g" /* Math */].degToRad(data[3]);
-						break;
-
-				}
-				break;
-
-		}
-	};
-
-	function InstanceController() {
-
-		this.url = "";
-		this.skeleton = [];
-		this.instance_material = [];
-	}
-
-	InstanceController.prototype.parse = function (element) {
-
-		this.url = element.getAttribute('url').replace(/^#/, '');
-		this.skeleton = [];
-		this.instance_material = [];
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-			if (child.nodeType !== 1) continue;
-
-			switch (child.nodeName) {
-
-				case 'skeleton':
-
-					this.skeleton.push(child.textContent.replace(/^#/, ''));
-					break;
-
-				case 'bind_material':
-
-					var instances = child.querySelectorAll('instance_material');
-
-					for (var j = 0; j < instances.length; j++) {
-
-						var instance = instances[j];
-						this.instance_material.push(new InstanceMaterial().parse(instance));
-					}
-
-					break;
-
-				case 'extra':
-					break;
-
-				default:
-					break;
-
-			}
-		}
-
-		return this;
-	};
-
-	function InstanceMaterial() {
-
-		this.symbol = "";
-		this.target = "";
-	}
-
-	InstanceMaterial.prototype.parse = function (element) {
-
-		this.symbol = element.getAttribute('symbol');
-		this.target = element.getAttribute('target').replace(/^#/, '');
-		return this;
-	};
-
-	function InstanceGeometry() {
-
-		this.url = "";
-		this.instance_material = [];
-	}
-
-	InstanceGeometry.prototype.parse = function (element) {
-
-		this.url = element.getAttribute('url').replace(/^#/, '');
-		this.instance_material = [];
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-			if (child.nodeType != 1) continue;
-
-			if (child.nodeName === 'bind_material') {
-
-				var instances = child.querySelectorAll('instance_material');
-
-				for (var j = 0; j < instances.length; j++) {
-
-					var instance = instances[j];
-					this.instance_material.push(new InstanceMaterial().parse(instance));
-				}
-
-				break;
-			}
-		}
-
-		return this;
-	};
-
-	function Geometry() {
-
-		this.id = "";
-		this.mesh = null;
-	}
-
-	Geometry.prototype.parse = function (element) {
-
-		this.id = element.getAttribute('id');
-
-		extractDoubleSided(this, element);
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-
-			switch (child.nodeName) {
-
-				case 'mesh':
-
-					this.mesh = new Mesh(this).parse(child);
-					break;
-
-				case 'extra':
-					break;
-
-				default:
-					break;
-			}
-		}
-
-		return this;
-	};
-
-	function Mesh(geometry) {
-
-		this.geometry = geometry.id;
-		this.primitives = [];
-		this.vertices = null;
-		this.geometry3js = null;
-	}
-
-	Mesh.prototype.parse = function (element) {
-
-		this.primitives = [];
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-
-			switch (child.nodeName) {
-
-				case 'source':
-
-					_source(child);
-					break;
-
-				case 'vertices':
-
-					this.vertices = new Vertices().parse(child);
-					break;
-
-				case 'linestrips':
-
-					this.primitives.push(new LineStrips().parse(child));
-					break;
-
-				case 'triangles':
-
-					this.primitives.push(new Triangles().parse(child));
-					break;
-
-				case 'polygons':
-
-					this.primitives.push(new Polygons().parse(child));
-					break;
-
-				case 'polylist':
-
-					this.primitives.push(new Polylist().parse(child));
-					break;
-
-				default:
-					break;
-
-			}
-		}
-
-		this.geometry3js = new __WEBPACK_IMPORTED_MODULE_1_three__["u" /* Geometry */]();
-
-		if (this.vertices === null) {
-
-			return this;
-		}
-
-		var vertexData = sources[this.vertices.input['POSITION'].source].data;
-
-		for (var i = 0; i < vertexData.length; i += 3) {
-
-			this.geometry3js.vertices.push(getConvertedVec3(vertexData, i).clone());
-		}
-
-		for (var i = 0; i < this.primitives.length; i++) {
-
-			var primitive = this.primitives[i];
-			primitive.setVertices(this.vertices);
-			this.handlePrimitive(primitive, this.geometry3js);
-		}
-
-		if (this.geometry3js.calcNormals) {
-
-			this.geometry3js.computeVertexNormals();
-			delete this.geometry3js.calcNormals;
-		}
-
-		return this;
-	};
-
-	Mesh.prototype.handlePrimitive = function (primitive, geom) {
-
-		if (primitive instanceof LineStrips) {
-
-			geom.isLineStrip = true;
-			return;
-		}
-
-		var j,
-		    k,
-		    pList = primitive.p,
-		    inputs = primitive.inputs;
-		var input, index, idx32;
-		var source, numParams;
-		var vcount,
-		    vcIndex = 0,
-		    maxOffset = 0;
-		var texture_sets = [];
-
-		for (j = 0; j < inputs.length; j++) {
-
-			input = inputs[j];
-
-			var offset = input.offset + 1;
-			maxOffset = maxOffset < offset ? offset : maxOffset;
-
-			switch (input.semantic) {
-
-				case 'TEXCOORD':
-					texture_sets.push(input.set);
-					break;
-
-			}
-		}
-
-		for (var pCount = 0; pCount < pList.length; ++pCount) {
-
-			var p = pList[pCount],
-			    i = 0;
-
-			while (i < p.length) {
-
-				var vs = [];
-				var ns = [];
-				var ts = null;
-				var cs = [];
-
-				if (primitive.vcount) {
-
-					vcount = primitive.vcount.length ? primitive.vcount[vcIndex++] : primitive.vcount;
-				} else {
-
-					vcount = p.length / maxOffset;
-				}
-
-				for (j = 0; j < vcount; j++) {
-
-					for (k = 0; k < inputs.length; k++) {
-
-						input = inputs[k];
-						source = sources[input.source];
-
-						index = p[i + j * maxOffset + input.offset];
-						numParams = source.accessor.params.length;
-						idx32 = index * numParams;
-
-						switch (input.semantic) {
-
-							case 'VERTEX':
-
-								vs.push(index);
-
-								break;
-
-							case 'NORMAL':
-
-								ns.push(getConvertedVec3(source.data, idx32));
-
-								break;
-
-							case 'TEXCOORD':
-
-								ts = ts || {};
-								if (ts[input.set] === undefined) ts[input.set] = [];
-
-								ts[input.set].push(new __WEBPACK_IMPORTED_MODULE_1_three__["v" /* Vector2 */](source.data[idx32], source.data[idx32 + 1]));
-
-								break;
-
-							case 'COLOR':
-
-								cs.push(new __WEBPACK_IMPORTED_MODULE_1_three__["w" /* Color */]().setRGB(source.data[idx32], source.data[idx32 + 1], source.data[idx32 + 2]));
-
-								break;
-
-							default:
-
-								break;
-
-						}
-					}
-				}
-
-				if (ns.length === 0) {
-					input = this.vertices.input.NORMAL;
-
-					if (input) {
-
-						source = sources[input.source];
-						numParams = source.accessor.params.length;
-
-						for (var ndx = 0, len = vs.length; ndx < len; ndx++) {
-
-							ns.push(getConvertedVec3(source.data, vs[ndx] * numParams));
-						}
-					} else {
-
-						geom.calcNormals = true;
-					}
-				}
-
-				if (!ts) {
-
-					ts = {};
-
-					input = this.vertices.input.TEXCOORD;
-
-					if (input) {
-
-						texture_sets.push(input.set);
-						source = sources[input.source];
-						numParams = source.accessor.params.length;
-
-						for (var ndx = 0, len = vs.length; ndx < len; ndx++) {
-
-							idx32 = vs[ndx] * numParams;
-							if (ts[input.set] === undefined) ts[input.set] = [];
-
-							ts[input.set].push(new __WEBPACK_IMPORTED_MODULE_1_three__["v" /* Vector2 */](source.data[idx32], 1.0 - source.data[idx32 + 1]));
-						}
-					}
-				}
-
-				if (cs.length === 0) {
-					input = this.vertices.input.COLOR;
-
-					if (input) {
-
-						source = sources[input.source];
-						numParams = source.accessor.params.length;
-
-						for (var ndx = 0, len = vs.length; ndx < len; ndx++) {
-
-							idx32 = vs[ndx] * numParams;
-							cs.push(new __WEBPACK_IMPORTED_MODULE_1_three__["w" /* Color */]().setRGB(source.data[idx32], source.data[idx32 + 1], source.data[idx32 + 2]));
-						}
-					}
-				}
-
-				var face = null,
-				    faces = [],
-				    uv,
-				    uvArr;
-
-				if (vcount === 3) {
-
-					faces.push(new __WEBPACK_IMPORTED_MODULE_1_three__["x" /* Face3 */](vs[0], vs[1], vs[2], ns, cs.length ? cs : new __WEBPACK_IMPORTED_MODULE_1_three__["w" /* Color */]()));
-				} else if (vcount === 4) {
-
-					faces.push(new __WEBPACK_IMPORTED_MODULE_1_three__["x" /* Face3 */](vs[0], vs[1], vs[3], ns.length ? [ns[0].clone(), ns[1].clone(), ns[3].clone()] : [], cs.length ? [cs[0], cs[1], cs[3]] : new __WEBPACK_IMPORTED_MODULE_1_three__["w" /* Color */]()));
-
-					faces.push(new __WEBPACK_IMPORTED_MODULE_1_three__["x" /* Face3 */](vs[1], vs[2], vs[3], ns.length ? [ns[1].clone(), ns[2].clone(), ns[3].clone()] : [], cs.length ? [cs[1], cs[2], cs[3]] : new __WEBPACK_IMPORTED_MODULE_1_three__["w" /* Color */]()));
-				} else if (vcount > 4 && options.subdivideFaces) {
-
-					var clr = cs.length ? cs : new __WEBPACK_IMPORTED_MODULE_1_three__["w" /* Color */](),
-					    vec1,
-					    vec2,
-					    vec3,
-					    v1,
-					    v2,
-					    norm;
-
-					for (k = 1; k < vcount - 1;) {
-
-						faces.push(new __WEBPACK_IMPORTED_MODULE_1_three__["x" /* Face3 */](vs[0], vs[k], vs[k + 1], ns.length ? [ns[0].clone(), ns[k++].clone(), ns[k].clone()] : [], clr));
-					}
-				}
-
-				if (faces.length) {
-
-					for (var ndx = 0, len = faces.length; ndx < len; ndx++) {
-
-						face = faces[ndx];
-						face.daeMaterial = primitive.material;
-						geom.faces.push(face);
-
-						for (k = 0; k < texture_sets.length; k++) {
-
-							uv = ts[texture_sets[k]];
-
-							if (vcount > 4) {
-								uvArr = [uv[0], uv[ndx + 1], uv[ndx + 2]];
-							} else if (vcount === 4) {
-
-								if (ndx === 0) {
-
-									uvArr = [uv[0], uv[1], uv[3]];
+										return jointData.position;
 								} else {
 
-									uvArr = [uv[1].clone(), uv[2], uv[3].clone()];
+										console.log('getJointValue: joint ' + jointIndex + ' doesn\'t exist');
 								}
-							} else {
+						},
 
-								uvArr = [uv[0], uv[1], uv[2]];
-							}
+						setJointValue: function setJointValue(jointIndex, value) {
 
-							if (geom.faceVertexUvs[k] === undefined) {
+								var jointData = jointMap[jointIndex];
 
-								geom.faceVertexUvs[k] = [];
-							}
+								if (jointData) {
 
-							geom.faceVertexUvs[k].push(uvArr);
+										var joint = jointData.joint;
+
+										if (value > joint.limits.max || value < joint.limits.min) {
+
+												console.log('setJointValue: joint ' + jointIndex + ' value ' + value + ' outside of limits (min: ' + joint.limits.min + ', max: ' + joint.limits.max + ')');
+										} else if (joint.static) {
+
+												console.log('setJointValue: joint ' + jointIndex + ' is static');
+										} else {
+
+												var threejsNode = jointData.node;
+												var axis = joint.axis;
+												var transforms = jointData.transforms;
+
+												var matrix = new __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]();
+												var m1 = new __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]();
+
+												for (i = 0; i < transforms.length; i++) {
+
+														var transform = transforms[i];
+
+														if (transform.sid && transform.sid.indexOf('joint' + jointIndex) !== -1) {
+																switch (joint.type) {
+
+																		case 'revolute':
+
+																				matrix.multiply(m1.makeRotationAxis(axis, __WEBPACK_IMPORTED_MODULE_1_three__["g" /* Math */].degToRad(value)));
+																				break;
+
+																		case 'prismatic':
+
+																				matrix.multiply(m1.makeTranslation(axis.x * value, axis.y * value, axis.z * value));
+																				break;
+
+																		default:
+
+																				console.warn('setJointValue: unknown joint type: ' + joint.type);
+																				break;
+
+																}
+														} else {
+
+																switch (transform.type) {
+
+																		case 'matrix':
+
+																				matrix.multiply(transform.obj);
+
+																				break;
+
+																		case 'translate':
+
+																				matrix.multiply(m1.makeTranslation(transform.obj.x, transform.obj.y, transform.obj.z));
+
+																				break;
+
+																		case 'rotate':
+
+																				matrix.multiply(m1.makeRotationAxis(transform.obj, transform.angle));
+
+																				break;
+
+																}
+														}
+												}
+
+												var elementsFloat32Arr = matrix.elements;
+												var elements = Array.prototype.slice.call(elementsFloat32Arr);
+
+												var elementsRowMajor = [elements[0], elements[4], elements[8], elements[12], elements[1], elements[5], elements[9], elements[13], elements[2], elements[6], elements[10], elements[14], elements[3], elements[7], elements[11], elements[15]];
+
+												threejsNode.matrix.set.apply(threejsNode.matrix, elementsRowMajor);
+												threejsNode.matrix.decompose(threejsNode.position, threejsNode.quaternion, threejsNode.scale);
+
+												jointMap[jointIndex].position = value;
+										}
+								} else {
+
+										console.log('setJointValue: joint ' + jointIndex + ' doesn\'t exist');
+								}
 						}
-					}
-				} else {
 
-					console.log('dropped face with vcount ' + vcount + ' for geometry with id: ' + geom.id);
+				};
+
+				var element = COLLADA.querySelector('scene instance_kinematics_scene');
+
+				if (element) {
+
+						for (var i = 0; i < element.childNodes.length; i++) {
+
+								var child = element.childNodes[i];
+
+								if (child.nodeType != 1) continue;
+
+								switch (child.nodeName) {
+
+										case 'bind_joint_axis':
+
+												var visualTarget = child.getAttribute('target').split('/').pop();
+												var axis = child.querySelector('axis param').textContent;
+												var jointIndex = parseInt(axis.split('joint').pop().split('.')[0]);
+												var visualTargetElement = COLLADA.querySelector('[sid="' + visualTarget + '"]');
+
+												if (visualTargetElement) {
+														var parentVisualElement = visualTargetElement.parentElement;
+														_addToMap(jointIndex, parentVisualElement);
+												}
+
+												break;
+
+										default:
+
+												break;
+
+								}
+						}
+				}
+		}
+
+		function createSceneGraph(node, parent) {
+
+				var obj = new __WEBPACK_IMPORTED_MODULE_1_three__["h" /* Object3D */]();
+				var skinned = false;
+				var skinController;
+				var morphController;
+				var i, j;
+
+				for (i = 0; i < node.controllers.length; i++) {
+
+						var controller = controllers[node.controllers[i].url];
+
+						switch (controller.type) {
+
+								case 'skin':
+
+										if (geometries[controller.skin.source]) {
+
+												var inst_geom = new InstanceGeometry();
+
+												inst_geom.url = controller.skin.source;
+												inst_geom.instance_material = node.controllers[i].instance_material;
+
+												node.geometries.push(inst_geom);
+												skinned = true;
+												skinController = node.controllers[i];
+										} else if (controllers[controller.skin.source]) {
+
+												var second = controllers[controller.skin.source];
+												morphController = second;
+
+
+												if (second.morph && geometries[second.morph.source]) {
+
+														var inst_geom = new InstanceGeometry();
+
+														inst_geom.url = second.morph.source;
+														inst_geom.instance_material = node.controllers[i].instance_material;
+
+														node.geometries.push(inst_geom);
+												}
+										}
+
+										break;
+
+								case 'morph':
+
+										if (geometries[controller.morph.source]) {
+
+												var inst_geom = new InstanceGeometry();
+
+												inst_geom.url = controller.morph.source;
+												inst_geom.instance_material = node.controllers[i].instance_material;
+
+												node.geometries.push(inst_geom);
+												morphController = node.controllers[i];
+										}
+
+										console.log('ColladaLoader: Morph-controller partially supported.');
+
+								default:
+										break;
+
+						}
 				}
 
-				i += maxOffset * vcount;
-			}
-		}
-	};
+				var double_sided_materials = {};
 
-	function Polygons() {
+				for (i = 0; i < node.geometries.length; i++) {
 
-		this.material = "";
-		this.count = 0;
-		this.inputs = [];
-		this.vcount = null;
-		this.p = [];
-		this.geometry = new __WEBPACK_IMPORTED_MODULE_1_three__["u" /* Geometry */]();
-	}
+						var instance_geometry = node.geometries[i];
+						var instance_materials = instance_geometry.instance_material;
+						var geometry = geometries[instance_geometry.url];
+						var used_materials = {};
+						var used_materials_array = [];
+						var num_materials = 0;
+						var first_material;
 
-	Polygons.prototype.setVertices = function (vertices) {
+						if (geometry) {
 
-		for (var i = 0; i < this.inputs.length; i++) {
+								if (!geometry.mesh || !geometry.mesh.primitives) continue;
 
-			if (this.inputs[i].source === vertices.id) {
+								if (obj.name.length === 0) {
 
-				this.inputs[i].source = vertices.input['POSITION'].source;
-			}
-		}
-	};
+										obj.name = geometry.id;
+								}
 
-	Polygons.prototype.parse = function (element) {
+								if (instance_materials) {
 
-		this.material = element.getAttribute('material');
-		this.count = _attr_as_int(element, 'count', 0);
+										for (j = 0; j < instance_materials.length; j++) {
 
-		for (var i = 0; i < element.childNodes.length; i++) {
+												var instance_material = instance_materials[j];
+												var mat = materials[instance_material.target];
+												var effect_id = mat.instance_effect.url;
+												var shader = effects[effect_id].shader;
+												var material3js = shader.material;
 
-			var child = element.childNodes[i];
+												if (geometry.doubleSided) {
 
-			switch (child.nodeName) {
+														if (!(instance_material.symbol in double_sided_materials)) {
 
-				case 'input':
+																var _copied_material = material3js.clone();
+																_copied_material.side = __WEBPACK_IMPORTED_MODULE_1_three__["i" /* DoubleSide */];
+																double_sided_materials[instance_material.symbol] = _copied_material;
+														}
 
-					this.inputs.push(new Input().parse(element.childNodes[i]));
-					break;
+														material3js = double_sided_materials[instance_material.symbol];
+												}
 
-				case 'vcount':
+												material3js.opacity = !material3js.opacity ? 1 : material3js.opacity;
+												used_materials[instance_material.symbol] = num_materials;
+												used_materials_array.push(material3js);
+												first_material = material3js;
+												first_material.name = mat.name === null || mat.name === '' ? mat.id : mat.name;
+												num_materials++;
+										}
+								}
 
-					this.vcount = _ints(child.textContent);
-					break;
+								var mesh;
+								var material = first_material || new __WEBPACK_IMPORTED_MODULE_1_three__["j" /* MeshLambertMaterial */]({ color: 0xdddddd, side: geometry.doubleSided ? __WEBPACK_IMPORTED_MODULE_1_three__["i" /* DoubleSide */] : __WEBPACK_IMPORTED_MODULE_1_three__["k" /* FrontSide */] });
+								var geom = geometry.mesh.geometry3js;
 
-				case 'p':
+								if (num_materials > 1) {
 
-					this.p.push(_ints(child.textContent));
-					break;
+										material = new __WEBPACK_IMPORTED_MODULE_1_three__["l" /* MultiMaterial */](used_materials_array);
 
-				case 'ph':
+										for (j = 0; j < geom.faces.length; j++) {
 
-					console.warn('polygon holes not yet supported!');
-					break;
+												var face = geom.faces[j];
+												face.materialIndex = used_materials[face.daeMaterial];
+										}
+								}
 
-				default:
-					break;
+								if (skinController !== undefined) {
 
-			}
-		}
+										applySkin(geom, skinController);
 
-		return this;
-	};
+										if (geom.morphTargets.length > 0) {
 
-	function Polylist() {
+												material.morphTargets = true;
+												material.skinning = false;
+										} else {
 
-		Polygons.call(this);
+												material.morphTargets = false;
+												material.skinning = true;
+										}
 
-		this.vcount = [];
-	}
+										mesh = new __WEBPACK_IMPORTED_MODULE_1_three__["m" /* SkinnedMesh */](geom, material, false);
 
-	Polylist.prototype = __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_create___default()(Polygons.prototype);
-	Polylist.prototype.constructor = Polylist;
+										mesh.name = 'skin_' + skins.length;
 
-	function LineStrips() {
+										skins.push(mesh);
+								} else if (morphController !== undefined) {
 
-		Polygons.call(this);
+										createMorph(geom, morphController);
 
-		this.vcount = 1;
-	}
+										material.morphTargets = true;
 
-	LineStrips.prototype = __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_create___default()(Polygons.prototype);
-	LineStrips.prototype.constructor = LineStrips;
+										mesh = new __WEBPACK_IMPORTED_MODULE_1_three__["n" /* Mesh */](geom, material);
+										mesh.name = 'morph_' + morphs.length;
 
-	function Triangles() {
+										morphs.push(mesh);
+								} else {
 
-		Polygons.call(this);
+										if (geom.isLineStrip === true) {
 
-		this.vcount = 3;
-	}
+												mesh = new __WEBPACK_IMPORTED_MODULE_1_three__["o" /* Line */](geom);
+										} else {
 
-	Triangles.prototype = __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_create___default()(Polygons.prototype);
-	Triangles.prototype.constructor = Triangles;
+												mesh = new __WEBPACK_IMPORTED_MODULE_1_three__["n" /* Mesh */](geom, material);
+										}
+								}
 
-	function Accessor() {
-
-		this.source = "";
-		this.count = 0;
-		this.stride = 0;
-		this.params = [];
-	}
-
-	Accessor.prototype.parse = function (element) {
-
-		this.params = [];
-		this.source = element.getAttribute('source');
-		this.count = _attr_as_int(element, 'count', 0);
-		this.stride = _attr_as_int(element, 'stride', 0);
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-
-			if (child.nodeName === 'param') {
-
-				var param = {};
-				param['name'] = child.getAttribute('name');
-				param['type'] = child.getAttribute('type');
-				this.params.push(param);
-			}
-		}
-
-		return this;
-	};
-
-	function Vertices() {
-
-		this.input = {};
-	}
-
-	Vertices.prototype.parse = function (element) {
-
-		this.id = element.getAttribute('id');
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			if (element.childNodes[i].nodeName === 'input') {
-
-				var input = new Input().parse(element.childNodes[i]);
-				this.input[input.semantic] = input;
-			}
-		}
-
-		return this;
-	};
-
-	function Input() {
-
-		this.semantic = "";
-		this.offset = 0;
-		this.source = "";
-		this.set = 0;
-	}
-
-	Input.prototype.parse = function (element) {
-
-		this.semantic = element.getAttribute('semantic');
-		this.source = element.getAttribute('source').replace(/^#/, '');
-		this.set = _attr_as_int(element, 'set', -1);
-		this.offset = _attr_as_int(element, 'offset', 0);
-
-		if (this.semantic === 'TEXCOORD' && this.set < 0) {
-
-			this.set = 0;
-		}
-
-		return this;
-	};
-
-	function Source(id) {
-
-		this.id = id;
-		this.type = null;
-	}
-
-	Source.prototype.parse = function (element) {
-
-		this.id = element.getAttribute('id');
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-
-			switch (child.nodeName) {
-
-				case 'bool_array':
-
-					this.data = _bools(child.textContent);
-					this.type = child.nodeName;
-					break;
-
-				case 'float_array':
-
-					this.data = _floats(child.textContent);
-					this.type = child.nodeName;
-					break;
-
-				case 'int_array':
-
-					this.data = _ints(child.textContent);
-					this.type = child.nodeName;
-					break;
-
-				case 'IDREF_array':
-				case 'Name_array':
-
-					this.data = _strings(child.textContent);
-					this.type = child.nodeName;
-					break;
-
-				case 'technique_common':
-
-					for (var j = 0; j < child.childNodes.length; j++) {
-
-						if (child.childNodes[j].nodeName === 'accessor') {
-
-							this.accessor = new Accessor().parse(child.childNodes[j]);
-							break;
+								obj.add(mesh);
 						}
-					}
-					break;
-
-				default:
-					break;
-
-			}
-		}
-
-		return this;
-	};
-
-	Source.prototype.read = function () {
-
-		var result = [];
-
-		var param = this.accessor.params[0];
-
-		switch (param.type) {
-
-			case 'IDREF':
-			case 'Name':case 'name':
-			case 'float':
-
-				return this.data;
-
-			case 'float4x4':
-
-				for (var j = 0; j < this.data.length; j += 16) {
-
-					var s = this.data.slice(j, j + 16);
-					var m = getConvertedMat4(s);
-					result.push(m);
 				}
 
-				break;
+				for (i = 0; i < node.cameras.length; i++) {
 
-			default:
+						var instance_camera = node.cameras[i];
+						var cparams = cameras[instance_camera.url];
 
-				console.log('ColladaLoader: Source: Read dont know how to read ' + param.type + '.');
-				break;
+						var cam = new __WEBPACK_IMPORTED_MODULE_1_three__["p" /* PerspectiveCamera */](cparams.yfov, parseFloat(cparams.aspect_ratio), parseFloat(cparams.znear), parseFloat(cparams.zfar));
 
+						obj.add(cam);
+				}
+
+				for (i = 0; i < node.lights.length; i++) {
+
+						var light = null;
+						var instance_light = node.lights[i];
+						var lparams = lights[instance_light.url];
+
+						if (lparams && lparams.technique) {
+
+								var color = lparams.color.getHex();
+								var intensity = lparams.intensity;
+								var distance = lparams.distance;
+								var angle = lparams.falloff_angle;
+
+								switch (lparams.technique) {
+
+										case 'directional':
+
+												light = new __WEBPACK_IMPORTED_MODULE_1_three__["q" /* DirectionalLight */](color, intensity, distance);
+												light.position.set(0, 0, 1);
+												break;
+
+										case 'point':
+
+												light = new __WEBPACK_IMPORTED_MODULE_1_three__["r" /* PointLight */](color, intensity, distance);
+												break;
+
+										case 'spot':
+
+												light = new __WEBPACK_IMPORTED_MODULE_1_three__["s" /* SpotLight */](color, intensity, distance, angle);
+												light.position.set(0, 0, 1);
+												break;
+
+										case 'ambient':
+
+												light = new __WEBPACK_IMPORTED_MODULE_1_three__["t" /* AmbientLight */](color);
+												break;
+
+								}
+						}
+
+						if (light) {
+								obj.add(light);
+						}
+				}
+
+				obj.name = node.name || node.id || "";
+				obj.colladaId = node.id || "";
+				obj.layer = node.layer || "";
+				obj.matrix = node.matrix;
+				obj.matrix.decompose(obj.position, obj.quaternion, obj.scale);
+
+				if (options.centerGeometry && obj.geometry) {
+
+						var delta = obj.geometry.center();
+						delta.multiply(obj.scale);
+						delta.applyQuaternion(obj.quaternion);
+
+						obj.position.sub(delta);
+				}
+
+				for (i = 0; i < node.nodes.length; i++) {
+
+						obj.add(createSceneGraph(node.nodes[i], node));
+				}
+
+				return obj;
 		}
 
-		return result;
-	};
+		function getJointId(skin, id) {
 
-	function Material() {
+				for (var i = 0; i < skin.joints.length; i++) {
 
-		this.id = "";
-		this.name = "";
-		this.instance_effect = null;
-	}
+						if (skin.joints[i] === id) {
 
-	Material.prototype.parse = function (element) {
-
-		this.id = element.getAttribute('id');
-		this.name = element.getAttribute('name');
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			if (element.childNodes[i].nodeName === 'instance_effect') {
-
-				this.instance_effect = new InstanceEffect().parse(element.childNodes[i]);
-				break;
-			}
+								return i;
+						}
+				}
 		}
 
-		return this;
-	};
+		function getLibraryNode(id) {
 
-	function ColorOrTexture() {
+				var nodes = COLLADA.querySelectorAll('library_nodes node');
 
-		this.color = new __WEBPACK_IMPORTED_MODULE_1_three__["w" /* Color */]();
-		this.color.setRGB(Math.random(), Math.random(), Math.random());
-		this.color.a = 1.0;
+				for (var i = 0; i < nodes.length; i++) {
 
-		this.texture = null;
-		this.texcoord = null;
-		this.texOpts = null;
-	}
+						var attObj = nodes[i].attributes.getNamedItem('id');
 
-	ColorOrTexture.prototype.isColor = function () {
+						if (attObj && attObj.value === id) {
 
-		return this.texture === null;
-	};
+								return nodes[i];
+						}
+				}
 
-	ColorOrTexture.prototype.isTexture = function () {
-
-		return this.texture != null;
-	};
-
-	ColorOrTexture.prototype.parse = function (element) {
-
-		if (element.nodeName === 'transparent') {
-
-			this.opaque = element.getAttribute('opaque');
+				return undefined;
 		}
 
-		for (var i = 0; i < element.childNodes.length; i++) {
+		function getChannelsForNode(node) {
 
-			var child = element.childNodes[i];
-			if (child.nodeType != 1) continue;
+				var channels = [];
+				var startTime = 1000000;
+				var endTime = -1000000;
 
-			switch (child.nodeName) {
+				for (var id in animations) {
 
-				case 'color':
+						var animation = animations[id];
 
-					var rgba = _floats(child.textContent);
-					this.color = new __WEBPACK_IMPORTED_MODULE_1_three__["w" /* Color */]();
-					this.color.setRGB(rgba[0], rgba[1], rgba[2]);
-					this.color.a = rgba[3];
-					break;
+						for (var i = 0; i < animation.channel.length; i++) {
 
-				case 'texture':
+								var channel = animation.channel[i];
+								var sampler = animation.sampler[i];
+								var id = channel.target.split('/')[0];
 
-					this.texture = child.getAttribute('texture');
-					this.texcoord = child.getAttribute('texcoord');
+								if (id == node.id) {
 
-					this.texOpts = {
-						offsetU: 0,
-						offsetV: 0,
-						repeatU: 1,
-						repeatV: 1,
-						wrapU: 1,
-						wrapV: 1
-					};
-					this.parseTexture(child);
-					break;
+										sampler.create();
+										channel.sampler = sampler;
+										startTime = Math.min(startTime, sampler.startTime);
+										endTime = Math.max(endTime, sampler.endTime);
+										channels.push(channel);
+								}
+						}
+				}
 
-				default:
-					break;
+				if (channels.length) {
 
-			}
+						node.startTime = startTime;
+						node.endTime = endTime;
+				}
+
+				return channels;
 		}
 
-		return this;
-	};
+		function calcFrameDuration(node) {
 
-	ColorOrTexture.prototype.parseTexture = function (element) {
+				var minT = 10000000;
 
-		if (!element.childNodes) return this;
+				for (var i = 0; i < node.channels.length; i++) {
 
-		if (element.childNodes[1] && element.childNodes[1].nodeName === 'extra') {
+						var sampler = node.channels[i].sampler;
 
-			element = element.childNodes[1];
+						for (var j = 0; j < sampler.input.length - 1; j++) {
 
-			if (element.childNodes[1] && element.childNodes[1].nodeName === 'technique') {
+								var t0 = sampler.input[j];
+								var t1 = sampler.input[j + 1];
+								minT = Math.min(minT, t1 - t0);
+						}
+				}
 
-				element = element.childNodes[1];
-			}
+				return minT;
 		}
 
-		for (var i = 0; i < element.childNodes.length; i++) {
+		function calcMatrixAt(node, t) {
 
-			var child = element.childNodes[i];
+				var animated = {};
 
-			switch (child.nodeName) {
+				var i, j;
 
-				case 'offsetU':
-				case 'offsetV':
-				case 'repeatU':
-				case 'repeatV':
+				for (i = 0; i < node.channels.length; i++) {
 
-					this.texOpts[child.nodeName] = parseFloat(child.textContent);
+						var channel = node.channels[i];
+						animated[channel.sid] = channel;
+				}
 
-					break;
+				var matrix = new __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]();
 
-				case 'wrapU':
-				case 'wrapV':
+				for (i = 0; i < node.transforms.length; i++) {
 
-					if (child.textContent.toUpperCase() === 'TRUE') {
+						var transform = node.transforms[i];
+						var channel = animated[transform.sid];
 
-						this.texOpts[child.nodeName] = 1;
-					} else {
+						if (channel !== undefined) {
 
-						this.texOpts[child.nodeName] = parseInt(child.textContent);
-					}
-					break;
+								var sampler = channel.sampler;
+								var value;
 
-				default:
+								for (j = 0; j < sampler.input.length - 1; j++) {
 
-					this.texOpts[child.nodeName] = child.textContent;
+										if (sampler.input[j + 1] > t) {
 
-					break;
+												value = sampler.output[j];
 
-			}
-		}
+												break;
+										}
+								}
 
-		return this;
-	};
+								if (value !== undefined) {
 
-	function Shader(type, effect) {
+										if (value instanceof __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]) {
 
-		this.type = type;
-		this.effect = effect;
-		this.material = null;
-	}
+												matrix.multiplyMatrices(matrix, value);
+										} else {
 
-	Shader.prototype.parse = function (element) {
+												matrix.multiplyMatrices(matrix, transform.matrix);
+										}
+								} else {
 
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-			if (child.nodeType != 1) continue;
-
-			switch (child.nodeName) {
-
-				case 'emission':
-				case 'diffuse':
-				case 'specular':
-				case 'transparent':
-
-					this[child.nodeName] = new ColorOrTexture().parse(child);
-					break;
-
-				case 'bump':
-					var bumpType = child.getAttribute('bumptype');
-					if (bumpType) {
-						if (bumpType.toLowerCase() === "heightfield") {
-							this['bump'] = new ColorOrTexture().parse(child);
-						} else if (bumpType.toLowerCase() === "normalmap") {
-							this['normal'] = new ColorOrTexture().parse(child);
+										matrix.multiplyMatrices(matrix, transform.matrix);
+								}
 						} else {
-							console.error("Shader.prototype.parse: Invalid value for attribute 'bumptype' (" + bumpType + ") - valid bumptypes are 'HEIGHTFIELD' and 'NORMALMAP' - defaulting to 'HEIGHTFIELD'");
-							this['bump'] = new ColorOrTexture().parse(child);
+
+								matrix.multiplyMatrices(matrix, transform.matrix);
 						}
-					} else {
-						console.warn("Shader.prototype.parse: Attribute 'bumptype' missing from bump node - defaulting to 'HEIGHTFIELD'");
-						this['bump'] = new ColorOrTexture().parse(child);
-					}
+				}
 
-					break;
-
-				case 'shininess':
-				case 'reflectivity':
-				case 'index_of_refraction':
-				case 'transparency':
-
-					var f = child.querySelectorAll('float');
-
-					if (f.length > 0) this[child.nodeName] = parseFloat(f[0].textContent);
-
-					break;
-
-				default:
-					break;
-
-			}
+				return matrix;
 		}
 
-		this.create();
-		return this;
-	};
+		function bakeAnimations(node) {
 
-	Shader.prototype.create = function () {
+				if (node.channels && node.channels.length) {
 
-		var props = {};
+						var keys = [],
+						    sids = [];
 
-		var transparent = false;
+						for (var i = 0, il = node.channels.length; i < il; i++) {
 
-		if (this['transparency'] !== undefined && this['transparent'] !== undefined) {
-			var transparentColor = this['transparent'];
-			var transparencyLevel = (this.transparent.color.r + this.transparent.color.g + this.transparent.color.b) / 3 * this.transparency;
+								var channel = node.channels[i],
+								    fullSid = channel.fullSid,
+								    sampler = channel.sampler,
+								    input = sampler.input,
+								    transform = node.getTransformBySid(channel.sid),
+								    member;
 
-			if (transparencyLevel > 0) {
-				transparent = true;
-				props['transparent'] = true;
-				props['opacity'] = 1 - transparencyLevel;
-			}
+								if (channel.arrIndices) {
+
+										member = [];
+
+										for (var j = 0, jl = channel.arrIndices.length; j < jl; j++) {
+
+												member[j] = getConvertedIndex(channel.arrIndices[j]);
+										}
+								} else {
+
+										member = getConvertedMember(channel.member);
+								}
+
+								if (transform) {
+
+										if (sids.indexOf(fullSid) === -1) {
+
+												sids.push(fullSid);
+										}
+
+										for (var j = 0, jl = input.length; j < jl; j++) {
+
+												var time = input[j],
+												    data = sampler.getData(transform.type, j, member),
+												    key = findKey(keys, time);
+
+												if (!key) {
+
+														key = new Key(time);
+														var timeNdx = findTimeNdx(keys, time);
+														keys.splice(timeNdx === -1 ? keys.length : timeNdx, 0, key);
+												}
+
+												key.addTarget(fullSid, transform, member, data);
+										}
+								} else {
+
+										console.log('Could not find transform "' + channel.sid + '" in node ' + node.id);
+								}
+						}
+
+						for (var i = 0; i < sids.length; i++) {
+
+								var sid = sids[i];
+
+								for (var j = 0; j < keys.length; j++) {
+
+										var key = keys[j];
+
+										if (!key.hasTarget(sid)) {
+
+												interpolateKeys(keys, key, j, sid);
+										}
+								}
+						}
+
+						node.keys = keys;
+						node.sids = sids;
+				}
 		}
 
-		var keys = {
-			'diffuse': 'map',
-			'ambient': 'lightMap',
-			'specular': 'specularMap',
-			'emission': 'emissionMap',
-			'bump': 'bumpMap',
-			'normal': 'normalMap'
+		function findKey(keys, time) {
+
+				var retVal = null;
+
+				for (var i = 0, il = keys.length; i < il && retVal === null; i++) {
+
+						var key = keys[i];
+
+						if (key.time === time) {
+
+								retVal = key;
+						} else if (key.time > time) {
+
+								break;
+						}
+				}
+
+				return retVal;
+		}
+
+		function findTimeNdx(keys, time) {
+
+				var ndx = -1;
+
+				for (var i = 0, il = keys.length; i < il && ndx === -1; i++) {
+
+						var key = keys[i];
+
+						if (key.time >= time) {
+
+								ndx = i;
+						}
+				}
+
+				return ndx;
+		}
+
+		function interpolateKeys(keys, key, ndx, fullSid) {
+
+				var prevKey = getPrevKeyWith(keys, fullSid, ndx ? ndx - 1 : 0),
+				    nextKey = getNextKeyWith(keys, fullSid, ndx + 1);
+
+				if (prevKey && nextKey) {
+
+						var scale = (key.time - prevKey.time) / (nextKey.time - prevKey.time),
+						    prevTarget = prevKey.getTarget(fullSid),
+						    nextData = nextKey.getTarget(fullSid).data,
+						    prevData = prevTarget.data,
+						    data;
+
+						if (prevTarget.type === 'matrix') {
+
+								data = prevData;
+						} else if (prevData.length) {
+
+								data = [];
+
+								for (var i = 0; i < prevData.length; ++i) {
+
+										data[i] = prevData[i] + (nextData[i] - prevData[i]) * scale;
+								}
+						} else {
+
+								data = prevData + (nextData - prevData) * scale;
+						}
+
+						key.addTarget(fullSid, prevTarget.transform, prevTarget.member, data);
+				}
+		}
+
+		function getNextKeyWith(keys, fullSid, ndx) {
+
+				for (; ndx < keys.length; ndx++) {
+
+						var key = keys[ndx];
+
+						if (key.hasTarget(fullSid)) {
+
+								return key;
+						}
+				}
+
+				return null;
+		}
+
+		function getPrevKeyWith(keys, fullSid, ndx) {
+
+				ndx = ndx >= 0 ? ndx : ndx + keys.length;
+
+				for (; ndx >= 0; ndx--) {
+
+						var key = keys[ndx];
+
+						if (key.hasTarget(fullSid)) {
+
+								return key;
+						}
+				}
+
+				return null;
+		}
+
+		function _Image() {
+
+				this.id = "";
+				this.init_from = "";
+		}
+
+		_Image.prototype.parse = function (element) {
+
+				this.id = element.getAttribute('id');
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+
+						if (child.nodeName === 'init_from') {
+
+								this.init_from = child.textContent;
+						}
+				}
+
+				return this;
 		};
 
-		for (var prop in this) {
+		function Controller() {
 
-			switch (prop) {
-
-				case 'ambient':
-				case 'emission':
-				case 'diffuse':
-				case 'specular':
-				case 'bump':
-				case 'normal':
-
-					var cot = this[prop];
-
-					if (cot instanceof ColorOrTexture) {
-
-						if (cot.isTexture()) {
-
-							var samplerId = cot.texture;
-							var sampler = this.effect.sampler[samplerId];
-
-							if (sampler !== undefined && sampler.source !== undefined) {
-
-								var surface = this.effect.surface[sampler.source];
-
-								if (surface !== undefined) {
-
-									var image = images[surface.init_from];
-
-									if (image) {
-
-										var url = baseUrl + image.init_from;
-
-										var texture;
-										var loader = __WEBPACK_IMPORTED_MODULE_1_three__["y" /* Loader */].Handlers.get(url);
-
-										if (loader !== null) {
-
-											texture = loader.load(url);
-										} else {
-
-											texture = new __WEBPACK_IMPORTED_MODULE_1_three__["z" /* Texture */]();
-
-											loadTextureImage(texture, url);
-										}
-
-										if (sampler.wrap_s === "MIRROR") {
-
-											texture.wrapS = __WEBPACK_IMPORTED_MODULE_1_three__["A" /* MirroredRepeatWrapping */];
-										} else if (sampler.wrap_s === "WRAP" || cot.texOpts.wrapU) {
-
-											texture.wrapS = __WEBPACK_IMPORTED_MODULE_1_three__["B" /* RepeatWrapping */];
-										} else {
-
-											texture.wrapS = __WEBPACK_IMPORTED_MODULE_1_three__["C" /* ClampToEdgeWrapping */];
-										}
-
-										if (sampler.wrap_t === "MIRROR") {
-
-											texture.wrapT = __WEBPACK_IMPORTED_MODULE_1_three__["A" /* MirroredRepeatWrapping */];
-										} else if (sampler.wrap_t === "WRAP" || cot.texOpts.wrapV) {
-
-											texture.wrapT = __WEBPACK_IMPORTED_MODULE_1_three__["B" /* RepeatWrapping */];
-										} else {
-
-											texture.wrapT = __WEBPACK_IMPORTED_MODULE_1_three__["C" /* ClampToEdgeWrapping */];
-										}
-
-										texture.offset.x = cot.texOpts.offsetU;
-										texture.offset.y = cot.texOpts.offsetV;
-										texture.repeat.x = cot.texOpts.repeatU;
-										texture.repeat.y = cot.texOpts.repeatV;
-										props[keys[prop]] = texture;
-
-										if (prop === 'emission') props['emissive'] = 0xffffff;
-									}
-								}
-							}
-						} else if (prop === 'diffuse' || !transparent) {
-
-							if (prop === 'emission') {
-
-								props['emissive'] = cot.color.getHex();
-							} else {
-
-								props[prop] = cot.color.getHex();
-							}
-						}
-					}
-
-					break;
-
-				case 'shininess':
-
-					props[prop] = this[prop];
-					break;
-
-				case 'reflectivity':
-
-					props[prop] = this[prop];
-					if (props[prop] > 0.0) props['envMap'] = options.defaultEnvMap;
-					props['combine'] = __WEBPACK_IMPORTED_MODULE_1_three__["D" /* MixOperation */];
-					break;
-
-				case 'index_of_refraction':
-
-					props['refractionRatio'] = this[prop];
-					if (this[prop] !== 1.0) props['envMap'] = options.defaultEnvMap;
-					break;
-
-				case 'transparency':
-					break;
-
-				default:
-					break;
-
-			}
+				this.id = "";
+				this.name = "";
+				this.type = "";
+				this.skin = null;
+				this.morph = null;
 		}
 
-		props['shading'] = preferredShading;
-		props['side'] = this.effect.doubleSided ? __WEBPACK_IMPORTED_MODULE_1_three__["i" /* DoubleSide */] : __WEBPACK_IMPORTED_MODULE_1_three__["k" /* FrontSide */];
+		Controller.prototype.parse = function (element) {
 
-		if (props.diffuse !== undefined) {
+				this.id = element.getAttribute('id');
+				this.name = element.getAttribute('name');
+				this.type = "none";
 
-			props.color = props.diffuse;
-			delete props.diffuse;
-		}
+				for (var i = 0; i < element.childNodes.length; i++) {
 
-		switch (this.type) {
-
-			case 'constant':
-
-				if (props.emissive != undefined) props.color = props.emissive;
-				this.material = new __WEBPACK_IMPORTED_MODULE_1_three__["E" /* MeshBasicMaterial */](props);
-				break;
-
-			case 'phong':
-			case 'blinn':
-
-				this.material = new __WEBPACK_IMPORTED_MODULE_1_three__["F" /* MeshPhongMaterial */](props);
-				break;
-
-			case 'lambert':
-			default:
-
-				this.material = new __WEBPACK_IMPORTED_MODULE_1_three__["j" /* MeshLambertMaterial */](props);
-				break;
-
-		}
-
-		return this.material;
-	};
-
-	function Surface(effect) {
-
-		this.effect = effect;
-		this.init_from = null;
-		this.format = null;
-	}
-
-	Surface.prototype.parse = function (element) {
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-			if (child.nodeType != 1) continue;
-
-			switch (child.nodeName) {
-
-				case 'init_from':
-
-					this.init_from = child.textContent;
-					break;
-
-				case 'format':
-
-					this.format = child.textContent;
-					break;
-
-				default:
-
-					console.log("unhandled Surface prop: " + child.nodeName);
-					break;
-
-			}
-		}
-
-		return this;
-	};
-
-	function Sampler2D(effect) {
-
-		this.effect = effect;
-		this.source = null;
-		this.wrap_s = null;
-		this.wrap_t = null;
-		this.minfilter = null;
-		this.magfilter = null;
-		this.mipfilter = null;
-	}
-
-	Sampler2D.prototype.parse = function (element) {
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-			if (child.nodeType != 1) continue;
-
-			switch (child.nodeName) {
-
-				case 'source':
-
-					this.source = child.textContent;
-					break;
-
-				case 'minfilter':
-
-					this.minfilter = child.textContent;
-					break;
-
-				case 'magfilter':
-
-					this.magfilter = child.textContent;
-					break;
-
-				case 'mipfilter':
-
-					this.mipfilter = child.textContent;
-					break;
-
-				case 'wrap_s':
-
-					this.wrap_s = child.textContent;
-					break;
-
-				case 'wrap_t':
-
-					this.wrap_t = child.textContent;
-					break;
-
-				default:
-
-					console.log("unhandled Sampler2D prop: " + child.nodeName);
-					break;
-
-			}
-		}
-
-		return this;
-	};
-
-	function Effect() {
-
-		this.id = "";
-		this.name = "";
-		this.shader = null;
-		this.surface = {};
-		this.sampler = {};
-	}
-
-	Effect.prototype.create = function () {
-
-		if (this.shader === null) {
-
-			return null;
-		}
-	};
-
-	Effect.prototype.parse = function (element) {
-
-		this.id = element.getAttribute('id');
-		this.name = element.getAttribute('name');
-
-		extractDoubleSided(this, element);
-
-		this.shader = null;
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-			if (child.nodeType != 1) continue;
-
-			switch (child.nodeName) {
-
-				case 'profile_COMMON':
-
-					this.parseTechnique(this.parseProfileCOMMON(child));
-					break;
-
-				default:
-					break;
-
-			}
-		}
-
-		return this;
-	};
-
-	Effect.prototype.parseNewparam = function (element) {
-
-		var sid = element.getAttribute('sid');
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-			if (child.nodeType != 1) continue;
-
-			switch (child.nodeName) {
-
-				case 'surface':
-
-					this.surface[sid] = new Surface(this).parse(child);
-					break;
-
-				case 'sampler2D':
-
-					this.sampler[sid] = new Sampler2D(this).parse(child);
-					break;
-
-				case 'extra':
-
-					break;
-
-				default:
-
-					console.log(child.nodeName);
-					break;
-
-			}
-		}
-	};
-
-	Effect.prototype.parseProfileCOMMON = function (element) {
-
-		var technique;
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-
-			if (child.nodeType != 1) continue;
-
-			switch (child.nodeName) {
-
-				case 'profile_COMMON':
-
-					this.parseProfileCOMMON(child);
-					break;
-
-				case 'technique':
-
-					technique = child;
-					break;
-
-				case 'newparam':
-
-					this.parseNewparam(child);
-					break;
-
-				case 'image':
-
-					var _image = new _Image().parse(child);
-					images[_image.id] = _image;
-					break;
-
-				case 'extra':
-					break;
-
-				default:
-
-					console.log(child.nodeName);
-					break;
-
-			}
-		}
-
-		return technique;
-	};
-
-	Effect.prototype.parseTechnique = function (element) {
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-			if (child.nodeType != 1) continue;
-
-			switch (child.nodeName) {
-
-				case 'constant':
-				case 'lambert':
-				case 'blinn':
-				case 'phong':
-
-					this.shader = new Shader(child.nodeName, this).parse(child);
-					break;
-				case 'extra':
-					this.parseExtra(child);
-					break;
-				default:
-					break;
-
-			}
-		}
-	};
-
-	Effect.prototype.parseExtra = function (element) {
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-			if (child.nodeType != 1) continue;
-
-			switch (child.nodeName) {
-
-				case 'technique':
-					this.parseExtraTechnique(child);
-					break;
-				default:
-					break;
-
-			}
-		}
-	};
-
-	Effect.prototype.parseExtraTechnique = function (element) {
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-			if (child.nodeType != 1) continue;
-
-			switch (child.nodeName) {
-
-				case 'bump':
-					this.shader.parse(element);
-					break;
-				default:
-					break;
-
-			}
-		}
-	};
-
-	function InstanceEffect() {
-
-		this.url = "";
-	}
-
-	InstanceEffect.prototype.parse = function (element) {
-
-		this.url = element.getAttribute('url').replace(/^#/, '');
-		return this;
-	};
-
-	function Animation() {
-
-		this.id = "";
-		this.name = "";
-		this.source = {};
-		this.sampler = [];
-		this.channel = [];
-	}
-
-	Animation.prototype.parse = function (element) {
-
-		this.id = element.getAttribute('id');
-		this.name = element.getAttribute('name');
-		this.source = {};
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-
-			if (child.nodeType != 1) continue;
-
-			switch (child.nodeName) {
-
-				case 'animation':
-
-					var anim = new Animation().parse(child);
-
-					for (var src in anim.source) {
-
-						this.source[src] = anim.source[src];
-					}
-
-					for (var j = 0; j < anim.channel.length; j++) {
-
-						this.channel.push(anim.channel[j]);
-						this.sampler.push(anim.sampler[j]);
-					}
-
-					break;
-
-				case 'source':
-
-					var src = new Source().parse(child);
-					this.source[src.id] = src;
-					break;
-
-				case 'sampler':
-
-					this.sampler.push(new Sampler(this).parse(child));
-					break;
-
-				case 'channel':
-
-					this.channel.push(new Channel(this).parse(child));
-					break;
-
-				default:
-					break;
-
-			}
-		}
-
-		return this;
-	};
-
-	function Channel(animation) {
-
-		this.animation = animation;
-		this.source = "";
-		this.target = "";
-		this.fullSid = null;
-		this.sid = null;
-		this.dotSyntax = null;
-		this.arrSyntax = null;
-		this.arrIndices = null;
-		this.member = null;
-	}
-
-	Channel.prototype.parse = function (element) {
-
-		this.source = element.getAttribute('source').replace(/^#/, '');
-		this.target = element.getAttribute('target');
-
-		var parts = this.target.split('/');
-
-		var id = parts.shift();
-		var sid = parts.shift();
-
-		var dotSyntax = sid.indexOf(".") >= 0;
-		var arrSyntax = sid.indexOf("(") >= 0;
-
-		if (dotSyntax) {
-
-			parts = sid.split(".");
-			this.sid = parts.shift();
-			this.member = parts.shift();
-		} else if (arrSyntax) {
-
-			var arrIndices = sid.split("(");
-			this.sid = arrIndices.shift();
-
-			for (var j = 0; j < arrIndices.length; j++) {
-
-				arrIndices[j] = parseInt(arrIndices[j].replace(/\)/, ''));
-			}
-
-			this.arrIndices = arrIndices;
-		} else {
-
-			this.sid = sid;
-		}
-
-		this.fullSid = sid;
-		this.dotSyntax = dotSyntax;
-		this.arrSyntax = arrSyntax;
-
-		return this;
-	};
-
-	function Sampler(animation) {
-
-		this.id = "";
-		this.animation = animation;
-		this.inputs = [];
-		this.input = null;
-		this.output = null;
-		this.strideOut = null;
-		this.interpolation = null;
-		this.startTime = null;
-		this.endTime = null;
-		this.duration = 0;
-	}
-
-	Sampler.prototype.parse = function (element) {
-
-		this.id = element.getAttribute('id');
-		this.inputs = [];
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-			if (child.nodeType != 1) continue;
-
-			switch (child.nodeName) {
-
-				case 'input':
-
-					this.inputs.push(new Input().parse(child));
-					break;
-
-				default:
-					break;
-
-			}
-		}
-
-		return this;
-	};
-
-	Sampler.prototype.create = function () {
-
-		for (var i = 0; i < this.inputs.length; i++) {
-
-			var input = this.inputs[i];
-			var source = this.animation.source[input.source];
-
-			switch (input.semantic) {
-
-				case 'INPUT':
-
-					this.input = source.read();
-					break;
-
-				case 'OUTPUT':
-
-					this.output = source.read();
-					this.strideOut = source.accessor.stride;
-					break;
-
-				case 'INTERPOLATION':
-
-					this.interpolation = source.read();
-					break;
-
-				case 'IN_TANGENT':
-
-					break;
-
-				case 'OUT_TANGENT':
-
-					break;
-
-				default:
-
-					console.log(input.semantic);
-					break;
-
-			}
-		}
-
-		this.startTime = 0;
-		this.endTime = 0;
-		this.duration = 0;
-
-		if (this.input.length) {
-
-			this.startTime = 100000000;
-			this.endTime = -100000000;
-
-			for (var i = 0; i < this.input.length; i++) {
-
-				this.startTime = Math.min(this.startTime, this.input[i]);
-				this.endTime = Math.max(this.endTime, this.input[i]);
-			}
-
-			this.duration = this.endTime - this.startTime;
-		}
-	};
-
-	Sampler.prototype.getData = function (type, ndx, member) {
-
-		var data;
-
-		if (type === 'matrix' && this.strideOut === 16) {
-
-			data = this.output[ndx];
-		} else if (this.strideOut > 1) {
-
-			data = [];
-			ndx *= this.strideOut;
-
-			for (var i = 0; i < this.strideOut; ++i) {
-
-				data[i] = this.output[ndx + i];
-			}
-
-			if (this.strideOut === 3) {
-
-				switch (type) {
-
-					case 'rotate':
-					case 'translate':
-
-						fixCoords(data, -1);
-						break;
-
-					case 'scale':
-
-						fixCoords(data, 1);
-						break;
-
-				}
-			} else if (this.strideOut === 4 && type === 'matrix') {
-
-				fixCoords(data, -1);
-			}
-		} else {
-
-			data = this.output[ndx];
-
-			if (member && type === 'translate') {
-				data = getConvertedTranslation(member, data);
-			}
-		}
-
-		return data;
-	};
-
-	function Key(time) {
-
-		this.targets = [];
-		this.time = time;
-	}
-
-	Key.prototype.addTarget = function (fullSid, transform, member, data) {
-
-		this.targets.push({
-			sid: fullSid,
-			member: member,
-			transform: transform,
-			data: data
-		});
-	};
-
-	Key.prototype.apply = function (opt_sid) {
-
-		for (var i = 0; i < this.targets.length; ++i) {
-
-			var target = this.targets[i];
-
-			if (!opt_sid || target.sid === opt_sid) {
-
-				target.transform.update(target.data, target.member);
-			}
-		}
-	};
-
-	Key.prototype.getTarget = function (fullSid) {
-
-		for (var i = 0; i < this.targets.length; ++i) {
-
-			if (this.targets[i].sid === fullSid) {
-
-				return this.targets[i];
-			}
-		}
-
-		return null;
-	};
-
-	Key.prototype.hasTarget = function (fullSid) {
-
-		for (var i = 0; i < this.targets.length; ++i) {
-
-			if (this.targets[i].sid === fullSid) {
-
-				return true;
-			}
-		}
-
-		return false;
-	};
-
-	Key.prototype.interpolate = function (nextKey, time) {
-
-		for (var i = 0, l = this.targets.length; i < l; i++) {
-
-			var target = this.targets[i],
-			    nextTarget = nextKey.getTarget(target.sid),
-			    data;
-
-			if (target.transform.type !== 'matrix' && nextTarget) {
-
-				var scale = (time - this.time) / (nextKey.time - this.time),
-				    nextData = nextTarget.data,
-				    prevData = target.data;
-
-				if (scale < 0) scale = 0;
-				if (scale > 1) scale = 1;
-
-				if (prevData.length) {
-
-					data = [];
-
-					for (var j = 0; j < prevData.length; ++j) {
-
-						data[j] = prevData[j] + (nextData[j] - prevData[j]) * scale;
-					}
-				} else {
-
-					data = prevData + (nextData - prevData) * scale;
-				}
-			} else {
-
-				data = target.data;
-			}
-
-			target.transform.update(data, target.member);
-		}
-	};
-
-	function Camera() {
-
-		this.id = "";
-		this.name = "";
-		this.technique = "";
-	}
-
-	Camera.prototype.parse = function (element) {
-
-		this.id = element.getAttribute('id');
-		this.name = element.getAttribute('name');
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-			if (child.nodeType != 1) continue;
-
-			switch (child.nodeName) {
-
-				case 'optics':
-
-					this.parseOptics(child);
-					break;
-
-				default:
-					break;
-
-			}
-		}
-
-		return this;
-	};
-
-	Camera.prototype.parseOptics = function (element) {
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			if (element.childNodes[i].nodeName === 'technique_common') {
-
-				var technique = element.childNodes[i];
-
-				for (var j = 0; j < technique.childNodes.length; j++) {
-
-					this.technique = technique.childNodes[j].nodeName;
-
-					if (this.technique === 'perspective') {
-
-						var perspective = technique.childNodes[j];
-
-						for (var k = 0; k < perspective.childNodes.length; k++) {
-
-							var param = perspective.childNodes[k];
-
-							switch (param.nodeName) {
-
-								case 'yfov':
-									this.yfov = param.textContent;
-									break;
-								case 'xfov':
-									this.xfov = param.textContent;
-									break;
-								case 'znear':
-									this.znear = param.textContent;
-									break;
-								case 'zfar':
-									this.zfar = param.textContent;
-									break;
-								case 'aspect_ratio':
-									this.aspect_ratio = param.textContent;
-									break;
-
-							}
-						}
-					} else if (this.technique === 'orthographic') {
-
-						var orthographic = technique.childNodes[j];
-
-						for (var k = 0; k < orthographic.childNodes.length; k++) {
-
-							var param = orthographic.childNodes[k];
-
-							switch (param.nodeName) {
-
-								case 'xmag':
-									this.xmag = param.textContent;
-									break;
-								case 'ymag':
-									this.ymag = param.textContent;
-									break;
-								case 'znear':
-									this.znear = param.textContent;
-									break;
-								case 'zfar':
-									this.zfar = param.textContent;
-									break;
-								case 'aspect_ratio':
-									this.aspect_ratio = param.textContent;
-									break;
-
-							}
-						}
-					}
-				}
-			}
-		}
-
-		return this;
-	};
-
-	function InstanceCamera() {
-
-		this.url = "";
-	}
-
-	InstanceCamera.prototype.parse = function (element) {
-
-		this.url = element.getAttribute('url').replace(/^#/, '');
-
-		return this;
-	};
-
-	function Light() {
-
-		this.id = "";
-		this.name = "";
-		this.technique = "";
-	}
-
-	Light.prototype.parse = function (element) {
-
-		this.id = element.getAttribute('id');
-		this.name = element.getAttribute('name');
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-			if (child.nodeType != 1) continue;
-
-			switch (child.nodeName) {
-
-				case 'technique_common':
-
-					this.parseCommon(child);
-					break;
-
-				case 'technique':
-
-					this.parseTechnique(child);
-					break;
-
-				default:
-					break;
-
-			}
-		}
-
-		return this;
-	};
-
-	Light.prototype.parseCommon = function (element) {
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			switch (element.childNodes[i].nodeName) {
-
-				case 'directional':
-				case 'point':
-				case 'spot':
-				case 'ambient':
-
-					this.technique = element.childNodes[i].nodeName;
-
-					var light = element.childNodes[i];
-
-					for (var j = 0; j < light.childNodes.length; j++) {
-
-						var child = light.childNodes[j];
+						var child = element.childNodes[i];
 
 						switch (child.nodeName) {
 
-							case 'color':
+								case 'skin':
 
-								var rgba = _floats(child.textContent);
-								this.color = new __WEBPACK_IMPORTED_MODULE_1_three__["w" /* Color */](0);
-								this.color.setRGB(rgba[0], rgba[1], rgba[2]);
-								this.color.a = rgba[3];
-								break;
+										this.skin = new Skin().parse(child);
+										this.type = child.nodeName;
+										break;
 
-							case 'falloff_angle':
+								case 'morph':
 
-								this.falloff_angle = parseFloat(child.textContent);
-								break;
+										this.morph = new Morph().parse(child);
+										this.type = child.nodeName;
+										break;
 
-							case 'quadratic_attenuation':
-								var f = parseFloat(child.textContent);
-								this.distance = f ? Math.sqrt(1 / f) : 0;
+								default:
+										break;
+
 						}
-					}
+				}
 
-			}
-		}
-
-		return this;
-	};
-
-	Light.prototype.parseTechnique = function (element) {
-
-		this.profile = element.getAttribute('profile');
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-
-			switch (child.nodeName) {
-
-				case 'intensity':
-
-					this.intensity = parseFloat(child.textContent);
-					break;
-
-			}
-		}
-
-		return this;
-	};
-
-	function InstanceLight() {
-
-		this.url = "";
-	}
-
-	InstanceLight.prototype.parse = function (element) {
-
-		this.url = element.getAttribute('url').replace(/^#/, '');
-
-		return this;
-	};
-
-	function KinematicsModel() {
-
-		this.id = '';
-		this.name = '';
-		this.joints = [];
-		this.links = [];
-	}
-
-	KinematicsModel.prototype.parse = function (element) {
-
-		this.id = element.getAttribute('id');
-		this.name = element.getAttribute('name');
-		this.joints = [];
-		this.links = [];
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-			if (child.nodeType != 1) continue;
-
-			switch (child.nodeName) {
-
-				case 'technique_common':
-
-					this.parseCommon(child);
-					break;
-
-				default:
-					break;
-
-			}
-		}
-
-		return this;
-	};
-
-	KinematicsModel.prototype.parseCommon = function (element) {
-
-		for (var i = 0; i < element.childNodes.length; i++) {
-
-			var child = element.childNodes[i];
-			if (child.nodeType != 1) continue;
-
-			switch (element.childNodes[i].nodeName) {
-
-				case 'joint':
-					this.joints.push(new Joint().parse(child));
-					break;
-
-				case 'link':
-					this.links.push(new Link().parse(child));
-					break;
-
-				default:
-					break;
-
-			}
-		}
-
-		return this;
-	};
-
-	function Joint() {
-
-		this.sid = '';
-		this.name = '';
-		this.axis = new __WEBPACK_IMPORTED_MODULE_1_three__["d" /* Vector3 */]();
-		this.limits = {
-			min: 0,
-			max: 0
-		};
-		this.type = '';
-		this.static = false;
-		this.zeroPosition = 0.0;
-		this.middlePosition = 0.0;
-	}
-
-	Joint.prototype.parse = function (element) {
-
-		this.sid = element.getAttribute('sid');
-		this.name = element.getAttribute('name');
-		this.axis = new __WEBPACK_IMPORTED_MODULE_1_three__["d" /* Vector3 */]();
-		this.limits = {
-			min: 0,
-			max: 0
-		};
-		this.type = '';
-		this.static = false;
-		this.zeroPosition = 0.0;
-		this.middlePosition = 0.0;
-
-		var axisElement = element.querySelector('axis');
-		var _axis = _floats(axisElement.textContent);
-		this.axis = getConvertedVec3(_axis, 0);
-
-		var min = element.querySelector('limits min') ? parseFloat(element.querySelector('limits min').textContent) : -360;
-		var max = element.querySelector('limits max') ? parseFloat(element.querySelector('limits max').textContent) : 360;
-
-		this.limits = {
-			min: min,
-			max: max
+				return this;
 		};
 
-		var jointTypes = ['prismatic', 'revolute'];
-		for (var i = 0; i < jointTypes.length; i++) {
+		function Morph() {
 
-			var type = jointTypes[i];
+				this.method = null;
+				this.source = null;
+				this.targets = null;
+				this.weights = null;
+		}
 
-			var jointElement = element.querySelector(type);
+		Morph.prototype.parse = function (element) {
 
-			if (jointElement) {
+				var sources = {};
+				var inputs = [];
+				var i;
+
+				this.method = element.getAttribute('method');
+				this.source = element.getAttribute('source').replace(/^#/, '');
+
+				for (i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+						if (child.nodeType != 1) continue;
+
+						switch (child.nodeName) {
+
+								case 'source':
+
+										var source = new Source().parse(child);
+										sources[source.id] = source;
+										break;
+
+								case 'targets':
+
+										inputs = this.parseInputs(child);
+										break;
+
+								default:
+
+										console.log(child.nodeName);
+										break;
+
+						}
+				}
+
+				for (i = 0; i < inputs.length; i++) {
+
+						var input = inputs[i];
+						var source = sources[input.source];
+
+						switch (input.semantic) {
+
+								case 'MORPH_TARGET':
+
+										this.targets = source.read();
+										break;
+
+								case 'MORPH_WEIGHT':
+
+										this.weights = source.read();
+										break;
+
+								default:
+										break;
+
+						}
+				}
+
+				return this;
+		};
+
+		Morph.prototype.parseInputs = function (element) {
+
+				var inputs = [];
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+						if (child.nodeType != 1) continue;
+
+						switch (child.nodeName) {
+
+								case 'input':
+
+										inputs.push(new Input().parse(child));
+										break;
+
+								default:
+										break;
+						}
+				}
+
+				return inputs;
+		};
+
+		function Skin() {
+
+				this.source = "";
+				this.bindShapeMatrix = null;
+				this.invBindMatrices = [];
+				this.joints = [];
+				this.weights = [];
+		}
+
+		Skin.prototype.parse = function (element) {
+
+				var sources = {};
+				var joints, weights;
+
+				this.source = element.getAttribute('source').replace(/^#/, '');
+				this.invBindMatrices = [];
+				this.joints = [];
+				this.weights = [];
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+						if (child.nodeType != 1) continue;
+
+						switch (child.nodeName) {
+
+								case 'bind_shape_matrix':
+
+										var f = _floats(child.textContent);
+										this.bindShapeMatrix = getConvertedMat4(f);
+										break;
+
+								case 'source':
+
+										var src = new Source().parse(child);
+										sources[src.id] = src;
+										break;
+
+								case 'joints':
+
+										joints = child;
+										break;
+
+								case 'vertex_weights':
+
+										weights = child;
+										break;
+
+								default:
+
+										console.log(child.nodeName);
+										break;
+
+						}
+				}
+
+				this.parseJoints(joints, sources);
+				this.parseWeights(weights, sources);
+
+				return this;
+		};
+
+		Skin.prototype.parseJoints = function (element, sources) {
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+						if (child.nodeType != 1) continue;
+
+						switch (child.nodeName) {
+
+								case 'input':
+
+										var input = new Input().parse(child);
+										var source = sources[input.source];
+
+										if (input.semantic === 'JOINT') {
+
+												this.joints = source.read();
+										} else if (input.semantic === 'INV_BIND_MATRIX') {
+
+												this.invBindMatrices = source.read();
+										}
+
+										break;
+
+								default:
+										break;
+						}
+				}
+		};
+
+		Skin.prototype.parseWeights = function (element, sources) {
+
+				var v,
+				    vcount,
+				    inputs = [];
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+						if (child.nodeType != 1) continue;
+
+						switch (child.nodeName) {
+
+								case 'input':
+
+										inputs.push(new Input().parse(child));
+										break;
+
+								case 'v':
+
+										v = _ints(child.textContent);
+										break;
+
+								case 'vcount':
+
+										vcount = _ints(child.textContent);
+										break;
+
+								default:
+										break;
+
+						}
+				}
+
+				var index = 0;
+
+				for (var i = 0; i < vcount.length; i++) {
+
+						var numBones = vcount[i];
+						var vertex_weights = [];
+
+						for (var j = 0; j < numBones; j++) {
+
+								var influence = {};
+
+								for (var k = 0; k < inputs.length; k++) {
+
+										var input = inputs[k];
+										var value = v[index + input.offset];
+
+										switch (input.semantic) {
+
+												case 'JOINT':
+
+														influence.joint = value;
+														break;
+
+												case 'WEIGHT':
+
+														influence.weight = sources[input.source].data[value];
+														break;
+
+												default:
+														break;
+
+										}
+								}
+
+								vertex_weights.push(influence);
+								index += inputs.length;
+						}
+
+						for (var j = 0; j < vertex_weights.length; j++) {
+
+								vertex_weights[j].index = i;
+						}
+
+						this.weights.push(vertex_weights);
+				}
+		};
+
+		function VisualScene() {
+
+				this.id = "";
+				this.name = "";
+				this.nodes = [];
+				this.scene = new __WEBPACK_IMPORTED_MODULE_1_three__["b" /* Group */]();
+		}
+
+		VisualScene.prototype.getChildById = function (id, recursive) {
+
+				for (var i = 0; i < this.nodes.length; i++) {
+
+						var node = this.nodes[i].getChildById(id, recursive);
+
+						if (node) {
+
+								return node;
+						}
+				}
+
+				return null;
+		};
+
+		VisualScene.prototype.getChildBySid = function (sid, recursive) {
+
+				for (var i = 0; i < this.nodes.length; i++) {
+
+						var node = this.nodes[i].getChildBySid(sid, recursive);
+
+						if (node) {
+
+								return node;
+						}
+				}
+
+				return null;
+		};
+
+		VisualScene.prototype.parse = function (element) {
+
+				this.id = element.getAttribute('id');
+				this.name = element.getAttribute('name');
+				this.nodes = [];
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+						if (child.nodeType != 1) continue;
+
+						switch (child.nodeName) {
+
+								case 'node':
+
+										this.nodes.push(new Node().parse(child));
+										break;
+
+								default:
+										break;
+
+						}
+				}
+
+				return this;
+		};
+
+		function Node() {
+
+				this.id = "";
+				this.name = "";
+				this.sid = "";
+				this.nodes = [];
+				this.controllers = [];
+				this.transforms = [];
+				this.geometries = [];
+				this.channels = [];
+				this.matrix = new __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]();
+		}
+
+		Node.prototype.getChannelForTransform = function (transformSid) {
+
+				for (var i = 0; i < this.channels.length; i++) {
+
+						var channel = this.channels[i];
+						var parts = channel.target.split('/');
+						var id = parts.shift();
+						var sid = parts.shift();
+						var dotSyntax = sid.indexOf(".") >= 0;
+						var arrSyntax = sid.indexOf("(") >= 0;
+						var arrIndices;
+
+						if (dotSyntax) {
+
+								parts = sid.split(".");
+								sid = parts.shift();
+						} else if (arrSyntax) {
+
+								arrIndices = sid.split("(");
+								sid = arrIndices.shift();
+
+								for (var j = 0; j < arrIndices.length; j++) {
+
+										arrIndices[j] = parseInt(arrIndices[j].replace(/\)/, ''));
+								}
+						}
+
+						if (sid === transformSid) {
+
+								channel.info = { sid: sid, dotSyntax: dotSyntax, arrSyntax: arrSyntax, arrIndices: arrIndices };
+								return channel;
+						}
+				}
+
+				return null;
+		};
+
+		Node.prototype.getChildById = function (id, recursive) {
+
+				if (this.id === id) {
+
+						return this;
+				}
+
+				if (recursive) {
+
+						for (var i = 0; i < this.nodes.length; i++) {
+
+								var n = this.nodes[i].getChildById(id, recursive);
+
+								if (n) {
+
+										return n;
+								}
+						}
+				}
+
+				return null;
+		};
+
+		Node.prototype.getChildBySid = function (sid, recursive) {
+
+				if (this.sid === sid) {
+
+						return this;
+				}
+
+				if (recursive) {
+
+						for (var i = 0; i < this.nodes.length; i++) {
+
+								var n = this.nodes[i].getChildBySid(sid, recursive);
+
+								if (n) {
+
+										return n;
+								}
+						}
+				}
+
+				return null;
+		};
+
+		Node.prototype.getTransformBySid = function (sid) {
+
+				for (var i = 0; i < this.transforms.length; i++) {
+
+						if (this.transforms[i].sid === sid) return this.transforms[i];
+				}
+
+				return null;
+		};
+
+		Node.prototype.parse = function (element) {
+
+				var url;
+
+				this.id = element.getAttribute('id');
+				this.sid = element.getAttribute('sid');
+				this.name = element.getAttribute('name');
+				this.type = element.getAttribute('type');
+				this.layer = element.getAttribute('layer');
+
+				this.type = this.type === 'JOINT' ? this.type : 'NODE';
+
+				this.nodes = [];
+				this.transforms = [];
+				this.geometries = [];
+				this.cameras = [];
+				this.lights = [];
+				this.controllers = [];
+				this.matrix = new __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]();
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+						if (child.nodeType != 1) continue;
+
+						switch (child.nodeName) {
+
+								case 'node':
+
+										this.nodes.push(new Node().parse(child));
+										break;
+
+								case 'instance_camera':
+
+										this.cameras.push(new InstanceCamera().parse(child));
+										break;
+
+								case 'instance_controller':
+
+										this.controllers.push(new InstanceController().parse(child));
+										break;
+
+								case 'instance_geometry':
+
+										this.geometries.push(new InstanceGeometry().parse(child));
+										break;
+
+								case 'instance_light':
+
+										this.lights.push(new InstanceLight().parse(child));
+										break;
+
+								case 'instance_node':
+
+										url = child.getAttribute('url').replace(/^#/, '');
+										var iNode = getLibraryNode(url);
+
+										if (iNode) {
+
+												this.nodes.push(new Node().parse(iNode));
+										}
+
+										break;
+
+								case 'rotate':
+								case 'translate':
+								case 'scale':
+								case 'matrix':
+								case 'lookat':
+								case 'skew':
+
+										this.transforms.push(new Transform().parse(child));
+										break;
+
+								case 'extra':
+										break;
+
+								default:
+
+										console.log(child.nodeName);
+										break;
+
+						}
+				}
+
+				this.channels = getChannelsForNode(this);
+				bakeAnimations(this);
+
+				this.updateMatrix();
+
+				return this;
+		};
+
+		Node.prototype.updateMatrix = function () {
+
+				this.matrix.identity();
+
+				for (var i = 0; i < this.transforms.length; i++) {
+
+						this.transforms[i].apply(this.matrix);
+				}
+		};
+
+		function Transform() {
+
+				this.sid = "";
+				this.type = "";
+				this.data = [];
+				this.obj = null;
+		}
+
+		Transform.prototype.parse = function (element) {
+
+				this.sid = element.getAttribute('sid');
+				this.type = element.nodeName;
+				this.data = _floats(element.textContent);
+				this.convert();
+
+				return this;
+		};
+
+		Transform.prototype.convert = function () {
+
+				switch (this.type) {
+
+						case 'matrix':
+
+								this.obj = getConvertedMat4(this.data);
+								break;
+
+						case 'rotate':
+
+								this.angle = __WEBPACK_IMPORTED_MODULE_1_three__["g" /* Math */].degToRad(this.data[3]);
+
+						case 'translate':
+
+								fixCoords(this.data, -1);
+								this.obj = new __WEBPACK_IMPORTED_MODULE_1_three__["d" /* Vector3 */](this.data[0], this.data[1], this.data[2]);
+								break;
+
+						case 'scale':
+
+								fixCoords(this.data, 1);
+								this.obj = new __WEBPACK_IMPORTED_MODULE_1_three__["d" /* Vector3 */](this.data[0], this.data[1], this.data[2]);
+								break;
+
+						default:
+								console.log('Can not convert Transform of type ' + this.type);
+								break;
+
+				}
+		};
+
+		Transform.prototype.apply = function () {
+
+				var m1 = new __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]();
+
+				return function (matrix) {
+
+						switch (this.type) {
+
+								case 'matrix':
+
+										matrix.multiply(this.obj);
+
+										break;
+
+								case 'translate':
+
+										matrix.multiply(m1.makeTranslation(this.obj.x, this.obj.y, this.obj.z));
+
+										break;
+
+								case 'rotate':
+
+										matrix.multiply(m1.makeRotationAxis(this.obj, this.angle));
+
+										break;
+
+								case 'scale':
+
+										matrix.scale(this.obj);
+
+										break;
+
+						}
+				};
+		}();
+
+		Transform.prototype.update = function (data, member) {
+
+				var members = ['X', 'Y', 'Z', 'ANGLE'];
+
+				switch (this.type) {
+
+						case 'matrix':
+
+								if (!member) {
+
+										this.obj.copy(data);
+								} else if (member.length === 1) {
+
+										switch (member[0]) {
+
+												case 0:
+
+														this.obj.n11 = data[0];
+														this.obj.n21 = data[1];
+														this.obj.n31 = data[2];
+														this.obj.n41 = data[3];
+
+														break;
+
+												case 1:
+
+														this.obj.n12 = data[0];
+														this.obj.n22 = data[1];
+														this.obj.n32 = data[2];
+														this.obj.n42 = data[3];
+
+														break;
+
+												case 2:
+
+														this.obj.n13 = data[0];
+														this.obj.n23 = data[1];
+														this.obj.n33 = data[2];
+														this.obj.n43 = data[3];
+
+														break;
+
+												case 3:
+
+														this.obj.n14 = data[0];
+														this.obj.n24 = data[1];
+														this.obj.n34 = data[2];
+														this.obj.n44 = data[3];
+
+														break;
+
+										}
+								} else if (member.length === 2) {
+
+										var propName = 'n' + (member[0] + 1) + (member[1] + 1);
+										this.obj[propName] = data;
+								} else {
+
+										console.log('Incorrect addressing of matrix in transform.');
+								}
+
+								break;
+
+						case 'translate':
+						case 'scale':
+
+								if (Object.prototype.toString.call(member) === '[object Array]') {
+
+										member = members[member[0]];
+								}
+
+								switch (member) {
+
+										case 'X':
+
+												this.obj.x = data;
+												break;
+
+										case 'Y':
+
+												this.obj.y = data;
+												break;
+
+										case 'Z':
+
+												this.obj.z = data;
+												break;
+
+										default:
+
+												this.obj.x = data[0];
+												this.obj.y = data[1];
+												this.obj.z = data[2];
+												break;
+
+								}
+
+								break;
+
+						case 'rotate':
+
+								if (Object.prototype.toString.call(member) === '[object Array]') {
+
+										member = members[member[0]];
+								}
+
+								switch (member) {
+
+										case 'X':
+
+												this.obj.x = data;
+												break;
+
+										case 'Y':
+
+												this.obj.y = data;
+												break;
+
+										case 'Z':
+
+												this.obj.z = data;
+												break;
+
+										case 'ANGLE':
+
+												this.angle = __WEBPACK_IMPORTED_MODULE_1_three__["g" /* Math */].degToRad(data);
+												break;
+
+										default:
+
+												this.obj.x = data[0];
+												this.obj.y = data[1];
+												this.obj.z = data[2];
+												this.angle = __WEBPACK_IMPORTED_MODULE_1_three__["g" /* Math */].degToRad(data[3]);
+												break;
+
+								}
+								break;
+
+				}
+		};
+
+		function InstanceController() {
+
+				this.url = "";
+				this.skeleton = [];
+				this.instance_material = [];
+		}
+
+		InstanceController.prototype.parse = function (element) {
+
+				this.url = element.getAttribute('url').replace(/^#/, '');
+				this.skeleton = [];
+				this.instance_material = [];
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+						if (child.nodeType !== 1) continue;
+
+						switch (child.nodeName) {
+
+								case 'skeleton':
+
+										this.skeleton.push(child.textContent.replace(/^#/, ''));
+										break;
+
+								case 'bind_material':
+
+										var instances = child.querySelectorAll('instance_material');
+
+										for (var j = 0; j < instances.length; j++) {
+
+												var instance = instances[j];
+												this.instance_material.push(new InstanceMaterial().parse(instance));
+										}
+
+										break;
+
+								case 'extra':
+										break;
+
+								default:
+										break;
+
+						}
+				}
+
+				return this;
+		};
+
+		function InstanceMaterial() {
+
+				this.symbol = "";
+				this.target = "";
+		}
+
+		InstanceMaterial.prototype.parse = function (element) {
+
+				this.symbol = element.getAttribute('symbol');
+				this.target = element.getAttribute('target').replace(/^#/, '');
+				return this;
+		};
+
+		function InstanceGeometry() {
+
+				this.url = "";
+				this.instance_material = [];
+		}
+
+		InstanceGeometry.prototype.parse = function (element) {
+
+				this.url = element.getAttribute('url').replace(/^#/, '');
+				this.instance_material = [];
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+						if (child.nodeType != 1) continue;
+
+						if (child.nodeName === 'bind_material') {
+
+								var instances = child.querySelectorAll('instance_material');
+
+								for (var j = 0; j < instances.length; j++) {
+
+										var instance = instances[j];
+										this.instance_material.push(new InstanceMaterial().parse(instance));
+								}
+
+								break;
+						}
+				}
+
+				return this;
+		};
+
+		function Geometry() {
+
+				this.id = "";
+				this.mesh = null;
+		}
+
+		Geometry.prototype.parse = function (element) {
+
+				this.id = element.getAttribute('id');
+
+				extractDoubleSided(this, element);
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+
+						switch (child.nodeName) {
+
+								case 'mesh':
+
+										this.mesh = new Mesh(this).parse(child);
+										break;
+
+								case 'extra':
+										break;
+
+								default:
+										break;
+						}
+				}
+
+				return this;
+		};
+
+		function Mesh(geometry) {
+
+				this.geometry = geometry.id;
+				this.primitives = [];
+				this.vertices = null;
+				this.geometry3js = null;
+		}
+
+		Mesh.prototype.parse = function (element) {
+
+				this.primitives = [];
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+
+						switch (child.nodeName) {
+
+								case 'source':
+
+										_source(child);
+										break;
+
+								case 'vertices':
+
+										this.vertices = new Vertices().parse(child);
+										break;
+
+								case 'linestrips':
+
+										this.primitives.push(new LineStrips().parse(child));
+										break;
+
+								case 'triangles':
+
+										this.primitives.push(new Triangles().parse(child));
+										break;
+
+								case 'polygons':
+
+										this.primitives.push(new Polygons().parse(child));
+										break;
+
+								case 'polylist':
+
+										this.primitives.push(new Polylist().parse(child));
+										break;
+
+								default:
+										break;
+
+						}
+				}
+
+				this.geometry3js = new __WEBPACK_IMPORTED_MODULE_1_three__["u" /* Geometry */]();
+
+				if (this.vertices === null) {
+
+						return this;
+				}
+
+				var vertexData = sources[this.vertices.input['POSITION'].source].data;
+
+				for (var i = 0; i < vertexData.length; i += 3) {
+
+						this.geometry3js.vertices.push(getConvertedVec3(vertexData, i).clone());
+				}
+
+				for (var i = 0; i < this.primitives.length; i++) {
+
+						var primitive = this.primitives[i];
+						primitive.setVertices(this.vertices);
+						this.handlePrimitive(primitive, this.geometry3js);
+				}
+
+				if (this.geometry3js.calcNormals) {
+
+						this.geometry3js.computeVertexNormals();
+						delete this.geometry3js.calcNormals;
+				}
+
+				return this;
+		};
+
+		Mesh.prototype.handlePrimitive = function (primitive, geom) {
+
+				if (primitive instanceof LineStrips) {
+
+						geom.isLineStrip = true;
+						return;
+				}
+
+				var j,
+				    k,
+				    pList = primitive.p,
+				    inputs = primitive.inputs;
+				var input, index, idx32;
+				var source, numParams;
+				var vcount,
+				    vcIndex = 0,
+				    maxOffset = 0;
+				var texture_sets = [];
+
+				for (j = 0; j < inputs.length; j++) {
+
+						input = inputs[j];
+
+						var offset = input.offset + 1;
+						maxOffset = maxOffset < offset ? offset : maxOffset;
+
+						switch (input.semantic) {
+
+								case 'TEXCOORD':
+										texture_sets.push(input.set);
+										break;
+
+						}
+				}
+
+				for (var pCount = 0; pCount < pList.length; ++pCount) {
+
+						var p = pList[pCount],
+						    i = 0;
+
+						while (i < p.length) {
+
+								var vs = [];
+								var ns = [];
+								var ts = null;
+								var cs = [];
+
+								if (primitive.vcount) {
+
+										vcount = primitive.vcount.length ? primitive.vcount[vcIndex++] : primitive.vcount;
+								} else {
+
+										vcount = p.length / maxOffset;
+								}
+
+								for (j = 0; j < vcount; j++) {
+
+										for (k = 0; k < inputs.length; k++) {
+
+												input = inputs[k];
+												source = sources[input.source];
+
+												index = p[i + j * maxOffset + input.offset];
+												numParams = source.accessor.params.length;
+												idx32 = index * numParams;
+
+												switch (input.semantic) {
+
+														case 'VERTEX':
+
+																vs.push(index);
+
+																break;
+
+														case 'NORMAL':
+
+																ns.push(getConvertedVec3(source.data, idx32));
+
+																break;
+
+														case 'TEXCOORD':
+
+																ts = ts || {};
+																if (ts[input.set] === undefined) ts[input.set] = [];
+
+																ts[input.set].push(new __WEBPACK_IMPORTED_MODULE_1_three__["v" /* Vector2 */](source.data[idx32], source.data[idx32 + 1]));
+
+																break;
+
+														case 'COLOR':
+
+																cs.push(new __WEBPACK_IMPORTED_MODULE_1_three__["w" /* Color */]().setRGB(source.data[idx32], source.data[idx32 + 1], source.data[idx32 + 2]));
+
+																break;
+
+														default:
+
+																break;
+
+												}
+										}
+								}
+
+								if (ns.length === 0) {
+										input = this.vertices.input.NORMAL;
+
+										if (input) {
+
+												source = sources[input.source];
+												numParams = source.accessor.params.length;
+
+												for (var ndx = 0, len = vs.length; ndx < len; ndx++) {
+
+														ns.push(getConvertedVec3(source.data, vs[ndx] * numParams));
+												}
+										} else {
+
+												geom.calcNormals = true;
+										}
+								}
+
+								if (!ts) {
+
+										ts = {};
+
+										input = this.vertices.input.TEXCOORD;
+
+										if (input) {
+
+												texture_sets.push(input.set);
+												source = sources[input.source];
+												numParams = source.accessor.params.length;
+
+												for (var ndx = 0, len = vs.length; ndx < len; ndx++) {
+
+														idx32 = vs[ndx] * numParams;
+														if (ts[input.set] === undefined) ts[input.set] = [];
+
+														ts[input.set].push(new __WEBPACK_IMPORTED_MODULE_1_three__["v" /* Vector2 */](source.data[idx32], 1.0 - source.data[idx32 + 1]));
+												}
+										}
+								}
+
+								if (cs.length === 0) {
+										input = this.vertices.input.COLOR;
+
+										if (input) {
+
+												source = sources[input.source];
+												numParams = source.accessor.params.length;
+
+												for (var ndx = 0, len = vs.length; ndx < len; ndx++) {
+
+														idx32 = vs[ndx] * numParams;
+														cs.push(new __WEBPACK_IMPORTED_MODULE_1_three__["w" /* Color */]().setRGB(source.data[idx32], source.data[idx32 + 1], source.data[idx32 + 2]));
+												}
+										}
+								}
+
+								var face = null,
+								    faces = [],
+								    uv,
+								    uvArr;
+
+								if (vcount === 3) {
+
+										faces.push(new __WEBPACK_IMPORTED_MODULE_1_three__["x" /* Face3 */](vs[0], vs[1], vs[2], ns, cs.length ? cs : new __WEBPACK_IMPORTED_MODULE_1_three__["w" /* Color */]()));
+								} else if (vcount === 4) {
+
+										faces.push(new __WEBPACK_IMPORTED_MODULE_1_three__["x" /* Face3 */](vs[0], vs[1], vs[3], ns.length ? [ns[0].clone(), ns[1].clone(), ns[3].clone()] : [], cs.length ? [cs[0], cs[1], cs[3]] : new __WEBPACK_IMPORTED_MODULE_1_three__["w" /* Color */]()));
+
+										faces.push(new __WEBPACK_IMPORTED_MODULE_1_three__["x" /* Face3 */](vs[1], vs[2], vs[3], ns.length ? [ns[1].clone(), ns[2].clone(), ns[3].clone()] : [], cs.length ? [cs[1], cs[2], cs[3]] : new __WEBPACK_IMPORTED_MODULE_1_three__["w" /* Color */]()));
+								} else if (vcount > 4 && options.subdivideFaces) {
+
+										var clr = cs.length ? cs : new __WEBPACK_IMPORTED_MODULE_1_three__["w" /* Color */](),
+										    vec1,
+										    vec2,
+										    vec3,
+										    v1,
+										    v2,
+										    norm;
+
+										for (k = 1; k < vcount - 1;) {
+
+												faces.push(new __WEBPACK_IMPORTED_MODULE_1_three__["x" /* Face3 */](vs[0], vs[k], vs[k + 1], ns.length ? [ns[0].clone(), ns[k++].clone(), ns[k].clone()] : [], clr));
+										}
+								}
+
+								if (faces.length) {
+
+										for (var ndx = 0, len = faces.length; ndx < len; ndx++) {
+
+												face = faces[ndx];
+												face.daeMaterial = primitive.material;
+												geom.faces.push(face);
+
+												for (k = 0; k < texture_sets.length; k++) {
+
+														uv = ts[texture_sets[k]];
+
+														if (vcount > 4) {
+																uvArr = [uv[0], uv[ndx + 1], uv[ndx + 2]];
+														} else if (vcount === 4) {
+
+																if (ndx === 0) {
+
+																		uvArr = [uv[0], uv[1], uv[3]];
+																} else {
+
+																		uvArr = [uv[1].clone(), uv[2], uv[3].clone()];
+																}
+														} else {
+
+																uvArr = [uv[0], uv[1], uv[2]];
+														}
+
+														if (geom.faceVertexUvs[k] === undefined) {
+
+																geom.faceVertexUvs[k] = [];
+														}
+
+														geom.faceVertexUvs[k].push(uvArr);
+												}
+										}
+								} else {
+
+										console.log('dropped face with vcount ' + vcount + ' for geometry with id: ' + geom.id);
+								}
+
+								i += maxOffset * vcount;
+						}
+				}
+		};
+
+		function Polygons() {
+
+				this.material = "";
+				this.count = 0;
+				this.inputs = [];
+				this.vcount = null;
+				this.p = [];
+				this.geometry = new __WEBPACK_IMPORTED_MODULE_1_three__["u" /* Geometry */]();
+		}
+
+		Polygons.prototype.setVertices = function (vertices) {
+
+				for (var i = 0; i < this.inputs.length; i++) {
+
+						if (this.inputs[i].source === vertices.id) {
+
+								this.inputs[i].source = vertices.input['POSITION'].source;
+						}
+				}
+		};
+
+		Polygons.prototype.parse = function (element) {
+
+				this.material = element.getAttribute('material');
+				this.count = _attr_as_int(element, 'count', 0);
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+
+						switch (child.nodeName) {
+
+								case 'input':
+
+										this.inputs.push(new Input().parse(element.childNodes[i]));
+										break;
+
+								case 'vcount':
+
+										this.vcount = _ints(child.textContent);
+										break;
+
+								case 'p':
+
+										this.p.push(_ints(child.textContent));
+										break;
+
+								case 'ph':
+
+										console.warn('polygon holes not yet supported!');
+										break;
+
+								default:
+										break;
+
+						}
+				}
+
+				return this;
+		};
+
+		function Polylist() {
+
+				Polygons.call(this);
+
+				this.vcount = [];
+		}
+
+		Polylist.prototype = __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_create___default()(Polygons.prototype);
+		Polylist.prototype.constructor = Polylist;
+
+		function LineStrips() {
+
+				Polygons.call(this);
+
+				this.vcount = 1;
+		}
+
+		LineStrips.prototype = __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_create___default()(Polygons.prototype);
+		LineStrips.prototype.constructor = LineStrips;
+
+		function Triangles() {
+
+				Polygons.call(this);
+
+				this.vcount = 3;
+		}
+
+		Triangles.prototype = __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_create___default()(Polygons.prototype);
+		Triangles.prototype.constructor = Triangles;
+
+		function Accessor() {
+
+				this.source = "";
+				this.count = 0;
+				this.stride = 0;
+				this.params = [];
+		}
+
+		Accessor.prototype.parse = function (element) {
+
+				this.params = [];
+				this.source = element.getAttribute('source');
+				this.count = _attr_as_int(element, 'count', 0);
+				this.stride = _attr_as_int(element, 'stride', 0);
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+
+						if (child.nodeName === 'param') {
+
+								var param = {};
+								param['name'] = child.getAttribute('name');
+								param['type'] = child.getAttribute('type');
+								this.params.push(param);
+						}
+				}
+
+				return this;
+		};
+
+		function Vertices() {
+
+				this.input = {};
+		}
+
+		Vertices.prototype.parse = function (element) {
+
+				this.id = element.getAttribute('id');
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						if (element.childNodes[i].nodeName === 'input') {
+
+								var input = new Input().parse(element.childNodes[i]);
+								this.input[input.semantic] = input;
+						}
+				}
+
+				return this;
+		};
+
+		function Input() {
+
+				this.semantic = "";
+				this.offset = 0;
+				this.source = "";
+				this.set = 0;
+		}
+
+		Input.prototype.parse = function (element) {
+
+				this.semantic = element.getAttribute('semantic');
+				this.source = element.getAttribute('source').replace(/^#/, '');
+				this.set = _attr_as_int(element, 'set', -1);
+				this.offset = _attr_as_int(element, 'offset', 0);
+
+				if (this.semantic === 'TEXCOORD' && this.set < 0) {
+
+						this.set = 0;
+				}
+
+				return this;
+		};
+
+		function Source(id) {
+
+				this.id = id;
+				this.type = null;
+		}
+
+		Source.prototype.parse = function (element) {
+
+				this.id = element.getAttribute('id');
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+
+						switch (child.nodeName) {
+
+								case 'bool_array':
+
+										this.data = _bools(child.textContent);
+										this.type = child.nodeName;
+										break;
+
+								case 'float_array':
+
+										this.data = _floats(child.textContent);
+										this.type = child.nodeName;
+										break;
+
+								case 'int_array':
+
+										this.data = _ints(child.textContent);
+										this.type = child.nodeName;
+										break;
+
+								case 'IDREF_array':
+								case 'Name_array':
+
+										this.data = _strings(child.textContent);
+										this.type = child.nodeName;
+										break;
+
+								case 'technique_common':
+
+										for (var j = 0; j < child.childNodes.length; j++) {
+
+												if (child.childNodes[j].nodeName === 'accessor') {
+
+														this.accessor = new Accessor().parse(child.childNodes[j]);
+														break;
+												}
+										}
+										break;
+
+								default:
+										break;
+
+						}
+				}
+
+				return this;
+		};
+
+		Source.prototype.read = function () {
+
+				var result = [];
+
+				var param = this.accessor.params[0];
+
+				switch (param.type) {
+
+						case 'IDREF':
+						case 'Name':case 'name':
+						case 'float':
+
+								return this.data;
+
+						case 'float4x4':
+
+								for (var j = 0; j < this.data.length; j += 16) {
+
+										var s = this.data.slice(j, j + 16);
+										var m = getConvertedMat4(s);
+										result.push(m);
+								}
+
+								break;
+
+						default:
+
+								console.log('ColladaLoader: Source: Read dont know how to read ' + param.type + '.');
+								break;
+
+				}
+
+				return result;
+		};
+
+		function Material() {
+
+				this.id = "";
+				this.name = "";
+				this.instance_effect = null;
+		}
+
+		Material.prototype.parse = function (element) {
+
+				this.id = element.getAttribute('id');
+				this.name = element.getAttribute('name');
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						if (element.childNodes[i].nodeName === 'instance_effect') {
+
+								this.instance_effect = new InstanceEffect().parse(element.childNodes[i]);
+								break;
+						}
+				}
+
+				return this;
+		};
+
+		function ColorOrTexture() {
+
+				this.color = new __WEBPACK_IMPORTED_MODULE_1_three__["w" /* Color */]();
+				this.color.setRGB(Math.random(), Math.random(), Math.random());
+				this.color.a = 1.0;
+
+				this.texture = null;
+				this.texcoord = null;
+				this.texOpts = null;
+		}
+
+		ColorOrTexture.prototype.isColor = function () {
+
+				return this.texture === null;
+		};
+
+		ColorOrTexture.prototype.isTexture = function () {
+
+				return this.texture != null;
+		};
+
+		ColorOrTexture.prototype.parse = function (element) {
+
+				if (element.nodeName === 'transparent') {
+
+						this.opaque = element.getAttribute('opaque');
+				}
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+						if (child.nodeType != 1) continue;
+
+						switch (child.nodeName) {
+
+								case 'color':
+
+										var rgba = _floats(child.textContent);
+										this.color = new __WEBPACK_IMPORTED_MODULE_1_three__["w" /* Color */]();
+										this.color.setRGB(rgba[0], rgba[1], rgba[2]);
+										this.color.a = rgba[3];
+										break;
+
+								case 'texture':
+
+										this.texture = child.getAttribute('texture');
+										this.texcoord = child.getAttribute('texcoord');
+
+										this.texOpts = {
+												offsetU: 0,
+												offsetV: 0,
+												repeatU: 1,
+												repeatV: 1,
+												wrapU: 1,
+												wrapV: 1
+										};
+										this.parseTexture(child);
+										break;
+
+								default:
+										break;
+
+						}
+				}
+
+				return this;
+		};
+
+		ColorOrTexture.prototype.parseTexture = function (element) {
+
+				if (!element.childNodes) return this;
+
+				if (element.childNodes[1] && element.childNodes[1].nodeName === 'extra') {
+
+						element = element.childNodes[1];
+
+						if (element.childNodes[1] && element.childNodes[1].nodeName === 'technique') {
+
+								element = element.childNodes[1];
+						}
+				}
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+
+						switch (child.nodeName) {
+
+								case 'offsetU':
+								case 'offsetV':
+								case 'repeatU':
+								case 'repeatV':
+
+										this.texOpts[child.nodeName] = parseFloat(child.textContent);
+
+										break;
+
+								case 'wrapU':
+								case 'wrapV':
+
+										if (child.textContent.toUpperCase() === 'TRUE') {
+
+												this.texOpts[child.nodeName] = 1;
+										} else {
+
+												this.texOpts[child.nodeName] = parseInt(child.textContent);
+										}
+										break;
+
+								default:
+
+										this.texOpts[child.nodeName] = child.textContent;
+
+										break;
+
+						}
+				}
+
+				return this;
+		};
+
+		function Shader(type, effect) {
 
 				this.type = type;
-			}
+				this.effect = effect;
+				this.material = null;
 		}
 
-		if (this.limits.min >= this.limits.max) {
+		Shader.prototype.parse = function (element) {
 
-			this.static = true;
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+						if (child.nodeType != 1) continue;
+
+						switch (child.nodeName) {
+
+								case 'emission':
+								case 'diffuse':
+								case 'specular':
+								case 'transparent':
+
+										this[child.nodeName] = new ColorOrTexture().parse(child);
+										break;
+
+								case 'bump':
+										var bumpType = child.getAttribute('bumptype');
+										if (bumpType) {
+												if (bumpType.toLowerCase() === "heightfield") {
+														this['bump'] = new ColorOrTexture().parse(child);
+												} else if (bumpType.toLowerCase() === "normalmap") {
+														this['normal'] = new ColorOrTexture().parse(child);
+												} else {
+														console.error("Shader.prototype.parse: Invalid value for attribute 'bumptype' (" + bumpType + ") - valid bumptypes are 'HEIGHTFIELD' and 'NORMALMAP' - defaulting to 'HEIGHTFIELD'");
+														this['bump'] = new ColorOrTexture().parse(child);
+												}
+										} else {
+												console.warn("Shader.prototype.parse: Attribute 'bumptype' missing from bump node - defaulting to 'HEIGHTFIELD'");
+												this['bump'] = new ColorOrTexture().parse(child);
+										}
+
+										break;
+
+								case 'shininess':
+								case 'reflectivity':
+								case 'index_of_refraction':
+								case 'transparency':
+
+										var f = child.querySelectorAll('float');
+
+										if (f.length > 0) this[child.nodeName] = parseFloat(f[0].textContent);
+
+										break;
+
+								default:
+										break;
+
+						}
+				}
+
+				this.create();
+				return this;
+		};
+
+		Shader.prototype.create = function () {
+
+				var props = {};
+
+				var transparent = false;
+
+				if (this['transparency'] !== undefined && this['transparent'] !== undefined) {
+						var transparentColor = this['transparent'];
+						var transparencyLevel = (this.transparent.color.r + this.transparent.color.g + this.transparent.color.b) / 3 * this.transparency;
+
+						if (transparencyLevel > 0) {
+								transparent = true;
+								props['transparent'] = true;
+								props['opacity'] = 1 - transparencyLevel;
+						}
+				}
+
+				var keys = {
+						'diffuse': 'map',
+						'ambient': 'lightMap',
+						'specular': 'specularMap',
+						'emission': 'emissionMap',
+						'bump': 'bumpMap',
+						'normal': 'normalMap'
+				};
+
+				for (var prop in this) {
+
+						switch (prop) {
+
+								case 'ambient':
+								case 'emission':
+								case 'diffuse':
+								case 'specular':
+								case 'bump':
+								case 'normal':
+
+										var cot = this[prop];
+
+										if (cot instanceof ColorOrTexture) {
+
+												if (cot.isTexture()) {
+
+														var samplerId = cot.texture;
+														var sampler = this.effect.sampler[samplerId];
+
+														if (sampler !== undefined && sampler.source !== undefined) {
+
+																var surface = this.effect.surface[sampler.source];
+
+																if (surface !== undefined) {
+
+																		var image = images[surface.init_from];
+
+																		if (image) {
+
+																				var url = baseUrl + image.init_from;
+
+																				var texture;
+																				var loader = __WEBPACK_IMPORTED_MODULE_1_three__["y" /* Loader */].Handlers.get(url);
+
+																				if (loader !== null) {
+
+																						texture = loader.load(url);
+																				} else {
+
+																						texture = new __WEBPACK_IMPORTED_MODULE_1_three__["z" /* Texture */]();
+
+																						loadTextureImage(texture, url);
+																				}
+
+																				if (sampler.wrap_s === "MIRROR") {
+
+																						texture.wrapS = __WEBPACK_IMPORTED_MODULE_1_three__["A" /* MirroredRepeatWrapping */];
+																				} else if (sampler.wrap_s === "WRAP" || cot.texOpts.wrapU) {
+
+																						texture.wrapS = __WEBPACK_IMPORTED_MODULE_1_three__["B" /* RepeatWrapping */];
+																				} else {
+
+																						texture.wrapS = __WEBPACK_IMPORTED_MODULE_1_three__["C" /* ClampToEdgeWrapping */];
+																				}
+
+																				if (sampler.wrap_t === "MIRROR") {
+
+																						texture.wrapT = __WEBPACK_IMPORTED_MODULE_1_three__["A" /* MirroredRepeatWrapping */];
+																				} else if (sampler.wrap_t === "WRAP" || cot.texOpts.wrapV) {
+
+																						texture.wrapT = __WEBPACK_IMPORTED_MODULE_1_three__["B" /* RepeatWrapping */];
+																				} else {
+
+																						texture.wrapT = __WEBPACK_IMPORTED_MODULE_1_three__["C" /* ClampToEdgeWrapping */];
+																				}
+
+																				texture.offset.x = cot.texOpts.offsetU;
+																				texture.offset.y = cot.texOpts.offsetV;
+																				texture.repeat.x = cot.texOpts.repeatU;
+																				texture.repeat.y = cot.texOpts.repeatV;
+																				props[keys[prop]] = texture;
+
+																				if (prop === 'emission') props['emissive'] = 0xffffff;
+																		}
+																}
+														}
+												} else if (prop === 'diffuse' || !transparent) {
+
+														if (prop === 'emission') {
+
+																props['emissive'] = cot.color.getHex();
+														} else {
+
+																props[prop] = cot.color.getHex();
+														}
+												}
+										}
+
+										break;
+
+								case 'shininess':
+
+										props[prop] = this[prop];
+										break;
+
+								case 'reflectivity':
+
+										props[prop] = this[prop];
+										if (props[prop] > 0.0) props['envMap'] = options.defaultEnvMap;
+										props['combine'] = __WEBPACK_IMPORTED_MODULE_1_three__["D" /* MixOperation */];
+										break;
+
+								case 'index_of_refraction':
+
+										props['refractionRatio'] = this[prop];
+										if (this[prop] !== 1.0) props['envMap'] = options.defaultEnvMap;
+										break;
+
+								case 'transparency':
+										break;
+
+								default:
+										break;
+
+						}
+				}
+
+				props['shading'] = preferredShading;
+				props['side'] = this.effect.doubleSided ? __WEBPACK_IMPORTED_MODULE_1_three__["i" /* DoubleSide */] : __WEBPACK_IMPORTED_MODULE_1_three__["k" /* FrontSide */];
+
+				if (props.diffuse !== undefined) {
+
+						props.color = props.diffuse;
+						delete props.diffuse;
+				}
+
+				switch (this.type) {
+
+						case 'constant':
+
+								if (props.emissive != undefined) props.color = props.emissive;
+								this.material = new __WEBPACK_IMPORTED_MODULE_1_three__["E" /* MeshBasicMaterial */](props);
+								break;
+
+						case 'phong':
+						case 'blinn':
+
+								this.material = new __WEBPACK_IMPORTED_MODULE_1_three__["F" /* MeshPhongMaterial */](props);
+								break;
+
+						case 'lambert':
+						default:
+
+								this.material = new __WEBPACK_IMPORTED_MODULE_1_three__["j" /* MeshLambertMaterial */](props);
+								break;
+
+				}
+
+				return this.material;
+		};
+
+		function Surface(effect) {
+
+				this.effect = effect;
+				this.init_from = null;
+				this.format = null;
 		}
 
-		this.middlePosition = (this.limits.min + this.limits.max) / 2.0;
-		return this;
-	};
+		Surface.prototype.parse = function (element) {
 
-	function Link() {
+				for (var i = 0; i < element.childNodes.length; i++) {
 
-		this.sid = '';
-		this.name = '';
-		this.transforms = [];
-		this.attachments = [];
-	}
+						var child = element.childNodes[i];
+						if (child.nodeType != 1) continue;
 
-	Link.prototype.parse = function (element) {
+						switch (child.nodeName) {
 
-		this.sid = element.getAttribute('sid');
-		this.name = element.getAttribute('name');
-		this.transforms = [];
-		this.attachments = [];
+								case 'init_from':
 
-		for (var i = 0; i < element.childNodes.length; i++) {
+										this.init_from = child.textContent;
+										break;
 
-			var child = element.childNodes[i];
-			if (child.nodeType != 1) continue;
+								case 'format':
 
-			switch (child.nodeName) {
+										this.format = child.textContent;
+										break;
 
-				case 'attachment_full':
-					this.attachments.push(new Attachment().parse(child));
-					break;
+								default:
 
-				case 'rotate':
-				case 'translate':
-				case 'matrix':
+										console.log("unhandled Surface prop: " + child.nodeName);
+										break;
 
-					this.transforms.push(new Transform().parse(child));
-					break;
+						}
+				}
 
-				default:
+				return this;
+		};
 
-					break;
+		function Sampler2D(effect) {
 
-			}
+				this.effect = effect;
+				this.source = null;
+				this.wrap_s = null;
+				this.wrap_t = null;
+				this.minfilter = null;
+				this.magfilter = null;
+				this.mipfilter = null;
 		}
 
-		return this;
-	};
+		Sampler2D.prototype.parse = function (element) {
 
-	function Attachment() {
+				for (var i = 0; i < element.childNodes.length; i++) {
 
-		this.joint = '';
-		this.transforms = [];
-		this.links = [];
-	}
+						var child = element.childNodes[i];
+						if (child.nodeType != 1) continue;
 
-	Attachment.prototype.parse = function (element) {
+						switch (child.nodeName) {
 
-		this.joint = element.getAttribute('joint').split('/').pop();
-		this.links = [];
+								case 'source':
 
-		for (var i = 0; i < element.childNodes.length; i++) {
+										this.source = child.textContent;
+										break;
 
-			var child = element.childNodes[i];
-			if (child.nodeType != 1) continue;
+								case 'minfilter':
 
-			switch (child.nodeName) {
+										this.minfilter = child.textContent;
+										break;
 
-				case 'link':
-					this.links.push(new Link().parse(child));
-					break;
+								case 'magfilter':
 
-				case 'rotate':
-				case 'translate':
-				case 'matrix':
+										this.magfilter = child.textContent;
+										break;
 
-					this.transforms.push(new Transform().parse(child));
-					break;
+								case 'mipfilter':
 
-				default:
+										this.mipfilter = child.textContent;
+										break;
 
-					break;
+								case 'wrap_s':
 
-			}
+										this.wrap_s = child.textContent;
+										break;
+
+								case 'wrap_t':
+
+										this.wrap_t = child.textContent;
+										break;
+
+								default:
+
+										console.log("unhandled Sampler2D prop: " + child.nodeName);
+										break;
+
+						}
+				}
+
+				return this;
+		};
+
+		function Effect() {
+
+				this.id = "";
+				this.name = "";
+				this.shader = null;
+				this.surface = {};
+				this.sampler = {};
 		}
 
-		return this;
-	};
+		Effect.prototype.create = function () {
 
-	function _source(element) {
+				if (this.shader === null) {
 
-		var id = element.getAttribute('id');
+						return null;
+				}
+		};
 
-		if (sources[id] != undefined) {
+		Effect.prototype.parse = function (element) {
 
-			return sources[id];
+				this.id = element.getAttribute('id');
+				this.name = element.getAttribute('name');
+
+				extractDoubleSided(this, element);
+
+				this.shader = null;
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+						if (child.nodeType != 1) continue;
+
+						switch (child.nodeName) {
+
+								case 'profile_COMMON':
+
+										this.parseTechnique(this.parseProfileCOMMON(child));
+										break;
+
+								default:
+										break;
+
+						}
+				}
+
+				return this;
+		};
+
+		Effect.prototype.parseNewparam = function (element) {
+
+				var sid = element.getAttribute('sid');
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+						if (child.nodeType != 1) continue;
+
+						switch (child.nodeName) {
+
+								case 'surface':
+
+										this.surface[sid] = new Surface(this).parse(child);
+										break;
+
+								case 'sampler2D':
+
+										this.sampler[sid] = new Sampler2D(this).parse(child);
+										break;
+
+								case 'extra':
+
+										break;
+
+								default:
+
+										console.log(child.nodeName);
+										break;
+
+						}
+				}
+		};
+
+		Effect.prototype.parseProfileCOMMON = function (element) {
+
+				var technique;
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+
+						if (child.nodeType != 1) continue;
+
+						switch (child.nodeName) {
+
+								case 'profile_COMMON':
+
+										this.parseProfileCOMMON(child);
+										break;
+
+								case 'technique':
+
+										technique = child;
+										break;
+
+								case 'newparam':
+
+										this.parseNewparam(child);
+										break;
+
+								case 'image':
+
+										var _image = new _Image().parse(child);
+										images[_image.id] = _image;
+										break;
+
+								case 'extra':
+										break;
+
+								default:
+
+										console.log(child.nodeName);
+										break;
+
+						}
+				}
+
+				return technique;
+		};
+
+		Effect.prototype.parseTechnique = function (element) {
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+						if (child.nodeType != 1) continue;
+
+						switch (child.nodeName) {
+
+								case 'constant':
+								case 'lambert':
+								case 'blinn':
+								case 'phong':
+
+										this.shader = new Shader(child.nodeName, this).parse(child);
+										break;
+								case 'extra':
+										this.parseExtra(child);
+										break;
+								default:
+										break;
+
+						}
+				}
+		};
+
+		Effect.prototype.parseExtra = function (element) {
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+						if (child.nodeType != 1) continue;
+
+						switch (child.nodeName) {
+
+								case 'technique':
+										this.parseExtraTechnique(child);
+										break;
+								default:
+										break;
+
+						}
+				}
+		};
+
+		Effect.prototype.parseExtraTechnique = function (element) {
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+						if (child.nodeType != 1) continue;
+
+						switch (child.nodeName) {
+
+								case 'bump':
+										this.shader.parse(element);
+										break;
+								default:
+										break;
+
+						}
+				}
+		};
+
+		function InstanceEffect() {
+
+				this.url = "";
 		}
 
-		sources[id] = new Source(id).parse(element);
-		return sources[id];
-	}
+		InstanceEffect.prototype.parse = function (element) {
 
-	function _nsResolver(nsPrefix) {
+				this.url = element.getAttribute('url').replace(/^#/, '');
+				return this;
+		};
 
-		if (nsPrefix === "dae") {
+		function Animation() {
 
-			return "http://www.collada.org/2005/11/COLLADASchema";
+				this.id = "";
+				this.name = "";
+				this.source = {};
+				this.sampler = [];
+				this.channel = [];
 		}
 
-		return null;
-	}
+		Animation.prototype.parse = function (element) {
 
-	function _bools(str) {
+				this.id = element.getAttribute('id');
+				this.name = element.getAttribute('name');
+				this.source = {};
 
-		var raw = _strings(str);
-		var data = [];
+				for (var i = 0; i < element.childNodes.length; i++) {
 
-		for (var i = 0, l = raw.length; i < l; i++) {
+						var child = element.childNodes[i];
 
-			data.push(raw[i] === 'true' || raw[i] === '1' ? true : false);
+						if (child.nodeType != 1) continue;
+
+						switch (child.nodeName) {
+
+								case 'animation':
+
+										var anim = new Animation().parse(child);
+
+										for (var src in anim.source) {
+
+												this.source[src] = anim.source[src];
+										}
+
+										for (var j = 0; j < anim.channel.length; j++) {
+
+												this.channel.push(anim.channel[j]);
+												this.sampler.push(anim.sampler[j]);
+										}
+
+										break;
+
+								case 'source':
+
+										var src = new Source().parse(child);
+										this.source[src.id] = src;
+										break;
+
+								case 'sampler':
+
+										this.sampler.push(new Sampler(this).parse(child));
+										break;
+
+								case 'channel':
+
+										this.channel.push(new Channel(this).parse(child));
+										break;
+
+								default:
+										break;
+
+						}
+				}
+
+				return this;
+		};
+
+		function Channel(animation) {
+
+				this.animation = animation;
+				this.source = "";
+				this.target = "";
+				this.fullSid = null;
+				this.sid = null;
+				this.dotSyntax = null;
+				this.arrSyntax = null;
+				this.arrIndices = null;
+				this.member = null;
 		}
 
-		return data;
-	}
+		Channel.prototype.parse = function (element) {
 
-	function _floats(str) {
+				this.source = element.getAttribute('source').replace(/^#/, '');
+				this.target = element.getAttribute('target');
 
-		var raw = _strings(str);
-		var data = [];
+				var parts = this.target.split('/');
 
-		for (var i = 0, l = raw.length; i < l; i++) {
+				var id = parts.shift();
+				var sid = parts.shift();
 
-			data.push(parseFloat(raw[i]));
+				var dotSyntax = sid.indexOf(".") >= 0;
+				var arrSyntax = sid.indexOf("(") >= 0;
+
+				if (dotSyntax) {
+
+						parts = sid.split(".");
+						this.sid = parts.shift();
+						this.member = parts.shift();
+				} else if (arrSyntax) {
+
+						var arrIndices = sid.split("(");
+						this.sid = arrIndices.shift();
+
+						for (var j = 0; j < arrIndices.length; j++) {
+
+								arrIndices[j] = parseInt(arrIndices[j].replace(/\)/, ''));
+						}
+
+						this.arrIndices = arrIndices;
+				} else {
+
+						this.sid = sid;
+				}
+
+				this.fullSid = sid;
+				this.dotSyntax = dotSyntax;
+				this.arrSyntax = arrSyntax;
+
+				return this;
+		};
+
+		function Sampler(animation) {
+
+				this.id = "";
+				this.animation = animation;
+				this.inputs = [];
+				this.input = null;
+				this.output = null;
+				this.strideOut = null;
+				this.interpolation = null;
+				this.startTime = null;
+				this.endTime = null;
+				this.duration = 0;
 		}
 
-		return data;
-	}
+		Sampler.prototype.parse = function (element) {
 
-	function _ints(str) {
+				this.id = element.getAttribute('id');
+				this.inputs = [];
 
-		var raw = _strings(str);
-		var data = [];
+				for (var i = 0; i < element.childNodes.length; i++) {
 
-		for (var i = 0, l = raw.length; i < l; i++) {
+						var child = element.childNodes[i];
+						if (child.nodeType != 1) continue;
 
-			data.push(parseInt(raw[i], 10));
+						switch (child.nodeName) {
+
+								case 'input':
+
+										this.inputs.push(new Input().parse(child));
+										break;
+
+								default:
+										break;
+
+						}
+				}
+
+				return this;
+		};
+
+		Sampler.prototype.create = function () {
+
+				for (var i = 0; i < this.inputs.length; i++) {
+
+						var input = this.inputs[i];
+						var source = this.animation.source[input.source];
+
+						switch (input.semantic) {
+
+								case 'INPUT':
+
+										this.input = source.read();
+										break;
+
+								case 'OUTPUT':
+
+										this.output = source.read();
+										this.strideOut = source.accessor.stride;
+										break;
+
+								case 'INTERPOLATION':
+
+										this.interpolation = source.read();
+										break;
+
+								case 'IN_TANGENT':
+
+										break;
+
+								case 'OUT_TANGENT':
+
+										break;
+
+								default:
+
+										console.log(input.semantic);
+										break;
+
+						}
+				}
+
+				this.startTime = 0;
+				this.endTime = 0;
+				this.duration = 0;
+
+				if (this.input.length) {
+
+						this.startTime = 100000000;
+						this.endTime = -100000000;
+
+						for (var i = 0; i < this.input.length; i++) {
+
+								this.startTime = Math.min(this.startTime, this.input[i]);
+								this.endTime = Math.max(this.endTime, this.input[i]);
+						}
+
+						this.duration = this.endTime - this.startTime;
+				}
+		};
+
+		Sampler.prototype.getData = function (type, ndx, member) {
+
+				var data;
+
+				if (type === 'matrix' && this.strideOut === 16) {
+
+						data = this.output[ndx];
+				} else if (this.strideOut > 1) {
+
+						data = [];
+						ndx *= this.strideOut;
+
+						for (var i = 0; i < this.strideOut; ++i) {
+
+								data[i] = this.output[ndx + i];
+						}
+
+						if (this.strideOut === 3) {
+
+								switch (type) {
+
+										case 'rotate':
+										case 'translate':
+
+												fixCoords(data, -1);
+												break;
+
+										case 'scale':
+
+												fixCoords(data, 1);
+												break;
+
+								}
+						} else if (this.strideOut === 4 && type === 'matrix') {
+
+								fixCoords(data, -1);
+						}
+				} else {
+
+						data = this.output[ndx];
+
+						if (member && type === 'translate') {
+								data = getConvertedTranslation(member, data);
+						}
+				}
+
+				return data;
+		};
+
+		function Key(time) {
+
+				this.targets = [];
+				this.time = time;
 		}
 
-		return data;
-	}
+		Key.prototype.addTarget = function (fullSid, transform, member, data) {
 
-	function _strings(str) {
+				this.targets.push({
+						sid: fullSid,
+						member: member,
+						transform: transform,
+						data: data
+				});
+		};
 
-		return str.length > 0 ? _trimString(str).split(/\s+/) : [];
-	}
+		Key.prototype.apply = function (opt_sid) {
 
-	function _trimString(str) {
+				for (var i = 0; i < this.targets.length; ++i) {
 
-		return str.replace(/^\s+/, "").replace(/\s+$/, "");
-	}
+						var target = this.targets[i];
 
-	function _attr_as_float(element, name, defaultValue) {
+						if (!opt_sid || target.sid === opt_sid) {
 
-		if (element.hasAttribute(name)) {
+								target.transform.update(target.data, target.member);
+						}
+				}
+		};
 
-			return parseFloat(element.getAttribute(name));
-		} else {
+		Key.prototype.getTarget = function (fullSid) {
 
-			return defaultValue;
-		}
-	}
+				for (var i = 0; i < this.targets.length; ++i) {
 
-	function _attr_as_int(element, name, defaultValue) {
+						if (this.targets[i].sid === fullSid) {
 
-		if (element.hasAttribute(name)) {
+								return this.targets[i];
+						}
+				}
 
-			return parseInt(element.getAttribute(name), 10);
-		} else {
+				return null;
+		};
 
-			return defaultValue;
-		}
-	}
+		Key.prototype.hasTarget = function (fullSid) {
 
-	function _attr_as_string(element, name, defaultValue) {
+				for (var i = 0; i < this.targets.length; ++i) {
 
-		if (element.hasAttribute(name)) {
+						if (this.targets[i].sid === fullSid) {
 
-			return element.getAttribute(name);
-		} else {
+								return true;
+						}
+				}
 
-			return defaultValue;
-		}
-	}
+				return false;
+		};
 
-	function _format_float(f, num) {
+		Key.prototype.interpolate = function (nextKey, time) {
 
-		if (f === undefined) {
+				for (var i = 0, l = this.targets.length; i < l; i++) {
 
-			var s = '0.';
+						var target = this.targets[i],
+						    nextTarget = nextKey.getTarget(target.sid),
+						    data;
 
-			while (s.length < num + 2) {
+						if (target.transform.type !== 'matrix' && nextTarget) {
 
-				s += '0';
-			}
+								var scale = (time - this.time) / (nextKey.time - this.time),
+								    nextData = nextTarget.data,
+								    prevData = target.data;
 
-			return s;
-		}
+								if (scale < 0) scale = 0;
+								if (scale > 1) scale = 1;
 
-		num = num || 2;
+								if (prevData.length) {
 
-		var parts = f.toString().split('.');
-		parts[1] = parts.length > 1 ? parts[1].substr(0, num) : "0";
+										data = [];
 
-		while (parts[1].length < num) {
+										for (var j = 0; j < prevData.length; ++j) {
 
-			parts[1] += '0';
-		}
+												data[j] = prevData[j] + (nextData[j] - prevData[j]) * scale;
+										}
+								} else {
 
-		return parts.join('.');
-	}
+										data = prevData + (nextData - prevData) * scale;
+								}
+						} else {
 
-	function loadTextureImage(texture, url) {
+								data = target.data;
+						}
 
-		var loader = new __WEBPACK_IMPORTED_MODULE_1_three__["G" /* ImageLoader */]();
+						target.transform.update(data, target.member);
+				}
+		};
 
-		loader.load(url, function (image) {
+		function Camera() {
 
-			texture.image = image;
-			texture.needsUpdate = true;
-		});
-	}
-
-	function extractDoubleSided(obj, element) {
-
-		obj.doubleSided = false;
-
-		var node = element.querySelectorAll('extra double_sided')[0];
-
-		if (node) {
-
-			if (node && parseInt(node.textContent, 10) === 1) {
-
-				obj.doubleSided = true;
-			}
-		}
-	}
-
-	function setUpConversion() {
-
-		if (options.convertUpAxis !== true || colladaUp === options.upAxis) {
-
-			upConversion = null;
-		} else {
-
-			switch (colladaUp) {
-
-				case 'X':
-
-					upConversion = options.upAxis === 'Y' ? 'XtoY' : 'XtoZ';
-					break;
-
-				case 'Y':
-
-					upConversion = options.upAxis === 'X' ? 'YtoX' : 'YtoZ';
-					break;
-
-				case 'Z':
-
-					upConversion = options.upAxis === 'X' ? 'ZtoX' : 'ZtoY';
-					break;
-
-			}
-		}
-	}
-
-	function fixCoords(data, sign) {
-
-		if (options.convertUpAxis !== true || colladaUp === options.upAxis) {
-
-			return;
+				this.id = "";
+				this.name = "";
+				this.technique = "";
 		}
 
-		switch (upConversion) {
+		Camera.prototype.parse = function (element) {
 
-			case 'XtoY':
+				this.id = element.getAttribute('id');
+				this.name = element.getAttribute('name');
 
-				var tmp = data[0];
-				data[0] = sign * data[1];
-				data[1] = tmp;
-				break;
+				for (var i = 0; i < element.childNodes.length; i++) {
 
-			case 'XtoZ':
+						var child = element.childNodes[i];
+						if (child.nodeType != 1) continue;
 
-				var tmp = data[2];
-				data[2] = data[1];
-				data[1] = data[0];
-				data[0] = tmp;
-				break;
+						switch (child.nodeName) {
 
-			case 'YtoX':
+								case 'optics':
 
-				var tmp = data[0];
-				data[0] = data[1];
-				data[1] = sign * tmp;
-				break;
+										this.parseOptics(child);
+										break;
 
-			case 'YtoZ':
+								default:
+										break;
 
-				var tmp = data[1];
-				data[1] = sign * data[2];
-				data[2] = tmp;
-				break;
+						}
+				}
 
-			case 'ZtoX':
+				return this;
+		};
 
-				var tmp = data[0];
-				data[0] = data[1];
-				data[1] = data[2];
-				data[2] = tmp;
-				break;
+		Camera.prototype.parseOptics = function (element) {
 
-			case 'ZtoY':
+				for (var i = 0; i < element.childNodes.length; i++) {
 
-				var tmp = data[1];
-				data[1] = data[2];
-				data[2] = sign * tmp;
-				break;
+						if (element.childNodes[i].nodeName === 'technique_common') {
 
-		}
-	}
+								var technique = element.childNodes[i];
 
-	function getConvertedTranslation(axis, data) {
+								for (var j = 0; j < technique.childNodes.length; j++) {
 
-		if (options.convertUpAxis !== true || colladaUp === options.upAxis) {
+										this.technique = technique.childNodes[j].nodeName;
 
-			return data;
-		}
+										if (this.technique === 'perspective') {
 
-		switch (axis) {
-			case 'X':
-				data = upConversion === 'XtoY' ? data * -1 : data;
-				break;
-			case 'Y':
-				data = upConversion === 'YtoZ' || upConversion === 'YtoX' ? data * -1 : data;
-				break;
-			case 'Z':
-				data = upConversion === 'ZtoY' ? data * -1 : data;
-				break;
-			default:
-				break;
-		}
+												var perspective = technique.childNodes[j];
 
-		return data;
-	}
+												for (var k = 0; k < perspective.childNodes.length; k++) {
 
-	function getConvertedVec3(data, offset) {
+														var param = perspective.childNodes[k];
 
-		var arr = [data[offset], data[offset + 1], data[offset + 2]];
-		fixCoords(arr, -1);
-		return new __WEBPACK_IMPORTED_MODULE_1_three__["d" /* Vector3 */](arr[0], arr[1], arr[2]);
-	}
+														switch (param.nodeName) {
 
-	function getConvertedMat4(data) {
+																case 'yfov':
+																		this.yfov = param.textContent;
+																		break;
+																case 'xfov':
+																		this.xfov = param.textContent;
+																		break;
+																case 'znear':
+																		this.znear = param.textContent;
+																		break;
+																case 'zfar':
+																		this.zfar = param.textContent;
+																		break;
+																case 'aspect_ratio':
+																		this.aspect_ratio = param.textContent;
+																		break;
 
-		if (options.convertUpAxis) {
-			var arr = [data[0], data[4], data[8]];
-			fixCoords(arr, -1);
-			data[0] = arr[0];
-			data[4] = arr[1];
-			data[8] = arr[2];
-			arr = [data[1], data[5], data[9]];
-			fixCoords(arr, -1);
-			data[1] = arr[0];
-			data[5] = arr[1];
-			data[9] = arr[2];
-			arr = [data[2], data[6], data[10]];
-			fixCoords(arr, -1);
-			data[2] = arr[0];
-			data[6] = arr[1];
-			data[10] = arr[2];
+														}
+												}
+										} else if (this.technique === 'orthographic') {
 
-			arr = [data[0], data[1], data[2]];
-			fixCoords(arr, -1);
-			data[0] = arr[0];
-			data[1] = arr[1];
-			data[2] = arr[2];
-			arr = [data[4], data[5], data[6]];
-			fixCoords(arr, -1);
-			data[4] = arr[0];
-			data[5] = arr[1];
-			data[6] = arr[2];
-			arr = [data[8], data[9], data[10]];
-			fixCoords(arr, -1);
-			data[8] = arr[0];
-			data[9] = arr[1];
-			data[10] = arr[2];
+												var orthographic = technique.childNodes[j];
 
-			arr = [data[3], data[7], data[11]];
-			fixCoords(arr, -1);
-			data[3] = arr[0];
-			data[7] = arr[1];
-			data[11] = arr[2];
+												for (var k = 0; k < orthographic.childNodes.length; k++) {
+
+														var param = orthographic.childNodes[k];
+
+														switch (param.nodeName) {
+
+																case 'xmag':
+																		this.xmag = param.textContent;
+																		break;
+																case 'ymag':
+																		this.ymag = param.textContent;
+																		break;
+																case 'znear':
+																		this.znear = param.textContent;
+																		break;
+																case 'zfar':
+																		this.zfar = param.textContent;
+																		break;
+																case 'aspect_ratio':
+																		this.aspect_ratio = param.textContent;
+																		break;
+
+														}
+												}
+										}
+								}
+						}
+				}
+
+				return this;
+		};
+
+		function InstanceCamera() {
+
+				this.url = "";
 		}
 
-		return new __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]().set(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9], data[10], data[11], data[12], data[13], data[14], data[15]);
-	}
+		InstanceCamera.prototype.parse = function (element) {
 
-	function getConvertedIndex(index) {
+				this.url = element.getAttribute('url').replace(/^#/, '');
 
-		if (index > -1 && index < 3) {
+				return this;
+		};
 
-			var members = ['X', 'Y', 'Z'],
-			    indices = { X: 0, Y: 1, Z: 2 };
+		function Light() {
 
-			index = getConvertedMember(members[index]);
-			index = indices[index];
+				this.id = "";
+				this.name = "";
+				this.technique = "";
 		}
 
-		return index;
-	}
+		Light.prototype.parse = function (element) {
 
-	function getConvertedMember(member) {
+				this.id = element.getAttribute('id');
+				this.name = element.getAttribute('name');
 
-		if (options.convertUpAxis) {
+				for (var i = 0; i < element.childNodes.length; i++) {
 
-			switch (member) {
+						var child = element.childNodes[i];
+						if (child.nodeType != 1) continue;
 
-				case 'X':
+						switch (child.nodeName) {
 
-					switch (upConversion) {
+								case 'technique_common':
+
+										this.parseCommon(child);
+										break;
+
+								case 'technique':
+
+										this.parseTechnique(child);
+										break;
+
+								default:
+										break;
+
+						}
+				}
+
+				return this;
+		};
+
+		Light.prototype.parseCommon = function (element) {
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						switch (element.childNodes[i].nodeName) {
+
+								case 'directional':
+								case 'point':
+								case 'spot':
+								case 'ambient':
+
+										this.technique = element.childNodes[i].nodeName;
+
+										var light = element.childNodes[i];
+
+										for (var j = 0; j < light.childNodes.length; j++) {
+
+												var child = light.childNodes[j];
+
+												switch (child.nodeName) {
+
+														case 'color':
+
+																var rgba = _floats(child.textContent);
+																this.color = new __WEBPACK_IMPORTED_MODULE_1_three__["w" /* Color */](0);
+																this.color.setRGB(rgba[0], rgba[1], rgba[2]);
+																this.color.a = rgba[3];
+																break;
+
+														case 'falloff_angle':
+
+																this.falloff_angle = parseFloat(child.textContent);
+																break;
+
+														case 'quadratic_attenuation':
+																var f = parseFloat(child.textContent);
+																this.distance = f ? Math.sqrt(1 / f) : 0;
+												}
+										}
+
+						}
+				}
+
+				return this;
+		};
+
+		Light.prototype.parseTechnique = function (element) {
+
+				this.profile = element.getAttribute('profile');
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+
+						switch (child.nodeName) {
+
+								case 'intensity':
+
+										this.intensity = parseFloat(child.textContent);
+										break;
+
+						}
+				}
+
+				return this;
+		};
+
+		function InstanceLight() {
+
+				this.url = "";
+		}
+
+		InstanceLight.prototype.parse = function (element) {
+
+				this.url = element.getAttribute('url').replace(/^#/, '');
+
+				return this;
+		};
+
+		function KinematicsModel() {
+
+				this.id = '';
+				this.name = '';
+				this.joints = [];
+				this.links = [];
+		}
+
+		KinematicsModel.prototype.parse = function (element) {
+
+				this.id = element.getAttribute('id');
+				this.name = element.getAttribute('name');
+				this.joints = [];
+				this.links = [];
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+						if (child.nodeType != 1) continue;
+
+						switch (child.nodeName) {
+
+								case 'technique_common':
+
+										this.parseCommon(child);
+										break;
+
+								default:
+										break;
+
+						}
+				}
+
+				return this;
+		};
+
+		KinematicsModel.prototype.parseCommon = function (element) {
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+						if (child.nodeType != 1) continue;
+
+						switch (element.childNodes[i].nodeName) {
+
+								case 'joint':
+										this.joints.push(new Joint().parse(child));
+										break;
+
+								case 'link':
+										this.links.push(new Link().parse(child));
+										break;
+
+								default:
+										break;
+
+						}
+				}
+
+				return this;
+		};
+
+		function Joint() {
+
+				this.sid = '';
+				this.name = '';
+				this.axis = new __WEBPACK_IMPORTED_MODULE_1_three__["d" /* Vector3 */]();
+				this.limits = {
+						min: 0,
+						max: 0
+				};
+				this.type = '';
+				this.static = false;
+				this.zeroPosition = 0.0;
+				this.middlePosition = 0.0;
+		}
+
+		Joint.prototype.parse = function (element) {
+
+				this.sid = element.getAttribute('sid');
+				this.name = element.getAttribute('name');
+				this.axis = new __WEBPACK_IMPORTED_MODULE_1_three__["d" /* Vector3 */]();
+				this.limits = {
+						min: 0,
+						max: 0
+				};
+				this.type = '';
+				this.static = false;
+				this.zeroPosition = 0.0;
+				this.middlePosition = 0.0;
+
+				var axisElement = element.querySelector('axis');
+				var _axis = _floats(axisElement.textContent);
+				this.axis = getConvertedVec3(_axis, 0);
+
+				var min = element.querySelector('limits min') ? parseFloat(element.querySelector('limits min').textContent) : -360;
+				var max = element.querySelector('limits max') ? parseFloat(element.querySelector('limits max').textContent) : 360;
+
+				this.limits = {
+						min: min,
+						max: max
+				};
+
+				var jointTypes = ['prismatic', 'revolute'];
+				for (var i = 0; i < jointTypes.length; i++) {
+
+						var type = jointTypes[i];
+
+						var jointElement = element.querySelector(type);
+
+						if (jointElement) {
+
+								this.type = type;
+						}
+				}
+
+				if (this.limits.min >= this.limits.max) {
+
+						this.static = true;
+				}
+
+				this.middlePosition = (this.limits.min + this.limits.max) / 2.0;
+				return this;
+		};
+
+		function Link() {
+
+				this.sid = '';
+				this.name = '';
+				this.transforms = [];
+				this.attachments = [];
+		}
+
+		Link.prototype.parse = function (element) {
+
+				this.sid = element.getAttribute('sid');
+				this.name = element.getAttribute('name');
+				this.transforms = [];
+				this.attachments = [];
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+						if (child.nodeType != 1) continue;
+
+						switch (child.nodeName) {
+
+								case 'attachment_full':
+										this.attachments.push(new Attachment().parse(child));
+										break;
+
+								case 'rotate':
+								case 'translate':
+								case 'matrix':
+
+										this.transforms.push(new Transform().parse(child));
+										break;
+
+								default:
+
+										break;
+
+						}
+				}
+
+				return this;
+		};
+
+		function Attachment() {
+
+				this.joint = '';
+				this.transforms = [];
+				this.links = [];
+		}
+
+		Attachment.prototype.parse = function (element) {
+
+				this.joint = element.getAttribute('joint').split('/').pop();
+				this.links = [];
+
+				for (var i = 0; i < element.childNodes.length; i++) {
+
+						var child = element.childNodes[i];
+						if (child.nodeType != 1) continue;
+
+						switch (child.nodeName) {
+
+								case 'link':
+										this.links.push(new Link().parse(child));
+										break;
+
+								case 'rotate':
+								case 'translate':
+								case 'matrix':
+
+										this.transforms.push(new Transform().parse(child));
+										break;
+
+								default:
+
+										break;
+
+						}
+				}
+
+				return this;
+		};
+
+		function _source(element) {
+
+				var id = element.getAttribute('id');
+
+				if (sources[id] != undefined) {
+
+						return sources[id];
+				}
+
+				sources[id] = new Source(id).parse(element);
+				return sources[id];
+		}
+
+		function _nsResolver(nsPrefix) {
+
+				if (nsPrefix === "dae") {
+
+						return "http://www.collada.org/2005/11/COLLADASchema";
+				}
+
+				return null;
+		}
+
+		function _bools(str) {
+
+				var raw = _strings(str);
+				var data = [];
+
+				for (var i = 0, l = raw.length; i < l; i++) {
+
+						data.push(raw[i] === 'true' || raw[i] === '1' ? true : false);
+				}
+
+				return data;
+		}
+
+		function _floats(str) {
+
+				var raw = _strings(str);
+				var data = [];
+
+				for (var i = 0, l = raw.length; i < l; i++) {
+
+						data.push(parseFloat(raw[i]));
+				}
+
+				return data;
+		}
+
+		function _ints(str) {
+
+				var raw = _strings(str);
+				var data = [];
+
+				for (var i = 0, l = raw.length; i < l; i++) {
+
+						data.push(parseInt(raw[i], 10));
+				}
+
+				return data;
+		}
+
+		function _strings(str) {
+
+				return str.length > 0 ? _trimString(str).split(/\s+/) : [];
+		}
+
+		function _trimString(str) {
+
+				return str.replace(/^\s+/, "").replace(/\s+$/, "");
+		}
+
+		function _attr_as_float(element, name, defaultValue) {
+
+				if (element.hasAttribute(name)) {
+
+						return parseFloat(element.getAttribute(name));
+				} else {
+
+						return defaultValue;
+				}
+		}
+
+		function _attr_as_int(element, name, defaultValue) {
+
+				if (element.hasAttribute(name)) {
+
+						return parseInt(element.getAttribute(name), 10);
+				} else {
+
+						return defaultValue;
+				}
+		}
+
+		function _attr_as_string(element, name, defaultValue) {
+
+				if (element.hasAttribute(name)) {
+
+						return element.getAttribute(name);
+				} else {
+
+						return defaultValue;
+				}
+		}
+
+		function _format_float(f, num) {
+
+				if (f === undefined) {
+
+						var s = '0.';
+
+						while (s.length < num + 2) {
+
+								s += '0';
+						}
+
+						return s;
+				}
+
+				num = num || 2;
+
+				var parts = f.toString().split('.');
+				parts[1] = parts.length > 1 ? parts[1].substr(0, num) : "0";
+
+				while (parts[1].length < num) {
+
+						parts[1] += '0';
+				}
+
+				return parts.join('.');
+		}
+
+		function loadTextureImage(texture, url) {
+
+				var loader = new __WEBPACK_IMPORTED_MODULE_1_three__["G" /* ImageLoader */]();
+
+				loader.load(url, function (image) {
+
+						texture.image = image;
+						texture.needsUpdate = true;
+				});
+		}
+
+		function extractDoubleSided(obj, element) {
+
+				obj.doubleSided = false;
+
+				var node = element.querySelectorAll('extra double_sided')[0];
+
+				if (node) {
+
+						if (node && parseInt(node.textContent, 10) === 1) {
+
+								obj.doubleSided = true;
+						}
+				}
+		}
+
+		function setUpConversion() {
+
+				if (options.convertUpAxis !== true || colladaUp === options.upAxis) {
+
+						upConversion = null;
+				} else {
+
+						switch (colladaUp) {
+
+								case 'X':
+
+										upConversion = options.upAxis === 'Y' ? 'XtoY' : 'XtoZ';
+										break;
+
+								case 'Y':
+
+										upConversion = options.upAxis === 'X' ? 'YtoX' : 'YtoZ';
+										break;
+
+								case 'Z':
+
+										upConversion = options.upAxis === 'X' ? 'ZtoX' : 'ZtoY';
+										break;
+
+						}
+				}
+		}
+
+		function fixCoords(data, sign) {
+
+				if (options.convertUpAxis !== true || colladaUp === options.upAxis) {
+
+						return;
+				}
+
+				switch (upConversion) {
 
 						case 'XtoY':
+
+								var tmp = data[0];
+								data[0] = sign * data[1];
+								data[1] = tmp;
+								break;
+
 						case 'XtoZ':
+
+								var tmp = data[2];
+								data[2] = data[1];
+								data[1] = data[0];
+								data[0] = tmp;
+								break;
+
 						case 'YtoX':
 
-							member = 'Y';
-							break;
-
-						case 'ZtoX':
-
-							member = 'Z';
-							break;
-
-					}
-
-					break;
-
-				case 'Y':
-
-					switch (upConversion) {
-
-						case 'XtoY':
-						case 'YtoX':
-						case 'ZtoX':
-
-							member = 'X';
-							break;
-
-						case 'XtoZ':
-						case 'YtoZ':
-						case 'ZtoY':
-
-							member = 'Z';
-							break;
-
-					}
-
-					break;
-
-				case 'Z':
-
-					switch (upConversion) {
-
-						case 'XtoZ':
-
-							member = 'X';
-							break;
+								var tmp = data[0];
+								data[0] = data[1];
+								data[1] = sign * tmp;
+								break;
 
 						case 'YtoZ':
+
+								var tmp = data[1];
+								data[1] = sign * data[2];
+								data[2] = tmp;
+								break;
+
 						case 'ZtoX':
+
+								var tmp = data[0];
+								data[0] = data[1];
+								data[1] = data[2];
+								data[2] = tmp;
+								break;
+
 						case 'ZtoY':
 
-							member = 'Y';
-							break;
+								var tmp = data[1];
+								data[1] = data[2];
+								data[2] = sign * tmp;
+								break;
 
-					}
-
-					break;
-
-			}
+				}
 		}
 
-		return member;
-	}
+		function getConvertedTranslation(axis, data) {
 
-	return {
+				if (options.convertUpAxis !== true || colladaUp === options.upAxis) {
 
-		load: load,
-		parse: parse,
-		setPreferredShading: setPreferredShading,
-		applySkin: applySkin,
-		geometries: geometries,
-		options: options
+						return data;
+				}
 
-	};
+				switch (axis) {
+						case 'X':
+								data = upConversion === 'XtoY' ? data * -1 : data;
+								break;
+						case 'Y':
+								data = upConversion === 'YtoZ' || upConversion === 'YtoX' ? data * -1 : data;
+								break;
+						case 'Z':
+								data = upConversion === 'ZtoY' ? data * -1 : data;
+								break;
+						default:
+								break;
+				}
+
+				return data;
+		}
+
+		function getConvertedVec3(data, offset) {
+
+				var arr = [data[offset], data[offset + 1], data[offset + 2]];
+				fixCoords(arr, -1);
+				return new __WEBPACK_IMPORTED_MODULE_1_three__["d" /* Vector3 */](arr[0], arr[1], arr[2]);
+		}
+
+		function getConvertedMat4(data) {
+
+				if (options.convertUpAxis) {
+						var arr = [data[0], data[4], data[8]];
+						fixCoords(arr, -1);
+						data[0] = arr[0];
+						data[4] = arr[1];
+						data[8] = arr[2];
+						arr = [data[1], data[5], data[9]];
+						fixCoords(arr, -1);
+						data[1] = arr[0];
+						data[5] = arr[1];
+						data[9] = arr[2];
+						arr = [data[2], data[6], data[10]];
+						fixCoords(arr, -1);
+						data[2] = arr[0];
+						data[6] = arr[1];
+						data[10] = arr[2];
+
+						arr = [data[0], data[1], data[2]];
+						fixCoords(arr, -1);
+						data[0] = arr[0];
+						data[1] = arr[1];
+						data[2] = arr[2];
+						arr = [data[4], data[5], data[6]];
+						fixCoords(arr, -1);
+						data[4] = arr[0];
+						data[5] = arr[1];
+						data[6] = arr[2];
+						arr = [data[8], data[9], data[10]];
+						fixCoords(arr, -1);
+						data[8] = arr[0];
+						data[9] = arr[1];
+						data[10] = arr[2];
+
+						arr = [data[3], data[7], data[11]];
+						fixCoords(arr, -1);
+						data[3] = arr[0];
+						data[7] = arr[1];
+						data[11] = arr[2];
+				}
+
+				return new __WEBPACK_IMPORTED_MODULE_1_three__["c" /* Matrix4 */]().set(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9], data[10], data[11], data[12], data[13], data[14], data[15]);
+		}
+
+		function getConvertedIndex(index) {
+
+				if (index > -1 && index < 3) {
+
+						var members = ['X', 'Y', 'Z'],
+						    indices = { X: 0, Y: 1, Z: 2 };
+
+						index = getConvertedMember(members[index]);
+						index = indices[index];
+				}
+
+				return index;
+		}
+
+		function getConvertedMember(member) {
+
+				if (options.convertUpAxis) {
+
+						switch (member) {
+
+								case 'X':
+
+										switch (upConversion) {
+
+												case 'XtoY':
+												case 'XtoZ':
+												case 'YtoX':
+
+														member = 'Y';
+														break;
+
+												case 'ZtoX':
+
+														member = 'Z';
+														break;
+
+										}
+
+										break;
+
+								case 'Y':
+
+										switch (upConversion) {
+
+												case 'XtoY':
+												case 'YtoX':
+												case 'ZtoX':
+
+														member = 'X';
+														break;
+
+												case 'XtoZ':
+												case 'YtoZ':
+												case 'ZtoY':
+
+														member = 'Z';
+														break;
+
+										}
+
+										break;
+
+								case 'Z':
+
+										switch (upConversion) {
+
+												case 'XtoZ':
+
+														member = 'X';
+														break;
+
+												case 'YtoZ':
+												case 'ZtoX':
+												case 'ZtoY':
+
+														member = 'Y';
+														break;
+
+										}
+
+										break;
+
+						}
+				}
+
+				return member;
+		}
+
+		return {
+
+				load: load,
+				parse: parse,
+				setPreferredShading: setPreferredShading,
+				applySkin: applySkin,
+				geometries: geometries,
+				options: options
+
+		};
 };
 
 
 
 /***/ }),
 /* 29 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DDSLoader; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_create__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_create___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_create__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_three__ = __webpack_require__(0);
+
+
+
+var DDSLoader = function DDSLoader() {
+
+	this._parser = DDSLoader.parse;
+};
+
+DDSLoader.prototype = __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_create___default()(__WEBPACK_IMPORTED_MODULE_1_three__["W" /* CompressedTextureLoader */].prototype);
+DDSLoader.prototype.constructor = DDSLoader;
+
+DDSLoader.parse = function (buffer, loadMipmaps) {
+
+	var dds = { mipmaps: [], width: 0, height: 0, format: null, mipmapCount: 1 };
+
+	var DDS_MAGIC = 0x20534444;
+
+	var DDSD_CAPS = 0x1,
+	    DDSD_HEIGHT = 0x2,
+	    DDSD_WIDTH = 0x4,
+	    DDSD_PITCH = 0x8,
+	    DDSD_PIXELFORMAT = 0x1000,
+	    DDSD_MIPMAPCOUNT = 0x20000,
+	    DDSD_LINEARSIZE = 0x80000,
+	    DDSD_DEPTH = 0x800000;
+
+	var DDSCAPS_COMPLEX = 0x8,
+	    DDSCAPS_MIPMAP = 0x400000,
+	    DDSCAPS_TEXTURE = 0x1000;
+
+	var DDSCAPS2_CUBEMAP = 0x200,
+	    DDSCAPS2_CUBEMAP_POSITIVEX = 0x400,
+	    DDSCAPS2_CUBEMAP_NEGATIVEX = 0x800,
+	    DDSCAPS2_CUBEMAP_POSITIVEY = 0x1000,
+	    DDSCAPS2_CUBEMAP_NEGATIVEY = 0x2000,
+	    DDSCAPS2_CUBEMAP_POSITIVEZ = 0x4000,
+	    DDSCAPS2_CUBEMAP_NEGATIVEZ = 0x8000,
+	    DDSCAPS2_VOLUME = 0x200000;
+
+	var DDPF_ALPHAPIXELS = 0x1,
+	    DDPF_ALPHA = 0x2,
+	    DDPF_FOURCC = 0x4,
+	    DDPF_RGB = 0x40,
+	    DDPF_YUV = 0x200,
+	    DDPF_LUMINANCE = 0x20000;
+
+	function fourCCToInt32(value) {
+
+		return value.charCodeAt(0) + (value.charCodeAt(1) << 8) + (value.charCodeAt(2) << 16) + (value.charCodeAt(3) << 24);
+	}
+
+	function int32ToFourCC(value) {
+
+		return String.fromCharCode(value & 0xff, value >> 8 & 0xff, value >> 16 & 0xff, value >> 24 & 0xff);
+	}
+
+	function loadARGBMip(buffer, dataOffset, width, height) {
+
+		var dataLength = width * height * 4;
+		var srcBuffer = new Uint8Array(buffer, dataOffset, dataLength);
+		var byteArray = new Uint8Array(dataLength);
+		var dst = 0;
+		var src = 0;
+		for (var y = 0; y < height; y++) {
+
+			for (var x = 0; x < width; x++) {
+
+				var b = srcBuffer[src];src++;
+				var g = srcBuffer[src];src++;
+				var r = srcBuffer[src];src++;
+				var a = srcBuffer[src];src++;
+				byteArray[dst] = r;dst++;
+				byteArray[dst] = g;dst++;
+				byteArray[dst] = b;dst++;
+				byteArray[dst] = a;dst++;
+			}
+		}
+		return byteArray;
+	}
+
+	var FOURCC_DXT1 = fourCCToInt32("DXT1");
+	var FOURCC_DXT3 = fourCCToInt32("DXT3");
+	var FOURCC_DXT5 = fourCCToInt32("DXT5");
+	var FOURCC_ETC1 = fourCCToInt32("ETC1");
+
+	var headerLengthInt = 31;
+
+	var off_magic = 0;
+
+	var off_size = 1;
+	var off_flags = 2;
+	var off_height = 3;
+	var off_width = 4;
+
+	var off_mipmapCount = 7;
+
+	var off_pfFlags = 20;
+	var off_pfFourCC = 21;
+	var off_RGBBitCount = 22;
+	var off_RBitMask = 23;
+	var off_GBitMask = 24;
+	var off_BBitMask = 25;
+	var off_ABitMask = 26;
+
+	var off_caps = 27;
+	var off_caps2 = 28;
+	var off_caps3 = 29;
+	var off_caps4 = 30;
+
+	var header = new Int32Array(buffer, 0, headerLengthInt);
+
+	if (header[off_magic] !== DDS_MAGIC) {
+
+		console.error('DDSLoader.parse: Invalid magic number in DDS header.');
+		return dds;
+	}
+
+	if (!header[off_pfFlags] & DDPF_FOURCC) {
+
+		console.error('DDSLoader.parse: Unsupported format, must contain a FourCC code.');
+		return dds;
+	}
+
+	var blockBytes;
+
+	var fourCC = header[off_pfFourCC];
+
+	var isRGBAUncompressed = false;
+
+	switch (fourCC) {
+
+		case FOURCC_DXT1:
+
+			blockBytes = 8;
+			dds.format = __WEBPACK_IMPORTED_MODULE_1_three__["X" /* RGB_S3TC_DXT1_Format */];
+			break;
+
+		case FOURCC_DXT3:
+
+			blockBytes = 16;
+			dds.format = __WEBPACK_IMPORTED_MODULE_1_three__["Y" /* RGBA_S3TC_DXT3_Format */];
+			break;
+
+		case FOURCC_DXT5:
+
+			blockBytes = 16;
+			dds.format = __WEBPACK_IMPORTED_MODULE_1_three__["Z" /* RGBA_S3TC_DXT5_Format */];
+			break;
+
+		case FOURCC_ETC1:
+
+			blockBytes = 8;
+			dds.format = __WEBPACK_IMPORTED_MODULE_1_three__["_0" /* RGB_ETC1_Format */];
+			break;
+
+		default:
+
+			if (header[off_RGBBitCount] === 32 && header[off_RBitMask] & 0xff0000 && header[off_GBitMask] & 0xff00 && header[off_BBitMask] & 0xff && header[off_ABitMask] & 0xff000000) {
+
+				isRGBAUncompressed = true;
+				blockBytes = 64;
+				dds.format = __WEBPACK_IMPORTED_MODULE_1_three__["_1" /* RGBAFormat */];
+			} else {
+
+				console.error('DDSLoader.parse: Unsupported FourCC code ', int32ToFourCC(fourCC));
+				return dds;
+			}
+	}
+
+	dds.mipmapCount = 1;
+
+	if (header[off_flags] & DDSD_MIPMAPCOUNT && loadMipmaps !== false) {
+
+		dds.mipmapCount = Math.max(1, header[off_mipmapCount]);
+	}
+
+	var caps2 = header[off_caps2];
+	dds.isCubemap = caps2 & DDSCAPS2_CUBEMAP ? true : false;
+	if (dds.isCubemap && (!(caps2 & DDSCAPS2_CUBEMAP_POSITIVEX) || !(caps2 & DDSCAPS2_CUBEMAP_NEGATIVEX) || !(caps2 & DDSCAPS2_CUBEMAP_POSITIVEY) || !(caps2 & DDSCAPS2_CUBEMAP_NEGATIVEY) || !(caps2 & DDSCAPS2_CUBEMAP_POSITIVEZ) || !(caps2 & DDSCAPS2_CUBEMAP_NEGATIVEZ))) {
+
+		console.error('DDSLoader.parse: Incomplete cubemap faces');
+		return dds;
+	}
+
+	dds.width = header[off_width];
+	dds.height = header[off_height];
+
+	var dataOffset = header[off_size] + 4;
+
+	var faces = dds.isCubemap ? 6 : 1;
+
+	for (var face = 0; face < faces; face++) {
+
+		var width = dds.width;
+		var height = dds.height;
+
+		for (var i = 0; i < dds.mipmapCount; i++) {
+
+			if (isRGBAUncompressed) {
+
+				var byteArray = loadARGBMip(buffer, dataOffset, width, height);
+				var dataLength = byteArray.length;
+			} else {
+
+				var dataLength = Math.max(4, width) / 4 * Math.max(4, height) / 4 * blockBytes;
+				var byteArray = new Uint8Array(buffer, dataOffset, dataLength);
+			}
+
+			var mipmap = { "data": byteArray, "width": width, "height": height };
+			dds.mipmaps.push(mipmap);
+
+			dataOffset += dataLength;
+
+			width = Math.max(width >> 1, 1);
+			height = Math.max(height >> 1, 1);
+		}
+	}
+
+	return dds;
+};
+
+
+
+/***/ }),
+/* 30 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MTLLoader; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_three__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__DDSLoader__ = __webpack_require__(29);
+
+
+
+var LoaderHandlers = __WEBPACK_IMPORTED_MODULE_0_three__["y" /* Loader */].Handlers;
+LoaderHandlers.add(/\.dds$/i, new __WEBPACK_IMPORTED_MODULE_1__DDSLoader__["a" /* DDSLoader */]());
+
+var MTLLoader = function MTLLoader(manager) {
+
+		this.manager = manager !== undefined ? manager : __WEBPACK_IMPORTED_MODULE_0_three__["R" /* DefaultLoadingManager */];
+};
+
+MTLLoader.prototype = {
+
+		constructor: MTLLoader,
+
+		load: function load(url, onLoad, onProgress, onError) {
+
+				var scope = this;
+
+				var loader = new __WEBPACK_IMPORTED_MODULE_0_three__["S" /* FileLoader */](this.manager);
+				loader.setPath(this.path);
+				loader.load(url, function (text) {
+
+						onLoad(scope.parse(text));
+				}, onProgress, onError);
+		},
+
+		setPath: function setPath(path) {
+
+				this.path = path;
+		},
+
+		setTexturePath: function setTexturePath(path) {
+
+				this.texturePath = path;
+		},
+
+		setBaseUrl: function setBaseUrl(path) {
+
+				console.warn('MTLLoader: .setBaseUrl() is deprecated. Use .setTexturePath( path ) for texture path or .setPath( path ) for general base path instead.');
+
+				this.setTexturePath(path);
+		},
+
+		setCrossOrigin: function setCrossOrigin(value) {
+
+				this.crossOrigin = value;
+		},
+
+		setMaterialOptions: function setMaterialOptions(value) {
+
+				this.materialOptions = value;
+		},
+
+		parse: function parse(text) {
+
+				var lines = text.split('\n');
+				var info = {};
+				var delimiter_pattern = /\s+/;
+				var materialsInfo = {};
+
+				for (var i = 0; i < lines.length; i++) {
+
+						var line = lines[i];
+						line = line.trim();
+
+						if (line.length === 0 || line.charAt(0) === '#') {
+								continue;
+						}
+
+						var pos = line.indexOf(' ');
+
+						var key = pos >= 0 ? line.substring(0, pos) : line;
+						key = key.toLowerCase();
+
+						var value = pos >= 0 ? line.substring(pos + 1) : '';
+						value = value.trim();
+
+						if (key === 'newmtl') {
+
+								info = { name: value };
+								materialsInfo[value] = info;
+						} else if (info) {
+
+								if (key === 'ka' || key === 'kd' || key === 'ks') {
+
+										var ss = value.split(delimiter_pattern, 3);
+										info[key] = [parseFloat(ss[0]), parseFloat(ss[1]), parseFloat(ss[2])];
+								} else {
+
+										info[key] = value;
+								}
+						}
+				}
+
+				var materialCreator = new MTLLoader.MaterialCreator(this.texturePath || this.path, this.materialOptions);
+				materialCreator.setCrossOrigin(this.crossOrigin);
+				materialCreator.setManager(this.manager);
+				materialCreator.setMaterials(materialsInfo);
+				return materialCreator;
+		}
+
+};
+
+MTLLoader.MaterialCreator = function (baseUrl, options) {
+
+		this.baseUrl = baseUrl || '';
+		this.options = options;
+		this.materialsInfo = {};
+		this.materials = {};
+		this.materialsArray = [];
+		this.nameLookup = {};
+
+		this.side = this.options && this.options.side ? this.options.side : __WEBPACK_IMPORTED_MODULE_0_three__["k" /* FrontSide */];
+		this.wrap = this.options && this.options.wrap ? this.options.wrap : __WEBPACK_IMPORTED_MODULE_0_three__["B" /* RepeatWrapping */];
+};
+
+MTLLoader.MaterialCreator.prototype = {
+
+		constructor: MTLLoader.MaterialCreator,
+
+		crossOrigin: 'Anonymous',
+
+		setCrossOrigin: function setCrossOrigin(value) {
+
+				this.crossOrigin = value;
+		},
+
+		setManager: function setManager(value) {
+
+				this.manager = value;
+		},
+
+		setMaterials: function setMaterials(materialsInfo) {
+
+				this.materialsInfo = this.convert(materialsInfo);
+				this.materials = {};
+				this.materialsArray = [];
+				this.nameLookup = {};
+		},
+
+		convert: function convert(materialsInfo) {
+
+				if (!this.options) return materialsInfo;
+
+				var converted = {};
+
+				for (var mn in materialsInfo) {
+
+						var mat = materialsInfo[mn];
+
+						var covmat = {};
+
+						converted[mn] = covmat;
+
+						for (var prop in mat) {
+
+								var save = true;
+								var value = mat[prop];
+								var lprop = prop.toLowerCase();
+
+								switch (lprop) {
+
+										case 'kd':
+										case 'ka':
+										case 'ks':
+
+												if (this.options && this.options.normalizeRGB) {
+
+														value = [value[0] / 255, value[1] / 255, value[2] / 255];
+												}
+
+												if (this.options && this.options.ignoreZeroRGBs) {
+
+														if (value[0] === 0 && value[1] === 0 && value[2] === 0) {
+
+																save = false;
+														}
+												}
+
+												break;
+
+										default:
+
+												break;
+
+								}
+
+								if (save) {
+
+										covmat[lprop] = value;
+								}
+						}
+				}
+
+				return converted;
+		},
+
+		preload: function preload() {
+
+				for (var mn in this.materialsInfo) {
+
+						this.create(mn);
+				}
+		},
+
+		getIndex: function getIndex(materialName) {
+
+				return this.nameLookup[materialName];
+		},
+
+		getAsArray: function getAsArray() {
+
+				var index = 0;
+
+				for (var mn in this.materialsInfo) {
+
+						this.materialsArray[index] = this.create(mn);
+						this.nameLookup[mn] = index;
+						index++;
+				}
+
+				return this.materialsArray;
+		},
+
+		create: function create(materialName) {
+
+				if (this.materials[materialName] === undefined) {
+
+						this.createMaterial_(materialName);
+				}
+
+				return this.materials[materialName];
+		},
+
+		createMaterial_: function createMaterial_(materialName) {
+
+				var scope = this;
+				var mat = this.materialsInfo[materialName];
+				var params = {
+
+						name: materialName,
+						side: this.side
+
+				};
+
+				function resolveURL(baseUrl, url) {
+
+						if (typeof url !== 'string' || url === '') return '';
+
+						if (/^https?:\/\//i.test(url)) return url;
+
+						return baseUrl + url;
+				}
+
+				function setMapForType(mapType, value) {
+
+						if (params[mapType]) return;
+
+						var texParams = scope.getTextureParams(value, params);
+						var map = scope.loadTexture(resolveURL(scope.baseUrl, texParams.url));
+
+						map.repeat.copy(texParams.scale);
+						map.offset.copy(texParams.offset);
+
+						map.wrapS = scope.wrap;
+						map.wrapT = scope.wrap;
+
+						params[mapType] = map;
+				}
+
+				for (var prop in mat) {
+
+						var value = mat[prop];
+						var n;
+
+						if (value === '') continue;
+
+						switch (prop.toLowerCase()) {
+
+								case 'kd':
+
+										params.color = new __WEBPACK_IMPORTED_MODULE_0_three__["w" /* Color */]().fromArray(value);
+
+										break;
+
+								case 'ks':
+										params.specular = new __WEBPACK_IMPORTED_MODULE_0_three__["w" /* Color */]().fromArray(value);
+
+										break;
+
+								case 'map_kd':
+
+										setMapForType("map", value);
+
+										break;
+
+								case 'map_ks':
+
+										setMapForType("specularMap", value);
+
+										break;
+
+								case 'norm':
+
+										setMapForType("normalMap", value);
+
+										break;
+
+								case 'map_bump':
+								case 'bump':
+
+										setMapForType("bumpMap", value);
+
+										break;
+
+								case 'ns':
+
+										params.shininess = parseFloat(value);
+
+										break;
+
+								case 'd':
+										n = parseFloat(value);
+
+										if (n < 1) {
+
+												params.opacity = n;
+												params.transparent = true;
+										}
+
+										break;
+
+								case 'tr':
+										n = parseFloat(value);
+
+										if (n > 0) {
+
+												params.opacity = 1 - n;
+												params.transparent = true;
+										}
+
+										break;
+
+								default:
+										break;
+
+						}
+				}
+
+				this.materials[materialName] = new __WEBPACK_IMPORTED_MODULE_0_three__["F" /* MeshPhongMaterial */](params);
+				return this.materials[materialName];
+		},
+
+		getTextureParams: function getTextureParams(value, matParams) {
+
+				var texParams = {
+
+						scale: new __WEBPACK_IMPORTED_MODULE_0_three__["v" /* Vector2 */](1, 1),
+						offset: new __WEBPACK_IMPORTED_MODULE_0_three__["v" /* Vector2 */](0, 0)
+
+				};
+
+				var items = value.split(/\s+/);
+				var pos;
+
+				pos = items.indexOf('-bm');
+
+				if (pos >= 0) {
+
+						matParams.bumpScale = parseFloat(items[pos + 1]);
+						items.splice(pos, 2);
+				}
+
+				pos = items.indexOf('-s');
+
+				if (pos >= 0) {
+
+						texParams.scale.set(parseFloat(items[pos + 1]), parseFloat(items[pos + 2]));
+						items.splice(pos, 4);
+				}
+
+				pos = items.indexOf('-o');
+
+				if (pos >= 0) {
+
+						texParams.offset.set(parseFloat(items[pos + 1]), parseFloat(items[pos + 2]));
+						items.splice(pos, 4);
+				}
+
+				texParams.url = items.join(' ').trim();
+				return texParams;
+		},
+
+		loadTexture: function loadTexture(url, mapping, onLoad, onProgress, onError) {
+
+				var texture;
+				var loader = LoaderHandlers.get(url);
+				var manager = this.manager !== undefined ? this.manager : __WEBPACK_IMPORTED_MODULE_0_three__["R" /* DefaultLoadingManager */];
+
+				if (loader === null) {
+
+						loader = new __WEBPACK_IMPORTED_MODULE_0_three__["V" /* TextureLoader */](manager);
+				}
+
+				if (loader.setCrossOrigin) loader.setCrossOrigin(this.crossOrigin);
+				texture = loader.load(url, onLoad, onProgress, onError);
+
+				if (mapping !== undefined) texture.mapping = mapping;
+
+				return texture;
+		}
+
+};
+
+
+
+/***/ }),
+/* 31 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51175,9 +51907,9 @@ OBJLoader.prototype = {
 
 																				material = this.materials.create(sourceMaterial.name);
 
-																				if (isLine && material && !(material instanceof __WEBPACK_IMPORTED_MODULE_0_three__["V" /* LineBasicMaterial */])) {
+																				if (isLine && material && !(material instanceof __WEBPACK_IMPORTED_MODULE_0_three__["_2" /* LineBasicMaterial */])) {
 
-																								var materialLine = new __WEBPACK_IMPORTED_MODULE_0_three__["V" /* LineBasicMaterial */]();
+																								var materialLine = new __WEBPACK_IMPORTED_MODULE_0_three__["_2" /* LineBasicMaterial */]();
 																								materialLine.copy(material);
 																								material = materialLine;
 																				}
@@ -51185,11 +51917,11 @@ OBJLoader.prototype = {
 
 																if (!material) {
 
-																				material = !isLine ? new __WEBPACK_IMPORTED_MODULE_0_three__["F" /* MeshPhongMaterial */]() : new __WEBPACK_IMPORTED_MODULE_0_three__["V" /* LineBasicMaterial */]();
+																				material = !isLine ? new __WEBPACK_IMPORTED_MODULE_0_three__["F" /* MeshPhongMaterial */]() : new __WEBPACK_IMPORTED_MODULE_0_three__["_2" /* LineBasicMaterial */]();
 																				material.name = sourceMaterial.name;
 																}
 
-																material.shading = sourceMaterial.smooth ? __WEBPACK_IMPORTED_MODULE_0_three__["a" /* SmoothShading */] : __WEBPACK_IMPORTED_MODULE_0_three__["W" /* FlatShading */];
+																material.shading = sourceMaterial.smooth ? __WEBPACK_IMPORTED_MODULE_0_three__["a" /* SmoothShading */] : __WEBPACK_IMPORTED_MODULE_0_three__["_3" /* FlatShading */];
 
 																createdMaterials.push(material);
 												}
@@ -51204,10 +51936,10 @@ OBJLoader.prototype = {
 																				buffergeometry.addGroup(sourceMaterial.groupStart, sourceMaterial.groupCount, mi);
 																}
 
-																mesh = !isLine ? new __WEBPACK_IMPORTED_MODULE_0_three__["n" /* Mesh */](buffergeometry, createdMaterials) : new __WEBPACK_IMPORTED_MODULE_0_three__["X" /* LineSegments */](buffergeometry, createdMaterials);
+																mesh = !isLine ? new __WEBPACK_IMPORTED_MODULE_0_three__["n" /* Mesh */](buffergeometry, createdMaterials) : new __WEBPACK_IMPORTED_MODULE_0_three__["_4" /* LineSegments */](buffergeometry, createdMaterials);
 												} else {
 
-																mesh = !isLine ? new __WEBPACK_IMPORTED_MODULE_0_three__["n" /* Mesh */](buffergeometry, createdMaterials[0]) : new __WEBPACK_IMPORTED_MODULE_0_three__["X" /* LineSegments */](buffergeometry, createdMaterials[0]);
+																mesh = !isLine ? new __WEBPACK_IMPORTED_MODULE_0_three__["n" /* Mesh */](buffergeometry, createdMaterials[0]) : new __WEBPACK_IMPORTED_MODULE_0_three__["_4" /* LineSegments */](buffergeometry, createdMaterials[0]);
 												}
 
 												mesh.name = object.name;
@@ -51225,7 +51957,7 @@ OBJLoader.prototype = {
 
 
 /***/ }),
-/* 30 */
+/* 32 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51448,17 +52180,17 @@ STLLoader.prototype = {
 
 
 /***/ }),
-/* 31 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(53);
+__webpack_require__(55);
 var $Object = __webpack_require__(9).Object;
 module.exports = function create(P, D){
   return $Object.create(P, D);
 };
 
 /***/ }),
-/* 32 */
+/* 34 */
 /***/ (function(module, exports) {
 
 module.exports = function(it){
@@ -51467,14 +52199,14 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 33 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // false -> Array#indexOf
 // true  -> Array#includes
 var toIObject = __webpack_require__(16)
-  , toLength  = __webpack_require__(50)
-  , toIndex   = __webpack_require__(49);
+  , toLength  = __webpack_require__(52)
+  , toIndex   = __webpack_require__(51);
 module.exports = function(IS_INCLUDES){
   return function($this, el, fromIndex){
     var O      = toIObject($this)
@@ -51493,7 +52225,7 @@ module.exports = function(IS_INCLUDES){
 };
 
 /***/ }),
-/* 34 */
+/* 36 */
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -51503,11 +52235,11 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 35 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // optional / simple context binding
-var aFunction = __webpack_require__(32);
+var aFunction = __webpack_require__(34);
 module.exports = function(fn, that, length){
   aFunction(fn);
   if(that === undefined)return fn;
@@ -51528,7 +52260,7 @@ module.exports = function(fn, that, length){
 };
 
 /***/ }),
-/* 36 */
+/* 38 */
 /***/ (function(module, exports) {
 
 // 7.2.1 RequireObjectCoercible(argument)
@@ -51538,13 +52270,13 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 37 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global    = __webpack_require__(3)
   , core      = __webpack_require__(9)
-  , ctx       = __webpack_require__(35)
-  , hide      = __webpack_require__(39)
+  , ctx       = __webpack_require__(37)
+  , hide      = __webpack_require__(41)
   , PROTOTYPE = 'prototype';
 
 var $export = function(type, name, source){
@@ -51604,7 +52336,7 @@ $export.R = 128; // real proto method for `library`
 module.exports = $export;
 
 /***/ }),
-/* 38 */
+/* 40 */
 /***/ (function(module, exports) {
 
 var hasOwnProperty = {}.hasOwnProperty;
@@ -51613,11 +52345,11 @@ module.exports = function(it, key){
 };
 
 /***/ }),
-/* 39 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP         = __webpack_require__(13)
-  , createDesc = __webpack_require__(47);
+  , createDesc = __webpack_require__(49);
 module.exports = __webpack_require__(2) ? function(object, key, value){
   return dP.f(object, key, createDesc(1, value));
 } : function(object, key, value){
@@ -51626,13 +52358,13 @@ module.exports = __webpack_require__(2) ? function(object, key, value){
 };
 
 /***/ }),
-/* 40 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(3).document && document.documentElement;
 
 /***/ }),
-/* 41 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = !__webpack_require__(2) && !__webpack_require__(12)(function(){
@@ -51640,22 +52372,22 @@ module.exports = !__webpack_require__(2) && !__webpack_require__(12)(function(){
 });
 
 /***/ }),
-/* 42 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
-var cof = __webpack_require__(34);
+var cof = __webpack_require__(36);
 module.exports = Object('z').propertyIsEnumerable(0) ? Object : function(it){
   return cof(it) == 'String' ? it.split('') : Object(it);
 };
 
 /***/ }),
-/* 43 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-var anObject    = __webpack_require__(6)
-  , dPs         = __webpack_require__(44)
+var anObject    = __webpack_require__(7)
+  , dPs         = __webpack_require__(46)
   , enumBugKeys = __webpack_require__(11)
   , IE_PROTO    = __webpack_require__(14)('IE_PROTO')
   , Empty       = function(){ /* empty */ }
@@ -51670,7 +52402,7 @@ var createDict = function(){
     , gt     = '>'
     , iframeDocument;
   iframe.style.display = 'none';
-  __webpack_require__(40).appendChild(iframe);
+  __webpack_require__(42).appendChild(iframe);
   iframe.src = 'javascript:'; // eslint-disable-line no-script-url
   // createDict = iframe.contentWindow.Object;
   // html.removeChild(iframe);
@@ -51697,12 +52429,12 @@ module.exports = Object.create || function create(O, Properties){
 
 
 /***/ }),
-/* 44 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP       = __webpack_require__(13)
-  , anObject = __webpack_require__(6)
-  , getKeys  = __webpack_require__(46);
+  , anObject = __webpack_require__(7)
+  , getKeys  = __webpack_require__(48);
 
 module.exports = __webpack_require__(2) ? Object.defineProperties : function defineProperties(O, Properties){
   anObject(O);
@@ -51715,12 +52447,12 @@ module.exports = __webpack_require__(2) ? Object.defineProperties : function def
 };
 
 /***/ }),
-/* 45 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var has          = __webpack_require__(38)
+var has          = __webpack_require__(40)
   , toIObject    = __webpack_require__(16)
-  , arrayIndexOf = __webpack_require__(33)(false)
+  , arrayIndexOf = __webpack_require__(35)(false)
   , IE_PROTO     = __webpack_require__(14)('IE_PROTO');
 
 module.exports = function(object, names){
@@ -51737,11 +52469,11 @@ module.exports = function(object, names){
 };
 
 /***/ }),
-/* 46 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys       = __webpack_require__(45)
+var $keys       = __webpack_require__(47)
   , enumBugKeys = __webpack_require__(11);
 
 module.exports = Object.keys || function keys(O){
@@ -51749,7 +52481,7 @@ module.exports = Object.keys || function keys(O){
 };
 
 /***/ }),
-/* 47 */
+/* 49 */
 /***/ (function(module, exports) {
 
 module.exports = function(bitmap, value){
@@ -51762,7 +52494,7 @@ module.exports = function(bitmap, value){
 };
 
 /***/ }),
-/* 48 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(3)
@@ -51773,7 +52505,7 @@ module.exports = function(key){
 };
 
 /***/ }),
-/* 49 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var toInteger = __webpack_require__(15)
@@ -51785,7 +52517,7 @@ module.exports = function(index, length){
 };
 
 /***/ }),
-/* 50 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.15 ToLength
@@ -51796,11 +52528,11 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 51 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__(7);
+var isObject = __webpack_require__(8);
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
 // and the second argument - flag - preferred type is a string
 module.exports = function(it, S){
@@ -51813,7 +52545,7 @@ module.exports = function(it, S){
 };
 
 /***/ }),
-/* 52 */
+/* 54 */
 /***/ (function(module, exports) {
 
 var id = 0
@@ -51823,15 +52555,15 @@ module.exports = function(key){
 };
 
 /***/ }),
-/* 53 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $export = __webpack_require__(37)
+var $export = __webpack_require__(39)
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-$export($export.S, 'Object', {create: __webpack_require__(43)});
+$export($export.S, 'Object', {create: __webpack_require__(45)});
 
 /***/ }),
-/* 54 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
