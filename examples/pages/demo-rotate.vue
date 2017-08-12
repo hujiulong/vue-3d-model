@@ -2,6 +2,7 @@
     <demo-block :vue-code="code" :html-code="htmlCode">
         <template slot="preview">
             <model-collada
+                ref="collada"
                 :rotation="rotation"
                 @on-load="onLoad"
                 src="static/models/collada/elf/elf.dae"></model-collada>
@@ -90,7 +91,7 @@ export default {
             htmlCode,
             loading: true,
             rotation: {
-                x: 0,
+                x: -Math.PI / 2,
                 y: 0,
                 z: 0
             }
@@ -99,11 +100,14 @@ export default {
     methods: {
         onLoad () {
             this.loading = false;
+            console.log( this.$refs.collada.object.rotation )
+            // this.rotation.z += 0.01;
+            // this.$refs.collada.object.rotation.z += 0.1;
             this.rotate();
         },
         rotate () {
             requestAnimationFrame( this.rotate );
-            this.rotation.y += 0.01;
+            this.rotation.z += 0.01;
         }
     },
     components: {
