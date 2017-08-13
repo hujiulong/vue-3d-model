@@ -91,7 +91,7 @@ export default {
             htmlCode,
             loading: true,
             rotation: {
-                x: -Math.PI / 2,
+                x: 0,
                 y: 0,
                 z: 0
             }
@@ -100,14 +100,11 @@ export default {
     methods: {
         onLoad () {
             this.loading = false;
-            console.log( this.$refs.collada.object.rotation )
-            // this.rotation.z += 0.01;
-            // this.$refs.collada.object.rotation.z += 0.1;
             this.rotate();
         },
         rotate () {
             requestAnimationFrame( this.rotate );
-            this.rotation.z += 0.01;
+            this.rotation.y += 0.01;
         }
     },
     components: {
