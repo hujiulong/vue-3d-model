@@ -100,7 +100,7 @@ const htmlCode = `
 `
 
 export default {
-    name: 'demo-gltf',
+    name: 'demo-event',
     data () {
         return {
             code,
