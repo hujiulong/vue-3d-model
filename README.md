@@ -1,7 +1,6 @@
 # vue-3d-model
 
 <p align="center">
-    <a href="https://www.npmjs.com/package/vue-3d-model"><img src="https://img.shields.io/npm/dm/vue-3d-model.svg" alt="Downloads"></a>
     <a href="https://www.npmjs.com/package/vue-3d-model"><img src="https://img.shields.io/npm/v/vue-3d-model.svg" alt="Version"></a>
     <a href="https://www.npmjs.com/package/vue-3d-model"><img src="https://img.shields.io/npm/l/vue-3d-model.svg" alt="License"></a>
 </p>
@@ -15,7 +14,7 @@ vue.js 3D model viewer component, based on threejs, inspired by [model-tag](http
 </p>
 
 ## Example
-[示例页面DEMO](https://hujiulong.github.io/vue-3d-model/#/demo-basic)
+[DEMO](https://hujiulong.github.io/vue-3d-model/#/demo-basic)
 
 ## Install
 using npm
