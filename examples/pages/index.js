@@ -9,6 +9,7 @@ import DemoStl from './demo-stl'
 import DemoCollada from './demo-collada'
 // import DemoSea3d from './demo-sea3d'
 import DemoJson from './demo-json'
+import DemoPly from './demo-ply'
 
 const pages = [
     DemoBasic,
@@ -19,7 +20,8 @@ const pages = [
     DemoObjMtl,
     DemoStl,
     DemoCollada,
-    DemoJson
+    DemoJson,
+    DemoPly
 ]
 
 export { pages };
