@@ -111,6 +111,7 @@ export default {
             mouse: new Vector2(),
             camera: new PerspectiveCamera( 45, 1, 0.001, 100000 ),
             scene: new Scene(),
+            wrapper: new Object3D(),
             renderer: null,
             controls: null,
             allLights: [],
@@ -145,6 +146,8 @@ export default {
 
         this.renderer = new WebGLRenderer( { antialias: true, alpha: true, canvas: this.$refs.canvas } )
         this.renderer.shadowMap.enabled = true;
+
+        this.scene.add( this.wrapper )
 
         this.load();
         this.update();
@@ -324,12 +327,14 @@ export default {
                 if ( !object ) return;
 
                 distance = getSize( object ).length();
-                center = getCenter( object );
+                // center = getCenter( object );
 
                 camera.position.set( 0, 0, 0 );
                 camera.position.z = distance;
-                camera.position.add( center );
-                camera.lookAt( center );
+                // camera.position.add( center );
+                // camera.lookAt( center );
+
+                camera.lookAt( new Vector3() );
 
             } else {
                 // TODO
@@ -435,20 +440,20 @@ export default {
             if ( !this.src ) return;
 
             if ( this.object ) {
-                this.scene.remove( this.object );
+
+                this.wrapper.remove( this.object );
+
             }
 
-            this.loader.load( this.src, object => {
+            this.loader.load( this.src, ( ...args ) => {
+
+                const object = this.getObject( ...args )
 
                 if ( this.process ) {
                     this.process ( object );
                 }
 
-                this.object = object;
-
-                this.scene.add( this.object );
-
-                this.updateCamera();
+                this.addObject( object )
 
                 this.$emit( 'on-load' );
 
@@ -458,6 +463,24 @@ export default {
 
             } );
 
+        },
+        getObject( object ) {
+
+            return object
+
+        },
+        addObject( object ) {
+
+            const center = getCenter( object )
+
+            // correction offset
+            this.wrapper.position.copy( center.negate() )
+            
+            this.object = object
+            this.wrapper.add( object )
+
+            this.updateCamera()
+            
         },
         animate () {
             requestAnimationFrame( this.animate );

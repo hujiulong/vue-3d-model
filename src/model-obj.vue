@@ -4,6 +4,9 @@ import { MTLLoader } from './loaders/MTLLoader'
 import { toIndexed } from './util'
 import mixin from './model-mixin.vue'
 
+import * as THREE from 'three'
+import { getSize, getCenter } from './util'
+
 export default {
     name: 'model-obj',
     mixins: [ mixin ],
@@ -66,7 +69,7 @@ export default {
             if ( !this.src ) return;
 
             if ( this.object ) {
-                this.scene.remove( this.object );
+                this.wrapper.remove( this.object );
             }
 
             const onLoad = object => {
@@ -75,11 +78,7 @@ export default {
                     this.process ( object );
                 }
 
-                this.object = object;
-
-                this.scene.add( this.object );
-
-                this.updateCamera();
+                this.addObject( object )
 
                 this.$emit( 'on-load' );
 

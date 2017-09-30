@@ -1,3 +1,5 @@
+import Vue from 'vue'
+
 import ModelObj from './model-obj.vue'
 import ModelThree from './model-three.vue'
 import ModelStl from './model-stl.vue'
@@ -31,7 +33,8 @@ if ( typeof window !== 'undefined' && window.Vue ) {
     install( window.Vue );
 }
 
-export { 
+export {
+    install,
     ModelObj,
     ModelThree,
     ModelJson,

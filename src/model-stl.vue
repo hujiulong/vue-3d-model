@@ -37,31 +37,9 @@ export default {
         }
     },
     methods: {
-        load () {
+        getObject( geometry ) {
 
-            if ( !this.src ) return;
-
-            if ( this.object ) {
-                this.scene.remove( this.object );
-            }
-
-            this.loader.load( this.src, geometry => {
-
-                this.object = new Mesh( geometry, new MeshPhongMaterial() );
-
-                this.scene.add( this.object );
-
-                
-
-                this.updateCamera();
-
-                this.$emit( 'on-load' );
-
-            }, err => {
-
-                this.$emit( 'on-error', err );
-
-            } );
+            return new Mesh( geometry, new MeshPhongMaterial() )
 
         }
     }

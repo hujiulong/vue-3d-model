@@ -1,7 +1,8 @@
 <script>
 import { ColladaLoader } from './loaders/ColladaLoader'
-import { toIndexed } from './util'
+import { toIndexed, getCenter } from './util'
 import mixin from './model-mixin.vue'
+import { Object3D } from 'three'
 
 export default {
     name: 'model-collada',
@@ -35,37 +36,14 @@ export default {
     data () {
 
         const loader = new ColladaLoader();
-        loader.options.convertUpAxis = true;
 
         return {
             loader
         }
     },
     methods: {
-        load () {
-
-            if ( !this.src ) return;
-
-            if ( this.object ) {
-                this.scene.remove( this.object );
-            }
-
-            this.loader.load( this.src, collada => {
-
-                this.object = collada.scene;
-
-                this.scene.add( this.object );
-
-                this.updateCamera();
-
-                this.$emit( 'on-load' );
-
-            }, err => {
-
-                this.$emit( 'on-error', err );
-
-            } );
-
+        getObject ( collada ) {
+            return collada.scene
         }
     }
 }
