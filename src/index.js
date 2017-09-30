@@ -3,21 +3,39 @@ import ModelThree from './model-three.vue'
 import ModelStl from './model-stl.vue'
 import ModelCollada from './model-collada.vue'
 
+// alias
+const ModelJson = Vue.extend( ModelThree, {
+    name: 'model-json'
+} )
+
+const ModelDae =  Vue.extend( ModelCollada, {
+    name: 'model-dae'
+} )
+
 const components = [
     ModelObj,
     ModelThree,
+    ModelJson,
     ModelStl,
-    ModelCollada
+    ModelCollada,
+    ModelDae
 ]
 
 const install = ( Vue ) => {
     components.map( component => {
         Vue.component( component.name, component );
     } );
-};
+}
 
 if ( typeof window !== 'undefined' && window.Vue ) {
     install( window.Vue );
-};
+}
 
-export { ModelObj, ModelThree, ModelStl, ModelCollada }
+export { 
+    ModelObj,
+    ModelThree,
+    ModelJson,
+    ModelStl,
+    ModelCollada,
+    ModelDae
+}
