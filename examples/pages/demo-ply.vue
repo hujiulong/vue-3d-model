@@ -52,9 +52,9 @@ export default {
             htmlCode,
             loading: true,
             rotation: {
-                x: Math.PI / 2,
-                y: 0,
-                z: Math.PI / 2
+                x: 0,
+                y: Math.PI,
+                z: 0
             }
     	}
     },

@@ -109,7 +109,7 @@ export default {
             object: null,
             raycaster: new Raycaster(),
             mouse: new Vector2(),
-            camera: new PerspectiveCamera( 45, 1, 0.001, 100000 ),
+            camera: new PerspectiveCamera( 45, 1, 0.1, 100000 ),
             scene: new Scene(),
             wrapper: new Object3D(),
             renderer: null,
@@ -283,7 +283,6 @@ export default {
         update () {
 
             this.updateRenderer();
-            this.updateModel();
             this.updateCamera();
             this.updateLights();
             this.updateControls();
@@ -291,15 +290,17 @@ export default {
         },
         updateModel () {
 
-            let object = this.object;
+            const object = this.object;
 
             if ( !object ) return;
 
-            object.position.copy( this.position );
-            object.rotation.copy( this.rotation );
-            object.scale.copy( this.scale );
+            const position = this.position;
+            const rotation = this.rotation;
+            const scale = this.scale;
 
-            // object.matrixWorldNeedsUpdate = true;
+            object.position.set( position.x, position.y, position.z );
+            object.rotation.set( rotation.x, rotation.y, rotation.z );
+            object.scale.set( scale.x, scale.y, scale.z );
 
         },
         updateRenderer () {
@@ -313,11 +314,8 @@ export default {
         },
         updateCamera () {
 
-            let camera = this.camera;
-            let object = this.object;
-
-            let distance = 0;
-            let center = null;
+            const camera = this.camera;
+            const object = this.object;
 
             camera.aspect = this.size.width / this.size.height;
             camera.updateProjectionMatrix();
@@ -326,21 +324,21 @@ export default {
 
                 if ( !object ) return;
 
-                distance = getSize( object ).length();
-                // center = getCenter( object );
+                const distance = getSize( object ).length();
 
                 camera.position.set( 0, 0, 0 );
                 camera.position.z = distance;
-                // camera.position.add( center );
-                // camera.lookAt( center );
-
                 camera.lookAt( new Vector3() );
 
             } else {
-                // TODO
-            }
+                
+                camera.position.set( this.cameraPosition.x, this.cameraPosition.y, this.cameraPosition.z )
+                camera.rotation.set( this.cameraRotation.x, this.cameraRotation.y, this.cameraRotation.z )
+                camera.up.set( this.cameraUp.x, this.cameraUp.y, this.cameraUp.z )
 
-            if ( this.controls && center ) this.controls.target.copy( center );
+                camera.lookAt( new Vector3( this.cameraLookAt.x, this.cameraLookAt.y, this.cameraLookAt.z ) )
+
+            }
 
         },
         updateLights () {
@@ -488,9 +486,9 @@ export default {
             this.render();
         },
         render () {
-            // if ( this.object )
-            //         console.log( this.object.rotation )
-            this.renderer.render( this.scene, this.camera );
+
+            this.renderer.render( this.scene, this.camera )
+
         }
     }
 }
