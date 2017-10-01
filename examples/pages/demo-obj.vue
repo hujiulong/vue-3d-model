@@ -3,6 +3,7 @@
         <template slot="preview">
             <model-obj :backgroundAlpha="0"
                 @on-load="onLoad"
+                :rotation="rotation"
                 src="static/models/obj/tree.obj"></model-obj>
             <div class="example-loading" v-show="loading"></div>
         </template>
@@ -49,7 +50,12 @@ export default {
     	return {
             code,
             htmlCode,
-            loading: true
+            loading: true,
+            rotation: {
+                x: Math.PI / 2,
+                y: 0,
+                z: 0 
+            }
     	}
     },
     methods: {

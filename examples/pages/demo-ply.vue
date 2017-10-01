@@ -3,6 +3,7 @@
         <template slot="preview">
             <model-ply :backgroundAlpha="0"
                 @on-load="onLoad"
+                :rotation="rotation"
                 src="static/models/ply/binary/Lucy100k.ply"></model-ply>
             <div class="example-loading" v-show="loading"></div>
         </template>
@@ -32,7 +33,7 @@ const code = `
 const htmlCode = `
 <body>
     <div id="app">
-        <model-ply src="static/models/ply/slotted_disk.ply"></model-ply>
+        <model-ply src="static/models/ply/slotted_disk.ply" :rotation="rotation"></model-ply>
     </div>
     #scripts#
     <script>
@@ -49,7 +50,12 @@ export default {
     	return {
             code,
             htmlCode,
-            loading: true
+            loading: true,
+            rotation: {
+                x: Math.PI / 2,
+                y: 0,
+                z: Math.PI / 2
+            }
     	}
     },
     methods: {

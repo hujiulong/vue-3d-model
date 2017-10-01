@@ -299,7 +299,7 @@ export default {
             object.rotation.copy( this.rotation );
             object.scale.copy( this.scale );
 
-            object.matrixWorldNeedsUpdate = true;
+            // object.matrixWorldNeedsUpdate = true;
 
         },
         updateRenderer () {
@@ -473,13 +473,14 @@ export default {
 
             const center = getCenter( object )
 
-            // correction offset
+            // correction position
             this.wrapper.position.copy( center.negate() )
             
             this.object = object
             this.wrapper.add( object )
 
             this.updateCamera()
+            this.updateModel()
             
         },
         animate () {
@@ -487,6 +488,8 @@ export default {
             this.render();
         },
         render () {
+            // if ( this.object )
+            //         console.log( this.object.rotation )
             this.renderer.render( this.scene, this.camera );
         }
     }
