@@ -21,6 +21,7 @@ import {
     WebGLRenderer,
     PerspectiveCamera,
     AmbientLight,
+    PointLight,
     HemisphereLight,
     DirectionalLight
 } from 'three'
