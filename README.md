@@ -88,6 +88,7 @@ Or
 | on-mouseup    |
 | on-click      |
 | on-load       |
+| on-progress   |
 | on-error      |
 
 ## Model Format Support
@@ -98,6 +99,7 @@ Or
 | stl           | \<model-stl>      |
 | dae           | \<model-collada>  |
 | obj           | \<model-obj>      |
+| ply           | \<model-ply>      |
 
 ## Browser Support
 Modern browsers and IE 11.
