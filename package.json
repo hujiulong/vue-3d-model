@@ -32,7 +32,6 @@
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^5.0.0",
     "css-loader": "^0.28.0",
-    "cz-conventional-changelog": "^2.1.0",
     "eventsource-polyfill": "^0.9.6",
     "express": "^4.14.1",
     "extract-text-webpack-plugin": "^2.0.0",
@@ -74,10 +73,5 @@
     "> 1%",
     "last 2 versions",
     "not ie < 11"
-  ],
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  }
+  ]
 }
