@@ -6,7 +6,7 @@
     "three.js",
     "component"
   ],
-  "version": "0.0.11",
+  "version": "0.0.12",
   "author": "hujiulong <me@hujiulong.com>",
   "main": "dist/vue-3d-model.min.js",
   "scripts": {
