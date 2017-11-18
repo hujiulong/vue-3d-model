@@ -1,7 +1,11 @@
 {
   "name": "vue-3d-model",
   "description": "3D models viewer with vue.js",
-  "keywords":["vue","three.js","component"],
+  "keywords": [
+    "vue",
+    "three.js",
+    "component"
+  ],
   "version": "0.0.11",
   "author": "hujiulong <me@hujiulong.com>",
   "main": "dist/vue-3d-model.min.js",
@@ -69,5 +73,10 @@
     "> 1%",
     "last 2 versions",
     "not ie < 11"
-  ]
+  ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
