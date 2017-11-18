@@ -44,6 +44,10 @@ export default {
 
                 this.$emit( 'on-load' );
 
+            }, xhr => {
+                
+                this.$emit( 'on-progress', xhr );
+
             }, err => {
 
                 console.log( err )

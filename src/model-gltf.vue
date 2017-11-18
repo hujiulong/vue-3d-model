@@ -47,6 +47,10 @@ export default {
 
                 this.$emit( 'on-load' );
 
+            }, xhr => {
+                
+                this.$emit( 'on-progress', xhr );
+
             }, err => {
 
                 this.$emit( 'on-error', err );

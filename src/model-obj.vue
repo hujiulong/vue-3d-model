@@ -84,6 +84,12 @@ export default {
 
             }
 
+            const onProgress = xhr => {
+
+                this.$emit( 'on-progress', xhr );
+
+            }
+
             const onError = err => {
 
                 this.$emit( 'on-error', err );
@@ -116,13 +122,13 @@ export default {
 
                     this.loader.setMaterials( materials );
 
-                    this.loader.load( this.src, onLoad, onError );
+                    this.loader.load( this.src, onLoad, onProgress, onError );
 
-                }, onError );
+                }, () => {}, onError );
 
             } else {
     
-                this.loader.load( this.src, onLoad, onError );
+                this.loader.load( this.src, onLoad, onProgress, onError );
 
             }
 
