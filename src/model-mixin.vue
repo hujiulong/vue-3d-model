@@ -39,8 +39,6 @@ const suportWebGL = ( () => {
 
 } )();
 
-let handler = null;
-
 export default {
     props: {
         src: {
