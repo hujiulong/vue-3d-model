@@ -7,7 +7,7 @@
     "component"
   ],
   "version": "0.0.14",
-  "author": "hujiulong <me@hujiulong.com>",
+  "author": "Jiulong Hu <me@hujiulong.com>",
   "main": "dist/vue-3d-model.min.js",
   "scripts": {
     "dev": "node build/dev-server.js",
