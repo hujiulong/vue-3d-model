@@ -7,7 +7,7 @@
 
 vue.js 3D model viewer component, based on threejs, inspired by [model-tag](https://github.com/mrdoob/model-tag)
 
-一个展示三维模型的Vue组件，支持模型操作和模型点击事件，能自动缩放模型到合适大小并校正偏移，目前支持obj、stl、dae和json格式的模型。
+一个展示三维模型的Vue组件，支持模型操作和模型点击事件，能自动缩放模型到合适大小并校正偏移，支持多种格式的模型。
 
 <p align="center">
   <img src="./preview.gif">
@@ -100,6 +100,7 @@ Or
 | dae           | \<model-collada>  |
 | obj           | \<model-obj>      |
 | ply           | \<model-ply>      |
+| gltf(2.0)     | \<model-gltf>     |
 
 ## Browser Support
 Modern browsers and IE 11.
