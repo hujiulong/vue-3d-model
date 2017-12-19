@@ -39,6 +39,9 @@
                 <li class="examples-menu-item">
                     <router-link to="demo-ply">PLY Model (.ply)</router-link>
                 </li>
+                <li class="examples-menu-item">
+                    <router-link to="demo-gltf">glTF Model (.gltf)</router-link>
+                </li>
             </ul>
             <div class="examples-pages">
                 <router-view></router-view>

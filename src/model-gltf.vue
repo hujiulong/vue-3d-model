@@ -5,6 +5,25 @@ import mixin from './model-mixin.vue'
 export default {
     name: 'model-gltf',
     mixins: [ mixin ],
+    props: {
+        lights: {
+            type: Array,
+            default () {
+                return [
+                    {
+                        type: 'AmbientLight',
+                        color: 0xaaaaaa
+                    },
+                    {
+                        type: 'DirectionalLight',
+                        position: { x: 1, y: 1, z: 1 },
+                        color: 0xffffff,
+                        intensity: 0.8
+                    }
+                ]
+            }
+        }
+    },
     data () {
         return {
             loader: new GLTFLoader
@@ -16,34 +35,12 @@ export default {
             if ( !this.src ) return;
 
             if ( this.object ) {
-                this.scene.remove( this.object );
+                this.wrapper.remove( this.object );
             }
 
             this.loader.load( this.src, data => {
 
-                if ( data.animations ) {
-
-                    let animations = data.animations;
-
-                    for ( let i = 0, l = animations.length; i < l; i++ ) {
-
-                        let animation = animations[ i ];
-
-                        animation.loop = true;
-                        animation.play();
-
-                    }
-
-                }
-
-                this.scene = data.scene;
-                this.camera = data.cameras[ 1 ];
-
-                this.object = object;
-
-                // this.scene.add( this.object );
-
-                this.updateCamera();
+                this.addObject( data.scene )
 
                 this.$emit( 'on-load' );
 
@@ -52,6 +49,8 @@ export default {
                 this.$emit( 'on-progress', xhr );
 
             }, err => {
+
+                console.log( err )
 
                 this.$emit( 'on-error', err );
 

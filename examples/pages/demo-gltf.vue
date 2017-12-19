@@ -1,9 +1,9 @@
 <template>
-    <demo-block :code="code">
+    <demo-block :vue-code="code" :html-code="htmlCode">
         <template slot="preview">
             <model-gltf :backgroundAlpha="0"
                 @on-load="onLoad"
-                src="static/models/gltf/VC.gltf"></model-gltf>
+                src="static/models/gltf/Duck/glTF/Duck.gltf"></model-gltf>
             <div class="example-loading" v-show="loading"></div>
         </template>
     </demo-block>
@@ -16,19 +16,36 @@ import ModelGltf from '../../src/model-gltf.vue'
 const code = `
 
 <template>
-    <model-obj src="static/models/obj/tree.obj"></model-obj>
+    <model-gltf src="static/models/gltf/Duck/glTF/Duck.gltf"></model-gltf>
 </template>
 
 <script>
-    import { ModelObj } from 'vue-3d-model'
+    import { ModelGltf } from 'vue-3d-model'
 
     export default {
         components: {
-            ModelObj
+            ModelGltf
         }
     }
 <\/script>
 
+`
+
+const htmlCode = `
+<body>
+    <div id="app">
+        <model-gltf 
+            src="static/models/gltf/Duck/glTF/Duck.gltf"
+            @on-mousemove="onMouseMove">
+        </model-gltf>
+    </div>
+    #scripts#
+    <script>
+        new Vue({
+            el: '#app'
+        })
+    <\/script>
+</body>
 `
 
 export default {
@@ -36,6 +53,7 @@ export default {
     data () {
     	return {
             code,
+            htmlCode,
             loading: true
     	}
     },

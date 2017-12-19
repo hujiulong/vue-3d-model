@@ -44,7 +44,7 @@ const htmlCode = `
 `
 
 export default {
-    name: 'demo-obj',
+    name: 'demo-json',
     data () {
     	return {
             code,

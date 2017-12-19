@@ -4,6 +4,7 @@ import ModelObj from './model-obj.vue'
 import ModelThree from './model-three.vue'
 import ModelStl from './model-stl.vue'
 import ModelCollada from './model-collada.vue'
+import ModelGltf from './model-gltf.vue'
 
 // alias
 const ModelJson = Vue.extend( ModelThree, {
@@ -20,7 +21,8 @@ const components = [
     ModelJson,
     ModelStl,
     ModelCollada,
-    ModelDae
+    ModelDae,
+    ModelGltf,
 ]
 
 const install = ( Vue ) => {
@@ -40,5 +42,6 @@ export {
     ModelJson,
     ModelStl,
     ModelCollada,
-    ModelDae
+    ModelDae,
+    ModelGltf,
 }

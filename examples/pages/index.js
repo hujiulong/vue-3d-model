@@ -4,7 +4,7 @@ import DemoBackground from './demo-background'
 import DemoRotate from './demo-rotate'
 import DemoObj from './demo-obj'
 import DemoObjMtl from './demo-obj-mtl'
-// import DemoGltf from './demo-gltf'
+import DemoGltf from './demo-gltf'
 import DemoStl from './demo-stl'
 import DemoCollada from './demo-collada'
 // import DemoSea3d from './demo-sea3d'
@@ -21,7 +21,8 @@ const pages = [
     DemoStl,
     DemoCollada,
     DemoJson,
-    DemoPly
+    DemoPly,
+    DemoGltf
 ]
 
 export { pages };

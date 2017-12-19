@@ -108,7 +108,7 @@ export default {
             object: null,
             raycaster: new Raycaster(),
             mouse: new Vector2(),
-            camera: new PerspectiveCamera( 45, 1, 0.1, 100000 ),
+            camera: new PerspectiveCamera( 45, 1, 0.01, 100000 ),
             scene: new Scene(),
             wrapper: new Object3D(),
             renderer: null,
