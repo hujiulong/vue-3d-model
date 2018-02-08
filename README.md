@@ -98,7 +98,6 @@ Or
 | json          | \<model-three>    |
 | stl           | \<model-stl>      |
 | dae           | \<model-collada>  |
-| obj           | \<model-obj>      |
 | ply           | \<model-ply>      |
 | gltf(2.0)     | \<model-gltf>     |
 
@@ -110,7 +109,7 @@ You can click on [this](http://caniuse.com/#search=webgl) for more information
 ## TODO List
 * Support for more model formats
 * Animation
-* Postprocessing
+* Post-processing
 
 ## LICENSE
 MIT
