@@ -84,7 +84,7 @@ export default {
         font-size: 13px;
         float: left;
     }
-    
+
 
     .demo-block .demo-block-code pre code {
         font: normal 10pt Consolas, Monaco, monospace;
@@ -124,6 +124,10 @@ export default {
         left: 20px;
         right: 20px;
         overflow: auto;
+    }
+
+    .demo-block .hljs {
+        background: transparent;
     }
 
     .demo-block .demo-block-code code {

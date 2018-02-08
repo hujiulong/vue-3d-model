@@ -33,7 +33,7 @@ const code = `
 const htmlCode = `
 <body>
     <div id="app">
-        <model-ply src="static/models/ply/slotted_disk.ply" :rotation="rotation"></model-ply>
+        <model-ply src="static/models/ply/slotted_disk.ply"></model-ply>
     </div>
     #scripts#
     <script>
