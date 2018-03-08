@@ -23,7 +23,10 @@ import {
     AmbientLight,
     PointLight,
     HemisphereLight,
-    DirectionalLight
+    DirectionalLight,
+    SphereBufferGeometry,
+    MeshBasicMaterial,
+    Mesh,
 } from 'three'
 import { getSize, getCenter } from './util'
 import { OrbitControls } from './controls/OrbitControls'
@@ -96,7 +99,11 @@ export default {
         controllable: {
             type: Boolean,
             default: true
-        }
+        },
+        spheres: {
+            type: Array,
+            default: () => [],
+        },
     },
     data () {
         return {
@@ -114,7 +121,8 @@ export default {
             renderer: null,
             controls: null,
             allLights: [],
-            clock: typeof performance === 'undefined' ? Date : performance
+            clock: typeof performance === 'undefined' ? Date : performance,
+            allSpheres: [],
         }
     },
     computed: {
@@ -212,6 +220,18 @@ export default {
         },
         backgroundColor () {
             this.updateRenderer();
+        },
+        spheres () {
+            this.allSpheres.forEach(sphere => this.scene.remove(sphere));
+            this.allSpheres = [];
+            this.spheres.forEach(({ x, y, z, radius, color }) => {
+                const geometry = new SphereBufferGeometry(radius);
+                const material = new MeshBasicMaterial({ color });
+                const sphere = new Mesh(geometry, material);
+                sphere.position.set(x, y, z);
+                this.scene.add(sphere);
+                this.allSpheres.push(sphere);
+            });
         }
     },
     methods: {
