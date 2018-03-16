@@ -2,6 +2,7 @@
 
 <p align="center">
     <a href="https://www.npmjs.com/package/vue-3d-model"><img src="https://img.shields.io/npm/v/vue-3d-model.svg" alt="Version"></a>
+    <a href="https://travis-ci.org/hujiulong/vue-3d-model"><img src="https://travis-ci.org/hujiulong/vue-3d-model.svg?branch=master" alt="Build"></a>
     <a href="https://www.npmjs.com/package/vue-3d-model"><img src="https://img.shields.io/npm/l/vue-3d-model.svg" alt="License"></a>
 </p>
 
