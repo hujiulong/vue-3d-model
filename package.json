@@ -10,6 +10,7 @@
   "author": "Jiulong Hu <me@hujiulong.com>",
   "main": "dist/vue-3d-model.min.js",
   "scripts": {
+    "lint": "eslint --fix src examples build config",
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
     "docs": "node build/build.js",
@@ -30,6 +31,7 @@
     "three": "^0.88.0"
   },
   "devDependencies": {
+    "@hujiulong/eslint-config": "^0.0.5",
     "autoprefixer": "^6.7.2",
     "babel-core": "^6.22.1",
     "babel-loader": "^6.2.10",
@@ -42,6 +44,7 @@
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^5.0.0",
     "css-loader": "^0.28.0",
+    "eslint": "^4.19.1",
     "eventsource-polyfill": "^0.9.6",
     "express": "^4.14.1",
     "extract-text-webpack-plugin": "^2.0.0",
