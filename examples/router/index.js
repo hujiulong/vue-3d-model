@@ -16,11 +16,11 @@ import { pages } from '../pages'
 Vue.use( Router )
 
 const routes = pages.map( page => {
-    
+
     const name = page.name;
 
     return {
-        path: `/${ name }`,
+        path: `/${name}`,
         name,
         component: page
     }

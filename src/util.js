@@ -1,6 +1,6 @@
 import { Box3, Vector3, Vector2, BufferAttribute } from 'three';
 
-let box = new Box3();
+const box = new Box3();
 
 function getSize( object ) {
 
@@ -20,7 +20,7 @@ function lightsDiff( lights, oldLights ) {
 
 }
 
-function toIndexed ( bufferGeometry ) {
+function toIndexed( bufferGeometry ) {
 
     var raw_positions = bufferGeometry.getAttribute( 'position' ).array;
 

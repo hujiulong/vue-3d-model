@@ -12,7 +12,7 @@ const ModelJson = Vue.extend( ModelThree, {
     name: 'model-json'
 } )
 
-const ModelDae =  Vue.extend( ModelCollada, {
+const ModelDae = Vue.extend( ModelCollada, {
     name: 'model-dae'
 } )
 
