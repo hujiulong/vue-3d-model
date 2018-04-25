@@ -8,7 +8,7 @@ export default {
     props: {
         lights: {
             type: Array,
-            default () {
+            default() {
                 return [
                     {
                         type: 'AmbientLight',
@@ -24,13 +24,13 @@ export default {
             }
         }
     },
-    data () {
+    data() {
         return {
-            loader: new GLTFLoader
+            loader: new GLTFLoader()
         }
     },
     methods: {
-        load () {
+        load() {
 
             if ( !this.src ) return;
 
@@ -45,7 +45,7 @@ export default {
                 this.$emit( 'on-load' );
 
             }, xhr => {
-                
+
                 this.$emit( 'on-progress', xhr );
 
             }, err => {

@@ -46,8 +46,8 @@ const htmlCode = `
 
 export default {
     name: 'demo-ply',
-    data () {
-    	return {
+    data() {
+        return {
             code,
             htmlCode,
             loading: true,
@@ -56,10 +56,10 @@ export default {
                 y: Math.PI,
                 z: 0
             }
-    	}
+        }
     },
     methods: {
-        onLoad () {
+        onLoad() {
             this.loading = false;
         }
     },

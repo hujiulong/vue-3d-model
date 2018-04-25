@@ -10,7 +10,7 @@ export default {
     props: {
         lights: {
             type: Array,
-            default () {
+            default() {
                 return [
                     {
                         type: 'HemisphereLight',
@@ -33,7 +33,7 @@ export default {
             default: false
         }
     },
-    data () {
+    data() {
 
         const loader = new ColladaLoader();
 
@@ -42,7 +42,7 @@ export default {
         }
     },
     methods: {
-        getObject ( collada ) {
+        getObject( collada ) {
             return collada.scene
         }
     }

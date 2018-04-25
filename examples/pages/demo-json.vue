@@ -45,15 +45,15 @@ const htmlCode = `
 
 export default {
     name: 'demo-json',
-    data () {
-    	return {
+    data() {
+        return {
             code,
             htmlCode,
             loading: true
-    	}
+        }
     },
     methods: {
-        onLoad () {
+        onLoad() {
             this.loading = false;
         }
     },

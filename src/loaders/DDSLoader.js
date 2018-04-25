@@ -55,9 +55,9 @@ DDSLoader.parse = function ( buffer, loadMipmaps ) {
     function fourCCToInt32( value ) {
 
         return value.charCodeAt( 0 ) +
-			( value.charCodeAt( 1 ) << 8 ) +
-			( value.charCodeAt( 2 ) << 16 ) +
-			( value.charCodeAt( 3 ) << 24 );
+            ( value.charCodeAt( 1 ) << 8 ) +
+            ( value.charCodeAt( 2 ) << 16 ) +
+            ( value.charCodeAt( 3 ) << 24 );
 
     }
 
@@ -87,10 +87,10 @@ DDSLoader.parse = function ( buffer, loadMipmaps ) {
                 var g = srcBuffer[ src ]; src++;
                 var r = srcBuffer[ src ]; src++;
                 var a = srcBuffer[ src ]; src++;
-                byteArray[ dst ] = r; dst++;	// r
-                byteArray[ dst ] = g; dst++;	// g
-                byteArray[ dst ] = b; dst++;	// b
-                byteArray[ dst ] = a; dst++;	// a
+                byteArray[ dst ] = r; dst++;    // r
+                byteArray[ dst ] = g; dst++;    // g
+                byteArray[ dst ] = b; dst++;    // b
+                byteArray[ dst ] = a; dst++;    // a
 
             }
 
@@ -183,10 +183,10 @@ DDSLoader.parse = function ( buffer, loadMipmaps ) {
         default:
 
             if ( header[ off_RGBBitCount ] === 32 &&
-				header[ off_RBitMask ] & 0xff0000 &&
-				header[ off_GBitMask ] & 0xff00 &&
-				header[ off_BBitMask ] & 0xff &&
-				header[ off_ABitMask ] & 0xff000000 ) {
+                header[ off_RBitMask ] & 0xff0000 &&
+                header[ off_GBitMask ] & 0xff00 &&
+                header[ off_BBitMask ] & 0xff &&
+                header[ off_ABitMask ] & 0xff000000 ) {
 
                 isRGBAUncompressed = true;
                 blockBytes = 64;
@@ -212,11 +212,11 @@ DDSLoader.parse = function ( buffer, loadMipmaps ) {
     dds.isCubemap = !!( caps2 & DDSCAPS2_CUBEMAP );
     if ( dds.isCubemap && (
         !( caps2 & DDSCAPS2_CUBEMAP_POSITIVEX ) ||
-		!( caps2 & DDSCAPS2_CUBEMAP_NEGATIVEX ) ||
-		!( caps2 & DDSCAPS2_CUBEMAP_POSITIVEY ) ||
-		!( caps2 & DDSCAPS2_CUBEMAP_NEGATIVEY ) ||
-		!( caps2 & DDSCAPS2_CUBEMAP_POSITIVEZ ) ||
-		!( caps2 & DDSCAPS2_CUBEMAP_NEGATIVEZ )
+        !( caps2 & DDSCAPS2_CUBEMAP_NEGATIVEX ) ||
+        !( caps2 & DDSCAPS2_CUBEMAP_POSITIVEY ) ||
+        !( caps2 & DDSCAPS2_CUBEMAP_NEGATIVEY ) ||
+        !( caps2 & DDSCAPS2_CUBEMAP_POSITIVEZ ) ||
+        !( caps2 & DDSCAPS2_CUBEMAP_NEGATIVEZ )
     ) ) {
 
         console.error( 'DDSLoader.parse: Incomplete cubemap faces' );

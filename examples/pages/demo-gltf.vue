@@ -50,15 +50,15 @@ const htmlCode = `
 
 export default {
     name: 'demo-gltf',
-    data () {
-    	return {
+    data() {
+        return {
             code,
             htmlCode,
             loading: true
-    	}
+        }
     },
     methods: {
-        onLoad () {
+        onLoad() {
             this.loading = false;
         }
     },

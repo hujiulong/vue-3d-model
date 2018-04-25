@@ -85,7 +85,7 @@ const htmlCode = `
 
 export default {
     name: 'demo-rotate',
-    data () {
+    data() {
         return {
             code,
             htmlCode,
@@ -98,11 +98,11 @@ export default {
         }
     },
     methods: {
-        onLoad () {
+        onLoad() {
             this.loading = false;
             this.rotate();
         },
-        rotate () {
+        rotate() {
             requestAnimationFrame( this.rotate );
             this.rotation.z += 0.01;
         }

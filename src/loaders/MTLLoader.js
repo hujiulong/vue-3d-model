@@ -17,18 +17,18 @@ MTLLoader.prototype = {
     constructor: MTLLoader,
 
     /**
-	 * Loads and parses a MTL asset from a URL.
-	 *
-	 * @param {String} url - URL to the MTL file.
-	 * @param {Function} [onLoad] - Callback invoked with the loaded object.
-	 * @param {Function} [onProgress] - Callback for download progress.
-	 * @param {Function} [onError] - Callback for download errors.
-	 *
-	 * @see setPath setTexturePath
-	 *
-	 * @note In order for relative texture references to resolve correctly
-	 * you must call setPath and/or setTexturePath explicitly prior to load.
-	 */
+     * Loads and parses a MTL asset from a URL.
+     *
+     * @param {String} url - URL to the MTL file.
+     * @param {Function} [onLoad] - Callback invoked with the loaded object.
+     * @param {Function} [onProgress] - Callback for download progress.
+     * @param {Function} [onError] - Callback for download errors.
+     *
+     * @see setPath setTexturePath
+     *
+     * @note In order for relative texture references to resolve correctly
+     * you must call setPath and/or setTexturePath explicitly prior to load.
+     */
     load: function ( url, onLoad, onProgress, onError ) {
 
         var scope = this;
@@ -44,16 +44,16 @@ MTLLoader.prototype = {
     },
 
     /**
-	 * Set base path for resolving references.
-	 * If set this path will be prepended to each loaded and found reference.
-	 *
-	 * @see setTexturePath
-	 * @param {String} path
-	 *
-	 * @example
-	 *     mtlLoader.setPath( 'assets/obj/' );
-	 *     mtlLoader.load( 'my.mtl', ... );
-	 */
+     * Set base path for resolving references.
+     * If set this path will be prepended to each loaded and found reference.
+     *
+     * @see setTexturePath
+     * @param {String} path
+     *
+     * @example
+     *     mtlLoader.setPath( 'assets/obj/' );
+     *     mtlLoader.load( 'my.mtl', ... );
+     */
     setPath: function ( path ) {
 
         this.path = path;
@@ -61,18 +61,18 @@ MTLLoader.prototype = {
     },
 
     /**
-	 * Set base path for resolving texture references.
-	 * If set this path will be prepended found texture reference.
-	 * If not set and setPath is, it will be used as texture base path.
-	 *
-	 * @see setPath
-	 * @param {String} path
-	 *
-	 * @example
-	 *     mtlLoader.setPath( 'assets/obj/' );
-	 *     mtlLoader.setTexturePath( 'assets/textures/' );
-	 *     mtlLoader.load( 'my.mtl', ... );
-	 */
+     * Set base path for resolving texture references.
+     * If set this path will be prepended found texture reference.
+     * If not set and setPath is, it will be used as texture base path.
+     *
+     * @see setPath
+     * @param {String} path
+     *
+     * @example
+     *     mtlLoader.setPath( 'assets/obj/' );
+     *     mtlLoader.setTexturePath( 'assets/textures/' );
+     *     mtlLoader.load( 'my.mtl', ... );
+     */
     setTexturePath: function ( path ) {
 
         this.texturePath = path;
@@ -100,16 +100,16 @@ MTLLoader.prototype = {
     },
 
     /**
-	 * Parses a MTL file.
-	 *
-	 * @param {String} text - Content of MTL file
-	 * @return {MTLLoader.MaterialCreator}
-	 *
-	 * @see setPath setTexturePath
-	 *
-	 * @note In order for relative texture references to resolve correctly
-	 * you must call setPath and/or setTexturePath explicitly prior to parse.
-	 */
+     * Parses a MTL file.
+     *
+     * @param {String} text - Content of MTL file
+     * @return {MTLLoader.MaterialCreator}
+     *
+     * @see setPath setTexturePath
+     *
+     * @note In order for relative texture references to resolve correctly
+     * you must call setPath and/or setTexturePath explicitly prior to parse.
+     */
     parse: function ( text ) {
 
         var lines = text.split( '\n' );
@@ -491,7 +491,7 @@ MTLLoader.MaterialCreator.prototype = {
             scale: new THREE.Vector2( 1, 1 ),
             offset: new THREE.Vector2( 0, 0 )
 
-		 };
+         };
 
         var items = value.split( /\s+/ );
         var pos;

@@ -13,7 +13,7 @@ export default {
     props: {
         lights: {
             type: Array,
-            default () {
+            default() {
                 return [
                     {
                         type: 'HemisphereLight',
@@ -42,19 +42,19 @@ export default {
             type: String
         }
     },
-    data () {
+    data() {
         return {
             loader: new OBJLoader(),
             mtlLoader: new MTLLoader()
         }
     },
     watch: {
-        mtl () {
+        mtl() {
             this.load();
         }
     },
     methods: {
-        process ( object ) {
+        process( object ) {
             if ( this.smoothing ) {
                 object.traverse( child => {
                     if ( child.geometry ) {
@@ -64,7 +64,7 @@ export default {
                 } )
             }
         },
-        load () {
+        load() {
 
             if ( !this.src ) return;
 
@@ -73,9 +73,9 @@ export default {
             }
 
             const onLoad = object => {
-                
+
                 if ( this.process ) {
-                    this.process ( object );
+                    this.process( object );
                 }
 
                 this.addObject( object )
@@ -100,7 +100,7 @@ export default {
 
                 let mtlPath = this.mtlPath;
                 let mtlSrc = this.mtl;
-                
+
                 if ( !this.mtlPath ) {
 
                     const result = /^(.*\/)([^/]*)$/.exec( this.mtl );
@@ -127,7 +127,7 @@ export default {
                 }, () => {}, onError );
 
             } else {
-    
+
                 this.loader.load( this.src, onLoad, onProgress, onError );
 
             }

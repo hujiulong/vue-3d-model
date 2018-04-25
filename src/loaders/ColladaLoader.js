@@ -1995,7 +1995,7 @@ ColladaLoader.prototype = {
 
                     var input = inputs[ name ];
 
-                    switch ( name )	{
+                    switch ( name )    {
 
                         case 'VERTEX':
                             for ( var key in vertices ) {
@@ -2970,7 +2970,7 @@ ColladaLoader.prototype = {
                         // and weights defined for it. But we still have to add the bone to the sorted bone list in order to
                         // ensure a correct animation of the model.
 
-						 boneInverse = new THREE.Matrix4();
+                         boneInverse = new THREE.Matrix4();
 
                     }
 

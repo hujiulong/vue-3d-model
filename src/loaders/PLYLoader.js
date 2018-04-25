@@ -364,13 +364,13 @@ PLYLoader.prototype = {
             switch ( type ) {
 
                 // corespondences for non-specific length types here match rply:
-                case 'int8':		case 'char':	 return [ dataview.getInt8( at ), 1 ];
-                case 'uint8':		case 'uchar':	 return [ dataview.getUint8( at ), 1 ];
-                case 'int16':		case 'short':	 return [ dataview.getInt16( at, little_endian ), 2 ];
-                case 'uint16':	case 'ushort': return [ dataview.getUint16( at, little_endian ), 2 ];
-                case 'int32':		case 'int':		 return [ dataview.getInt32( at, little_endian ), 4 ];
-                case 'uint32':	case 'uint':	 return [ dataview.getUint32( at, little_endian ), 4 ];
-                case 'float32': case 'float':	 return [ dataview.getFloat32( at, little_endian ), 4 ];
+                case 'int8':        case 'char':     return [ dataview.getInt8( at ), 1 ];
+                case 'uint8':        case 'uchar':     return [ dataview.getUint8( at ), 1 ];
+                case 'int16':        case 'short':     return [ dataview.getInt16( at, little_endian ), 2 ];
+                case 'uint16':    case 'ushort': return [ dataview.getUint16( at, little_endian ), 2 ];
+                case 'int32':        case 'int':         return [ dataview.getInt32( at, little_endian ), 4 ];
+                case 'uint32':    case 'uint':     return [ dataview.getUint32( at, little_endian ), 4 ];
+                case 'float32': case 'float':     return [ dataview.getFloat32( at, little_endian ), 4 ];
                 case 'float64': case 'double': return [ dataview.getFloat64( at, little_endian ), 8 ];
 
             }

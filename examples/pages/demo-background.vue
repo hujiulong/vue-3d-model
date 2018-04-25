@@ -139,20 +139,20 @@ const htmlCode = `
 
 export default {
     name: 'demo-background',
-    data () {
-    	return {
+    data() {
+        return {
             code,
             htmlCode,
             loading: true,
             bgColor: '#ff0',
             bgAlpha: 0.5
-    	}
+        }
     },
     methods: {
-        onLoad () {
+        onLoad() {
             this.loading = false;
         },
-        setBackground ( color, alpha ) {
+        setBackground( color, alpha ) {
 
         }
     },

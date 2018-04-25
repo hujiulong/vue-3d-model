@@ -33,14 +33,14 @@ const code = `
 
 export default {
     name: 'demo-sea3d',
-    data () {
-    	return {
+    data() {
+        return {
             code,
             loading: true
-    	}
+        }
     },
     methods: {
-        onLoad () {
+        onLoad() {
             this.loading = false;
         }
     },

@@ -172,7 +172,7 @@ function GLTFRegistry() {
 
     var objects = {};
 
-    return	{
+    return    {
 
         get: function ( key ) {
 
@@ -519,32 +519,32 @@ function GLTFMaterialsPbrSpecularGlossinessExtension() {
 
             var specularMapParsFragmentChunk = [
                 '#ifdef USE_SPECULARMAP',
-                '	uniform sampler2D specularMap;',
+                '    uniform sampler2D specularMap;',
                 '#endif'
             ].join( '\n' );
 
             var glossinessMapParsFragmentChunk = [
                 '#ifdef USE_GLOSSINESSMAP',
-                '	uniform sampler2D glossinessMap;',
+                '    uniform sampler2D glossinessMap;',
                 '#endif'
             ].join( '\n' );
 
             var specularMapFragmentChunk = [
                 'vec3 specularFactor = specular;',
                 '#ifdef USE_SPECULARMAP',
-                '	vec4 texelSpecular = texture2D( specularMap, vUv );',
-                '	texelSpecular = sRGBToLinear( texelSpecular );',
-                '	// reads channel RGB, compatible with a glTF Specular-Glossiness (RGBA) texture',
-                '	specularFactor *= texelSpecular.rgb;',
+                '    vec4 texelSpecular = texture2D( specularMap, vUv );',
+                '    texelSpecular = sRGBToLinear( texelSpecular );',
+                '    // reads channel RGB, compatible with a glTF Specular-Glossiness (RGBA) texture',
+                '    specularFactor *= texelSpecular.rgb;',
                 '#endif'
             ].join( '\n' );
 
             var glossinessMapFragmentChunk = [
                 'float glossinessFactor = glossiness;',
                 '#ifdef USE_GLOSSINESSMAP',
-                '	vec4 texelGlossiness = texture2D( glossinessMap, vUv );',
-                '	// reads channel A, compatible with a glTF Specular-Glossiness (RGBA) texture',
-                '	glossinessFactor *= texelGlossiness.a;',
+                '    vec4 texelGlossiness = texture2D( glossinessMap, vUv );',
+                '    // reads channel A, compatible with a glTF Specular-Glossiness (RGBA) texture',
+                '    glossinessFactor *= texelGlossiness.a;',
                 '#endif'
             ].join( '\n' );
 
@@ -683,17 +683,17 @@ function GLTFMaterialsPbrSpecularGlossinessExtension() {
         },
 
         /**
-		 * Clones a GLTFSpecularGlossinessMaterial instance. The ShaderMaterial.copy() method can
-		 * copy only properties it knows about or inherits, and misses many properties that would
-		 * normally be defined by MeshStandardMaterial.
-		 *
-		 * This method allows GLTFSpecularGlossinessMaterials to be cloned in the process of
-		 * loading a glTF model, but cloning later (e.g. by the user) would require these changes
-		 * AND also updating `.onBeforeRender` on the parent mesh.
-		 *
-		 * @param  {THREE.ShaderMaterial} source
-		 * @return {THREE.ShaderMaterial}
-		 */
+         * Clones a GLTFSpecularGlossinessMaterial instance. The ShaderMaterial.copy() method can
+         * copy only properties it knows about or inherits, and misses many properties that would
+         * normally be defined by MeshStandardMaterial.
+         *
+         * This method allows GLTFSpecularGlossinessMaterials to be cloned in the process of
+         * loading a glTF model, but cloning later (e.g. by the user) would require these changes
+         * AND also updating `.onBeforeRender` on the parent mesh.
+         *
+         * @param  {THREE.ShaderMaterial} source
+         * @return {THREE.ShaderMaterial}
+         */
         cloneMaterial: function ( source ) {
 
             var target = source.clone();
@@ -1664,7 +1664,7 @@ GLTFParser.prototype.loadTexture = function ( textureIndex ) {
         if ( textureDef.internalFormat !== undefined && texture.format !== WEBGL_TEXTURE_FORMATS[ textureDef.internalFormat ] ) {
 
             console.warn( 'GLTFLoader: Three.js does not support texture internalFormat which is different from texture format. ' +
-										'internalFormat will be forced to be the same value as format.' );
+                                        'internalFormat will be forced to be the same value as format.' );
 
         }
 
@@ -2036,8 +2036,8 @@ GLTFParser.prototype.loadMesh = function ( meshIndex ) {
                     : dependencies.materials[ primitive.material ];
 
                 if ( material.aoMap &&
-						geometry.attributes.uv2 === undefined &&
-						geometry.attributes.uv !== undefined ) {
+                        geometry.attributes.uv2 === undefined &&
+                        geometry.attributes.uv !== undefined ) {
 
                     console.log( 'GLTFLoader: Duplicating UVs to support aoMap.' );
                     geometry.addAttribute( 'uv2', new THREE.BufferAttribute( geometry.attributes.uv.array, 2 ) );
@@ -2081,9 +2081,9 @@ GLTFParser.prototype.loadMesh = function ( meshIndex ) {
                 var mesh;
 
                 if ( primitive.mode === WEBGL_CONSTANTS.TRIANGLES ||
-					primitive.mode === WEBGL_CONSTANTS.TRIANGLE_STRIP ||
-					primitive.mode === WEBGL_CONSTANTS.TRIANGLE_FAN ||
-					primitive.mode === undefined ) {
+                    primitive.mode === WEBGL_CONSTANTS.TRIANGLE_STRIP ||
+                    primitive.mode === WEBGL_CONSTANTS.TRIANGLE_FAN ||
+                    primitive.mode === undefined ) {
 
                     if ( useSkinning ) {
 
@@ -2456,8 +2456,8 @@ GLTFParser.prototype.loadNode = function ( nodeIndex ) {
             node = dependencies.cameras[ nodeDef.camera ];
 
         } else if ( nodeDef.extensions &&
-				 nodeDef.extensions[ EXTENSIONS.KHR_LIGHTS ] &&
-				 nodeDef.extensions[ EXTENSIONS.KHR_LIGHTS ].light !== undefined ) {
+                 nodeDef.extensions[ EXTENSIONS.KHR_LIGHTS ] &&
+                 nodeDef.extensions[ EXTENSIONS.KHR_LIGHTS ].light !== undefined ) {
 
             var lights = extensions[ EXTENSIONS.KHR_LIGHTS ].lights;
             node = lights[ nodeDef.extensions[ EXTENSIONS.KHR_LIGHTS ].light ];
@@ -2618,8 +2618,8 @@ GLTFParser.prototype.loadScene = ( function () {
 
             // Ambient lighting, if present, is always attached to the scene root.
             if ( sceneDef.extensions &&
-					 sceneDef.extensions[ EXTENSIONS.KHR_LIGHTS ] &&
-					 sceneDef.extensions[ EXTENSIONS.KHR_LIGHTS ].light !== undefined ) {
+                     sceneDef.extensions[ EXTENSIONS.KHR_LIGHTS ] &&
+                     sceneDef.extensions[ EXTENSIONS.KHR_LIGHTS ].light !== undefined ) {
 
                 var lights = extensions[ EXTENSIONS.KHR_LIGHTS ].lights;
                 scene.add( lights[ sceneDef.extensions[ EXTENSIONS.KHR_LIGHTS ].light ] );

@@ -48,7 +48,7 @@ const OrbitControls = function ( object, domElement ) {
 
     // Set to false to disable panning
     this.enablePan = true;
-    this.keyPanSpeed = 7.0;	// pixels moved per arrow key push
+    this.keyPanSpeed = 7.0;    // pixels moved per arrow key push
 
     // Set to true to automatically rotate around the target
     // If auto-rotate is enabled, you must call controls.update() in your animation loop
@@ -185,8 +185,8 @@ const OrbitControls = function ( object, domElement ) {
             // using small-angle approximation cos(x/2) = 1 - x^2 / 8
 
             if ( zoomChanged ||
-				lastPosition.distanceToSquared( scope.object.position ) > EPS ||
-				8 * ( 1 - lastQuaternion.dot( scope.object.quaternion ) ) > EPS ) {
+                lastPosition.distanceToSquared( scope.object.position ) > EPS ||
+                8 * ( 1 - lastQuaternion.dot( scope.object.quaternion ) ) > EPS ) {
 
                 scope.dispatchEvent( changeEvent );
 
@@ -774,7 +774,7 @@ const OrbitControls = function ( object, domElement ) {
 
         switch ( event.touches.length ) {
 
-            case 1:	// one-fingered touch: rotate
+            case 1:    // one-fingered touch: rotate
 
                 if ( scope.enableRotate === false ) return;
 
@@ -784,7 +784,7 @@ const OrbitControls = function ( object, domElement ) {
 
                 break;
 
-            case 2:	// two-fingered touch: dolly
+            case 2:    // two-fingered touch: dolly
 
                 if ( scope.enableZoom === false ) return;
 

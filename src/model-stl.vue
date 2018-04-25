@@ -12,7 +12,7 @@ export default {
     props: {
         lights: {
             type: Array,
-            default () {
+            default() {
                 return [
                     {
                         type: 'HemisphereLight',
@@ -31,7 +31,7 @@ export default {
             }
         }
     },
-    data () {
+    data() {
         return {
             loader: new STLLoader()
         }

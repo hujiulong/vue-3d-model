@@ -101,7 +101,7 @@ const htmlCode = `
 
 export default {
     name: 'demo-event',
-    data () {
+    data() {
         return {
             code,
             htmlCode,
@@ -110,10 +110,10 @@ export default {
         }
     },
     methods: {
-        onLoad () {
+        onLoad() {
             this.loading = false;
         },
-        onMouseMove ( event ) {
+        onMouseMove( event ) {
 
             console.log( event );
 

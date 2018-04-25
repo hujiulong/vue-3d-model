@@ -56,7 +56,7 @@ STLLoader.prototype = {
 
                 if ( solid[ i ] != reader.getUint8( i, false ) ) return true;
 
- 			}
+             }
 
             // First 5 bytes read "solid"; declare it to be an ASCII STL
             return false;
@@ -83,8 +83,8 @@ STLLoader.prototype = {
         for ( var index = 0; index < 80 - 10; index++ ) {
 
             if ( ( reader.getUint32( index, false ) == 0x434F4C4F /* COLO*/ ) &&
-				( reader.getUint8( index + 4 ) == 0x52 /* 'R'*/ ) &&
-				( reader.getUint8( index + 5 ) == 0x3D /* '='*/ ) ) {
+                ( reader.getUint8( index + 4 ) == 0x52 /* 'R'*/ ) &&
+                ( reader.getUint8( index + 5 ) == 0x3D /* '='*/ ) ) {
 
                 hasColors = true;
                 colors = [];

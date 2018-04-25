@@ -44,15 +44,15 @@ export default {
             default: '// TODO'
         }
     },
-    mounted () {
+    mounted() {
         hljs.highlightBlock( this.$refs.vueCode );
         hljs.highlightBlock( this.$refs.htmlCode );
     },
-    data () {
-    	return {}
+    data() {
+        return {}
     },
     filters: {
-        code ( val ) {
+        code( val ) {
             return codeHandler( val );
         }
     },
