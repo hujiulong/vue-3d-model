@@ -1,4 +1,4 @@
-var config = require( './webpack.release.js' )
+var config = require( './webpack.prod.conf.js' )
 var webpack = require( 'webpack' )
 var utils = require( './utils' )
 var ExtractTextPlugin = require( 'extract-text-webpack-plugin' )
