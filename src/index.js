@@ -37,6 +37,18 @@ if ( typeof window !== 'undefined' && window.Vue ) {
     install( window.Vue );
 }
 
+export default {
+    install,
+    ModelObj,
+    ModelThree,
+    ModelJson,
+    ModelStl,
+    ModelPly,
+    ModelCollada,
+    ModelDae,
+    ModelGltf,
+}
+
 export {
     install,
     ModelObj,

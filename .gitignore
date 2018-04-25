@@ -6,3 +6,4 @@ yarn-error.log*
 docs/
 dist/
 dist/static/
+test/unit/coverage

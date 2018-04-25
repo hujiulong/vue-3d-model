@@ -15,7 +15,7 @@ config.plugins = [
         }
     } ),
     new ExtractTextPlugin( {
-	  filename: utils.assetsPath( 'css/[name].[contenthash].css' )
+        filename: utils.assetsPath( 'css/[name].[contenthash].css' )
     } ),
 ]
 
