@@ -165,6 +165,7 @@ export default {
         this.$el.removeEventListener( 'mouseup', this.onMouseUp, false );
         this.$el.removeEventListener( 'click', this.onClick, false );
 
+        window.removeEventListener( 'resize', this.onResize, false );
     },
     watch: {
         src() {
