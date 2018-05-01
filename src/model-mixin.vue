@@ -115,7 +115,7 @@ export default {
             controls: null,
             allLights: [],
             clock: typeof performance === 'undefined' ? Date : performance,
-            animating: true
+            reqId: null    // requestAnimationFrame id
         }
     },
     computed: {
@@ -131,9 +131,6 @@ export default {
 
             return result;
         }
-    },
-    created() {
-        window.addEventListener( 'resize', this.onResize, false );
     },
     mounted() {
 
@@ -157,10 +154,14 @@ export default {
         this.$el.addEventListener( 'mouseup', this.onMouseUp, false );
         this.$el.addEventListener( 'click', this.onClick, false );
 
+        window.addEventListener( 'resize', this.onResize, false );
+
         this.animate();
     },
     beforeDestroy() {
-        this.animating = false;
+
+        cancelAnimationFrame( this.reqId );
+
         this.$el.removeEventListener( 'mousedown', this.onMouseDown, false );
         this.$el.removeEventListener( 'mousemove', this.onMouseMove, false );
         this.$el.removeEventListener( 'mouseup', this.onMouseUp, false );
@@ -487,10 +488,7 @@ export default {
 
         },
         animate() {
-            if (!this.animating) {
-                return;
-            }
-            requestAnimationFrame( this.animate );
+            this.reqId = requestAnimationFrame( this.animate );
             this.render();
         },
         render() {
