@@ -114,7 +114,8 @@ export default {
             renderer: null,
             controls: null,
             allLights: [],
-            clock: typeof performance === 'undefined' ? Date : performance
+            clock: typeof performance === 'undefined' ? Date : performance,
+            animating: true
         }
     },
     computed: {
@@ -159,7 +160,7 @@ export default {
         this.animate();
     },
     beforeDestroy() {
-
+        this.animating = false;
         this.$el.removeEventListener( 'mousedown', this.onMouseDown, false );
         this.$el.removeEventListener( 'mousemove', this.onMouseMove, false );
         this.$el.removeEventListener( 'mouseup', this.onMouseUp, false );
@@ -486,6 +487,9 @@ export default {
 
         },
         animate() {
+            if (!this.animating) {
+                return;
+            }
             requestAnimationFrame( this.animate );
             this.render();
         },
