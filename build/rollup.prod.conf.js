@@ -1,7 +1,9 @@
 import vue from 'rollup-plugin-vue'
+import shader from 'rollup-plugin-shader'
 import nodeResolve from 'rollup-plugin-node-resolve'
 import babel from 'rollup-plugin-babel'
 import uglify from 'rollup-plugin-uglify'
+import alias from 'rollup-plugin-alias'
 
 import pkg from '../package.json'
 import path from 'path'
@@ -19,7 +21,9 @@ const banner = `/* @preserve
 const input = resolve( 'src/index.js' );
 
 const plugins = [
+    alias( require( './alias' ) ),
     nodeResolve(),
+    shader(),
     vue(),
     babel( {
         exclude: 'node_modules/**'
