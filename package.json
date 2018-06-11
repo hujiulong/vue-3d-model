@@ -22,9 +22,7 @@
   "peerDependencies": {
     "vue": ">=2.0.0"
   },
-  "dependencies": {
-    "three": "^0.88.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@hujiulong/eslint-config": "^0.0.5",
     "autoprefixer": "^7.1.2",
@@ -72,6 +70,7 @@
     "postcss-import": "^11.0.0",
     "postcss-loader": "^2.0.8",
     "postcss-url": "^7.2.1",
+    "raw-loader": "^0.5.1",
     "rimraf": "^2.6.0",
     "rollup": "^0.58.2",
     "rollup-plugin-alias": "^1.4.0",

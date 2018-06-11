@@ -4,49 +4,48 @@
 
 function WebGLProperties() {
 
-	var properties = new WeakMap();
+    var properties = new WeakMap();
 
-	function get( object ) {
+    function get( object ) {
 
-		var map = properties.get( object );
+        var map = properties.get( object );
 
-		if ( map === undefined ) {
+        if ( map === undefined ) {
 
-			map = {};
-			properties.set( object, map );
+            map = {};
+            properties.set( object, map );
 
-		}
+        }
 
-		return map;
+        return map;
 
-	}
+    }
 
-	function remove( object ) {
+    function remove( object ) {
 
-		properties.delete( object );
+        properties.delete( object );
 
-	}
+    }
 
-	function update( object, key, value ) {
+    function update( object, key, value ) {
 
-		properties.get( object )[ key ] = value;
+        properties.get( object )[ key ] = value;
 
-	}
+    }
 
-	function dispose() {
+    function dispose() {
 
-		properties = new WeakMap();
+        properties = new WeakMap();
 
-	}
+    }
 
-	return {
-		get: get,
-		remove: remove,
-		update: update,
-		dispose: dispose
-	};
+    return {
+        get: get,
+        remove: remove,
+        update: update,
+        dispose: dispose
+    };
 
 }
-
 
 export { WebGLProperties };

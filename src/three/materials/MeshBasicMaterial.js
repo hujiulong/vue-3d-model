@@ -39,40 +39,40 @@ import { Color } from '../math/Color.js';
 
 function MeshBasicMaterial( parameters ) {
 
-	Material.call( this );
+    Material.call( this );
 
-	this.type = 'MeshBasicMaterial';
+    this.type = 'MeshBasicMaterial';
 
-	this.color = new Color( 0xffffff ); // emissive
+    this.color = new Color( 0xffffff ); // emissive
 
-	this.map = null;
+    this.map = null;
 
-	this.lightMap = null;
-	this.lightMapIntensity = 1.0;
+    this.lightMap = null;
+    this.lightMapIntensity = 1.0;
 
-	this.aoMap = null;
-	this.aoMapIntensity = 1.0;
+    this.aoMap = null;
+    this.aoMapIntensity = 1.0;
 
-	this.specularMap = null;
+    this.specularMap = null;
 
-	this.alphaMap = null;
+    this.alphaMap = null;
 
-	this.envMap = null;
-	this.combine = MultiplyOperation;
-	this.reflectivity = 1;
-	this.refractionRatio = 0.98;
+    this.envMap = null;
+    this.combine = MultiplyOperation;
+    this.reflectivity = 1;
+    this.refractionRatio = 0.98;
 
-	this.wireframe = false;
-	this.wireframeLinewidth = 1;
-	this.wireframeLinecap = 'round';
-	this.wireframeLinejoin = 'round';
+    this.wireframe = false;
+    this.wireframeLinewidth = 1;
+    this.wireframeLinecap = 'round';
+    this.wireframeLinejoin = 'round';
 
-	this.skinning = false;
-	this.morphTargets = false;
+    this.skinning = false;
+    this.morphTargets = false;
 
-	this.lights = false;
+    this.lights = false;
 
-	this.setValues( parameters );
+    this.setValues( parameters );
 
 }
 
@@ -83,38 +83,37 @@ MeshBasicMaterial.prototype.isMeshBasicMaterial = true;
 
 MeshBasicMaterial.prototype.copy = function ( source ) {
 
-	Material.prototype.copy.call( this, source );
+    Material.prototype.copy.call( this, source );
 
-	this.color.copy( source.color );
+    this.color.copy( source.color );
 
-	this.map = source.map;
+    this.map = source.map;
 
-	this.lightMap = source.lightMap;
-	this.lightMapIntensity = source.lightMapIntensity;
+    this.lightMap = source.lightMap;
+    this.lightMapIntensity = source.lightMapIntensity;
 
-	this.aoMap = source.aoMap;
-	this.aoMapIntensity = source.aoMapIntensity;
+    this.aoMap = source.aoMap;
+    this.aoMapIntensity = source.aoMapIntensity;
 
-	this.specularMap = source.specularMap;
+    this.specularMap = source.specularMap;
 
-	this.alphaMap = source.alphaMap;
+    this.alphaMap = source.alphaMap;
 
-	this.envMap = source.envMap;
-	this.combine = source.combine;
-	this.reflectivity = source.reflectivity;
-	this.refractionRatio = source.refractionRatio;
+    this.envMap = source.envMap;
+    this.combine = source.combine;
+    this.reflectivity = source.reflectivity;
+    this.refractionRatio = source.refractionRatio;
 
-	this.wireframe = source.wireframe;
-	this.wireframeLinewidth = source.wireframeLinewidth;
-	this.wireframeLinecap = source.wireframeLinecap;
-	this.wireframeLinejoin = source.wireframeLinejoin;
+    this.wireframe = source.wireframe;
+    this.wireframeLinewidth = source.wireframeLinewidth;
+    this.wireframeLinecap = source.wireframeLinecap;
+    this.wireframeLinejoin = source.wireframeLinejoin;
 
-	this.skinning = source.skinning;
-	this.morphTargets = source.morphTargets;
+    this.skinning = source.skinning;
+    this.morphTargets = source.morphTargets;
 
-	return this;
+    return this;
 
 };
-
 
 export { MeshBasicMaterial };

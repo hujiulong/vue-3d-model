@@ -19,990 +19,990 @@ var bufferGeometryId = 1; // BufferGeometry uses odd numbers as Id
 
 function BufferGeometry() {
 
-	Object.defineProperty( this, 'id', { value: bufferGeometryId += 2 } );
+    Object.defineProperty( this, 'id', { value: bufferGeometryId += 2 } );
 
-	this.uuid = _Math.generateUUID();
+    this.uuid = _Math.generateUUID();
 
-	this.name = '';
-	this.type = 'BufferGeometry';
+    this.name = '';
+    this.type = 'BufferGeometry';
 
-	this.index = null;
-	this.attributes = {};
+    this.index = null;
+    this.attributes = {};
 
-	this.morphAttributes = {};
+    this.morphAttributes = {};
 
-	this.groups = [];
+    this.groups = [];
 
-	this.boundingBox = null;
-	this.boundingSphere = null;
+    this.boundingBox = null;
+    this.boundingSphere = null;
 
-	this.drawRange = { start: 0, count: Infinity };
+    this.drawRange = { start: 0, count: Infinity };
 
 }
 
 BufferGeometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), {
 
-	constructor: BufferGeometry,
+    constructor: BufferGeometry,
 
-	isBufferGeometry: true,
+    isBufferGeometry: true,
 
-	getIndex: function () {
+    getIndex: function () {
 
-		return this.index;
+        return this.index;
 
-	},
+    },
 
-	setIndex: function ( index ) {
+    setIndex: function ( index ) {
 
-		if ( Array.isArray( index ) ) {
+        if ( Array.isArray( index ) ) {
 
-			this.index = new ( arrayMax( index ) > 65535 ? Uint32BufferAttribute : Uint16BufferAttribute )( index, 1 );
+            this.index = new ( arrayMax( index ) > 65535 ? Uint32BufferAttribute : Uint16BufferAttribute )( index, 1 );
 
-		} else {
+        } else {
 
-			this.index = index;
+            this.index = index;
 
-		}
+        }
 
-	},
+    },
 
-	addAttribute: function ( name, attribute ) {
+    addAttribute: function ( name, attribute ) {
 
-		if ( ! ( attribute && attribute.isBufferAttribute ) && ! ( attribute && attribute.isInterleavedBufferAttribute ) ) {
+        if ( !( attribute && attribute.isBufferAttribute ) && !( attribute && attribute.isInterleavedBufferAttribute ) ) {
 
-			console.warn( 'THREE.BufferGeometry: .addAttribute() now expects ( name, attribute ).' );
+            console.warn( 'THREE.BufferGeometry: .addAttribute() now expects ( name, attribute ).' );
 
-			this.addAttribute( name, new BufferAttribute( arguments[ 1 ], arguments[ 2 ] ) );
+            this.addAttribute( name, new BufferAttribute( arguments[ 1 ], arguments[ 2 ] ) );
 
-			return;
+            return;
 
-		}
+        }
 
-		if ( name === 'index' ) {
+        if ( name === 'index' ) {
 
-			console.warn( 'THREE.BufferGeometry.addAttribute: Use .setIndex() for index attribute.' );
-			this.setIndex( attribute );
+            console.warn( 'THREE.BufferGeometry.addAttribute: Use .setIndex() for index attribute.' );
+            this.setIndex( attribute );
 
-			return;
+            return;
 
-		}
+        }
 
-		this.attributes[ name ] = attribute;
+        this.attributes[ name ] = attribute;
 
-		return this;
+        return this;
 
-	},
+    },
 
-	getAttribute: function ( name ) {
+    getAttribute: function ( name ) {
 
-		return this.attributes[ name ];
+        return this.attributes[ name ];
 
-	},
+    },
 
-	removeAttribute: function ( name ) {
+    removeAttribute: function ( name ) {
 
-		delete this.attributes[ name ];
+        delete this.attributes[ name ];
 
-		return this;
+        return this;
 
-	},
+    },
 
-	addGroup: function ( start, count, materialIndex ) {
+    addGroup: function ( start, count, materialIndex ) {
 
-		this.groups.push( {
+        this.groups.push( {
 
-			start: start,
-			count: count,
-			materialIndex: materialIndex !== undefined ? materialIndex : 0
+            start: start,
+            count: count,
+            materialIndex: materialIndex !== undefined ? materialIndex : 0
 
-		} );
+        } );
 
-	},
+    },
 
-	clearGroups: function () {
+    clearGroups: function () {
 
-		this.groups = [];
+        this.groups = [];
 
-	},
+    },
 
-	setDrawRange: function ( start, count ) {
+    setDrawRange: function ( start, count ) {
 
-		this.drawRange.start = start;
-		this.drawRange.count = count;
+        this.drawRange.start = start;
+        this.drawRange.count = count;
 
-	},
+    },
 
-	applyMatrix: function ( matrix ) {
+    applyMatrix: function ( matrix ) {
 
-		var position = this.attributes.position;
+        var position = this.attributes.position;
 
-		if ( position !== undefined ) {
+        if ( position !== undefined ) {
 
-			matrix.applyToBufferAttribute( position );
-			position.needsUpdate = true;
+            matrix.applyToBufferAttribute( position );
+            position.needsUpdate = true;
 
-		}
+        }
 
-		var normal = this.attributes.normal;
+        var normal = this.attributes.normal;
 
-		if ( normal !== undefined ) {
+        if ( normal !== undefined ) {
 
-			var normalMatrix = new Matrix3().getNormalMatrix( matrix );
+            var normalMatrix = new Matrix3().getNormalMatrix( matrix );
 
-			normalMatrix.applyToBufferAttribute( normal );
-			normal.needsUpdate = true;
+            normalMatrix.applyToBufferAttribute( normal );
+            normal.needsUpdate = true;
 
-		}
+        }
 
-		if ( this.boundingBox !== null ) {
+        if ( this.boundingBox !== null ) {
 
-			this.computeBoundingBox();
+            this.computeBoundingBox();
 
-		}
+        }
 
-		if ( this.boundingSphere !== null ) {
+        if ( this.boundingSphere !== null ) {
 
-			this.computeBoundingSphere();
+            this.computeBoundingSphere();
 
-		}
+        }
 
-		return this;
+        return this;
 
-	},
+    },
 
-	rotateX: function () {
+    rotateX: ( function () {
 
-		// rotate geometry around world x-axis
+        // rotate geometry around world x-axis
 
-		var m1 = new Matrix4();
+        var m1 = new Matrix4();
 
-		return function rotateX( angle ) {
+        return function rotateX( angle ) {
 
-			m1.makeRotationX( angle );
+            m1.makeRotationX( angle );
 
-			this.applyMatrix( m1 );
+            this.applyMatrix( m1 );
 
-			return this;
+            return this;
 
-		};
+        };
 
-	}(),
+    }() ),
 
-	rotateY: function () {
+    rotateY: ( function () {
 
-		// rotate geometry around world y-axis
+        // rotate geometry around world y-axis
 
-		var m1 = new Matrix4();
+        var m1 = new Matrix4();
 
-		return function rotateY( angle ) {
+        return function rotateY( angle ) {
 
-			m1.makeRotationY( angle );
+            m1.makeRotationY( angle );
 
-			this.applyMatrix( m1 );
+            this.applyMatrix( m1 );
 
-			return this;
+            return this;
 
-		};
+        };
 
-	}(),
+    }() ),
 
-	rotateZ: function () {
+    rotateZ: ( function () {
 
-		// rotate geometry around world z-axis
+        // rotate geometry around world z-axis
 
-		var m1 = new Matrix4();
+        var m1 = new Matrix4();
 
-		return function rotateZ( angle ) {
+        return function rotateZ( angle ) {
 
-			m1.makeRotationZ( angle );
+            m1.makeRotationZ( angle );
 
-			this.applyMatrix( m1 );
+            this.applyMatrix( m1 );
 
-			return this;
+            return this;
 
-		};
+        };
 
-	}(),
+    }() ),
 
-	translate: function () {
+    translate: ( function () {
 
-		// translate geometry
+        // translate geometry
 
-		var m1 = new Matrix4();
+        var m1 = new Matrix4();
 
-		return function translate( x, y, z ) {
+        return function translate( x, y, z ) {
 
-			m1.makeTranslation( x, y, z );
+            m1.makeTranslation( x, y, z );
 
-			this.applyMatrix( m1 );
+            this.applyMatrix( m1 );
 
-			return this;
+            return this;
 
-		};
+        };
 
-	}(),
+    }() ),
 
-	scale: function () {
+    scale: ( function () {
 
-		// scale geometry
+        // scale geometry
 
-		var m1 = new Matrix4();
+        var m1 = new Matrix4();
 
-		return function scale( x, y, z ) {
+        return function scale( x, y, z ) {
 
-			m1.makeScale( x, y, z );
+            m1.makeScale( x, y, z );
 
-			this.applyMatrix( m1 );
+            this.applyMatrix( m1 );
 
-			return this;
+            return this;
 
-		};
+        };
 
-	}(),
+    }() ),
 
-	lookAt: function () {
+    lookAt: ( function () {
 
-		var obj = new Object3D();
+        var obj = new Object3D();
 
-		return function lookAt( vector ) {
+        return function lookAt( vector ) {
 
-			obj.lookAt( vector );
+            obj.lookAt( vector );
 
-			obj.updateMatrix();
+            obj.updateMatrix();
 
-			this.applyMatrix( obj.matrix );
+            this.applyMatrix( obj.matrix );
 
-		};
+        };
 
-	}(),
+    }() ),
 
-	center: function () {
+    center: ( function () {
 
-		var offset = new Vector3();
+        var offset = new Vector3();
 
-		return function center() {
+        return function center() {
 
-			this.computeBoundingBox();
+            this.computeBoundingBox();
 
-			this.boundingBox.getCenter( offset ).negate();
+            this.boundingBox.getCenter( offset ).negate();
 
-			this.translate( offset.x, offset.y, offset.z );
+            this.translate( offset.x, offset.y, offset.z );
 
-			return this;
+            return this;
 
-		};
+        };
 
-	}(),
+    }() ),
 
-	setFromObject: function ( object ) {
+    setFromObject: function ( object ) {
 
-		// console.log( 'THREE.BufferGeometry.setFromObject(). Converting', object, this );
+        // console.log( 'THREE.BufferGeometry.setFromObject(). Converting', object, this );
 
-		var geometry = object.geometry;
+        var geometry = object.geometry;
 
-		if ( object.isPoints || object.isLine ) {
+        if ( object.isPoints || object.isLine ) {
 
-			var positions = new Float32BufferAttribute( geometry.vertices.length * 3, 3 );
-			var colors = new Float32BufferAttribute( geometry.colors.length * 3, 3 );
+            var positions = new Float32BufferAttribute( geometry.vertices.length * 3, 3 );
+            var colors = new Float32BufferAttribute( geometry.colors.length * 3, 3 );
 
-			this.addAttribute( 'position', positions.copyVector3sArray( geometry.vertices ) );
-			this.addAttribute( 'color', colors.copyColorsArray( geometry.colors ) );
+            this.addAttribute( 'position', positions.copyVector3sArray( geometry.vertices ) );
+            this.addAttribute( 'color', colors.copyColorsArray( geometry.colors ) );
 
-			if ( geometry.lineDistances && geometry.lineDistances.length === geometry.vertices.length ) {
+            if ( geometry.lineDistances && geometry.lineDistances.length === geometry.vertices.length ) {
 
-				var lineDistances = new Float32BufferAttribute( geometry.lineDistances.length, 1 );
+                var lineDistances = new Float32BufferAttribute( geometry.lineDistances.length, 1 );
 
-				this.addAttribute( 'lineDistance', lineDistances.copyArray( geometry.lineDistances ) );
+                this.addAttribute( 'lineDistance', lineDistances.copyArray( geometry.lineDistances ) );
 
-			}
+            }
 
-			if ( geometry.boundingSphere !== null ) {
+            if ( geometry.boundingSphere !== null ) {
 
-				this.boundingSphere = geometry.boundingSphere.clone();
+                this.boundingSphere = geometry.boundingSphere.clone();
 
-			}
+            }
 
-			if ( geometry.boundingBox !== null ) {
+            if ( geometry.boundingBox !== null ) {
 
-				this.boundingBox = geometry.boundingBox.clone();
+                this.boundingBox = geometry.boundingBox.clone();
 
-			}
+            }
 
-		} else if ( object.isMesh ) {
+        } else if ( object.isMesh ) {
 
-			if ( geometry && geometry.isGeometry ) {
+            if ( geometry && geometry.isGeometry ) {
 
-				this.fromGeometry( geometry );
+                this.fromGeometry( geometry );
 
-			}
+            }
 
-		}
+        }
 
-		return this;
+        return this;
 
-	},
+    },
 
-	setFromPoints: function ( points ) {
+    setFromPoints: function ( points ) {
 
-		var position = [];
+        var position = [];
 
-		for ( var i = 0, l = points.length; i < l; i ++ ) {
+        for ( var i = 0, l = points.length; i < l; i++ ) {
 
-			var point = points[ i ];
-			position.push( point.x, point.y, point.z || 0 );
+            var point = points[ i ];
+            position.push( point.x, point.y, point.z || 0 );
 
-		}
+        }
 
-		this.addAttribute( 'position', new Float32BufferAttribute( position, 3 ) );
+        this.addAttribute( 'position', new Float32BufferAttribute( position, 3 ) );
 
-		return this;
+        return this;
 
-	},
+    },
 
-	updateFromObject: function ( object ) {
+    updateFromObject: function ( object ) {
 
-		var geometry = object.geometry;
+        var geometry = object.geometry;
 
-		if ( object.isMesh ) {
+        if ( object.isMesh ) {
 
-			var direct = geometry.__directGeometry;
+            var direct = geometry.__directGeometry;
 
-			if ( geometry.elementsNeedUpdate === true ) {
+            if ( geometry.elementsNeedUpdate === true ) {
 
-				direct = undefined;
-				geometry.elementsNeedUpdate = false;
+                direct = undefined;
+                geometry.elementsNeedUpdate = false;
 
-			}
+            }
 
-			if ( direct === undefined ) {
+            if ( direct === undefined ) {
 
-				return this.fromGeometry( geometry );
+                return this.fromGeometry( geometry );
 
-			}
+            }
 
-			direct.verticesNeedUpdate = geometry.verticesNeedUpdate;
-			direct.normalsNeedUpdate = geometry.normalsNeedUpdate;
-			direct.colorsNeedUpdate = geometry.colorsNeedUpdate;
-			direct.uvsNeedUpdate = geometry.uvsNeedUpdate;
-			direct.groupsNeedUpdate = geometry.groupsNeedUpdate;
+            direct.verticesNeedUpdate = geometry.verticesNeedUpdate;
+            direct.normalsNeedUpdate = geometry.normalsNeedUpdate;
+            direct.colorsNeedUpdate = geometry.colorsNeedUpdate;
+            direct.uvsNeedUpdate = geometry.uvsNeedUpdate;
+            direct.groupsNeedUpdate = geometry.groupsNeedUpdate;
 
-			geometry.verticesNeedUpdate = false;
-			geometry.normalsNeedUpdate = false;
-			geometry.colorsNeedUpdate = false;
-			geometry.uvsNeedUpdate = false;
-			geometry.groupsNeedUpdate = false;
+            geometry.verticesNeedUpdate = false;
+            geometry.normalsNeedUpdate = false;
+            geometry.colorsNeedUpdate = false;
+            geometry.uvsNeedUpdate = false;
+            geometry.groupsNeedUpdate = false;
 
-			geometry = direct;
+            geometry = direct;
 
-		}
+        }
 
-		var attribute;
+        var attribute;
 
-		if ( geometry.verticesNeedUpdate === true ) {
+        if ( geometry.verticesNeedUpdate === true ) {
 
-			attribute = this.attributes.position;
+            attribute = this.attributes.position;
 
-			if ( attribute !== undefined ) {
+            if ( attribute !== undefined ) {
 
-				attribute.copyVector3sArray( geometry.vertices );
-				attribute.needsUpdate = true;
+                attribute.copyVector3sArray( geometry.vertices );
+                attribute.needsUpdate = true;
 
-			}
+            }
 
-			geometry.verticesNeedUpdate = false;
+            geometry.verticesNeedUpdate = false;
 
-		}
+        }
 
-		if ( geometry.normalsNeedUpdate === true ) {
+        if ( geometry.normalsNeedUpdate === true ) {
 
-			attribute = this.attributes.normal;
+            attribute = this.attributes.normal;
 
-			if ( attribute !== undefined ) {
+            if ( attribute !== undefined ) {
 
-				attribute.copyVector3sArray( geometry.normals );
-				attribute.needsUpdate = true;
+                attribute.copyVector3sArray( geometry.normals );
+                attribute.needsUpdate = true;
 
-			}
+            }
 
-			geometry.normalsNeedUpdate = false;
+            geometry.normalsNeedUpdate = false;
 
-		}
+        }
 
-		if ( geometry.colorsNeedUpdate === true ) {
+        if ( geometry.colorsNeedUpdate === true ) {
 
-			attribute = this.attributes.color;
+            attribute = this.attributes.color;
 
-			if ( attribute !== undefined ) {
+            if ( attribute !== undefined ) {
 
-				attribute.copyColorsArray( geometry.colors );
-				attribute.needsUpdate = true;
+                attribute.copyColorsArray( geometry.colors );
+                attribute.needsUpdate = true;
 
-			}
+            }
 
-			geometry.colorsNeedUpdate = false;
+            geometry.colorsNeedUpdate = false;
 
-		}
+        }
 
-		if ( geometry.uvsNeedUpdate ) {
+        if ( geometry.uvsNeedUpdate ) {
 
-			attribute = this.attributes.uv;
+            attribute = this.attributes.uv;
 
-			if ( attribute !== undefined ) {
+            if ( attribute !== undefined ) {
 
-				attribute.copyVector2sArray( geometry.uvs );
-				attribute.needsUpdate = true;
+                attribute.copyVector2sArray( geometry.uvs );
+                attribute.needsUpdate = true;
 
-			}
+            }
 
-			geometry.uvsNeedUpdate = false;
+            geometry.uvsNeedUpdate = false;
 
-		}
+        }
 
-		if ( geometry.lineDistancesNeedUpdate ) {
+        if ( geometry.lineDistancesNeedUpdate ) {
 
-			attribute = this.attributes.lineDistance;
+            attribute = this.attributes.lineDistance;
 
-			if ( attribute !== undefined ) {
+            if ( attribute !== undefined ) {
 
-				attribute.copyArray( geometry.lineDistances );
-				attribute.needsUpdate = true;
+                attribute.copyArray( geometry.lineDistances );
+                attribute.needsUpdate = true;
 
-			}
+            }
 
-			geometry.lineDistancesNeedUpdate = false;
+            geometry.lineDistancesNeedUpdate = false;
 
-		}
+        }
 
-		if ( geometry.groupsNeedUpdate ) {
+        if ( geometry.groupsNeedUpdate ) {
 
-			geometry.computeGroups( object.geometry );
-			this.groups = geometry.groups;
+            geometry.computeGroups( object.geometry );
+            this.groups = geometry.groups;
 
-			geometry.groupsNeedUpdate = false;
+            geometry.groupsNeedUpdate = false;
 
-		}
+        }
 
-		return this;
+        return this;
 
-	},
+    },
 
-	fromGeometry: function ( geometry ) {
+    fromGeometry: function ( geometry ) {
 
-		geometry.__directGeometry = new DirectGeometry().fromGeometry( geometry );
+        geometry.__directGeometry = new DirectGeometry().fromGeometry( geometry );
 
-		return this.fromDirectGeometry( geometry.__directGeometry );
+        return this.fromDirectGeometry( geometry.__directGeometry );
 
-	},
+    },
 
-	fromDirectGeometry: function ( geometry ) {
+    fromDirectGeometry: function ( geometry ) {
 
-		var positions = new Float32Array( geometry.vertices.length * 3 );
-		this.addAttribute( 'position', new BufferAttribute( positions, 3 ).copyVector3sArray( geometry.vertices ) );
+        var positions = new Float32Array( geometry.vertices.length * 3 );
+        this.addAttribute( 'position', new BufferAttribute( positions, 3 ).copyVector3sArray( geometry.vertices ) );
 
-		if ( geometry.normals.length > 0 ) {
+        if ( geometry.normals.length > 0 ) {
 
-			var normals = new Float32Array( geometry.normals.length * 3 );
-			this.addAttribute( 'normal', new BufferAttribute( normals, 3 ).copyVector3sArray( geometry.normals ) );
+            var normals = new Float32Array( geometry.normals.length * 3 );
+            this.addAttribute( 'normal', new BufferAttribute( normals, 3 ).copyVector3sArray( geometry.normals ) );
 
-		}
+        }
 
-		if ( geometry.colors.length > 0 ) {
+        if ( geometry.colors.length > 0 ) {
 
-			var colors = new Float32Array( geometry.colors.length * 3 );
-			this.addAttribute( 'color', new BufferAttribute( colors, 3 ).copyColorsArray( geometry.colors ) );
+            var colors = new Float32Array( geometry.colors.length * 3 );
+            this.addAttribute( 'color', new BufferAttribute( colors, 3 ).copyColorsArray( geometry.colors ) );
 
-		}
+        }
 
-		if ( geometry.uvs.length > 0 ) {
+        if ( geometry.uvs.length > 0 ) {
 
-			var uvs = new Float32Array( geometry.uvs.length * 2 );
-			this.addAttribute( 'uv', new BufferAttribute( uvs, 2 ).copyVector2sArray( geometry.uvs ) );
+            var uvs = new Float32Array( geometry.uvs.length * 2 );
+            this.addAttribute( 'uv', new BufferAttribute( uvs, 2 ).copyVector2sArray( geometry.uvs ) );
 
-		}
+        }
 
-		if ( geometry.uvs2.length > 0 ) {
+        if ( geometry.uvs2.length > 0 ) {
 
-			var uvs2 = new Float32Array( geometry.uvs2.length * 2 );
-			this.addAttribute( 'uv2', new BufferAttribute( uvs2, 2 ).copyVector2sArray( geometry.uvs2 ) );
+            var uvs2 = new Float32Array( geometry.uvs2.length * 2 );
+            this.addAttribute( 'uv2', new BufferAttribute( uvs2, 2 ).copyVector2sArray( geometry.uvs2 ) );
 
-		}
+        }
 
-		// groups
+        // groups
 
-		this.groups = geometry.groups;
+        this.groups = geometry.groups;
 
-		// morphs
+        // morphs
 
-		for ( var name in geometry.morphTargets ) {
+        for ( var name in geometry.morphTargets ) {
 
-			var array = [];
-			var morphTargets = geometry.morphTargets[ name ];
+            var array = [];
+            var morphTargets = geometry.morphTargets[ name ];
 
-			for ( var i = 0, l = morphTargets.length; i < l; i ++ ) {
+            for ( var i = 0, l = morphTargets.length; i < l; i++ ) {
 
-				var morphTarget = morphTargets[ i ];
+                var morphTarget = morphTargets[ i ];
 
-				var attribute = new Float32BufferAttribute( morphTarget.length * 3, 3 );
+                var attribute = new Float32BufferAttribute( morphTarget.length * 3, 3 );
 
-				array.push( attribute.copyVector3sArray( morphTarget ) );
+                array.push( attribute.copyVector3sArray( morphTarget ) );
 
-			}
+            }
 
-			this.morphAttributes[ name ] = array;
+            this.morphAttributes[ name ] = array;
 
-		}
+        }
 
-		// skinning
+        // skinning
 
-		if ( geometry.skinIndices.length > 0 ) {
+        if ( geometry.skinIndices.length > 0 ) {
 
-			var skinIndices = new Float32BufferAttribute( geometry.skinIndices.length * 4, 4 );
-			this.addAttribute( 'skinIndex', skinIndices.copyVector4sArray( geometry.skinIndices ) );
+            var skinIndices = new Float32BufferAttribute( geometry.skinIndices.length * 4, 4 );
+            this.addAttribute( 'skinIndex', skinIndices.copyVector4sArray( geometry.skinIndices ) );
 
-		}
+        }
 
-		if ( geometry.skinWeights.length > 0 ) {
+        if ( geometry.skinWeights.length > 0 ) {
 
-			var skinWeights = new Float32BufferAttribute( geometry.skinWeights.length * 4, 4 );
-			this.addAttribute( 'skinWeight', skinWeights.copyVector4sArray( geometry.skinWeights ) );
+            var skinWeights = new Float32BufferAttribute( geometry.skinWeights.length * 4, 4 );
+            this.addAttribute( 'skinWeight', skinWeights.copyVector4sArray( geometry.skinWeights ) );
 
-		}
+        }
 
-		//
+        //
 
-		if ( geometry.boundingSphere !== null ) {
+        if ( geometry.boundingSphere !== null ) {
 
-			this.boundingSphere = geometry.boundingSphere.clone();
+            this.boundingSphere = geometry.boundingSphere.clone();
 
-		}
+        }
 
-		if ( geometry.boundingBox !== null ) {
+        if ( geometry.boundingBox !== null ) {
 
-			this.boundingBox = geometry.boundingBox.clone();
+            this.boundingBox = geometry.boundingBox.clone();
 
-		}
+        }
 
-		return this;
+        return this;
 
-	},
+    },
 
-	computeBoundingBox: function () {
+    computeBoundingBox: function () {
 
-		if ( this.boundingBox === null ) {
+        if ( this.boundingBox === null ) {
 
-			this.boundingBox = new Box3();
+            this.boundingBox = new Box3();
 
-		}
+        }
 
-		var position = this.attributes.position;
+        var position = this.attributes.position;
 
-		if ( position !== undefined ) {
+        if ( position !== undefined ) {
 
-			this.boundingBox.setFromBufferAttribute( position );
+            this.boundingBox.setFromBufferAttribute( position );
 
-		} else {
+        } else {
 
-			this.boundingBox.makeEmpty();
+            this.boundingBox.makeEmpty();
 
-		}
+        }
 
-		if ( isNaN( this.boundingBox.min.x ) || isNaN( this.boundingBox.min.y ) || isNaN( this.boundingBox.min.z ) ) {
+        if ( isNaN( this.boundingBox.min.x ) || isNaN( this.boundingBox.min.y ) || isNaN( this.boundingBox.min.z ) ) {
 
-			console.error( 'THREE.BufferGeometry.computeBoundingBox: Computed min/max have NaN values. The "position" attribute is likely to have NaN values.', this );
+            console.error( 'THREE.BufferGeometry.computeBoundingBox: Computed min/max have NaN values. The "position" attribute is likely to have NaN values.', this );
 
-		}
+        }
 
-	},
+    },
 
-	computeBoundingSphere: function () {
+    computeBoundingSphere: ( function () {
 
-		var box = new Box3();
-		var vector = new Vector3();
+        var box = new Box3();
+        var vector = new Vector3();
 
-		return function computeBoundingSphere() {
+        return function computeBoundingSphere() {
 
-			if ( this.boundingSphere === null ) {
+            if ( this.boundingSphere === null ) {
 
-				this.boundingSphere = new Sphere();
+                this.boundingSphere = new Sphere();
 
-			}
+            }
 
-			var position = this.attributes.position;
+            var position = this.attributes.position;
 
-			if ( position ) {
+            if ( position ) {
 
-				var center = this.boundingSphere.center;
+                var center = this.boundingSphere.center;
 
-				box.setFromBufferAttribute( position );
-				box.getCenter( center );
+                box.setFromBufferAttribute( position );
+                box.getCenter( center );
 
-				// hoping to find a boundingSphere with a radius smaller than the
-				// boundingSphere of the boundingBox: sqrt(3) smaller in the best case
+                // hoping to find a boundingSphere with a radius smaller than the
+                // boundingSphere of the boundingBox: sqrt(3) smaller in the best case
 
-				var maxRadiusSq = 0;
+                var maxRadiusSq = 0;
 
-				for ( var i = 0, il = position.count; i < il; i ++ ) {
+                for ( var i = 0, il = position.count; i < il; i++ ) {
 
-					vector.x = position.getX( i );
-					vector.y = position.getY( i );
-					vector.z = position.getZ( i );
-					maxRadiusSq = Math.max( maxRadiusSq, center.distanceToSquared( vector ) );
+                    vector.x = position.getX( i );
+                    vector.y = position.getY( i );
+                    vector.z = position.getZ( i );
+                    maxRadiusSq = Math.max( maxRadiusSq, center.distanceToSquared( vector ) );
 
-				}
+                }
 
-				this.boundingSphere.radius = Math.sqrt( maxRadiusSq );
+                this.boundingSphere.radius = Math.sqrt( maxRadiusSq );
 
-				if ( isNaN( this.boundingSphere.radius ) ) {
+                if ( isNaN( this.boundingSphere.radius ) ) {
 
-					console.error( 'THREE.BufferGeometry.computeBoundingSphere(): Computed radius is NaN. The "position" attribute is likely to have NaN values.', this );
+                    console.error( 'THREE.BufferGeometry.computeBoundingSphere(): Computed radius is NaN. The "position" attribute is likely to have NaN values.', this );
 
-				}
+                }
 
-			}
+            }
 
-		};
+        };
 
-	}(),
+    }() ),
 
-	computeFaceNormals: function () {
+    computeFaceNormals: function () {
 
-		// backwards compatibility
+        // backwards compatibility
 
-	},
+    },
 
-	computeVertexNormals: function () {
+    computeVertexNormals: function () {
 
-		var index = this.index;
-		var attributes = this.attributes;
-		var groups = this.groups;
+        var index = this.index;
+        var attributes = this.attributes;
+        var groups = this.groups;
 
-		if ( attributes.position ) {
+        if ( attributes.position ) {
 
-			var positions = attributes.position.array;
+            var positions = attributes.position.array;
 
-			if ( attributes.normal === undefined ) {
+            if ( attributes.normal === undefined ) {
 
-				this.addAttribute( 'normal', new BufferAttribute( new Float32Array( positions.length ), 3 ) );
+                this.addAttribute( 'normal', new BufferAttribute( new Float32Array( positions.length ), 3 ) );
 
-			} else {
+            } else {
 
-				// reset existing normals to zero
+                // reset existing normals to zero
 
-				var array = attributes.normal.array;
+                var array = attributes.normal.array;
 
-				for ( var i = 0, il = array.length; i < il; i ++ ) {
+                for ( var i = 0, il = array.length; i < il; i++ ) {
 
-					array[ i ] = 0;
+                    array[ i ] = 0;
 
-				}
+                }
 
-			}
+            }
 
-			var normals = attributes.normal.array;
+            var normals = attributes.normal.array;
 
-			var vA, vB, vC;
-			var pA = new Vector3(), pB = new Vector3(), pC = new Vector3();
-			var cb = new Vector3(), ab = new Vector3();
+            var vA, vB, vC;
+            var pA = new Vector3(), pB = new Vector3(), pC = new Vector3();
+            var cb = new Vector3(), ab = new Vector3();
 
-			// indexed elements
+            // indexed elements
 
-			if ( index ) {
+            if ( index ) {
 
-				var indices = index.array;
+                var indices = index.array;
 
-				if ( groups.length === 0 ) {
+                if ( groups.length === 0 ) {
 
-					this.addGroup( 0, indices.length );
+                    this.addGroup( 0, indices.length );
 
-				}
+                }
 
-				for ( var j = 0, jl = groups.length; j < jl; ++ j ) {
+                for ( var j = 0, jl = groups.length; j < jl; ++j ) {
 
-					var group = groups[ j ];
+                    var group = groups[ j ];
 
-					var start = group.start;
-					var count = group.count;
+                    var start = group.start;
+                    var count = group.count;
 
-					for ( var i = start, il = start + count; i < il; i += 3 ) {
+                    for ( var i = start, il = start + count; i < il; i += 3 ) {
 
-						vA = indices[ i + 0 ] * 3;
-						vB = indices[ i + 1 ] * 3;
-						vC = indices[ i + 2 ] * 3;
+                        vA = indices[ i + 0 ] * 3;
+                        vB = indices[ i + 1 ] * 3;
+                        vC = indices[ i + 2 ] * 3;
 
-						pA.fromArray( positions, vA );
-						pB.fromArray( positions, vB );
-						pC.fromArray( positions, vC );
+                        pA.fromArray( positions, vA );
+                        pB.fromArray( positions, vB );
+                        pC.fromArray( positions, vC );
 
-						cb.subVectors( pC, pB );
-						ab.subVectors( pA, pB );
-						cb.cross( ab );
+                        cb.subVectors( pC, pB );
+                        ab.subVectors( pA, pB );
+                        cb.cross( ab );
 
-						normals[ vA ] += cb.x;
-						normals[ vA + 1 ] += cb.y;
-						normals[ vA + 2 ] += cb.z;
+                        normals[ vA ] += cb.x;
+                        normals[ vA + 1 ] += cb.y;
+                        normals[ vA + 2 ] += cb.z;
 
-						normals[ vB ] += cb.x;
-						normals[ vB + 1 ] += cb.y;
-						normals[ vB + 2 ] += cb.z;
+                        normals[ vB ] += cb.x;
+                        normals[ vB + 1 ] += cb.y;
+                        normals[ vB + 2 ] += cb.z;
 
-						normals[ vC ] += cb.x;
-						normals[ vC + 1 ] += cb.y;
-						normals[ vC + 2 ] += cb.z;
+                        normals[ vC ] += cb.x;
+                        normals[ vC + 1 ] += cb.y;
+                        normals[ vC + 2 ] += cb.z;
 
-					}
+                    }
 
-				}
+                }
 
-			} else {
+            } else {
 
-				// non-indexed elements (unconnected triangle soup)
+                // non-indexed elements (unconnected triangle soup)
 
-				for ( var i = 0, il = positions.length; i < il; i += 9 ) {
+                for ( var i = 0, il = positions.length; i < il; i += 9 ) {
 
-					pA.fromArray( positions, i );
-					pB.fromArray( positions, i + 3 );
-					pC.fromArray( positions, i + 6 );
+                    pA.fromArray( positions, i );
+                    pB.fromArray( positions, i + 3 );
+                    pC.fromArray( positions, i + 6 );
 
-					cb.subVectors( pC, pB );
-					ab.subVectors( pA, pB );
-					cb.cross( ab );
+                    cb.subVectors( pC, pB );
+                    ab.subVectors( pA, pB );
+                    cb.cross( ab );
 
-					normals[ i ] = cb.x;
-					normals[ i + 1 ] = cb.y;
-					normals[ i + 2 ] = cb.z;
+                    normals[ i ] = cb.x;
+                    normals[ i + 1 ] = cb.y;
+                    normals[ i + 2 ] = cb.z;
 
-					normals[ i + 3 ] = cb.x;
-					normals[ i + 4 ] = cb.y;
-					normals[ i + 5 ] = cb.z;
+                    normals[ i + 3 ] = cb.x;
+                    normals[ i + 4 ] = cb.y;
+                    normals[ i + 5 ] = cb.z;
 
-					normals[ i + 6 ] = cb.x;
-					normals[ i + 7 ] = cb.y;
-					normals[ i + 8 ] = cb.z;
+                    normals[ i + 6 ] = cb.x;
+                    normals[ i + 7 ] = cb.y;
+                    normals[ i + 8 ] = cb.z;
 
-				}
+                }
 
-			}
+            }
 
-			this.normalizeNormals();
+            this.normalizeNormals();
 
-			attributes.normal.needsUpdate = true;
+            attributes.normal.needsUpdate = true;
 
-		}
+        }
 
-	},
+    },
 
-	merge: function ( geometry, offset ) {
+    merge: function ( geometry, offset ) {
 
-		if ( ! ( geometry && geometry.isBufferGeometry ) ) {
+        if ( !( geometry && geometry.isBufferGeometry ) ) {
 
-			console.error( 'THREE.BufferGeometry.merge(): geometry not an instance of THREE.BufferGeometry.', geometry );
-			return;
+            console.error( 'THREE.BufferGeometry.merge(): geometry not an instance of THREE.BufferGeometry.', geometry );
+            return;
 
-		}
+        }
 
-		if ( offset === undefined ) {
+        if ( offset === undefined ) {
 
-			offset = 0;
+            offset = 0;
 
-			console.warn(
-				'THREE.BufferGeometry.merge(): Overwriting original geometry, starting at offset=0. '
-				+ 'Use BufferGeometryUtils.mergeBufferGeometries() for lossless merge.'
-			);
+            console.warn(
+                'THREE.BufferGeometry.merge(): Overwriting original geometry, starting at offset=0. ' +
+				'Use BufferGeometryUtils.mergeBufferGeometries() for lossless merge.'
+            );
 
-		}
+        }
 
-		var attributes = this.attributes;
+        var attributes = this.attributes;
 
-		for ( var key in attributes ) {
+        for ( var key in attributes ) {
 
-			if ( geometry.attributes[ key ] === undefined ) continue;
+            if ( geometry.attributes[ key ] === undefined ) continue;
 
-			var attribute1 = attributes[ key ];
-			var attributeArray1 = attribute1.array;
+            var attribute1 = attributes[ key ];
+            var attributeArray1 = attribute1.array;
 
-			var attribute2 = geometry.attributes[ key ];
-			var attributeArray2 = attribute2.array;
+            var attribute2 = geometry.attributes[ key ];
+            var attributeArray2 = attribute2.array;
 
-			var attributeSize = attribute2.itemSize;
+            var attributeSize = attribute2.itemSize;
 
-			for ( var i = 0, j = attributeSize * offset; i < attributeArray2.length; i ++, j ++ ) {
+            for ( var i = 0, j = attributeSize * offset; i < attributeArray2.length; i++, j++ ) {
 
-				attributeArray1[ j ] = attributeArray2[ i ];
+                attributeArray1[ j ] = attributeArray2[ i ];
 
-			}
+            }
 
-		}
+        }
 
-		return this;
+        return this;
 
-	},
+    },
 
-	normalizeNormals: function () {
+    normalizeNormals: ( function () {
 
-		var vector = new Vector3();
+        var vector = new Vector3();
 
-		return function normalizeNormals() {
+        return function normalizeNormals() {
 
-			var normals = this.attributes.normal;
+            var normals = this.attributes.normal;
 
-			for ( var i = 0, il = normals.count; i < il; i ++ ) {
+            for ( var i = 0, il = normals.count; i < il; i++ ) {
 
-				vector.x = normals.getX( i );
-				vector.y = normals.getY( i );
-				vector.z = normals.getZ( i );
+                vector.x = normals.getX( i );
+                vector.y = normals.getY( i );
+                vector.z = normals.getZ( i );
 
-				vector.normalize();
+                vector.normalize();
 
-				normals.setXYZ( i, vector.x, vector.y, vector.z );
+                normals.setXYZ( i, vector.x, vector.y, vector.z );
 
-			}
+            }
 
-		};
+        };
 
-	}(),
+    }() ),
 
-	toNonIndexed: function () {
+    toNonIndexed: function () {
 
-		if ( this.index === null ) {
+        if ( this.index === null ) {
 
-			console.warn( 'THREE.BufferGeometry.toNonIndexed(): Geometry is already non-indexed.' );
-			return this;
+            console.warn( 'THREE.BufferGeometry.toNonIndexed(): Geometry is already non-indexed.' );
+            return this;
 
-		}
+        }
 
-		var geometry2 = new BufferGeometry();
+        var geometry2 = new BufferGeometry();
 
-		var indices = this.index.array;
-		var attributes = this.attributes;
+        var indices = this.index.array;
+        var attributes = this.attributes;
 
-		for ( var name in attributes ) {
+        for ( var name in attributes ) {
 
-			var attribute = attributes[ name ];
+            var attribute = attributes[ name ];
 
-			var array = attribute.array;
-			var itemSize = attribute.itemSize;
+            var array = attribute.array;
+            var itemSize = attribute.itemSize;
 
-			var array2 = new array.constructor( indices.length * itemSize );
+            var array2 = new array.constructor( indices.length * itemSize );
 
-			var index = 0, index2 = 0;
+            var index = 0, index2 = 0;
 
-			for ( var i = 0, l = indices.length; i < l; i ++ ) {
+            for ( var i = 0, l = indices.length; i < l; i++ ) {
 
-				index = indices[ i ] * itemSize;
+                index = indices[ i ] * itemSize;
 
-				for ( var j = 0; j < itemSize; j ++ ) {
+                for ( var j = 0; j < itemSize; j++ ) {
 
-					array2[ index2 ++ ] = array[ index ++ ];
+                    array2[ index2++ ] = array[ index++ ];
 
-				}
+                }
 
-			}
+            }
 
-			geometry2.addAttribute( name, new BufferAttribute( array2, itemSize ) );
+            geometry2.addAttribute( name, new BufferAttribute( array2, itemSize ) );
 
-		}
+        }
 
-		var groups = this.groups;
+        var groups = this.groups;
 
-		for ( var i = 0, l = groups.length; i < l; i ++ ) {
+        for ( var i = 0, l = groups.length; i < l; i++ ) {
 
-			var group = groups[ i ];
-			geometry2.addGroup( group.start, group.count, group.materialIndex );
+            var group = groups[ i ];
+            geometry2.addGroup( group.start, group.count, group.materialIndex );
 
-		}
+        }
 
-		return geometry2;
+        return geometry2;
 
-	},
+    },
 
-	toJSON: function () {
+    toJSON: function () {
 
-		var data = {
-			metadata: {
-				version: 4.5,
-				type: 'BufferGeometry',
-				generator: 'BufferGeometry.toJSON'
-			}
-		};
+        var data = {
+            metadata: {
+                version: 4.5,
+                type: 'BufferGeometry',
+                generator: 'BufferGeometry.toJSON'
+            }
+        };
 
-		// standard BufferGeometry serialization
+        // standard BufferGeometry serialization
 
-		data.uuid = this.uuid;
-		data.type = this.type;
-		if ( this.name !== '' ) data.name = this.name;
+        data.uuid = this.uuid;
+        data.type = this.type;
+        if ( this.name !== '' ) data.name = this.name;
 
-		if ( this.parameters !== undefined ) {
+        if ( this.parameters !== undefined ) {
 
-			var parameters = this.parameters;
+            var parameters = this.parameters;
 
-			for ( var key in parameters ) {
+            for ( var key in parameters ) {
 
-				if ( parameters[ key ] !== undefined ) data[ key ] = parameters[ key ];
+                if ( parameters[ key ] !== undefined ) data[ key ] = parameters[ key ];
 
-			}
+            }
 
-			return data;
+            return data;
 
-		}
+        }
 
-		data.data = { attributes: {} };
+        data.data = { attributes: {} };
 
-		var index = this.index;
+        var index = this.index;
 
-		if ( index !== null ) {
+        if ( index !== null ) {
 
-			var array = Array.prototype.slice.call( index.array );
+            var array = Array.prototype.slice.call( index.array );
 
-			data.data.index = {
-				type: index.array.constructor.name,
-				array: array
-			};
+            data.data.index = {
+                type: index.array.constructor.name,
+                array: array
+            };
 
-		}
+        }
 
-		var attributes = this.attributes;
+        var attributes = this.attributes;
 
-		for ( var key in attributes ) {
+        for ( var key in attributes ) {
 
-			var attribute = attributes[ key ];
+            var attribute = attributes[ key ];
 
-			var array = Array.prototype.slice.call( attribute.array );
+            var array = Array.prototype.slice.call( attribute.array );
 
-			data.data.attributes[ key ] = {
-				itemSize: attribute.itemSize,
-				type: attribute.array.constructor.name,
-				array: array,
-				normalized: attribute.normalized
-			};
+            data.data.attributes[ key ] = {
+                itemSize: attribute.itemSize,
+                type: attribute.array.constructor.name,
+                array: array,
+                normalized: attribute.normalized
+            };
 
-		}
+        }
 
-		var groups = this.groups;
+        var groups = this.groups;
 
-		if ( groups.length > 0 ) {
+        if ( groups.length > 0 ) {
 
-			data.data.groups = JSON.parse( JSON.stringify( groups ) );
+            data.data.groups = JSON.parse( JSON.stringify( groups ) );
 
-		}
+        }
 
-		var boundingSphere = this.boundingSphere;
+        var boundingSphere = this.boundingSphere;
 
-		if ( boundingSphere !== null ) {
+        if ( boundingSphere !== null ) {
 
-			data.data.boundingSphere = {
-				center: boundingSphere.center.toArray(),
-				radius: boundingSphere.radius
-			};
+            data.data.boundingSphere = {
+                center: boundingSphere.center.toArray(),
+                radius: boundingSphere.radius
+            };
 
-		}
+        }
 
-		return data;
+        return data;
 
-	},
+    },
 
-	clone: function () {
+    clone: function () {
 
-		/*
+        /*
 		 // Handle primitives
 
 		 var parameters = this.parameters;
@@ -1026,114 +1026,113 @@ BufferGeometry.prototype = Object.assign( Object.create( EventDispatcher.prototy
 		 return new this.constructor().copy( this );
 		 */
 
-		return new BufferGeometry().copy( this );
+        return new BufferGeometry().copy( this );
 
-	},
+    },
 
-	copy: function ( source ) {
+    copy: function ( source ) {
 
-		var name, i, l;
+        var name, i, l;
 
-		// reset
+        // reset
 
-		this.index = null;
-		this.attributes = {};
-		this.morphAttributes = {};
-		this.groups = [];
-		this.boundingBox = null;
-		this.boundingSphere = null;
+        this.index = null;
+        this.attributes = {};
+        this.morphAttributes = {};
+        this.groups = [];
+        this.boundingBox = null;
+        this.boundingSphere = null;
 
-		// name
+        // name
 
-		this.name = source.name;
+        this.name = source.name;
 
-		// index
+        // index
 
-		var index = source.index;
+        var index = source.index;
 
-		if ( index !== null ) {
+        if ( index !== null ) {
 
-			this.setIndex( index.clone() );
+            this.setIndex( index.clone() );
 
-		}
+        }
 
-		// attributes
+        // attributes
 
-		var attributes = source.attributes;
+        var attributes = source.attributes;
 
-		for ( name in attributes ) {
+        for ( name in attributes ) {
 
-			var attribute = attributes[ name ];
-			this.addAttribute( name, attribute.clone() );
+            var attribute = attributes[ name ];
+            this.addAttribute( name, attribute.clone() );
 
-		}
+        }
 
-		// morph attributes
+        // morph attributes
 
-		var morphAttributes = source.morphAttributes;
+        var morphAttributes = source.morphAttributes;
 
-		for ( name in morphAttributes ) {
+        for ( name in morphAttributes ) {
 
-			var array = [];
-			var morphAttribute = morphAttributes[ name ]; // morphAttribute: array of Float32BufferAttributes
+            var array = [];
+            var morphAttribute = morphAttributes[ name ]; // morphAttribute: array of Float32BufferAttributes
 
-			for ( i = 0, l = morphAttribute.length; i < l; i ++ ) {
+            for ( i = 0, l = morphAttribute.length; i < l; i++ ) {
 
-				array.push( morphAttribute[ i ].clone() );
+                array.push( morphAttribute[ i ].clone() );
 
-			}
+            }
 
-			this.morphAttributes[ name ] = array;
+            this.morphAttributes[ name ] = array;
 
-		}
+        }
 
-		// groups
+        // groups
 
-		var groups = source.groups;
+        var groups = source.groups;
 
-		for ( i = 0, l = groups.length; i < l; i ++ ) {
+        for ( i = 0, l = groups.length; i < l; i++ ) {
 
-			var group = groups[ i ];
-			this.addGroup( group.start, group.count, group.materialIndex );
+            var group = groups[ i ];
+            this.addGroup( group.start, group.count, group.materialIndex );
 
-		}
+        }
 
-		// bounding box
+        // bounding box
 
-		var boundingBox = source.boundingBox;
+        var boundingBox = source.boundingBox;
 
-		if ( boundingBox !== null ) {
+        if ( boundingBox !== null ) {
 
-			this.boundingBox = boundingBox.clone();
+            this.boundingBox = boundingBox.clone();
 
-		}
+        }
 
-		// bounding sphere
+        // bounding sphere
 
-		var boundingSphere = source.boundingSphere;
+        var boundingSphere = source.boundingSphere;
 
-		if ( boundingSphere !== null ) {
+        if ( boundingSphere !== null ) {
 
-			this.boundingSphere = boundingSphere.clone();
+            this.boundingSphere = boundingSphere.clone();
 
-		}
+        }
 
-		// draw range
+        // draw range
 
-		this.drawRange.start = source.drawRange.start;
-		this.drawRange.count = source.drawRange.count;
+        this.drawRange.start = source.drawRange.start;
+        this.drawRange.count = source.drawRange.count;
 
-		return this;
+        return this;
 
-	},
+    },
 
-	dispose: function () {
+    dispose: function () {
 
-		this.dispatchEvent( { type: 'dispose' } );
+        this.dispatchEvent( { type: 'dispose' } );
 
-	}
+    }
 
 } );
-
 
 export { BufferGeometry };

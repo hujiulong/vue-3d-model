@@ -8,42 +8,41 @@ import { DefaultLoadingManager } from './LoadingManager.js';
 
 function AnimationLoader( manager ) {
 
-	this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
+    this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
 
 }
 
 Object.assign( AnimationLoader.prototype, {
 
-	load: function ( url, onLoad, onProgress, onError ) {
+    load: function ( url, onLoad, onProgress, onError ) {
 
-		var scope = this;
+        var scope = this;
 
-		var loader = new FileLoader( scope.manager );
-		loader.load( url, function ( text ) {
+        var loader = new FileLoader( scope.manager );
+        loader.load( url, function ( text ) {
 
-			onLoad( scope.parse( JSON.parse( text ) ) );
+            onLoad( scope.parse( JSON.parse( text ) ) );
 
-		}, onProgress, onError );
+        }, onProgress, onError );
 
-	},
+    },
 
-	parse: function ( json, onLoad ) {
+    parse: function ( json, onLoad ) {
 
-		var animations = [];
+        var animations = [];
 
-		for ( var i = 0; i < json.length; i ++ ) {
+        for ( var i = 0; i < json.length; i++ ) {
 
-			var clip = AnimationClip.parse( json[ i ] );
+            var clip = AnimationClip.parse( json[ i ] );
 
-			animations.push( clip );
+            animations.push( clip );
 
-		}
+        }
 
-		onLoad( animations );
+        onLoad( animations );
 
-	}
+    }
 
 } );
-
 
 export { AnimationLoader };

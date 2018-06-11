@@ -6,30 +6,28 @@ import { BufferAttribute } from './BufferAttribute.js';
 
 function InstancedBufferAttribute( array, itemSize, meshPerAttribute ) {
 
-	BufferAttribute.call( this, array, itemSize );
+    BufferAttribute.call( this, array, itemSize );
 
-	this.meshPerAttribute = meshPerAttribute || 1;
+    this.meshPerAttribute = meshPerAttribute || 1;
 
 }
 
 InstancedBufferAttribute.prototype = Object.assign( Object.create( BufferAttribute.prototype ), {
 
-	constructor: InstancedBufferAttribute,
+    constructor: InstancedBufferAttribute,
 
-	isInstancedBufferAttribute: true,
+    isInstancedBufferAttribute: true,
 
-	copy: function ( source ) {
+    copy: function ( source ) {
 
-		BufferAttribute.prototype.copy.call( this, source );
+        BufferAttribute.prototype.copy.call( this, source );
 
-		this.meshPerAttribute = source.meshPerAttribute;
+        this.meshPerAttribute = source.meshPerAttribute;
 
-		return this;
+        return this;
 
-	}
+    }
 
 } );
-
-
 
 export { InstancedBufferAttribute };

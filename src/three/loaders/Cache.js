@@ -4,43 +4,42 @@
 
 var Cache = {
 
-	enabled: false,
+    enabled: false,
 
-	files: {},
+    files: {},
 
-	add: function ( key, file ) {
+    add: function ( key, file ) {
 
-		if ( this.enabled === false ) return;
+        if ( this.enabled === false ) return;
 
-		// console.log( 'THREE.Cache', 'Adding key:', key );
+        // console.log( 'THREE.Cache', 'Adding key:', key );
 
-		this.files[ key ] = file;
+        this.files[ key ] = file;
 
-	},
+    },
 
-	get: function ( key ) {
+    get: function ( key ) {
 
-		if ( this.enabled === false ) return;
+        if ( this.enabled === false ) return;
 
-		// console.log( 'THREE.Cache', 'Checking key:', key );
+        // console.log( 'THREE.Cache', 'Checking key:', key );
 
-		return this.files[ key ];
+        return this.files[ key ];
 
-	},
+    },
 
-	remove: function ( key ) {
+    remove: function ( key ) {
 
-		delete this.files[ key ];
+        delete this.files[ key ];
 
-	},
+    },
 
-	clear: function () {
+    clear: function () {
 
-		this.files = {};
+        this.files = {};
 
-	}
+    }
 
 };
-
 
 export { Cache };

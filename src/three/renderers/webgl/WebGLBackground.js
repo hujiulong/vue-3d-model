@@ -14,128 +14,127 @@ import { ShaderLib } from '../shaders/ShaderLib.js';
 
 function WebGLBackground( renderer, state, geometries, premultipliedAlpha ) {
 
-	var clearColor = new Color( 0x000000 );
-	var clearAlpha = 0;
+    var clearColor = new Color( 0x000000 );
+    var clearAlpha = 0;
 
-	var planeCamera, planeMesh;
-	var boxMesh;
+    var planeCamera, planeMesh;
+    var boxMesh;
 
-	function render( renderList, scene, camera, forceClear ) {
+    function render( renderList, scene, camera, forceClear ) {
 
-		var background = scene.background;
+        var background = scene.background;
 
-		if ( background === null ) {
+        if ( background === null ) {
 
-			setClear( clearColor, clearAlpha );
+            setClear( clearColor, clearAlpha );
 
-		} else if ( background && background.isColor ) {
+        } else if ( background && background.isColor ) {
 
-			setClear( background, 1 );
-			forceClear = true;
+            setClear( background, 1 );
+            forceClear = true;
 
-		}
+        }
 
-		if ( renderer.autoClear || forceClear ) {
+        if ( renderer.autoClear || forceClear ) {
 
-			renderer.clear( renderer.autoClearColor, renderer.autoClearDepth, renderer.autoClearStencil );
+            renderer.clear( renderer.autoClearColor, renderer.autoClearDepth, renderer.autoClearStencil );
 
-		}
+        }
 
-		if ( background && background.isCubeTexture ) {
+        if ( background && background.isCubeTexture ) {
 
-			if ( boxMesh === undefined ) {
+            if ( boxMesh === undefined ) {
 
-				boxMesh = new Mesh(
-					new BoxBufferGeometry( 1, 1, 1 ),
-					new ShaderMaterial( {
-						uniforms: ShaderLib.cube.uniforms,
-						vertexShader: ShaderLib.cube.vertexShader,
-						fragmentShader: ShaderLib.cube.fragmentShader,
-						side: BackSide,
-						depthTest: true,
-						depthWrite: false,
-						fog: false
-					} )
-				);
+                boxMesh = new Mesh(
+                    new BoxBufferGeometry( 1, 1, 1 ),
+                    new ShaderMaterial( {
+                        uniforms: ShaderLib.cube.uniforms,
+                        vertexShader: ShaderLib.cube.vertexShader,
+                        fragmentShader: ShaderLib.cube.fragmentShader,
+                        side: BackSide,
+                        depthTest: true,
+                        depthWrite: false,
+                        fog: false
+                    } )
+                );
 
-				boxMesh.geometry.removeAttribute( 'normal' );
-				boxMesh.geometry.removeAttribute( 'uv' );
+                boxMesh.geometry.removeAttribute( 'normal' );
+                boxMesh.geometry.removeAttribute( 'uv' );
 
-				boxMesh.onBeforeRender = function ( renderer, scene, camera ) {
+                boxMesh.onBeforeRender = function ( renderer, scene, camera ) {
 
-					this.matrixWorld.copyPosition( camera.matrixWorld );
+                    this.matrixWorld.copyPosition( camera.matrixWorld );
 
-				};
+                };
 
-				geometries.update( boxMesh.geometry );
+                geometries.update( boxMesh.geometry );
 
-			}
+            }
 
-			boxMesh.material.uniforms.tCube.value = background;
+            boxMesh.material.uniforms.tCube.value = background;
 
-			renderList.push( boxMesh, boxMesh.geometry, boxMesh.material, 0, null );
+            renderList.push( boxMesh, boxMesh.geometry, boxMesh.material, 0, null );
 
-		} else if ( background && background.isTexture ) {
+        } else if ( background && background.isTexture ) {
 
-			if ( planeCamera === undefined ) {
+            if ( planeCamera === undefined ) {
 
-				planeCamera = new OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
+                planeCamera = new OrthographicCamera( -1, 1, 1, -1, 0, 1 );
 
-				planeMesh = new Mesh(
-					new PlaneBufferGeometry( 2, 2 ),
-					new MeshBasicMaterial( { depthTest: false, depthWrite: false, fog: false } )
-				);
+                planeMesh = new Mesh(
+                    new PlaneBufferGeometry( 2, 2 ),
+                    new MeshBasicMaterial( { depthTest: false, depthWrite: false, fog: false } )
+                );
 
-				geometries.update( planeMesh.geometry );
+                geometries.update( planeMesh.geometry );
 
-			}
+            }
 
-			planeMesh.material.map = background;
+            planeMesh.material.map = background;
 
-			// TODO Push this to renderList
+            // TODO Push this to renderList
 
-			renderer.renderBufferDirect( planeCamera, null, planeMesh.geometry, planeMesh.material, planeMesh, null );
+            renderer.renderBufferDirect( planeCamera, null, planeMesh.geometry, planeMesh.material, planeMesh, null );
 
-		}
+        }
 
-	}
+    }
 
-	function setClear( color, alpha ) {
+    function setClear( color, alpha ) {
 
-		state.buffers.color.setClear( color.r, color.g, color.b, alpha, premultipliedAlpha );
+        state.buffers.color.setClear( color.r, color.g, color.b, alpha, premultipliedAlpha );
 
-	}
+    }
 
-	return {
+    return {
 
-		getClearColor: function () {
+        getClearColor: function () {
 
-			return clearColor;
+            return clearColor;
 
-		},
-		setClearColor: function ( color, alpha ) {
+        },
+        setClearColor: function ( color, alpha ) {
 
-			clearColor.set( color );
-			clearAlpha = alpha !== undefined ? alpha : 1;
-			setClear( clearColor, clearAlpha );
+            clearColor.set( color );
+            clearAlpha = alpha !== undefined ? alpha : 1;
+            setClear( clearColor, clearAlpha );
 
-		},
-		getClearAlpha: function () {
+        },
+        getClearAlpha: function () {
 
-			return clearAlpha;
+            return clearAlpha;
 
-		},
-		setClearAlpha: function ( alpha ) {
+        },
+        setClearAlpha: function ( alpha ) {
 
-			clearAlpha = alpha;
-			setClear( clearColor, clearAlpha );
+            clearAlpha = alpha;
+            setClear( clearColor, clearAlpha );
 
-		},
-		render: render
+        },
+        render: render
 
-	};
+    };
 
 }
-
 
 export { WebGLBackground };

@@ -13,27 +13,27 @@ import { QuaternionLinearInterpolant } from '../../math/interpolants/QuaternionL
 
 function QuaternionKeyframeTrack( name, times, values, interpolation ) {
 
-	KeyframeTrack.call( this, name, times, values, interpolation );
+    KeyframeTrack.call( this, name, times, values, interpolation );
 
 }
 
 QuaternionKeyframeTrack.prototype = Object.assign( Object.create( KeyframeTrack.prototype ), {
 
-	constructor: QuaternionKeyframeTrack,
+    constructor: QuaternionKeyframeTrack,
 
-	ValueTypeName: 'quaternion',
+    ValueTypeName: 'quaternion',
 
-	// ValueBufferType is inherited
+    // ValueBufferType is inherited
 
-	DefaultInterpolation: InterpolateLinear,
+    DefaultInterpolation: InterpolateLinear,
 
-	InterpolantFactoryMethodLinear: function ( result ) {
+    InterpolantFactoryMethodLinear: function ( result ) {
 
-		return new QuaternionLinearInterpolant( this.times, this.values, this.getValueSize(), result );
+        return new QuaternionLinearInterpolant( this.times, this.values, this.getValueSize(), result );
 
-	},
+    },
 
-	InterpolantFactoryMethodSmooth: undefined // not yet implemented
+    InterpolantFactoryMethodSmooth: undefined // not yet implemented
 
 } );
 

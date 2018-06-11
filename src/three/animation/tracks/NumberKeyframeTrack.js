@@ -11,19 +11,19 @@ import { KeyframeTrack } from '../KeyframeTrack.js';
 
 function NumberKeyframeTrack( name, times, values, interpolation ) {
 
-	KeyframeTrack.call( this, name, times, values, interpolation );
+    KeyframeTrack.call( this, name, times, values, interpolation );
 
 }
 
 NumberKeyframeTrack.prototype = Object.assign( Object.create( KeyframeTrack.prototype ), {
 
-	constructor: NumberKeyframeTrack,
+    constructor: NumberKeyframeTrack,
 
-	ValueTypeName: 'number'
+    ValueTypeName: 'number'
 
-	// ValueBufferType is inherited
+    // ValueBufferType is inherited
 
-	// DefaultInterpolation is inherited
+    // DefaultInterpolation is inherited
 
 } );
 

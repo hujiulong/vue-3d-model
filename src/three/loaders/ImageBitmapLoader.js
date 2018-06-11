@@ -5,103 +5,102 @@
 import { Cache } from './Cache.js';
 import { DefaultLoadingManager } from './LoadingManager.js';
 
-
 function ImageBitmapLoader( manager ) {
 
-	if ( typeof createImageBitmap === 'undefined' ) {
+    if ( typeof createImageBitmap === 'undefined' ) {
 
-		console.warn( 'THREE.ImageBitmapLoader: createImageBitmap() not supported.' );
+        console.warn( 'THREE.ImageBitmapLoader: createImageBitmap() not supported.' );
 
-	}
+    }
 
-	if ( typeof fetch === 'undefined' ) {
+    if ( typeof fetch === 'undefined' ) {
 
-		console.warn( 'THREE.ImageBitmapLoader: fetch() not supported.' );
+        console.warn( 'THREE.ImageBitmapLoader: fetch() not supported.' );
 
-	}
+    }
 
-	this.manager = manager !== undefined ? manager : DefaultLoadingManager;
-	this.options = undefined;
+    this.manager = manager !== undefined ? manager : DefaultLoadingManager;
+    this.options = undefined;
 
 }
 
 ImageBitmapLoader.prototype = {
 
-	constructor: ImageBitmapLoader,
+    constructor: ImageBitmapLoader,
 
-	setOptions: function setOptions( options ) {
+    setOptions: function setOptions( options ) {
 
-		this.options = options;
+        this.options = options;
 
-		return this;
+        return this;
 
-	},
+    },
 
-	load: function load( url, onLoad, onProgress, onError ) {
+    load: function load( url, onLoad, onProgress, onError ) {
 
-		if ( url === undefined ) url = '';
+        if ( url === undefined ) url = '';
 
-		if ( this.path !== undefined ) url = this.path + url;
+        if ( this.path !== undefined ) url = this.path + url;
 
-		var scope = this;
+        var scope = this;
 
-		var cached = Cache.get( url );
+        var cached = Cache.get( url );
 
-		if ( cached !== undefined ) {
+        if ( cached !== undefined ) {
 
-			scope.manager.itemStart( url );
+            scope.manager.itemStart( url );
 
-			setTimeout( function () {
+            setTimeout( function () {
 
-				if ( onLoad ) onLoad( cached );
+                if ( onLoad ) onLoad( cached );
 
-				scope.manager.itemEnd( url );
+                scope.manager.itemEnd( url );
 
-			}, 0 );
+            }, 0 );
 
-			return cached;
+            return cached;
 
-		}
+        }
 
-		fetch( url ).then( function ( res ) {
+        fetch( url ).then( function ( res ) {
 
-			return res.blob();
+            return res.blob();
 
-		} ).then( function ( blob ) {
+        } ).then( function ( blob ) {
 
-			return createImageBitmap( blob, scope.options );
+            return createImageBitmap( blob, scope.options );
 
-		} ).then( function ( imageBitmap ) {
+        } ).then( function ( imageBitmap ) {
 
-			Cache.add( url, imageBitmap );
+            Cache.add( url, imageBitmap );
 
-			if ( onLoad ) onLoad( imageBitmap );
+            if ( onLoad ) onLoad( imageBitmap );
 
-			scope.manager.itemEnd( url );
+            scope.manager.itemEnd( url );
 
-		} ).catch( function ( e ) {
+        } ).catch( function ( e ) {
 
-			if ( onError ) onError( e );
+            if ( onError ) onError( e );
 
-			scope.manager.itemEnd( url );
-			scope.manager.itemError( url );
+            scope.manager.itemEnd( url );
+            scope.manager.itemError( url );
 
-		} );
+        } );
 
-	},
+    },
 
-	setCrossOrigin: function ( /* value */ ) {
+    setCrossOrigin: function ( /* value */ ) {
 
-		return this;
+        return this;
 
-	},
+    },
 
-	setPath: function ( value ) {
+    setPath: function ( value ) {
 
-		this.path = value;
-		return this;
+        this.path = value;
+        return this;
 
-	}
+    }
 
 };
 

@@ -6,19 +6,18 @@ import { Line } from './Line.js';
 
 function LineLoop( geometry, material ) {
 
-	Line.call( this, geometry, material );
+    Line.call( this, geometry, material );
 
-	this.type = 'LineLoop';
+    this.type = 'LineLoop';
 
 }
 
 LineLoop.prototype = Object.assign( Object.create( Line.prototype ), {
 
-	constructor: LineLoop,
+    constructor: LineLoop,
 
-	isLineLoop: true,
+    isLineLoop: true,
 
 } );
-
 
 export { LineLoop };

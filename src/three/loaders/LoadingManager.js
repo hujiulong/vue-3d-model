@@ -4,92 +4,91 @@
 
 function LoadingManager( onLoad, onProgress, onError ) {
 
-	var scope = this;
+    var scope = this;
 
-	var isLoading = false;
-	var itemsLoaded = 0;
-	var itemsTotal = 0;
-	var urlModifier = undefined;
+    var isLoading = false;
+    var itemsLoaded = 0;
+    var itemsTotal = 0;
+    var urlModifier = undefined;
 
-	this.onStart = undefined;
-	this.onLoad = onLoad;
-	this.onProgress = onProgress;
-	this.onError = onError;
+    this.onStart = undefined;
+    this.onLoad = onLoad;
+    this.onProgress = onProgress;
+    this.onError = onError;
 
-	this.itemStart = function ( url ) {
+    this.itemStart = function ( url ) {
 
-		itemsTotal ++;
+        itemsTotal++;
 
-		if ( isLoading === false ) {
+        if ( isLoading === false ) {
 
-			if ( scope.onStart !== undefined ) {
+            if ( scope.onStart !== undefined ) {
 
-				scope.onStart( url, itemsLoaded, itemsTotal );
+                scope.onStart( url, itemsLoaded, itemsTotal );
 
-			}
+            }
 
-		}
+        }
 
-		isLoading = true;
+        isLoading = true;
 
-	};
+    };
 
-	this.itemEnd = function ( url ) {
+    this.itemEnd = function ( url ) {
 
-		itemsLoaded ++;
+        itemsLoaded++;
 
-		if ( scope.onProgress !== undefined ) {
+        if ( scope.onProgress !== undefined ) {
 
-			scope.onProgress( url, itemsLoaded, itemsTotal );
+            scope.onProgress( url, itemsLoaded, itemsTotal );
 
-		}
+        }
 
-		if ( itemsLoaded === itemsTotal ) {
+        if ( itemsLoaded === itemsTotal ) {
 
-			isLoading = false;
+            isLoading = false;
 
-			if ( scope.onLoad !== undefined ) {
+            if ( scope.onLoad !== undefined ) {
 
-				scope.onLoad();
+                scope.onLoad();
 
-			}
+            }
 
-		}
+        }
 
-	};
+    };
 
-	this.itemError = function ( url ) {
+    this.itemError = function ( url ) {
 
-		if ( scope.onError !== undefined ) {
+        if ( scope.onError !== undefined ) {
 
-			scope.onError( url );
+            scope.onError( url );
 
-		}
+        }
 
-	};
+    };
 
-	this.resolveURL = function ( url ) {
+    this.resolveURL = function ( url ) {
 
-		if ( urlModifier ) {
+        if ( urlModifier ) {
 
-			return urlModifier( url );
+            return urlModifier( url );
 
-		}
+        }
 
-		return url;
+        return url;
 
-	};
+    };
 
-	this.setURLModifier = function ( transform ) {
+    this.setURLModifier = function ( transform ) {
 
-		urlModifier = transform;
-		return this;
+        urlModifier = transform;
+        return this;
 
-	};
+    };
 
 }
 
 var DefaultLoadingManager = new LoadingManager();
-
 
 export { DefaultLoadingManager, LoadingManager };

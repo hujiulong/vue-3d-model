@@ -13,713 +13,710 @@ var RESERVED_CHARS_RE = '\\[\\]\\.:\\/';
 
 function Composite( targetGroup, path, optionalParsedPath ) {
 
-	var parsedPath = optionalParsedPath || PropertyBinding.parseTrackName( path );
+    var parsedPath = optionalParsedPath || PropertyBinding.parseTrackName( path );
 
-	this._targetGroup = targetGroup;
-	this._bindings = targetGroup.subscribe_( path, parsedPath );
+    this._targetGroup = targetGroup;
+    this._bindings = targetGroup.subscribe_( path, parsedPath );
 
 }
 
 Object.assign( Composite.prototype, {
 
-	getValue: function ( array, offset ) {
+    getValue: function ( array, offset ) {
 
-		this.bind(); // bind all binding
+        this.bind(); // bind all binding
 
-		var firstValidIndex = this._targetGroup.nCachedObjects_,
-			binding = this._bindings[ firstValidIndex ];
+        var firstValidIndex = this._targetGroup.nCachedObjects_,
+            binding = this._bindings[ firstValidIndex ];
 
-		// and only call .getValue on the first
-		if ( binding !== undefined ) binding.getValue( array, offset );
+        // and only call .getValue on the first
+        if ( binding !== undefined ) binding.getValue( array, offset );
 
-	},
+    },
 
-	setValue: function ( array, offset ) {
+    setValue: function ( array, offset ) {
 
-		var bindings = this._bindings;
+        var bindings = this._bindings;
 
-		for ( var i = this._targetGroup.nCachedObjects_,
-				  n = bindings.length; i !== n; ++ i ) {
+        for ( var i = this._targetGroup.nCachedObjects_,
+				  n = bindings.length; i !== n; ++i ) {
 
-			bindings[ i ].setValue( array, offset );
+            bindings[ i ].setValue( array, offset );
 
-		}
+        }
 
-	},
+    },
 
-	bind: function () {
+    bind: function () {
 
-		var bindings = this._bindings;
+        var bindings = this._bindings;
 
-		for ( var i = this._targetGroup.nCachedObjects_,
-				  n = bindings.length; i !== n; ++ i ) {
+        for ( var i = this._targetGroup.nCachedObjects_,
+				  n = bindings.length; i !== n; ++i ) {
 
-			bindings[ i ].bind();
+            bindings[ i ].bind();
 
-		}
+        }
 
-	},
+    },
 
-	unbind: function () {
+    unbind: function () {
 
-		var bindings = this._bindings;
+        var bindings = this._bindings;
 
-		for ( var i = this._targetGroup.nCachedObjects_,
-				  n = bindings.length; i !== n; ++ i ) {
+        for ( var i = this._targetGroup.nCachedObjects_,
+				  n = bindings.length; i !== n; ++i ) {
 
-			bindings[ i ].unbind();
+            bindings[ i ].unbind();
 
-		}
+        }
 
-	}
+    }
 
 } );
 
-
 function PropertyBinding( rootNode, path, parsedPath ) {
 
-	this.path = path;
-	this.parsedPath = parsedPath || PropertyBinding.parseTrackName( path );
+    this.path = path;
+    this.parsedPath = parsedPath || PropertyBinding.parseTrackName( path );
 
-	this.node = PropertyBinding.findNode( rootNode, this.parsedPath.nodeName ) || rootNode;
+    this.node = PropertyBinding.findNode( rootNode, this.parsedPath.nodeName ) || rootNode;
 
-	this.rootNode = rootNode;
+    this.rootNode = rootNode;
 
 }
 
 Object.assign( PropertyBinding, {
 
-	Composite: Composite,
+    Composite: Composite,
 
-	create: function ( root, path, parsedPath ) {
+    create: function ( root, path, parsedPath ) {
 
-		if ( ! ( root && root.isAnimationObjectGroup ) ) {
+        if ( !( root && root.isAnimationObjectGroup ) ) {
 
-			return new PropertyBinding( root, path, parsedPath );
+            return new PropertyBinding( root, path, parsedPath );
 
-		} else {
+        } else {
 
-			return new PropertyBinding.Composite( root, path, parsedPath );
+            return new PropertyBinding.Composite( root, path, parsedPath );
 
-		}
+        }
 
-	},
+    },
 
-	/**
+    /**
 	 * Replaces spaces with underscores and removes unsupported characters from
 	 * node names, to ensure compatibility with parseTrackName().
 	 *
 	 * @param  {string} name Node name to be sanitized.
 	 * @return {string}
 	 */
-	sanitizeNodeName: ( function () {
+    sanitizeNodeName: ( function () {
 
-		var reservedRe = new RegExp( '[' + RESERVED_CHARS_RE + ']', 'g' );
+        var reservedRe = new RegExp( '[' + RESERVED_CHARS_RE + ']', 'g' );
 
-		return function sanitizeNodeName( name ) {
+        return function sanitizeNodeName( name ) {
 
-			return name.replace( /\s/g, '_' ).replace( reservedRe, '' );
+            return name.replace( /\s/g, '_' ).replace( reservedRe, '' );
 
-		};
+        };
 
-	}() ),
+    }() ),
 
-	parseTrackName: function () {
+    parseTrackName: ( function () {
 
-		// Attempts to allow node names from any language. ES5's `\w` regexp matches
-		// only latin characters, and the unicode \p{L} is not yet supported. So
-		// instead, we exclude reserved characters and match everything else.
-		var wordChar = '[^' + RESERVED_CHARS_RE + ']';
-		var wordCharOrDot = '[^' + RESERVED_CHARS_RE.replace( '\\.', '' ) + ']';
+        // Attempts to allow node names from any language. ES5's `\w` regexp matches
+        // only latin characters, and the unicode \p{L} is not yet supported. So
+        // instead, we exclude reserved characters and match everything else.
+        var wordChar = '[^' + RESERVED_CHARS_RE + ']';
+        var wordCharOrDot = '[^' + RESERVED_CHARS_RE.replace( '\\.', '' ) + ']';
 
-		// Parent directories, delimited by '/' or ':'. Currently unused, but must
-		// be matched to parse the rest of the track name.
-		var directoryRe = /((?:WC+[\/:])*)/.source.replace( 'WC', wordChar );
+        // Parent directories, delimited by '/' or ':'. Currently unused, but must
+        // be matched to parse the rest of the track name.
+        var directoryRe = /((?:WC+[\/:])*)/.source.replace( 'WC', wordChar );
 
-		// Target node. May contain word characters (a-zA-Z0-9_) and '.' or '-'.
-		var nodeRe = /(WCOD+)?/.source.replace( 'WCOD', wordCharOrDot );
+        // Target node. May contain word characters (a-zA-Z0-9_) and '.' or '-'.
+        var nodeRe = /(WCOD+)?/.source.replace( 'WCOD', wordCharOrDot );
 
-		// Object on target node, and accessor. May not contain reserved
-		// characters. Accessor may contain any character except closing bracket.
-		var objectRe = /(?:\.(WC+)(?:\[(.+)\])?)?/.source.replace( 'WC', wordChar );
+        // Object on target node, and accessor. May not contain reserved
+        // characters. Accessor may contain any character except closing bracket.
+        var objectRe = /(?:\.(WC+)(?:\[(.+)\])?)?/.source.replace( 'WC', wordChar );
 
-		// Property and accessor. May not contain reserved characters. Accessor may
-		// contain any non-bracket characters.
-		var propertyRe = /\.(WC+)(?:\[(.+)\])?/.source.replace( 'WC', wordChar );
+        // Property and accessor. May not contain reserved characters. Accessor may
+        // contain any non-bracket characters.
+        var propertyRe = /\.(WC+)(?:\[(.+)\])?/.source.replace( 'WC', wordChar );
 
-		var trackRe = new RegExp( ''
-			+ '^'
-			+ directoryRe
-			+ nodeRe
-			+ objectRe
-			+ propertyRe
-			+ '$'
-		);
+        var trackRe = new RegExp( '' +
+			'^' +
+			directoryRe +
+			nodeRe +
+			objectRe +
+			propertyRe +
+			'$'
+        );
 
-		var supportedObjectNames = [ 'material', 'materials', 'bones' ];
+        var supportedObjectNames = [ 'material', 'materials', 'bones' ];
 
-		return function parseTrackName( trackName ) {
+        return function parseTrackName( trackName ) {
 
-			var matches = trackRe.exec( trackName );
+            var matches = trackRe.exec( trackName );
 
-			if ( ! matches ) {
+            if ( !matches ) {
 
-				throw new Error( 'PropertyBinding: Cannot parse trackName: ' + trackName );
+                throw new Error( 'PropertyBinding: Cannot parse trackName: ' + trackName );
 
-			}
+            }
 
-			var results = {
-				// directoryName: matches[ 1 ], // (tschw) currently unused
-				nodeName: matches[ 2 ],
-				objectName: matches[ 3 ],
-				objectIndex: matches[ 4 ],
-				propertyName: matches[ 5 ], // required
-				propertyIndex: matches[ 6 ]
-			};
+            var results = {
+                // directoryName: matches[ 1 ], // (tschw) currently unused
+                nodeName: matches[ 2 ],
+                objectName: matches[ 3 ],
+                objectIndex: matches[ 4 ],
+                propertyName: matches[ 5 ], // required
+                propertyIndex: matches[ 6 ]
+            };
 
-			var lastDot = results.nodeName && results.nodeName.lastIndexOf( '.' );
+            var lastDot = results.nodeName && results.nodeName.lastIndexOf( '.' );
 
-			if ( lastDot !== undefined && lastDot !== - 1 ) {
+            if ( lastDot !== undefined && lastDot !== -1 ) {
 
-				var objectName = results.nodeName.substring( lastDot + 1 );
+                var objectName = results.nodeName.substring( lastDot + 1 );
 
-				// Object names must be checked against a whitelist. Otherwise, there
-				// is no way to parse 'foo.bar.baz': 'baz' must be a property, but
-				// 'bar' could be the objectName, or part of a nodeName (which can
-				// include '.' characters).
-				if ( supportedObjectNames.indexOf( objectName ) !== - 1 ) {
+                // Object names must be checked against a whitelist. Otherwise, there
+                // is no way to parse 'foo.bar.baz': 'baz' must be a property, but
+                // 'bar' could be the objectName, or part of a nodeName (which can
+                // include '.' characters).
+                if ( supportedObjectNames.indexOf( objectName ) !== -1 ) {
 
-					results.nodeName = results.nodeName.substring( 0, lastDot );
-					results.objectName = objectName;
+                    results.nodeName = results.nodeName.substring( 0, lastDot );
+                    results.objectName = objectName;
 
-				}
+                }
 
-			}
+            }
 
-			if ( results.propertyName === null || results.propertyName.length === 0 ) {
+            if ( results.propertyName === null || results.propertyName.length === 0 ) {
 
-				throw new Error( 'PropertyBinding: can not parse propertyName from trackName: ' + trackName );
+                throw new Error( 'PropertyBinding: can not parse propertyName from trackName: ' + trackName );
 
-			}
+            }
 
-			return results;
+            return results;
 
-		};
+        };
 
-	}(),
+    }() ),
 
-	findNode: function ( root, nodeName ) {
+    findNode: function ( root, nodeName ) {
 
-		if ( ! nodeName || nodeName === "" || nodeName === "root" || nodeName === "." || nodeName === - 1 || nodeName === root.name || nodeName === root.uuid ) {
+        if ( !nodeName || nodeName === '' || nodeName === 'root' || nodeName === '.' || nodeName === -1 || nodeName === root.name || nodeName === root.uuid ) {
 
-			return root;
+            return root;
 
-		}
+        }
 
-		// search into skeleton bones.
-		if ( root.skeleton ) {
+        // search into skeleton bones.
+        if ( root.skeleton ) {
 
-			var bone = root.skeleton.getBoneByName( nodeName );
+            var bone = root.skeleton.getBoneByName( nodeName );
 
-			if ( bone !== undefined ) {
+            if ( bone !== undefined ) {
 
-				return bone;
+                return bone;
 
-			}
+            }
 
-		}
+        }
 
-		// search into node subtree.
-		if ( root.children ) {
+        // search into node subtree.
+        if ( root.children ) {
 
-			var searchNodeSubtree = function ( children ) {
+            var searchNodeSubtree = function ( children ) {
 
-				for ( var i = 0; i < children.length; i ++ ) {
+                for ( var i = 0; i < children.length; i++ ) {
 
-					var childNode = children[ i ];
+                    var childNode = children[ i ];
 
-					if ( childNode.name === nodeName || childNode.uuid === nodeName ) {
+                    if ( childNode.name === nodeName || childNode.uuid === nodeName ) {
 
-						return childNode;
+                        return childNode;
 
-					}
+                    }
 
-					var result = searchNodeSubtree( childNode.children );
+                    var result = searchNodeSubtree( childNode.children );
 
-					if ( result ) return result;
+                    if ( result ) return result;
 
-				}
+                }
 
-				return null;
+                return null;
 
-			};
+            };
 
-			var subTreeNode = searchNodeSubtree( root.children );
+            var subTreeNode = searchNodeSubtree( root.children );
 
-			if ( subTreeNode ) {
+            if ( subTreeNode ) {
 
-				return subTreeNode;
+                return subTreeNode;
 
-			}
+            }
 
-		}
+        }
 
-		return null;
+        return null;
 
-	}
+    }
 
 } );
 
 Object.assign( PropertyBinding.prototype, { // prototype, continued
 
-	// these are used to "bind" a nonexistent property
-	_getValue_unavailable: function () {},
-	_setValue_unavailable: function () {},
+    // these are used to "bind" a nonexistent property
+    _getValue_unavailable: function () {},
+    _setValue_unavailable: function () {},
 
-	BindingType: {
-		Direct: 0,
-		EntireArray: 1,
-		ArrayElement: 2,
-		HasFromToArray: 3
-	},
+    BindingType: {
+        Direct: 0,
+        EntireArray: 1,
+        ArrayElement: 2,
+        HasFromToArray: 3
+    },
 
-	Versioning: {
-		None: 0,
-		NeedsUpdate: 1,
-		MatrixWorldNeedsUpdate: 2
-	},
+    Versioning: {
+        None: 0,
+        NeedsUpdate: 1,
+        MatrixWorldNeedsUpdate: 2
+    },
 
-	GetterByBindingType: [
+    GetterByBindingType: [
 
-		function getValue_direct( buffer, offset ) {
+        function getValue_direct( buffer, offset ) {
 
-			buffer[ offset ] = this.node[ this.propertyName ];
+            buffer[ offset ] = this.node[ this.propertyName ];
 
-		},
+        },
 
-		function getValue_array( buffer, offset ) {
+        function getValue_array( buffer, offset ) {
 
-			var source = this.resolvedProperty;
+            var source = this.resolvedProperty;
 
-			for ( var i = 0, n = source.length; i !== n; ++ i ) {
+            for ( var i = 0, n = source.length; i !== n; ++i ) {
 
-				buffer[ offset ++ ] = source[ i ];
+                buffer[ offset++ ] = source[ i ];
 
-			}
+            }
 
-		},
+        },
 
-		function getValue_arrayElement( buffer, offset ) {
+        function getValue_arrayElement( buffer, offset ) {
 
-			buffer[ offset ] = this.resolvedProperty[ this.propertyIndex ];
+            buffer[ offset ] = this.resolvedProperty[ this.propertyIndex ];
 
-		},
+        },
 
-		function getValue_toArray( buffer, offset ) {
+        function getValue_toArray( buffer, offset ) {
 
-			this.resolvedProperty.toArray( buffer, offset );
+            this.resolvedProperty.toArray( buffer, offset );
 
-		}
+        }
 
-	],
+    ],
 
-	SetterByBindingTypeAndVersioning: [
+    SetterByBindingTypeAndVersioning: [
 
-		[
-			// Direct
+        [
+            // Direct
 
-			function setValue_direct( buffer, offset ) {
+            function setValue_direct( buffer, offset ) {
 
-				this.targetObject[ this.propertyName ] = buffer[ offset ];
+                this.targetObject[ this.propertyName ] = buffer[ offset ];
 
-			},
+            },
 
-			function setValue_direct_setNeedsUpdate( buffer, offset ) {
+            function setValue_direct_setNeedsUpdate( buffer, offset ) {
 
-				this.targetObject[ this.propertyName ] = buffer[ offset ];
-				this.targetObject.needsUpdate = true;
+                this.targetObject[ this.propertyName ] = buffer[ offset ];
+                this.targetObject.needsUpdate = true;
 
-			},
+            },
 
-			function setValue_direct_setMatrixWorldNeedsUpdate( buffer, offset ) {
+            function setValue_direct_setMatrixWorldNeedsUpdate( buffer, offset ) {
 
-				this.targetObject[ this.propertyName ] = buffer[ offset ];
-				this.targetObject.matrixWorldNeedsUpdate = true;
+                this.targetObject[ this.propertyName ] = buffer[ offset ];
+                this.targetObject.matrixWorldNeedsUpdate = true;
 
-			}
+            }
 
-		], [
+        ], [
 
-			// EntireArray
+            // EntireArray
 
-			function setValue_array( buffer, offset ) {
+            function setValue_array( buffer, offset ) {
 
-				var dest = this.resolvedProperty;
+                var dest = this.resolvedProperty;
 
-				for ( var i = 0, n = dest.length; i !== n; ++ i ) {
+                for ( var i = 0, n = dest.length; i !== n; ++i ) {
 
-					dest[ i ] = buffer[ offset ++ ];
+                    dest[ i ] = buffer[ offset++ ];
 
-				}
+                }
 
-			},
+            },
 
-			function setValue_array_setNeedsUpdate( buffer, offset ) {
+            function setValue_array_setNeedsUpdate( buffer, offset ) {
 
-				var dest = this.resolvedProperty;
+                var dest = this.resolvedProperty;
 
-				for ( var i = 0, n = dest.length; i !== n; ++ i ) {
+                for ( var i = 0, n = dest.length; i !== n; ++i ) {
 
-					dest[ i ] = buffer[ offset ++ ];
+                    dest[ i ] = buffer[ offset++ ];
 
-				}
+                }
 
-				this.targetObject.needsUpdate = true;
+                this.targetObject.needsUpdate = true;
 
-			},
+            },
 
-			function setValue_array_setMatrixWorldNeedsUpdate( buffer, offset ) {
+            function setValue_array_setMatrixWorldNeedsUpdate( buffer, offset ) {
 
-				var dest = this.resolvedProperty;
+                var dest = this.resolvedProperty;
 
-				for ( var i = 0, n = dest.length; i !== n; ++ i ) {
+                for ( var i = 0, n = dest.length; i !== n; ++i ) {
 
-					dest[ i ] = buffer[ offset ++ ];
+                    dest[ i ] = buffer[ offset++ ];
 
-				}
+                }
 
-				this.targetObject.matrixWorldNeedsUpdate = true;
+                this.targetObject.matrixWorldNeedsUpdate = true;
 
-			}
+            }
 
-		], [
+        ], [
 
-			// ArrayElement
+            // ArrayElement
 
-			function setValue_arrayElement( buffer, offset ) {
+            function setValue_arrayElement( buffer, offset ) {
 
-				this.resolvedProperty[ this.propertyIndex ] = buffer[ offset ];
+                this.resolvedProperty[ this.propertyIndex ] = buffer[ offset ];
 
-			},
+            },
 
-			function setValue_arrayElement_setNeedsUpdate( buffer, offset ) {
+            function setValue_arrayElement_setNeedsUpdate( buffer, offset ) {
 
-				this.resolvedProperty[ this.propertyIndex ] = buffer[ offset ];
-				this.targetObject.needsUpdate = true;
+                this.resolvedProperty[ this.propertyIndex ] = buffer[ offset ];
+                this.targetObject.needsUpdate = true;
 
-			},
+            },
 
-			function setValue_arrayElement_setMatrixWorldNeedsUpdate( buffer, offset ) {
+            function setValue_arrayElement_setMatrixWorldNeedsUpdate( buffer, offset ) {
 
-				this.resolvedProperty[ this.propertyIndex ] = buffer[ offset ];
-				this.targetObject.matrixWorldNeedsUpdate = true;
+                this.resolvedProperty[ this.propertyIndex ] = buffer[ offset ];
+                this.targetObject.matrixWorldNeedsUpdate = true;
 
-			}
+            }
 
-		], [
+        ], [
 
-			// HasToFromArray
+            // HasToFromArray
 
-			function setValue_fromArray( buffer, offset ) {
+            function setValue_fromArray( buffer, offset ) {
 
-				this.resolvedProperty.fromArray( buffer, offset );
+                this.resolvedProperty.fromArray( buffer, offset );
 
-			},
+            },
 
-			function setValue_fromArray_setNeedsUpdate( buffer, offset ) {
+            function setValue_fromArray_setNeedsUpdate( buffer, offset ) {
 
-				this.resolvedProperty.fromArray( buffer, offset );
-				this.targetObject.needsUpdate = true;
+                this.resolvedProperty.fromArray( buffer, offset );
+                this.targetObject.needsUpdate = true;
 
-			},
+            },
 
-			function setValue_fromArray_setMatrixWorldNeedsUpdate( buffer, offset ) {
+            function setValue_fromArray_setMatrixWorldNeedsUpdate( buffer, offset ) {
 
-				this.resolvedProperty.fromArray( buffer, offset );
-				this.targetObject.matrixWorldNeedsUpdate = true;
+                this.resolvedProperty.fromArray( buffer, offset );
+                this.targetObject.matrixWorldNeedsUpdate = true;
 
-			}
+            }
 
-		]
+        ]
 
-	],
+    ],
 
-	getValue: function getValue_unbound( targetArray, offset ) {
+    getValue: function getValue_unbound( targetArray, offset ) {
 
-		this.bind();
-		this.getValue( targetArray, offset );
+        this.bind();
+        this.getValue( targetArray, offset );
 
-		// Note: This class uses a State pattern on a per-method basis:
-		// 'bind' sets 'this.getValue' / 'setValue' and shadows the
-		// prototype version of these methods with one that represents
-		// the bound state. When the property is not found, the methods
-		// become no-ops.
+        // Note: This class uses a State pattern on a per-method basis:
+        // 'bind' sets 'this.getValue' / 'setValue' and shadows the
+        // prototype version of these methods with one that represents
+        // the bound state. When the property is not found, the methods
+        // become no-ops.
 
-	},
+    },
 
-	setValue: function getValue_unbound( sourceArray, offset ) {
+    setValue: function getValue_unbound( sourceArray, offset ) {
 
-		this.bind();
-		this.setValue( sourceArray, offset );
+        this.bind();
+        this.setValue( sourceArray, offset );
 
-	},
+    },
 
-	// create getter / setter pair for a property in the scene graph
-	bind: function () {
+    // create getter / setter pair for a property in the scene graph
+    bind: function () {
 
-		var targetObject = this.node,
-			parsedPath = this.parsedPath,
+        var targetObject = this.node,
+            parsedPath = this.parsedPath,
 
-			objectName = parsedPath.objectName,
-			propertyName = parsedPath.propertyName,
-			propertyIndex = parsedPath.propertyIndex;
+            objectName = parsedPath.objectName,
+            propertyName = parsedPath.propertyName,
+            propertyIndex = parsedPath.propertyIndex;
 
-		if ( ! targetObject ) {
+        if ( !targetObject ) {
 
-			targetObject = PropertyBinding.findNode( this.rootNode, parsedPath.nodeName ) || this.rootNode;
+            targetObject = PropertyBinding.findNode( this.rootNode, parsedPath.nodeName ) || this.rootNode;
 
-			this.node = targetObject;
+            this.node = targetObject;
 
-		}
+        }
 
-		// set fail state so we can just 'return' on error
-		this.getValue = this._getValue_unavailable;
-		this.setValue = this._setValue_unavailable;
+        // set fail state so we can just 'return' on error
+        this.getValue = this._getValue_unavailable;
+        this.setValue = this._setValue_unavailable;
 
-		// ensure there is a value node
-		if ( ! targetObject ) {
+        // ensure there is a value node
+        if ( !targetObject ) {
 
-			console.error( 'THREE.PropertyBinding: Trying to update node for track: ' + this.path + ' but it wasn\'t found.' );
-			return;
+            console.error( 'THREE.PropertyBinding: Trying to update node for track: ' + this.path + ' but it wasn\'t found.' );
+            return;
 
-		}
+        }
 
-		if ( objectName ) {
+        if ( objectName ) {
 
-			var objectIndex = parsedPath.objectIndex;
+            var objectIndex = parsedPath.objectIndex;
 
-			// special cases were we need to reach deeper into the hierarchy to get the face materials....
-			switch ( objectName ) {
+            // special cases were we need to reach deeper into the hierarchy to get the face materials....
+            switch ( objectName ) {
 
-				case 'materials':
+                case 'materials':
 
-					if ( ! targetObject.material ) {
+                    if ( !targetObject.material ) {
 
-						console.error( 'THREE.PropertyBinding: Can not bind to material as node does not have a material.', this );
-						return;
+                        console.error( 'THREE.PropertyBinding: Can not bind to material as node does not have a material.', this );
+                        return;
 
-					}
+                    }
 
-					if ( ! targetObject.material.materials ) {
+                    if ( !targetObject.material.materials ) {
 
-						console.error( 'THREE.PropertyBinding: Can not bind to material.materials as node.material does not have a materials array.', this );
-						return;
+                        console.error( 'THREE.PropertyBinding: Can not bind to material.materials as node.material does not have a materials array.', this );
+                        return;
 
-					}
+                    }
 
-					targetObject = targetObject.material.materials;
+                    targetObject = targetObject.material.materials;
 
-					break;
+                    break;
 
-				case 'bones':
+                case 'bones':
 
-					if ( ! targetObject.skeleton ) {
+                    if ( !targetObject.skeleton ) {
 
-						console.error( 'THREE.PropertyBinding: Can not bind to bones as node does not have a skeleton.', this );
-						return;
+                        console.error( 'THREE.PropertyBinding: Can not bind to bones as node does not have a skeleton.', this );
+                        return;
 
-					}
+                    }
 
-					// potential future optimization: skip this if propertyIndex is already an integer
-					// and convert the integer string to a true integer.
+                    // potential future optimization: skip this if propertyIndex is already an integer
+                    // and convert the integer string to a true integer.
 
-					targetObject = targetObject.skeleton.bones;
+                    targetObject = targetObject.skeleton.bones;
 
-					// support resolving morphTarget names into indices.
-					for ( var i = 0; i < targetObject.length; i ++ ) {
+                    // support resolving morphTarget names into indices.
+                    for ( var i = 0; i < targetObject.length; i++ ) {
 
-						if ( targetObject[ i ].name === objectIndex ) {
+                        if ( targetObject[ i ].name === objectIndex ) {
 
-							objectIndex = i;
-							break;
+                            objectIndex = i;
+                            break;
 
-						}
+                        }
 
-					}
+                    }
 
-					break;
+                    break;
 
-				default:
+                default:
 
-					if ( targetObject[ objectName ] === undefined ) {
+                    if ( targetObject[ objectName ] === undefined ) {
 
-						console.error( 'THREE.PropertyBinding: Can not bind to objectName of node undefined.', this );
-						return;
+                        console.error( 'THREE.PropertyBinding: Can not bind to objectName of node undefined.', this );
+                        return;
 
-					}
+                    }
 
-					targetObject = targetObject[ objectName ];
+                    targetObject = targetObject[ objectName ];
 
-			}
+            }
 
+            if ( objectIndex !== undefined ) {
 
-			if ( objectIndex !== undefined ) {
+                if ( targetObject[ objectIndex ] === undefined ) {
 
-				if ( targetObject[ objectIndex ] === undefined ) {
+                    console.error( 'THREE.PropertyBinding: Trying to bind to objectIndex of objectName, but is undefined.', this, targetObject );
+                    return;
 
-					console.error( 'THREE.PropertyBinding: Trying to bind to objectIndex of objectName, but is undefined.', this, targetObject );
-					return;
+                }
 
-				}
+                targetObject = targetObject[ objectIndex ];
 
-				targetObject = targetObject[ objectIndex ];
+            }
 
-			}
+        }
 
-		}
+        // resolve property
+        var nodeProperty = targetObject[ propertyName ];
 
-		// resolve property
-		var nodeProperty = targetObject[ propertyName ];
+        if ( nodeProperty === undefined ) {
 
-		if ( nodeProperty === undefined ) {
+            var nodeName = parsedPath.nodeName;
 
-			var nodeName = parsedPath.nodeName;
-
-			console.error( 'THREE.PropertyBinding: Trying to update property for track: ' + nodeName +
+            console.error( 'THREE.PropertyBinding: Trying to update property for track: ' + nodeName +
 				'.' + propertyName + ' but it wasn\'t found.', targetObject );
-			return;
+            return;
 
-		}
+        }
 
-		// determine versioning scheme
-		var versioning = this.Versioning.None;
+        // determine versioning scheme
+        var versioning = this.Versioning.None;
 
-		if ( targetObject.needsUpdate !== undefined ) { // material
+        if ( targetObject.needsUpdate !== undefined ) { // material
 
-			versioning = this.Versioning.NeedsUpdate;
-			this.targetObject = targetObject;
+            versioning = this.Versioning.NeedsUpdate;
+            this.targetObject = targetObject;
 
-		} else if ( targetObject.matrixWorldNeedsUpdate !== undefined ) { // node transform
+        } else if ( targetObject.matrixWorldNeedsUpdate !== undefined ) { // node transform
 
-			versioning = this.Versioning.MatrixWorldNeedsUpdate;
-			this.targetObject = targetObject;
+            versioning = this.Versioning.MatrixWorldNeedsUpdate;
+            this.targetObject = targetObject;
 
-		}
+        }
 
-		// determine how the property gets bound
-		var bindingType = this.BindingType.Direct;
+        // determine how the property gets bound
+        var bindingType = this.BindingType.Direct;
 
-		if ( propertyIndex !== undefined ) {
+        if ( propertyIndex !== undefined ) {
 
-			// access a sub element of the property array (only primitives are supported right now)
+            // access a sub element of the property array (only primitives are supported right now)
 
-			if ( propertyName === "morphTargetInfluences" ) {
+            if ( propertyName === 'morphTargetInfluences' ) {
 
-				// potential optimization, skip this if propertyIndex is already an integer, and convert the integer string to a true integer.
+                // potential optimization, skip this if propertyIndex is already an integer, and convert the integer string to a true integer.
 
-				// support resolving morphTarget names into indices.
-				if ( ! targetObject.geometry ) {
+                // support resolving morphTarget names into indices.
+                if ( !targetObject.geometry ) {
 
-					console.error( 'THREE.PropertyBinding: Can not bind to morphTargetInfluences because node does not have a geometry.', this );
-					return;
+                    console.error( 'THREE.PropertyBinding: Can not bind to morphTargetInfluences because node does not have a geometry.', this );
+                    return;
 
-				}
+                }
 
-				if ( targetObject.geometry.isBufferGeometry ) {
+                if ( targetObject.geometry.isBufferGeometry ) {
 
-					if ( ! targetObject.geometry.morphAttributes ) {
+                    if ( !targetObject.geometry.morphAttributes ) {
 
-						console.error( 'THREE.PropertyBinding: Can not bind to morphTargetInfluences because node does not have a geometry.morphAttributes.', this );
-						return;
+                        console.error( 'THREE.PropertyBinding: Can not bind to morphTargetInfluences because node does not have a geometry.morphAttributes.', this );
+                        return;
 
-					}
+                    }
 
-					for ( var i = 0; i < this.node.geometry.morphAttributes.position.length; i ++ ) {
+                    for ( var i = 0; i < this.node.geometry.morphAttributes.position.length; i++ ) {
 
-						if ( targetObject.geometry.morphAttributes.position[ i ].name === propertyIndex ) {
+                        if ( targetObject.geometry.morphAttributes.position[ i ].name === propertyIndex ) {
 
-							propertyIndex = i;
-							break;
+                            propertyIndex = i;
+                            break;
 
-						}
+                        }
 
-					}
+                    }
 
+                } else {
 
-				} else {
+                    if ( !targetObject.geometry.morphTargets ) {
 
-					if ( ! targetObject.geometry.morphTargets ) {
+                        console.error( 'THREE.PropertyBinding: Can not bind to morphTargetInfluences because node does not have a geometry.morphTargets.', this );
+                        return;
 
-						console.error( 'THREE.PropertyBinding: Can not bind to morphTargetInfluences because node does not have a geometry.morphTargets.', this );
-						return;
+                    }
 
-					}
+                    for ( var i = 0; i < this.node.geometry.morphTargets.length; i++ ) {
 
-					for ( var i = 0; i < this.node.geometry.morphTargets.length; i ++ ) {
+                        if ( targetObject.geometry.morphTargets[ i ].name === propertyIndex ) {
 
-						if ( targetObject.geometry.morphTargets[ i ].name === propertyIndex ) {
+                            propertyIndex = i;
+                            break;
 
-							propertyIndex = i;
-							break;
+                        }
 
-						}
+                    }
 
-					}
+                }
 
-				}
+            }
 
-			}
+            bindingType = this.BindingType.ArrayElement;
 
-			bindingType = this.BindingType.ArrayElement;
+            this.resolvedProperty = nodeProperty;
+            this.propertyIndex = propertyIndex;
 
-			this.resolvedProperty = nodeProperty;
-			this.propertyIndex = propertyIndex;
+        } else if ( nodeProperty.fromArray !== undefined && nodeProperty.toArray !== undefined ) {
 
-		} else if ( nodeProperty.fromArray !== undefined && nodeProperty.toArray !== undefined ) {
+            // must use copy for Object3D.Euler/Quaternion
 
-			// must use copy for Object3D.Euler/Quaternion
+            bindingType = this.BindingType.HasFromToArray;
 
-			bindingType = this.BindingType.HasFromToArray;
+            this.resolvedProperty = nodeProperty;
 
-			this.resolvedProperty = nodeProperty;
+        } else if ( Array.isArray( nodeProperty ) ) {
 
-		} else if ( Array.isArray( nodeProperty ) ) {
+            bindingType = this.BindingType.EntireArray;
 
-			bindingType = this.BindingType.EntireArray;
+            this.resolvedProperty = nodeProperty;
 
-			this.resolvedProperty = nodeProperty;
+        } else {
 
-		} else {
+            this.propertyName = propertyName;
 
-			this.propertyName = propertyName;
+        }
 
-		}
+        // select getter / setter
+        this.getValue = this.GetterByBindingType[ bindingType ];
+        this.setValue = this.SetterByBindingTypeAndVersioning[ bindingType ][ versioning ];
 
-		// select getter / setter
-		this.getValue = this.GetterByBindingType[ bindingType ];
-		this.setValue = this.SetterByBindingTypeAndVersioning[ bindingType ][ versioning ];
+    },
 
-	},
+    unbind: function () {
 
-	unbind: function () {
+        this.node = null;
 
-		this.node = null;
+        // back to the prototype version of getValue / setValue
+        // note: avoiding to mutate the shape of 'this' via 'delete'
+        this.getValue = this._getValue_unbound;
+        this.setValue = this._setValue_unbound;
 
-		// back to the prototype version of getValue / setValue
-		// note: avoiding to mutate the shape of 'this' via 'delete'
-		this.getValue = this._getValue_unbound;
-		this.setValue = this._setValue_unbound;
-
-	}
+    }
 
 } );
 
-//!\ DECLARE ALIAS AFTER assign prototype !
+//! \ DECLARE ALIAS AFTER assign prototype !
 Object.assign( PropertyBinding.prototype, {
 
-	// initial state of these methods that calls 'bind'
-	_getValue_unbound: PropertyBinding.prototype.getValue,
-	_setValue_unbound: PropertyBinding.prototype.setValue,
+    // initial state of these methods that calls 'bind'
+    _getValue_unbound: PropertyBinding.prototype.getValue,
+    _setValue_unbound: PropertyBinding.prototype.setValue,
 
 } );
 

@@ -33,393 +33,391 @@ import { Matrix4 } from '../../math/Matrix4.js';
  *
  **/
 
-/**************************************************************
+/** ************************************************************
  *	Abstract Curve base class
  **************************************************************/
 
 function Curve() {
 
-	this.type = 'Curve';
+    this.type = 'Curve';
 
-	this.arcLengthDivisions = 200;
+    this.arcLengthDivisions = 200;
 
 }
 
 Object.assign( Curve.prototype, {
 
-	// Virtual base class method to overwrite and implement in subclasses
-	//	- t [0 .. 1]
+    // Virtual base class method to overwrite and implement in subclasses
+    //	- t [0 .. 1]
 
-	getPoint: function ( /* t, optionalTarget */ ) {
+    getPoint: function ( /* t, optionalTarget */ ) {
 
-		console.warn( 'THREE.Curve: .getPoint() not implemented.' );
-		return null;
+        console.warn( 'THREE.Curve: .getPoint() not implemented.' );
+        return null;
 
-	},
+    },
 
-	// Get point at relative position in curve according to arc length
-	// - u [0 .. 1]
+    // Get point at relative position in curve according to arc length
+    // - u [0 .. 1]
 
-	getPointAt: function ( u, optionalTarget ) {
+    getPointAt: function ( u, optionalTarget ) {
 
-		var t = this.getUtoTmapping( u );
-		return this.getPoint( t, optionalTarget );
+        var t = this.getUtoTmapping( u );
+        return this.getPoint( t, optionalTarget );
 
-	},
+    },
 
-	// Get sequence of points using getPoint( t )
+    // Get sequence of points using getPoint( t )
 
-	getPoints: function ( divisions ) {
+    getPoints: function ( divisions ) {
 
-		if ( divisions === undefined ) divisions = 5;
+        if ( divisions === undefined ) divisions = 5;
 
-		var points = [];
+        var points = [];
 
-		for ( var d = 0; d <= divisions; d ++ ) {
+        for ( var d = 0; d <= divisions; d++ ) {
 
-			points.push( this.getPoint( d / divisions ) );
+            points.push( this.getPoint( d / divisions ) );
 
-		}
+        }
 
-		return points;
+        return points;
 
-	},
+    },
 
-	// Get sequence of points using getPointAt( u )
+    // Get sequence of points using getPointAt( u )
 
-	getSpacedPoints: function ( divisions ) {
+    getSpacedPoints: function ( divisions ) {
 
-		if ( divisions === undefined ) divisions = 5;
+        if ( divisions === undefined ) divisions = 5;
 
-		var points = [];
+        var points = [];
 
-		for ( var d = 0; d <= divisions; d ++ ) {
+        for ( var d = 0; d <= divisions; d++ ) {
 
-			points.push( this.getPointAt( d / divisions ) );
+            points.push( this.getPointAt( d / divisions ) );
 
-		}
+        }
 
-		return points;
+        return points;
 
-	},
+    },
 
-	// Get total curve arc length
+    // Get total curve arc length
 
-	getLength: function () {
+    getLength: function () {
 
-		var lengths = this.getLengths();
-		return lengths[ lengths.length - 1 ];
+        var lengths = this.getLengths();
+        return lengths[ lengths.length - 1 ];
 
-	},
+    },
 
-	// Get list of cumulative segment lengths
+    // Get list of cumulative segment lengths
 
-	getLengths: function ( divisions ) {
+    getLengths: function ( divisions ) {
 
-		if ( divisions === undefined ) divisions = this.arcLengthDivisions;
+        if ( divisions === undefined ) divisions = this.arcLengthDivisions;
 
-		if ( this.cacheArcLengths &&
+        if ( this.cacheArcLengths &&
 			( this.cacheArcLengths.length === divisions + 1 ) &&
-			! this.needsUpdate ) {
+			!this.needsUpdate ) {
 
-			return this.cacheArcLengths;
+            return this.cacheArcLengths;
 
-		}
+        }
 
-		this.needsUpdate = false;
+        this.needsUpdate = false;
 
-		var cache = [];
-		var current, last = this.getPoint( 0 );
-		var p, sum = 0;
+        var cache = [];
+        var current, last = this.getPoint( 0 );
+        var p, sum = 0;
 
-		cache.push( 0 );
+        cache.push( 0 );
 
-		for ( p = 1; p <= divisions; p ++ ) {
+        for ( p = 1; p <= divisions; p++ ) {
 
-			current = this.getPoint( p / divisions );
-			sum += current.distanceTo( last );
-			cache.push( sum );
-			last = current;
+            current = this.getPoint( p / divisions );
+            sum += current.distanceTo( last );
+            cache.push( sum );
+            last = current;
 
-		}
+        }
 
-		this.cacheArcLengths = cache;
+        this.cacheArcLengths = cache;
 
-		return cache; // { sums: cache, sum: sum }; Sum is in the last element.
+        return cache; // { sums: cache, sum: sum }; Sum is in the last element.
 
-	},
+    },
 
-	updateArcLengths: function () {
+    updateArcLengths: function () {
 
-		this.needsUpdate = true;
-		this.getLengths();
+        this.needsUpdate = true;
+        this.getLengths();
 
-	},
+    },
 
-	// Given u ( 0 .. 1 ), get a t to find p. This gives you points which are equidistant
+    // Given u ( 0 .. 1 ), get a t to find p. This gives you points which are equidistant
 
-	getUtoTmapping: function ( u, distance ) {
+    getUtoTmapping: function ( u, distance ) {
 
-		var arcLengths = this.getLengths();
+        var arcLengths = this.getLengths();
 
-		var i = 0, il = arcLengths.length;
+        var i = 0, il = arcLengths.length;
 
-		var targetArcLength; // The targeted u distance value to get
+        var targetArcLength; // The targeted u distance value to get
 
-		if ( distance ) {
+        if ( distance ) {
 
-			targetArcLength = distance;
+            targetArcLength = distance;
 
-		} else {
+        } else {
 
-			targetArcLength = u * arcLengths[ il - 1 ];
+            targetArcLength = u * arcLengths[ il - 1 ];
 
-		}
+        }
 
-		// binary search for the index with largest value smaller than target u distance
+        // binary search for the index with largest value smaller than target u distance
 
-		var low = 0, high = il - 1, comparison;
+        var low = 0, high = il - 1, comparison;
 
-		while ( low <= high ) {
+        while ( low <= high ) {
 
-			i = Math.floor( low + ( high - low ) / 2 ); // less likely to overflow, though probably not issue here, JS doesn't really have integers, all numbers are floats
+            i = Math.floor( low + ( high - low ) / 2 ); // less likely to overflow, though probably not issue here, JS doesn't really have integers, all numbers are floats
 
-			comparison = arcLengths[ i ] - targetArcLength;
+            comparison = arcLengths[ i ] - targetArcLength;
 
-			if ( comparison < 0 ) {
+            if ( comparison < 0 ) {
 
-				low = i + 1;
+                low = i + 1;
 
-			} else if ( comparison > 0 ) {
+            } else if ( comparison > 0 ) {
 
-				high = i - 1;
+                high = i - 1;
 
-			} else {
+            } else {
 
-				high = i;
-				break;
+                high = i;
+                break;
 
-				// DONE
+                // DONE
 
-			}
+            }
 
-		}
+        }
 
-		i = high;
+        i = high;
 
-		if ( arcLengths[ i ] === targetArcLength ) {
+        if ( arcLengths[ i ] === targetArcLength ) {
 
-			return i / ( il - 1 );
+            return i / ( il - 1 );
 
-		}
+        }
 
-		// we could get finer grain at lengths, or use simple interpolation between two points
+        // we could get finer grain at lengths, or use simple interpolation between two points
 
-		var lengthBefore = arcLengths[ i ];
-		var lengthAfter = arcLengths[ i + 1 ];
+        var lengthBefore = arcLengths[ i ];
+        var lengthAfter = arcLengths[ i + 1 ];
 
-		var segmentLength = lengthAfter - lengthBefore;
+        var segmentLength = lengthAfter - lengthBefore;
 
-		// determine where we are between the 'before' and 'after' points
+        // determine where we are between the 'before' and 'after' points
 
-		var segmentFraction = ( targetArcLength - lengthBefore ) / segmentLength;
+        var segmentFraction = ( targetArcLength - lengthBefore ) / segmentLength;
 
-		// add that fractional amount to t
+        // add that fractional amount to t
 
-		var t = ( i + segmentFraction ) / ( il - 1 );
+        var t = ( i + segmentFraction ) / ( il - 1 );
 
-		return t;
+        return t;
 
-	},
+    },
 
-	// Returns a unit vector tangent at t
-	// In case any sub curve does not implement its tangent derivation,
-	// 2 points a small delta apart will be used to find its gradient
-	// which seems to give a reasonable approximation
+    // Returns a unit vector tangent at t
+    // In case any sub curve does not implement its tangent derivation,
+    // 2 points a small delta apart will be used to find its gradient
+    // which seems to give a reasonable approximation
 
-	getTangent: function ( t ) {
+    getTangent: function ( t ) {
 
-		var delta = 0.0001;
-		var t1 = t - delta;
-		var t2 = t + delta;
+        var delta = 0.0001;
+        var t1 = t - delta;
+        var t2 = t + delta;
 
-		// Capping in case of danger
+        // Capping in case of danger
 
-		if ( t1 < 0 ) t1 = 0;
-		if ( t2 > 1 ) t2 = 1;
+        if ( t1 < 0 ) t1 = 0;
+        if ( t2 > 1 ) t2 = 1;
 
-		var pt1 = this.getPoint( t1 );
-		var pt2 = this.getPoint( t2 );
+        var pt1 = this.getPoint( t1 );
+        var pt2 = this.getPoint( t2 );
 
-		var vec = pt2.clone().sub( pt1 );
-		return vec.normalize();
+        var vec = pt2.clone().sub( pt1 );
+        return vec.normalize();
 
-	},
+    },
 
-	getTangentAt: function ( u ) {
+    getTangentAt: function ( u ) {
 
-		var t = this.getUtoTmapping( u );
-		return this.getTangent( t );
+        var t = this.getUtoTmapping( u );
+        return this.getTangent( t );
 
-	},
+    },
 
-	computeFrenetFrames: function ( segments, closed ) {
+    computeFrenetFrames: function ( segments, closed ) {
 
-		// see http://www.cs.indiana.edu/pub/techreports/TR425.pdf
+        // see http://www.cs.indiana.edu/pub/techreports/TR425.pdf
 
-		var normal = new Vector3();
+        var normal = new Vector3();
 
-		var tangents = [];
-		var normals = [];
-		var binormals = [];
+        var tangents = [];
+        var normals = [];
+        var binormals = [];
 
-		var vec = new Vector3();
-		var mat = new Matrix4();
+        var vec = new Vector3();
+        var mat = new Matrix4();
 
-		var i, u, theta;
+        var i, u, theta;
 
-		// compute the tangent vectors for each segment on the curve
+        // compute the tangent vectors for each segment on the curve
 
-		for ( i = 0; i <= segments; i ++ ) {
+        for ( i = 0; i <= segments; i++ ) {
 
-			u = i / segments;
+            u = i / segments;
 
-			tangents[ i ] = this.getTangentAt( u );
-			tangents[ i ].normalize();
+            tangents[ i ] = this.getTangentAt( u );
+            tangents[ i ].normalize();
 
-		}
+        }
 
-		// select an initial normal vector perpendicular to the first tangent vector,
-		// and in the direction of the minimum tangent xyz component
+        // select an initial normal vector perpendicular to the first tangent vector,
+        // and in the direction of the minimum tangent xyz component
 
-		normals[ 0 ] = new Vector3();
-		binormals[ 0 ] = new Vector3();
-		var min = Number.MAX_VALUE;
-		var tx = Math.abs( tangents[ 0 ].x );
-		var ty = Math.abs( tangents[ 0 ].y );
-		var tz = Math.abs( tangents[ 0 ].z );
+        normals[ 0 ] = new Vector3();
+        binormals[ 0 ] = new Vector3();
+        var min = Number.MAX_VALUE;
+        var tx = Math.abs( tangents[ 0 ].x );
+        var ty = Math.abs( tangents[ 0 ].y );
+        var tz = Math.abs( tangents[ 0 ].z );
 
-		if ( tx <= min ) {
+        if ( tx <= min ) {
 
-			min = tx;
-			normal.set( 1, 0, 0 );
+            min = tx;
+            normal.set( 1, 0, 0 );
 
-		}
+        }
 
-		if ( ty <= min ) {
+        if ( ty <= min ) {
 
-			min = ty;
-			normal.set( 0, 1, 0 );
+            min = ty;
+            normal.set( 0, 1, 0 );
 
-		}
+        }
 
-		if ( tz <= min ) {
+        if ( tz <= min ) {
 
-			normal.set( 0, 0, 1 );
+            normal.set( 0, 0, 1 );
 
-		}
+        }
 
-		vec.crossVectors( tangents[ 0 ], normal ).normalize();
+        vec.crossVectors( tangents[ 0 ], normal ).normalize();
 
-		normals[ 0 ].crossVectors( tangents[ 0 ], vec );
-		binormals[ 0 ].crossVectors( tangents[ 0 ], normals[ 0 ] );
+        normals[ 0 ].crossVectors( tangents[ 0 ], vec );
+        binormals[ 0 ].crossVectors( tangents[ 0 ], normals[ 0 ] );
 
+        // compute the slowly-varying normal and binormal vectors for each segment on the curve
 
-		// compute the slowly-varying normal and binormal vectors for each segment on the curve
+        for ( i = 1; i <= segments; i++ ) {
 
-		for ( i = 1; i <= segments; i ++ ) {
+            normals[ i ] = normals[ i - 1 ].clone();
 
-			normals[ i ] = normals[ i - 1 ].clone();
+            binormals[ i ] = binormals[ i - 1 ].clone();
 
-			binormals[ i ] = binormals[ i - 1 ].clone();
+            vec.crossVectors( tangents[ i - 1 ], tangents[ i ] );
 
-			vec.crossVectors( tangents[ i - 1 ], tangents[ i ] );
+            if ( vec.length() > Number.EPSILON ) {
 
-			if ( vec.length() > Number.EPSILON ) {
+                vec.normalize();
 
-				vec.normalize();
+                theta = Math.acos( _Math.clamp( tangents[ i - 1 ].dot( tangents[ i ] ), -1, 1 ) ); // clamp for floating pt errors
 
-				theta = Math.acos( _Math.clamp( tangents[ i - 1 ].dot( tangents[ i ] ), - 1, 1 ) ); // clamp for floating pt errors
+                normals[ i ].applyMatrix4( mat.makeRotationAxis( vec, theta ) );
 
-				normals[ i ].applyMatrix4( mat.makeRotationAxis( vec, theta ) );
+            }
 
-			}
+            binormals[ i ].crossVectors( tangents[ i ], normals[ i ] );
 
-			binormals[ i ].crossVectors( tangents[ i ], normals[ i ] );
+        }
 
-		}
+        // if the curve is closed, postprocess the vectors so the first and last normal vectors are the same
 
-		// if the curve is closed, postprocess the vectors so the first and last normal vectors are the same
+        if ( closed === true ) {
 
-		if ( closed === true ) {
+            theta = Math.acos( _Math.clamp( normals[ 0 ].dot( normals[ segments ] ), -1, 1 ) );
+            theta /= segments;
 
-			theta = Math.acos( _Math.clamp( normals[ 0 ].dot( normals[ segments ] ), - 1, 1 ) );
-			theta /= segments;
+            if ( tangents[ 0 ].dot( vec.crossVectors( normals[ 0 ], normals[ segments ] ) ) > 0 ) {
 
-			if ( tangents[ 0 ].dot( vec.crossVectors( normals[ 0 ], normals[ segments ] ) ) > 0 ) {
+                theta = -theta;
 
-				theta = - theta;
+            }
 
-			}
+            for ( i = 1; i <= segments; i++ ) {
 
-			for ( i = 1; i <= segments; i ++ ) {
+                // twist a little...
+                normals[ i ].applyMatrix4( mat.makeRotationAxis( tangents[ i ], theta * i ) );
+                binormals[ i ].crossVectors( tangents[ i ], normals[ i ] );
 
-				// twist a little...
-				normals[ i ].applyMatrix4( mat.makeRotationAxis( tangents[ i ], theta * i ) );
-				binormals[ i ].crossVectors( tangents[ i ], normals[ i ] );
+            }
 
-			}
+        }
 
-		}
+        return {
+            tangents: tangents,
+            normals: normals,
+            binormals: binormals
+        };
 
-		return {
-			tangents: tangents,
-			normals: normals,
-			binormals: binormals
-		};
+    },
 
-	},
+    clone: function () {
 
-	clone: function () {
+        return new this.constructor().copy( this );
 
-		return new this.constructor().copy( this );
+    },
 
-	},
+    copy: function ( source ) {
 
-	copy: function ( source ) {
+        this.arcLengthDivisions = source.arcLengthDivisions;
 
-		this.arcLengthDivisions = source.arcLengthDivisions;
+        return this;
 
-		return this;
+    },
 
-	},
+    toJSON: function () {
 
-	toJSON: function () {
+        var data = {
+            metadata: {
+                version: 4.5,
+                type: 'Curve',
+                generator: 'Curve.toJSON'
+            }
+        };
 
-		var data = {
-			metadata: {
-				version: 4.5,
-				type: 'Curve',
-				generator: 'Curve.toJSON'
-			}
-		};
+        data.arcLengthDivisions = this.arcLengthDivisions;
+        data.type = this.type;
 
-		data.arcLengthDivisions = this.arcLengthDivisions;
-		data.type = this.type;
+        return data;
 
-		return data;
+    },
 
-	},
+    fromJSON: function ( json ) {
 
-	fromJSON: function ( json ) {
+        this.arcLengthDivisions = json.arcLengthDivisions;
 
-		this.arcLengthDivisions = json.arcLengthDivisions;
+        return this;
 
-		return this;
-
-	}
+    }
 
 } );
-
 
 export { Curve };

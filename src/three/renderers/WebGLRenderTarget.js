@@ -16,78 +16,77 @@ import { Vector4 } from '../math/Vector4.js';
 */
 function WebGLRenderTarget( width, height, options ) {
 
-	this.width = width;
-	this.height = height;
+    this.width = width;
+    this.height = height;
 
-	this.scissor = new Vector4( 0, 0, width, height );
-	this.scissorTest = false;
+    this.scissor = new Vector4( 0, 0, width, height );
+    this.scissorTest = false;
 
-	this.viewport = new Vector4( 0, 0, width, height );
+    this.viewport = new Vector4( 0, 0, width, height );
 
-	options = options || {};
+    options = options || {};
 
-	if ( options.minFilter === undefined ) options.minFilter = LinearFilter;
+    if ( options.minFilter === undefined ) options.minFilter = LinearFilter;
 
-	this.texture = new Texture( undefined, undefined, options.wrapS, options.wrapT, options.magFilter, options.minFilter, options.format, options.type, options.anisotropy, options.encoding );
+    this.texture = new Texture( undefined, undefined, options.wrapS, options.wrapT, options.magFilter, options.minFilter, options.format, options.type, options.anisotropy, options.encoding );
 
-	this.depthBuffer = options.depthBuffer !== undefined ? options.depthBuffer : true;
-	this.stencilBuffer = options.stencilBuffer !== undefined ? options.stencilBuffer : true;
-	this.depthTexture = options.depthTexture !== undefined ? options.depthTexture : null;
+    this.depthBuffer = options.depthBuffer !== undefined ? options.depthBuffer : true;
+    this.stencilBuffer = options.stencilBuffer !== undefined ? options.stencilBuffer : true;
+    this.depthTexture = options.depthTexture !== undefined ? options.depthTexture : null;
 
 }
 
 WebGLRenderTarget.prototype = Object.assign( Object.create( EventDispatcher.prototype ), {
 
-	constructor: WebGLRenderTarget,
+    constructor: WebGLRenderTarget,
 
-	isWebGLRenderTarget: true,
+    isWebGLRenderTarget: true,
 
-	setSize: function ( width, height ) {
+    setSize: function ( width, height ) {
 
-		if ( this.width !== width || this.height !== height ) {
+        if ( this.width !== width || this.height !== height ) {
 
-			this.width = width;
-			this.height = height;
+            this.width = width;
+            this.height = height;
 
-			this.dispose();
+            this.dispose();
 
-		}
+        }
 
-		this.viewport.set( 0, 0, width, height );
-		this.scissor.set( 0, 0, width, height );
+        this.viewport.set( 0, 0, width, height );
+        this.scissor.set( 0, 0, width, height );
 
-	},
+    },
 
-	clone: function () {
+    clone: function () {
 
-		return new this.constructor().copy( this );
+        return new this.constructor().copy( this );
 
-	},
+    },
 
-	copy: function ( source ) {
+    copy: function ( source ) {
 
-		this.width = source.width;
-		this.height = source.height;
+        this.width = source.width;
+        this.height = source.height;
 
-		this.viewport.copy( source.viewport );
+        this.viewport.copy( source.viewport );
 
-		this.texture = source.texture.clone();
+        this.texture = source.texture.clone();
 
-		this.depthBuffer = source.depthBuffer;
-		this.stencilBuffer = source.stencilBuffer;
-		this.depthTexture = source.depthTexture;
+        this.depthBuffer = source.depthBuffer;
+        this.stencilBuffer = source.stencilBuffer;
+        this.depthTexture = source.depthTexture;
 
-		return this;
+        return this;
 
-	},
+    },
 
-	dispose: function () {
+    dispose: function () {
 
-		this.dispatchEvent( { type: 'dispose' } );
+        this.dispatchEvent( { type: 'dispose' } );
 
-	}
+    }
 
 } );
-
 
 export { WebGLRenderTarget };

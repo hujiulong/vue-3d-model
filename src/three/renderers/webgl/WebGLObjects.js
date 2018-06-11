@@ -4,49 +4,48 @@
 
 function WebGLObjects( geometries, info ) {
 
-	var updateList = {};
+    var updateList = {};
 
-	function update( object ) {
+    function update( object ) {
 
-		var frame = info.render.frame;
+        var frame = info.render.frame;
 
-		var geometry = object.geometry;
-		var buffergeometry = geometries.get( object, geometry );
+        var geometry = object.geometry;
+        var buffergeometry = geometries.get( object, geometry );
 
-		// Update once per frame
+        // Update once per frame
 
-		if ( updateList[ buffergeometry.id ] !== frame ) {
+        if ( updateList[ buffergeometry.id ] !== frame ) {
 
-			if ( geometry.isGeometry ) {
+            if ( geometry.isGeometry ) {
 
-				buffergeometry.updateFromObject( object );
+                buffergeometry.updateFromObject( object );
 
-			}
+            }
 
-			geometries.update( buffergeometry );
+            geometries.update( buffergeometry );
 
-			updateList[ buffergeometry.id ] = frame;
+            updateList[ buffergeometry.id ] = frame;
 
-		}
+        }
 
-		return buffergeometry;
+        return buffergeometry;
 
-	}
+    }
 
-	function dispose() {
+    function dispose() {
 
-		updateList = {};
+        updateList = {};
 
-	}
+    }
 
-	return {
+    return {
 
-		update: update,
-		dispose: dispose
+        update: update,
+        dispose: dispose
 
-	};
+    };
 
 }
-
 
 export { WebGLObjects };

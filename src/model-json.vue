@@ -1,5 +1,5 @@
 <script>
-import { JSONLoader } from 'three'
+import { JSONLoader } from './three'
 import mixin from './model-mixin.vue'
 
 export default {

@@ -2,20 +2,20 @@
 
 if ( Number.EPSILON === undefined ) {
 
-	Number.EPSILON = Math.pow( 2, - 52 );
+    Number.EPSILON = Math.pow( 2, -52 );
 
 }
 
 if ( Number.isInteger === undefined ) {
 
-	// Missing in IE
-	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isInteger
+    // Missing in IE
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isInteger
 
-	Number.isInteger = function ( value ) {
+    Number.isInteger = function ( value ) {
 
-		return typeof value === 'number' && isFinite( value ) && Math.floor( value ) === value;
+        return typeof value === 'number' && isFinite( value ) && Math.floor( value ) === value;
 
-	};
+    };
 
 }
 
@@ -23,76 +23,76 @@ if ( Number.isInteger === undefined ) {
 
 if ( Math.sign === undefined ) {
 
-	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sign
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sign
 
-	Math.sign = function ( x ) {
+    Math.sign = function ( x ) {
 
-		return ( x < 0 ) ? - 1 : ( x > 0 ) ? 1 : + x;
+        return ( x < 0 ) ? -1 : ( x > 0 ) ? 1 : +x;
 
-	};
+    };
 
 }
 
 if ( 'name' in Function.prototype === false ) {
 
-	// Missing in IE
-	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/name
+    // Missing in IE
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/name
 
-	Object.defineProperty( Function.prototype, 'name', {
+    Object.defineProperty( Function.prototype, 'name', {
 
-		get: function () {
+        get: function () {
 
-			return this.toString().match( /^\s*function\s*([^\(\s]*)/ )[ 1 ];
+            return this.toString().match( /^\s*function\s*([^\(\s]*)/ )[ 1 ];
 
-		}
+        }
 
-	} );
+    } );
 
 }
 
 if ( Object.assign === undefined ) {
 
-	// Missing in IE
-	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+    // Missing in IE
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
 
-	( function () {
+    ( function () {
 
-		Object.assign = function ( target ) {
+        Object.assign = function ( target ) {
 
-			'use strict';
+            'use strict';
 
-			if ( target === undefined || target === null ) {
+            if ( target === undefined || target === null ) {
 
-				throw new TypeError( 'Cannot convert undefined or null to object' );
+                throw new TypeError( 'Cannot convert undefined or null to object' );
 
-			}
+            }
 
-			var output = Object( target );
+            var output = Object( target );
 
-			for ( var index = 1; index < arguments.length; index ++ ) {
+            for ( var index = 1; index < arguments.length; index++ ) {
 
-				var source = arguments[ index ];
+                var source = arguments[ index ];
 
-				if ( source !== undefined && source !== null ) {
+                if ( source !== undefined && source !== null ) {
 
-					for ( var nextKey in source ) {
+                    for ( var nextKey in source ) {
 
-						if ( Object.prototype.hasOwnProperty.call( source, nextKey ) ) {
+                        if ( Object.prototype.hasOwnProperty.call( source, nextKey ) ) {
 
-							output[ nextKey ] = source[ nextKey ];
+                            output[ nextKey ] = source[ nextKey ];
 
-						}
+                        }
 
-					}
+                    }
 
-				}
+                }
 
-			}
+            }
 
-			return output;
+            return output;
 
-		};
+        };
 
-	} )();
+    } )();
 
 }

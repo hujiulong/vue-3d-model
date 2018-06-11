@@ -6,34 +6,34 @@ import { BufferGeometry } from './BufferGeometry.js';
 
 function InstancedBufferGeometry() {
 
-	BufferGeometry.call( this );
+    BufferGeometry.call( this );
 
-	this.type = 'InstancedBufferGeometry';
-	this.maxInstancedCount = undefined;
+    this.type = 'InstancedBufferGeometry';
+    this.maxInstancedCount = undefined;
 
 }
 
 InstancedBufferGeometry.prototype = Object.assign( Object.create( BufferGeometry.prototype ), {
 
-	constructor: InstancedBufferGeometry,
+    constructor: InstancedBufferGeometry,
 
-	isInstancedBufferGeometry: true,
+    isInstancedBufferGeometry: true,
 
-	copy: function ( source ) {
+    copy: function ( source ) {
 
-		BufferGeometry.prototype.copy.call( this, source );
+        BufferGeometry.prototype.copy.call( this, source );
 
-		this.maxInstancedCount = source.maxInstancedCount;
+        this.maxInstancedCount = source.maxInstancedCount;
 
-		return this;
+        return this;
 
-	},
+    },
 
-	clone: function () {
+    clone: function () {
 
-		return new this.constructor().copy( this );
+        return new this.constructor().copy( this );
 
-	}
+    }
 
 } );
 

@@ -4,7 +4,7 @@ import mixin from './model-mixin.vue'
 import {
     Mesh,
     MeshPhongMaterial
-} from 'three'
+} from './three'
 
 export default {
     name: 'model-stl',

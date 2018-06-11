@@ -24,7 +24,7 @@ import {
     PointLight,
     HemisphereLight,
     DirectionalLight
-} from 'three'
+} from './three'
 import { getSize, getCenter } from './util'
 import { OrbitControls } from './controls/OrbitControls'
 

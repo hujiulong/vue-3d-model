@@ -8,127 +8,126 @@ import { Ray } from '../math/Ray.js';
 
 function Raycaster( origin, direction, near, far ) {
 
-	this.ray = new Ray( origin, direction );
-	// direction is assumed to be normalized (for accurate distance calculations)
+    this.ray = new Ray( origin, direction );
+    // direction is assumed to be normalized (for accurate distance calculations)
 
-	this.near = near || 0;
-	this.far = far || Infinity;
+    this.near = near || 0;
+    this.far = far || Infinity;
 
-	this.params = {
-		Mesh: {},
-		Line: {},
-		LOD: {},
-		Points: { threshold: 1 },
-		Sprite: {}
-	};
+    this.params = {
+        Mesh: {},
+        Line: {},
+        LOD: {},
+        Points: { threshold: 1 },
+        Sprite: {}
+    };
 
-	Object.defineProperties( this.params, {
-		PointCloud: {
-			get: function () {
+    Object.defineProperties( this.params, {
+        PointCloud: {
+            get: function () {
 
-				console.warn( 'THREE.Raycaster: params.PointCloud has been renamed to params.Points.' );
-				return this.Points;
+                console.warn( 'THREE.Raycaster: params.PointCloud has been renamed to params.Points.' );
+                return this.Points;
 
-			}
-		}
-	} );
+            }
+        }
+    } );
 
 }
 
 function ascSort( a, b ) {
 
-	return a.distance - b.distance;
+    return a.distance - b.distance;
 
 }
 
 function intersectObject( object, raycaster, intersects, recursive ) {
 
-	if ( object.visible === false ) return;
+    if ( object.visible === false ) return;
 
-	object.raycast( raycaster, intersects );
+    object.raycast( raycaster, intersects );
 
-	if ( recursive === true ) {
+    if ( recursive === true ) {
 
-		var children = object.children;
+        var children = object.children;
 
-		for ( var i = 0, l = children.length; i < l; i ++ ) {
+        for ( var i = 0, l = children.length; i < l; i++ ) {
 
-			intersectObject( children[ i ], raycaster, intersects, true );
+            intersectObject( children[ i ], raycaster, intersects, true );
 
-		}
+        }
 
-	}
+    }
 
 }
 
 Object.assign( Raycaster.prototype, {
 
-	linePrecision: 1,
+    linePrecision: 1,
 
-	set: function ( origin, direction ) {
+    set: function ( origin, direction ) {
 
-		// direction is assumed to be normalized (for accurate distance calculations)
+        // direction is assumed to be normalized (for accurate distance calculations)
 
-		this.ray.set( origin, direction );
+        this.ray.set( origin, direction );
 
-	},
+    },
 
-	setFromCamera: function ( coords, camera ) {
+    setFromCamera: function ( coords, camera ) {
 
-		if ( ( camera && camera.isPerspectiveCamera ) ) {
+        if ( ( camera && camera.isPerspectiveCamera ) ) {
 
-			this.ray.origin.setFromMatrixPosition( camera.matrixWorld );
-			this.ray.direction.set( coords.x, coords.y, 0.5 ).unproject( camera ).sub( this.ray.origin ).normalize();
+            this.ray.origin.setFromMatrixPosition( camera.matrixWorld );
+            this.ray.direction.set( coords.x, coords.y, 0.5 ).unproject( camera ).sub( this.ray.origin ).normalize();
 
-		} else if ( ( camera && camera.isOrthographicCamera ) ) {
+        } else if ( ( camera && camera.isOrthographicCamera ) ) {
 
-			this.ray.origin.set( coords.x, coords.y, ( camera.near + camera.far ) / ( camera.near - camera.far ) ).unproject( camera ); // set origin in plane of camera
-			this.ray.direction.set( 0, 0, - 1 ).transformDirection( camera.matrixWorld );
+            this.ray.origin.set( coords.x, coords.y, ( camera.near + camera.far ) / ( camera.near - camera.far ) ).unproject( camera ); // set origin in plane of camera
+            this.ray.direction.set( 0, 0, -1 ).transformDirection( camera.matrixWorld );
 
-		} else {
+        } else {
 
-			console.error( 'THREE.Raycaster: Unsupported camera type.' );
+            console.error( 'THREE.Raycaster: Unsupported camera type.' );
 
-		}
+        }
 
-	},
+    },
 
-	intersectObject: function ( object, recursive, optionalTarget ) {
+    intersectObject: function ( object, recursive, optionalTarget ) {
 
-		var intersects = optionalTarget || [];
+        var intersects = optionalTarget || [];
 
-		intersectObject( object, this, intersects, recursive );
+        intersectObject( object, this, intersects, recursive );
 
-		intersects.sort( ascSort );
+        intersects.sort( ascSort );
 
-		return intersects;
+        return intersects;
 
-	},
+    },
 
-	intersectObjects: function ( objects, recursive, optionalTarget ) {
+    intersectObjects: function ( objects, recursive, optionalTarget ) {
 
-		var intersects = optionalTarget || [];
+        var intersects = optionalTarget || [];
 
-		if ( Array.isArray( objects ) === false ) {
+        if ( Array.isArray( objects ) === false ) {
 
-			console.warn( 'THREE.Raycaster.intersectObjects: objects is not an Array.' );
-			return intersects;
+            console.warn( 'THREE.Raycaster.intersectObjects: objects is not an Array.' );
+            return intersects;
 
-		}
+        }
 
-		for ( var i = 0, l = objects.length; i < l; i ++ ) {
+        for ( var i = 0, l = objects.length; i < l; i++ ) {
 
-			intersectObject( objects[ i ], this, intersects, recursive );
+            intersectObject( objects[ i ], this, intersects, recursive );
 
-		}
+        }
 
-		intersects.sort( ascSort );
+        intersects.sort( ascSort );
 
-		return intersects;
+        return intersects;
 
-	}
+    }
 
 } );
-
 
 export { Raycaster };

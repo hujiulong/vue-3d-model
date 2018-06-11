@@ -7,62 +7,60 @@ import { ImageLoader } from './ImageLoader.js';
 import { Texture } from '../textures/Texture.js';
 import { DefaultLoadingManager } from './LoadingManager.js';
 
-
 function TextureLoader( manager ) {
 
-	this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
+    this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
 
 }
 
 Object.assign( TextureLoader.prototype, {
 
-	crossOrigin: 'Anonymous',
+    crossOrigin: 'Anonymous',
 
-	load: function ( url, onLoad, onProgress, onError ) {
+    load: function ( url, onLoad, onProgress, onError ) {
 
-		var texture = new Texture();
+        var texture = new Texture();
 
-		var loader = new ImageLoader( this.manager );
-		loader.setCrossOrigin( this.crossOrigin );
-		loader.setPath( this.path );
+        var loader = new ImageLoader( this.manager );
+        loader.setCrossOrigin( this.crossOrigin );
+        loader.setPath( this.path );
 
-		loader.load( url, function ( image ) {
+        loader.load( url, function ( image ) {
 
-			texture.image = image;
+            texture.image = image;
 
-			// JPEGs can't have an alpha channel, so memory can be saved by storing them as RGB.
-			var isJPEG = url.search( /\.(jpg|jpeg)$/ ) > 0 || url.search( /^data\:image\/jpeg/ ) === 0;
+            // JPEGs can't have an alpha channel, so memory can be saved by storing them as RGB.
+            var isJPEG = url.search( /\.(jpg|jpeg)$/ ) > 0 || url.search( /^data\:image\/jpeg/ ) === 0;
 
-			texture.format = isJPEG ? RGBFormat : RGBAFormat;
-			texture.needsUpdate = true;
+            texture.format = isJPEG ? RGBFormat : RGBAFormat;
+            texture.needsUpdate = true;
 
-			if ( onLoad !== undefined ) {
+            if ( onLoad !== undefined ) {
 
-				onLoad( texture );
+                onLoad( texture );
 
-			}
+            }
 
-		}, onProgress, onError );
+        }, onProgress, onError );
 
-		return texture;
+        return texture;
 
-	},
+    },
 
-	setCrossOrigin: function ( value ) {
+    setCrossOrigin: function ( value ) {
 
-		this.crossOrigin = value;
-		return this;
+        this.crossOrigin = value;
+        return this;
 
-	},
+    },
 
-	setPath: function ( value ) {
+    setPath: function ( value ) {
 
-		this.path = value;
-		return this;
+        this.path = value;
+        return this;
 
-	}
+    }
 
 } );
-
 
 export { TextureLoader };

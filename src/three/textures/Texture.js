@@ -15,49 +15,49 @@ var textureId = 0;
 
 function Texture( image, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy, encoding ) {
 
-	Object.defineProperty( this, 'id', { value: textureId ++ } );
+    Object.defineProperty( this, 'id', { value: textureId++ } );
 
-	this.uuid = _Math.generateUUID();
+    this.uuid = _Math.generateUUID();
 
-	this.name = '';
+    this.name = '';
 
-	this.image = image !== undefined ? image : Texture.DEFAULT_IMAGE;
-	this.mipmaps = [];
+    this.image = image !== undefined ? image : Texture.DEFAULT_IMAGE;
+    this.mipmaps = [];
 
-	this.mapping = mapping !== undefined ? mapping : Texture.DEFAULT_MAPPING;
+    this.mapping = mapping !== undefined ? mapping : Texture.DEFAULT_MAPPING;
 
-	this.wrapS = wrapS !== undefined ? wrapS : ClampToEdgeWrapping;
-	this.wrapT = wrapT !== undefined ? wrapT : ClampToEdgeWrapping;
+    this.wrapS = wrapS !== undefined ? wrapS : ClampToEdgeWrapping;
+    this.wrapT = wrapT !== undefined ? wrapT : ClampToEdgeWrapping;
 
-	this.magFilter = magFilter !== undefined ? magFilter : LinearFilter;
-	this.minFilter = minFilter !== undefined ? minFilter : LinearMipMapLinearFilter;
+    this.magFilter = magFilter !== undefined ? magFilter : LinearFilter;
+    this.minFilter = minFilter !== undefined ? minFilter : LinearMipMapLinearFilter;
 
-	this.anisotropy = anisotropy !== undefined ? anisotropy : 1;
+    this.anisotropy = anisotropy !== undefined ? anisotropy : 1;
 
-	this.format = format !== undefined ? format : RGBAFormat;
-	this.type = type !== undefined ? type : UnsignedByteType;
+    this.format = format !== undefined ? format : RGBAFormat;
+    this.type = type !== undefined ? type : UnsignedByteType;
 
-	this.offset = new Vector2( 0, 0 );
-	this.repeat = new Vector2( 1, 1 );
-	this.center = new Vector2( 0, 0 );
-	this.rotation = 0;
+    this.offset = new Vector2( 0, 0 );
+    this.repeat = new Vector2( 1, 1 );
+    this.center = new Vector2( 0, 0 );
+    this.rotation = 0;
 
-	this.matrixAutoUpdate = true;
-	this.matrix = new Matrix3();
+    this.matrixAutoUpdate = true;
+    this.matrix = new Matrix3();
 
-	this.generateMipmaps = true;
-	this.premultiplyAlpha = false;
-	this.flipY = true;
-	this.unpackAlignment = 4;	// valid values: 1, 2, 4, 8 (see http://www.khronos.org/opengles/sdk/docs/man/xhtml/glPixelStorei.xml)
+    this.generateMipmaps = true;
+    this.premultiplyAlpha = false;
+    this.flipY = true;
+    this.unpackAlignment = 4;	// valid values: 1, 2, 4, 8 (see http://www.khronos.org/opengles/sdk/docs/man/xhtml/glPixelStorei.xml)
 
-	// Values of encoding !== THREE.LinearEncoding only supported on map, envMap and emissiveMap.
-	//
-	// Also changing the encoding after already used by a Material will not automatically make the Material
-	// update.  You need to explicitly call Material.needsUpdate to trigger it to recompile.
-	this.encoding = encoding !== undefined ? encoding : LinearEncoding;
+    // Values of encoding !== THREE.LinearEncoding only supported on map, envMap and emissiveMap.
+    //
+    // Also changing the encoding after already used by a Material will not automatically make the Material
+    // update.  You need to explicitly call Material.needsUpdate to trigger it to recompile.
+    this.encoding = encoding !== undefined ? encoding : LinearEncoding;
 
-	this.version = 0;
-	this.onUpdate = null;
+    this.version = 0;
+    this.onUpdate = null;
 
 }
 
@@ -66,267 +66,266 @@ Texture.DEFAULT_MAPPING = UVMapping;
 
 Texture.prototype = Object.assign( Object.create( EventDispatcher.prototype ), {
 
-	constructor: Texture,
+    constructor: Texture,
 
-	isTexture: true,
+    isTexture: true,
 
-	updateMatrix: function () {
+    updateMatrix: function () {
 
-		this.matrix.setUvTransform( this.offset.x, this.offset.y, this.repeat.x, this.repeat.y, this.rotation, this.center.x, this.center.y );
+        this.matrix.setUvTransform( this.offset.x, this.offset.y, this.repeat.x, this.repeat.y, this.rotation, this.center.x, this.center.y );
 
-	},
+    },
 
-	clone: function () {
+    clone: function () {
 
-		return new this.constructor().copy( this );
+        return new this.constructor().copy( this );
 
-	},
+    },
 
-	copy: function ( source ) {
+    copy: function ( source ) {
 
-		this.name = source.name;
+        this.name = source.name;
 
-		this.image = source.image;
-		this.mipmaps = source.mipmaps.slice( 0 );
+        this.image = source.image;
+        this.mipmaps = source.mipmaps.slice( 0 );
 
-		this.mapping = source.mapping;
+        this.mapping = source.mapping;
 
-		this.wrapS = source.wrapS;
-		this.wrapT = source.wrapT;
+        this.wrapS = source.wrapS;
+        this.wrapT = source.wrapT;
 
-		this.magFilter = source.magFilter;
-		this.minFilter = source.minFilter;
+        this.magFilter = source.magFilter;
+        this.minFilter = source.minFilter;
 
-		this.anisotropy = source.anisotropy;
+        this.anisotropy = source.anisotropy;
 
-		this.format = source.format;
-		this.type = source.type;
+        this.format = source.format;
+        this.type = source.type;
 
-		this.offset.copy( source.offset );
-		this.repeat.copy( source.repeat );
-		this.center.copy( source.center );
-		this.rotation = source.rotation;
+        this.offset.copy( source.offset );
+        this.repeat.copy( source.repeat );
+        this.center.copy( source.center );
+        this.rotation = source.rotation;
 
-		this.matrixAutoUpdate = source.matrixAutoUpdate;
-		this.matrix.copy( source.matrix );
+        this.matrixAutoUpdate = source.matrixAutoUpdate;
+        this.matrix.copy( source.matrix );
 
-		this.generateMipmaps = source.generateMipmaps;
-		this.premultiplyAlpha = source.premultiplyAlpha;
-		this.flipY = source.flipY;
-		this.unpackAlignment = source.unpackAlignment;
-		this.encoding = source.encoding;
+        this.generateMipmaps = source.generateMipmaps;
+        this.premultiplyAlpha = source.premultiplyAlpha;
+        this.flipY = source.flipY;
+        this.unpackAlignment = source.unpackAlignment;
+        this.encoding = source.encoding;
 
-		return this;
+        return this;
 
-	},
+    },
 
-	toJSON: function ( meta ) {
+    toJSON: function ( meta ) {
 
-		var isRootObject = ( meta === undefined || typeof meta === 'string' );
+        var isRootObject = ( meta === undefined || typeof meta === 'string' );
 
-		if ( ! isRootObject && meta.textures[ this.uuid ] !== undefined ) {
+        if ( !isRootObject && meta.textures[ this.uuid ] !== undefined ) {
 
-			return meta.textures[ this.uuid ];
+            return meta.textures[ this.uuid ];
 
-		}
+        }
 
-		function getDataURL( image ) {
+        function getDataURL( image ) {
 
-			var canvas;
+            var canvas;
 
-			if ( image instanceof HTMLCanvasElement ) {
+            if ( image instanceof HTMLCanvasElement ) {
 
-				canvas = image;
+                canvas = image;
 
-			} else {
+            } else {
 
-				canvas = document.createElementNS( 'http://www.w3.org/1999/xhtml', 'canvas' );
-				canvas.width = image.width;
-				canvas.height = image.height;
+                canvas = document.createElementNS( 'http://www.w3.org/1999/xhtml', 'canvas' );
+                canvas.width = image.width;
+                canvas.height = image.height;
 
-				var context = canvas.getContext( '2d' );
+                var context = canvas.getContext( '2d' );
 
-				if ( image instanceof ImageData ) {
+                if ( image instanceof ImageData ) {
 
-					context.putImageData( image, 0, 0 );
+                    context.putImageData( image, 0, 0 );
 
-				} else {
+                } else {
 
-					context.drawImage( image, 0, 0, image.width, image.height );
+                    context.drawImage( image, 0, 0, image.width, image.height );
 
-				}
+                }
 
-			}
+            }
 
-			if ( canvas.width > 2048 || canvas.height > 2048 ) {
+            if ( canvas.width > 2048 || canvas.height > 2048 ) {
 
-				return canvas.toDataURL( 'image/jpeg', 0.6 );
+                return canvas.toDataURL( 'image/jpeg', 0.6 );
 
-			} else {
+            } else {
 
-				return canvas.toDataURL( 'image/png' );
+                return canvas.toDataURL( 'image/png' );
 
-			}
+            }
 
-		}
+        }
 
-		var output = {
+        var output = {
 
-			metadata: {
-				version: 4.5,
-				type: 'Texture',
-				generator: 'Texture.toJSON'
-			},
+            metadata: {
+                version: 4.5,
+                type: 'Texture',
+                generator: 'Texture.toJSON'
+            },
 
-			uuid: this.uuid,
-			name: this.name,
+            uuid: this.uuid,
+            name: this.name,
 
-			mapping: this.mapping,
+            mapping: this.mapping,
 
-			repeat: [ this.repeat.x, this.repeat.y ],
-			offset: [ this.offset.x, this.offset.y ],
-			center: [ this.center.x, this.center.y ],
-			rotation: this.rotation,
+            repeat: [ this.repeat.x, this.repeat.y ],
+            offset: [ this.offset.x, this.offset.y ],
+            center: [ this.center.x, this.center.y ],
+            rotation: this.rotation,
 
-			wrap: [ this.wrapS, this.wrapT ],
+            wrap: [ this.wrapS, this.wrapT ],
 
-			format: this.format,
-			minFilter: this.minFilter,
-			magFilter: this.magFilter,
-			anisotropy: this.anisotropy,
+            format: this.format,
+            minFilter: this.minFilter,
+            magFilter: this.magFilter,
+            anisotropy: this.anisotropy,
 
-			flipY: this.flipY
+            flipY: this.flipY
 
-		};
+        };
 
-		if ( this.image !== undefined ) {
+        if ( this.image !== undefined ) {
 
-			// TODO: Move to THREE.Image
+            // TODO: Move to THREE.Image
 
-			var image = this.image;
+            var image = this.image;
 
-			if ( image.uuid === undefined ) {
+            if ( image.uuid === undefined ) {
 
-				image.uuid = _Math.generateUUID(); // UGH
+                image.uuid = _Math.generateUUID(); // UGH
 
-			}
+            }
 
-			if ( ! isRootObject && meta.images[ image.uuid ] === undefined ) {
+            if ( !isRootObject && meta.images[ image.uuid ] === undefined ) {
 
-				meta.images[ image.uuid ] = {
-					uuid: image.uuid,
-					url: getDataURL( image )
-				};
+                meta.images[ image.uuid ] = {
+                    uuid: image.uuid,
+                    url: getDataURL( image )
+                };
 
-			}
+            }
 
-			output.image = image.uuid;
+            output.image = image.uuid;
 
-		}
+        }
 
-		if ( ! isRootObject ) {
+        if ( !isRootObject ) {
 
-			meta.textures[ this.uuid ] = output;
+            meta.textures[ this.uuid ] = output;
 
-		}
+        }
 
-		return output;
+        return output;
 
-	},
+    },
 
-	dispose: function () {
+    dispose: function () {
 
-		this.dispatchEvent( { type: 'dispose' } );
+        this.dispatchEvent( { type: 'dispose' } );
 
-	},
+    },
 
-	transformUv: function ( uv ) {
+    transformUv: function ( uv ) {
 
-		if ( this.mapping !== UVMapping ) return;
+        if ( this.mapping !== UVMapping ) return;
 
-		uv.applyMatrix3( this.matrix );
+        uv.applyMatrix3( this.matrix );
 
-		if ( uv.x < 0 || uv.x > 1 ) {
+        if ( uv.x < 0 || uv.x > 1 ) {
 
-			switch ( this.wrapS ) {
+            switch ( this.wrapS ) {
 
-				case RepeatWrapping:
+                case RepeatWrapping:
 
-					uv.x = uv.x - Math.floor( uv.x );
-					break;
+                    uv.x = uv.x - Math.floor( uv.x );
+                    break;
 
-				case ClampToEdgeWrapping:
+                case ClampToEdgeWrapping:
 
-					uv.x = uv.x < 0 ? 0 : 1;
-					break;
+                    uv.x = uv.x < 0 ? 0 : 1;
+                    break;
 
-				case MirroredRepeatWrapping:
+                case MirroredRepeatWrapping:
 
-					if ( Math.abs( Math.floor( uv.x ) % 2 ) === 1 ) {
+                    if ( Math.abs( Math.floor( uv.x ) % 2 ) === 1 ) {
 
-						uv.x = Math.ceil( uv.x ) - uv.x;
+                        uv.x = Math.ceil( uv.x ) - uv.x;
 
-					} else {
+                    } else {
 
-						uv.x = uv.x - Math.floor( uv.x );
+                        uv.x = uv.x - Math.floor( uv.x );
 
-					}
-					break;
+                    }
+                    break;
 
-			}
+            }
 
-		}
+        }
 
-		if ( uv.y < 0 || uv.y > 1 ) {
+        if ( uv.y < 0 || uv.y > 1 ) {
 
-			switch ( this.wrapT ) {
+            switch ( this.wrapT ) {
 
-				case RepeatWrapping:
+                case RepeatWrapping:
 
-					uv.y = uv.y - Math.floor( uv.y );
-					break;
+                    uv.y = uv.y - Math.floor( uv.y );
+                    break;
 
-				case ClampToEdgeWrapping:
+                case ClampToEdgeWrapping:
 
-					uv.y = uv.y < 0 ? 0 : 1;
-					break;
+                    uv.y = uv.y < 0 ? 0 : 1;
+                    break;
 
-				case MirroredRepeatWrapping:
+                case MirroredRepeatWrapping:
 
-					if ( Math.abs( Math.floor( uv.y ) % 2 ) === 1 ) {
+                    if ( Math.abs( Math.floor( uv.y ) % 2 ) === 1 ) {
 
-						uv.y = Math.ceil( uv.y ) - uv.y;
+                        uv.y = Math.ceil( uv.y ) - uv.y;
 
-					} else {
+                    } else {
 
-						uv.y = uv.y - Math.floor( uv.y );
+                        uv.y = uv.y - Math.floor( uv.y );
 
-					}
-					break;
+                    }
+                    break;
 
-			}
+            }
 
-		}
+        }
 
-		if ( this.flipY ) {
+        if ( this.flipY ) {
 
-			uv.y = 1 - uv.y;
+            uv.y = 1 - uv.y;
 
-		}
+        }
 
-	}
+    }
 
 } );
 
-Object.defineProperty( Texture.prototype, "needsUpdate", {
+Object.defineProperty( Texture.prototype, 'needsUpdate', {
 
-	set: function ( value ) {
+    set: function ( value ) {
 
-		if ( value === true ) this.version ++;
+        if ( value === true ) this.version++;
 
-	}
+    }
 
 } );
-
 
 export { Texture };

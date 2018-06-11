@@ -6,72 +6,70 @@ import { ImageLoader } from './ImageLoader.js';
 import { CubeTexture } from '../textures/CubeTexture.js';
 import { DefaultLoadingManager } from './LoadingManager.js';
 
-
 function CubeTextureLoader( manager ) {
 
-	this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
+    this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
 
 }
 
 Object.assign( CubeTextureLoader.prototype, {
 
-	crossOrigin: 'Anonymous',
+    crossOrigin: 'Anonymous',
 
-	load: function ( urls, onLoad, onProgress, onError ) {
+    load: function ( urls, onLoad, onProgress, onError ) {
 
-		var texture = new CubeTexture();
+        var texture = new CubeTexture();
 
-		var loader = new ImageLoader( this.manager );
-		loader.setCrossOrigin( this.crossOrigin );
-		loader.setPath( this.path );
+        var loader = new ImageLoader( this.manager );
+        loader.setCrossOrigin( this.crossOrigin );
+        loader.setPath( this.path );
 
-		var loaded = 0;
+        var loaded = 0;
 
-		function loadTexture( i ) {
+        function loadTexture( i ) {
 
-			loader.load( urls[ i ], function ( image ) {
+            loader.load( urls[ i ], function ( image ) {
 
-				texture.images[ i ] = image;
+                texture.images[ i ] = image;
 
-				loaded ++;
+                loaded++;
 
-				if ( loaded === 6 ) {
+                if ( loaded === 6 ) {
 
-					texture.needsUpdate = true;
+                    texture.needsUpdate = true;
 
-					if ( onLoad ) onLoad( texture );
+                    if ( onLoad ) onLoad( texture );
 
-				}
+                }
 
-			}, undefined, onError );
+            }, undefined, onError );
 
-		}
+        }
 
-		for ( var i = 0; i < urls.length; ++ i ) {
+        for ( var i = 0; i < urls.length; ++i ) {
 
-			loadTexture( i );
+            loadTexture( i );
 
-		}
+        }
 
-		return texture;
+        return texture;
 
-	},
+    },
 
-	setCrossOrigin: function ( value ) {
+    setCrossOrigin: function ( value ) {
 
-		this.crossOrigin = value;
-		return this;
+        this.crossOrigin = value;
+        return this;
 
-	},
+    },
 
-	setPath: function ( value ) {
+    setPath: function ( value ) {
 
-		this.path = value;
-		return this;
+        this.path = value;
+        return this;
 
-	}
+    }
 
 } );
-
 
 export { CubeTextureLoader };

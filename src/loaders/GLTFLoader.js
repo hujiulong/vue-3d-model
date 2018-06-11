@@ -1,4 +1,4 @@
-import * as THREE from 'three'
+import * as THREE from '../three'
 import { LoaderUtils } from './LoaderUtils.js'
 
 /**

@@ -1,4 +1,4 @@
-import * as THREE from 'three';
+import * as THREE from '../three';
 import { DDSLoader } from './DDSLoader'
 
 // https://github.com/mrdoob/three.js/blob/dev/examples/js/loaders/MTLLoader.js

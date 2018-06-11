@@ -16,19 +16,19 @@ import { Color } from '../math/Color.js';
 
 function SpriteMaterial( parameters ) {
 
-	Material.call( this );
+    Material.call( this );
 
-	this.type = 'SpriteMaterial';
+    this.type = 'SpriteMaterial';
 
-	this.color = new Color( 0xffffff );
-	this.map = null;
+    this.color = new Color( 0xffffff );
+    this.map = null;
 
-	this.rotation = 0;
+    this.rotation = 0;
 
-	this.fog = false;
-	this.lights = false;
+    this.fog = false;
+    this.lights = false;
 
-	this.setValues( parameters );
+    this.setValues( parameters );
 
 }
 
@@ -38,16 +38,15 @@ SpriteMaterial.prototype.isSpriteMaterial = true;
 
 SpriteMaterial.prototype.copy = function ( source ) {
 
-	Material.prototype.copy.call( this, source );
+    Material.prototype.copy.call( this, source );
 
-	this.color.copy( source.color );
-	this.map = source.map;
+    this.color.copy( source.color );
+    this.map = source.map;
 
-	this.rotation = source.rotation;
+    this.rotation = source.rotation;
 
-	return this;
+    return this;
 
 };
-
 
 export { SpriteMaterial };

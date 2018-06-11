@@ -6,19 +6,18 @@ import { PerspectiveCamera } from './PerspectiveCamera.js';
 
 function ArrayCamera( array ) {
 
-	PerspectiveCamera.call( this );
+    PerspectiveCamera.call( this );
 
-	this.cameras = array || [];
+    this.cameras = array || [];
 
 }
 
 ArrayCamera.prototype = Object.assign( Object.create( PerspectiveCamera.prototype ), {
 
-	constructor: ArrayCamera,
+    constructor: ArrayCamera,
 
-	isArrayCamera: true
+    isArrayCamera: true
 
 } );
-
 
 export { ArrayCamera };

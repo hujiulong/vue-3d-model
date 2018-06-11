@@ -4,56 +4,55 @@
 
 function WebGLIndexedBufferRenderer( gl, extensions, info ) {
 
-	var mode;
+    var mode;
 
-	function setMode( value ) {
+    function setMode( value ) {
 
-		mode = value;
+        mode = value;
 
-	}
+    }
 
-	var type, bytesPerElement;
+    var type, bytesPerElement;
 
-	function setIndex( value ) {
+    function setIndex( value ) {
 
-		type = value.type;
-		bytesPerElement = value.bytesPerElement;
+        type = value.type;
+        bytesPerElement = value.bytesPerElement;
 
-	}
+    }
 
-	function render( start, count ) {
+    function render( start, count ) {
 
-		gl.drawElements( mode, count, type, start * bytesPerElement );
+        gl.drawElements( mode, count, type, start * bytesPerElement );
 
-		info.update( count, mode );
+        info.update( count, mode );
 
-	}
+    }
 
-	function renderInstances( geometry, start, count ) {
+    function renderInstances( geometry, start, count ) {
 
-		var extension = extensions.get( 'ANGLE_instanced_arrays' );
+        var extension = extensions.get( 'ANGLE_instanced_arrays' );
 
-		if ( extension === null ) {
+        if ( extension === null ) {
 
-			console.error( 'THREE.WebGLIndexedBufferRenderer: using THREE.InstancedBufferGeometry but hardware does not support extension ANGLE_instanced_arrays.' );
-			return;
+            console.error( 'THREE.WebGLIndexedBufferRenderer: using THREE.InstancedBufferGeometry but hardware does not support extension ANGLE_instanced_arrays.' );
+            return;
 
-		}
+        }
 
-		extension.drawElementsInstancedANGLE( mode, count, type, start * bytesPerElement, geometry.maxInstancedCount );
+        extension.drawElementsInstancedANGLE( mode, count, type, start * bytesPerElement, geometry.maxInstancedCount );
 
-		info.update( count, mode, geometry.maxInstancedCount );
+        info.update( count, mode, geometry.maxInstancedCount );
 
-	}
+    }
 
-	//
+    //
 
-	this.setMode = setMode;
-	this.setIndex = setIndex;
-	this.render = render;
-	this.renderInstances = renderInstances;
+    this.setMode = setMode;
+    this.setIndex = setIndex;
+    this.render = render;
+    this.renderInstances = renderInstances;
 
 }
-
 
 export { WebGLIndexedBufferRenderer };

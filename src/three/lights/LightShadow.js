@@ -7,55 +7,54 @@ import { Vector2 } from '../math/Vector2.js';
 
 function LightShadow( camera ) {
 
-	this.camera = camera;
+    this.camera = camera;
 
-	this.bias = 0;
-	this.radius = 1;
+    this.bias = 0;
+    this.radius = 1;
 
-	this.mapSize = new Vector2( 512, 512 );
+    this.mapSize = new Vector2( 512, 512 );
 
-	this.map = null;
-	this.matrix = new Matrix4();
+    this.map = null;
+    this.matrix = new Matrix4();
 
 }
 
 Object.assign( LightShadow.prototype, {
 
-	copy: function ( source ) {
+    copy: function ( source ) {
 
-		this.camera = source.camera.clone();
+        this.camera = source.camera.clone();
 
-		this.bias = source.bias;
-		this.radius = source.radius;
+        this.bias = source.bias;
+        this.radius = source.radius;
 
-		this.mapSize.copy( source.mapSize );
+        this.mapSize.copy( source.mapSize );
 
-		return this;
+        return this;
 
-	},
+    },
 
-	clone: function () {
+    clone: function () {
 
-		return new this.constructor().copy( this );
+        return new this.constructor().copy( this );
 
-	},
+    },
 
-	toJSON: function () {
+    toJSON: function () {
 
-		var object = {};
+        var object = {};
 
-		if ( this.bias !== 0 ) object.bias = this.bias;
-		if ( this.radius !== 1 ) object.radius = this.radius;
-		if ( this.mapSize.x !== 512 || this.mapSize.y !== 512 ) object.mapSize = this.mapSize.toArray();
+        if ( this.bias !== 0 ) object.bias = this.bias;
+        if ( this.radius !== 1 ) object.radius = this.radius;
+        if ( this.mapSize.x !== 512 || this.mapSize.y !== 512 ) object.mapSize = this.mapSize.toArray();
 
-		object.camera = this.camera.toJSON( false ).object;
-		delete object.camera.matrix;
+        object.camera = this.camera.toJSON( false ).object;
+        delete object.camera.matrix;
 
-		return object;
+        return object;
 
-	}
+    }
 
 } );
-
 
 export { LightShadow };

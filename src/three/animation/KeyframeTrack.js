@@ -5,9 +5,9 @@ import { ColorKeyframeTrack } from './tracks/ColorKeyframeTrack.js';
 import { VectorKeyframeTrack } from './tracks/VectorKeyframeTrack.js';
 import { NumberKeyframeTrack } from './tracks/NumberKeyframeTrack.js';
 import {
-	InterpolateLinear,
-	InterpolateSmooth,
-	InterpolateDiscrete
+    InterpolateLinear,
+    InterpolateSmooth,
+    InterpolateDiscrete
 } from '../constants.js';
 import { CubicInterpolant } from '../math/interpolants/CubicInterpolant.js';
 import { LinearInterpolant } from '../math/interpolants/LinearInterpolant.js';
@@ -26,18 +26,18 @@ import { AnimationUtils } from './AnimationUtils.js';
 
 function KeyframeTrack( name, times, values, interpolation ) {
 
-	if ( name === undefined ) throw new Error( 'THREE.KeyframeTrack: track name is undefined' );
-	if ( times === undefined || times.length === 0 ) throw new Error( 'THREE.KeyframeTrack: no keyframes in track named ' + name );
+    if ( name === undefined ) throw new Error( 'THREE.KeyframeTrack: track name is undefined' );
+    if ( times === undefined || times.length === 0 ) throw new Error( 'THREE.KeyframeTrack: no keyframes in track named ' + name );
 
-	this.name = name;
+    this.name = name;
 
-	this.times = AnimationUtils.convertArray( times, this.TimeBufferType );
-	this.values = AnimationUtils.convertArray( values, this.ValueBufferType );
+    this.times = AnimationUtils.convertArray( times, this.TimeBufferType );
+    this.values = AnimationUtils.convertArray( values, this.ValueBufferType );
 
-	this.setInterpolation( interpolation || this.DefaultInterpolation );
+    this.setInterpolation( interpolation || this.DefaultInterpolation );
 
-	this.validate();
-	this.optimize();
+    this.validate();
+    this.optimize();
 
 }
 
@@ -45,493 +45,493 @@ function KeyframeTrack( name, times, values, interpolation ) {
 
 Object.assign( KeyframeTrack, {
 
-	// Serialization (in static context, because of constructor invocation
-	// and automatic invocation of .toJSON):
+    // Serialization (in static context, because of constructor invocation
+    // and automatic invocation of .toJSON):
 
-	parse: function ( json ) {
+    parse: function ( json ) {
 
-		if ( json.type === undefined ) {
+        if ( json.type === undefined ) {
 
-			throw new Error( 'THREE.KeyframeTrack: track type undefined, can not parse' );
+            throw new Error( 'THREE.KeyframeTrack: track type undefined, can not parse' );
 
-		}
+        }
 
-		var trackType = KeyframeTrack._getTrackTypeForValueTypeName( json.type );
+        var trackType = KeyframeTrack._getTrackTypeForValueTypeName( json.type );
 
-		if ( json.times === undefined ) {
+        if ( json.times === undefined ) {
 
-			var times = [], values = [];
+            var times = [], values = [];
 
-			AnimationUtils.flattenJSON( json.keys, times, values, 'value' );
+            AnimationUtils.flattenJSON( json.keys, times, values, 'value' );
 
-			json.times = times;
-			json.values = values;
+            json.times = times;
+            json.values = values;
 
-		}
+        }
 
-		// derived classes can define a static parse method
-		if ( trackType.parse !== undefined ) {
+        // derived classes can define a static parse method
+        if ( trackType.parse !== undefined ) {
 
-			return trackType.parse( json );
+            return trackType.parse( json );
 
-		} else {
+        } else {
 
-			// by default, we assume a constructor compatible with the base
-			return new trackType( json.name, json.times, json.values, json.interpolation );
+            // by default, we assume a constructor compatible with the base
+            return new trackType( json.name, json.times, json.values, json.interpolation );
 
-		}
+        }
 
-	},
+    },
 
-	toJSON: function ( track ) {
+    toJSON: function ( track ) {
 
-		var trackType = track.constructor;
+        var trackType = track.constructor;
 
-		var json;
+        var json;
 
-		// derived classes can define a static toJSON method
-		if ( trackType.toJSON !== undefined ) {
+        // derived classes can define a static toJSON method
+        if ( trackType.toJSON !== undefined ) {
 
-			json = trackType.toJSON( track );
+            json = trackType.toJSON( track );
 
-		} else {
+        } else {
 
-			// by default, we assume the data can be serialized as-is
-			json = {
+            // by default, we assume the data can be serialized as-is
+            json = {
 
-				'name': track.name,
-				'times': AnimationUtils.convertArray( track.times, Array ),
-				'values': AnimationUtils.convertArray( track.values, Array )
+                'name': track.name,
+                'times': AnimationUtils.convertArray( track.times, Array ),
+                'values': AnimationUtils.convertArray( track.values, Array )
 
-			};
+            };
 
-			var interpolation = track.getInterpolation();
+            var interpolation = track.getInterpolation();
 
-			if ( interpolation !== track.DefaultInterpolation ) {
+            if ( interpolation !== track.DefaultInterpolation ) {
 
-				json.interpolation = interpolation;
+                json.interpolation = interpolation;
 
-			}
+            }
 
-		}
+        }
 
-		json.type = track.ValueTypeName; // mandatory
+        json.type = track.ValueTypeName; // mandatory
 
-		return json;
+        return json;
 
-	},
+    },
 
-	_getTrackTypeForValueTypeName: function ( typeName ) {
+    _getTrackTypeForValueTypeName: function ( typeName ) {
 
-		switch ( typeName.toLowerCase() ) {
+        switch ( typeName.toLowerCase() ) {
 
-			case 'scalar':
-			case 'double':
-			case 'float':
-			case 'number':
-			case 'integer':
+            case 'scalar':
+            case 'double':
+            case 'float':
+            case 'number':
+            case 'integer':
 
-				return NumberKeyframeTrack;
+                return NumberKeyframeTrack;
 
-			case 'vector':
-			case 'vector2':
-			case 'vector3':
-			case 'vector4':
+            case 'vector':
+            case 'vector2':
+            case 'vector3':
+            case 'vector4':
 
-				return VectorKeyframeTrack;
+                return VectorKeyframeTrack;
 
-			case 'color':
+            case 'color':
 
-				return ColorKeyframeTrack;
+                return ColorKeyframeTrack;
 
-			case 'quaternion':
+            case 'quaternion':
 
-				return QuaternionKeyframeTrack;
+                return QuaternionKeyframeTrack;
 
-			case 'bool':
-			case 'boolean':
+            case 'bool':
+            case 'boolean':
 
-				return BooleanKeyframeTrack;
+                return BooleanKeyframeTrack;
 
-			case 'string':
+            case 'string':
 
-				return StringKeyframeTrack;
+                return StringKeyframeTrack;
 
-		}
+        }
 
-		throw new Error( 'THREE.KeyframeTrack: Unsupported typeName: ' + typeName );
+        throw new Error( 'THREE.KeyframeTrack: Unsupported typeName: ' + typeName );
 
-	}
+    }
 
 } );
 
 Object.assign( KeyframeTrack.prototype, {
 
-	constructor: KeyframeTrack,
+    constructor: KeyframeTrack,
 
-	TimeBufferType: Float32Array,
+    TimeBufferType: Float32Array,
 
-	ValueBufferType: Float32Array,
+    ValueBufferType: Float32Array,
 
-	DefaultInterpolation: InterpolateLinear,
+    DefaultInterpolation: InterpolateLinear,
 
-	InterpolantFactoryMethodDiscrete: function ( result ) {
+    InterpolantFactoryMethodDiscrete: function ( result ) {
 
-		return new DiscreteInterpolant( this.times, this.values, this.getValueSize(), result );
+        return new DiscreteInterpolant( this.times, this.values, this.getValueSize(), result );
 
-	},
+    },
 
-	InterpolantFactoryMethodLinear: function ( result ) {
+    InterpolantFactoryMethodLinear: function ( result ) {
 
-		return new LinearInterpolant( this.times, this.values, this.getValueSize(), result );
+        return new LinearInterpolant( this.times, this.values, this.getValueSize(), result );
 
-	},
+    },
 
-	InterpolantFactoryMethodSmooth: function ( result ) {
+    InterpolantFactoryMethodSmooth: function ( result ) {
 
-		return new CubicInterpolant( this.times, this.values, this.getValueSize(), result );
+        return new CubicInterpolant( this.times, this.values, this.getValueSize(), result );
 
-	},
+    },
 
-	setInterpolation: function ( interpolation ) {
+    setInterpolation: function ( interpolation ) {
 
-		var factoryMethod;
+        var factoryMethod;
 
-		switch ( interpolation ) {
+        switch ( interpolation ) {
 
-			case InterpolateDiscrete:
+            case InterpolateDiscrete:
 
-				factoryMethod = this.InterpolantFactoryMethodDiscrete;
+                factoryMethod = this.InterpolantFactoryMethodDiscrete;
 
-				break;
+                break;
 
-			case InterpolateLinear:
+            case InterpolateLinear:
 
-				factoryMethod = this.InterpolantFactoryMethodLinear;
+                factoryMethod = this.InterpolantFactoryMethodLinear;
 
-				break;
+                break;
 
-			case InterpolateSmooth:
+            case InterpolateSmooth:
 
-				factoryMethod = this.InterpolantFactoryMethodSmooth;
+                factoryMethod = this.InterpolantFactoryMethodSmooth;
 
-				break;
+                break;
 
-		}
+        }
 
-		if ( factoryMethod === undefined ) {
+        if ( factoryMethod === undefined ) {
 
-			var message = "unsupported interpolation for " +
-				this.ValueTypeName + " keyframe track named " + this.name;
+            var message = 'unsupported interpolation for ' +
+				this.ValueTypeName + ' keyframe track named ' + this.name;
 
-			if ( this.createInterpolant === undefined ) {
+            if ( this.createInterpolant === undefined ) {
 
-				// fall back to default, unless the default itself is messed up
-				if ( interpolation !== this.DefaultInterpolation ) {
+                // fall back to default, unless the default itself is messed up
+                if ( interpolation !== this.DefaultInterpolation ) {
 
-					this.setInterpolation( this.DefaultInterpolation );
+                    this.setInterpolation( this.DefaultInterpolation );
 
-				} else {
+                } else {
 
-					throw new Error( message ); // fatal, in this case
+                    throw new Error( message ); // fatal, in this case
 
-				}
+                }
 
-			}
+            }
 
-			console.warn( 'THREE.KeyframeTrack:', message );
-			return;
+            console.warn( 'THREE.KeyframeTrack:', message );
+            return;
 
-		}
+        }
 
-		this.createInterpolant = factoryMethod;
+        this.createInterpolant = factoryMethod;
 
-	},
+    },
 
-	getInterpolation: function () {
+    getInterpolation: function () {
 
-		switch ( this.createInterpolant ) {
+        switch ( this.createInterpolant ) {
 
-			case this.InterpolantFactoryMethodDiscrete:
+            case this.InterpolantFactoryMethodDiscrete:
 
-				return InterpolateDiscrete;
+                return InterpolateDiscrete;
 
-			case this.InterpolantFactoryMethodLinear:
+            case this.InterpolantFactoryMethodLinear:
 
-				return InterpolateLinear;
+                return InterpolateLinear;
 
-			case this.InterpolantFactoryMethodSmooth:
+            case this.InterpolantFactoryMethodSmooth:
 
-				return InterpolateSmooth;
+                return InterpolateSmooth;
 
-		}
+        }
 
-	},
+    },
 
-	getValueSize: function () {
+    getValueSize: function () {
 
-		return this.values.length / this.times.length;
+        return this.values.length / this.times.length;
 
-	},
+    },
 
-	// move all keyframes either forwards or backwards in time
-	shift: function ( timeOffset ) {
+    // move all keyframes either forwards or backwards in time
+    shift: function ( timeOffset ) {
 
-		if ( timeOffset !== 0.0 ) {
+        if ( timeOffset !== 0.0 ) {
 
-			var times = this.times;
+            var times = this.times;
 
-			for ( var i = 0, n = times.length; i !== n; ++ i ) {
+            for ( var i = 0, n = times.length; i !== n; ++i ) {
 
-				times[ i ] += timeOffset;
+                times[ i ] += timeOffset;
 
-			}
+            }
 
-		}
+        }
 
-		return this;
+        return this;
 
-	},
+    },
 
-	// scale all keyframe times by a factor (useful for frame <-> seconds conversions)
-	scale: function ( timeScale ) {
+    // scale all keyframe times by a factor (useful for frame <-> seconds conversions)
+    scale: function ( timeScale ) {
 
-		if ( timeScale !== 1.0 ) {
+        if ( timeScale !== 1.0 ) {
 
-			var times = this.times;
+            var times = this.times;
 
-			for ( var i = 0, n = times.length; i !== n; ++ i ) {
+            for ( var i = 0, n = times.length; i !== n; ++i ) {
 
-				times[ i ] *= timeScale;
+                times[ i ] *= timeScale;
 
-			}
+            }
 
-		}
+        }
 
-		return this;
+        return this;
 
-	},
+    },
 
-	// removes keyframes before and after animation without changing any values within the range [startTime, endTime].
-	// IMPORTANT: We do not shift around keys to the start of the track time, because for interpolated keys this will change their values
-	trim: function ( startTime, endTime ) {
+    // removes keyframes before and after animation without changing any values within the range [startTime, endTime].
+    // IMPORTANT: We do not shift around keys to the start of the track time, because for interpolated keys this will change their values
+    trim: function ( startTime, endTime ) {
 
-		var times = this.times,
-			nKeys = times.length,
-			from = 0,
-			to = nKeys - 1;
+        var times = this.times,
+            nKeys = times.length,
+            from = 0,
+            to = nKeys - 1;
 
-		while ( from !== nKeys && times[ from ] < startTime ) {
+        while ( from !== nKeys && times[ from ] < startTime ) {
 
-			++ from;
+            ++from;
 
-		}
+        }
 
-		while ( to !== - 1 && times[ to ] > endTime ) {
+        while ( to !== -1 && times[ to ] > endTime ) {
 
-			-- to;
+            --to;
 
-		}
+        }
 
-		++ to; // inclusive -> exclusive bound
+        ++to; // inclusive -> exclusive bound
 
-		if ( from !== 0 || to !== nKeys ) {
+        if ( from !== 0 || to !== nKeys ) {
 
-			// empty tracks are forbidden, so keep at least one keyframe
-			if ( from >= to ) to = Math.max( to, 1 ), from = to - 1;
+            // empty tracks are forbidden, so keep at least one keyframe
+            if ( from >= to ) to = Math.max( to, 1 ), from = to - 1;
 
-			var stride = this.getValueSize();
-			this.times = AnimationUtils.arraySlice( times, from, to );
-			this.values = AnimationUtils.arraySlice( this.values, from * stride, to * stride );
+            var stride = this.getValueSize();
+            this.times = AnimationUtils.arraySlice( times, from, to );
+            this.values = AnimationUtils.arraySlice( this.values, from * stride, to * stride );
 
-		}
+        }
 
-		return this;
+        return this;
 
-	},
+    },
 
-	// ensure we do not get a GarbageInGarbageOut situation, make sure tracks are at least minimally viable
-	validate: function () {
+    // ensure we do not get a GarbageInGarbageOut situation, make sure tracks are at least minimally viable
+    validate: function () {
 
-		var valid = true;
+        var valid = true;
 
-		var valueSize = this.getValueSize();
-		if ( valueSize - Math.floor( valueSize ) !== 0 ) {
+        var valueSize = this.getValueSize();
+        if ( valueSize - Math.floor( valueSize ) !== 0 ) {
 
-			console.error( 'THREE.KeyframeTrack: Invalid value size in track.', this );
-			valid = false;
+            console.error( 'THREE.KeyframeTrack: Invalid value size in track.', this );
+            valid = false;
 
-		}
+        }
 
-		var times = this.times,
-			values = this.values,
+        var times = this.times,
+            values = this.values,
 
-			nKeys = times.length;
+            nKeys = times.length;
 
-		if ( nKeys === 0 ) {
+        if ( nKeys === 0 ) {
 
-			console.error( 'THREE.KeyframeTrack: Track is empty.', this );
-			valid = false;
+            console.error( 'THREE.KeyframeTrack: Track is empty.', this );
+            valid = false;
 
-		}
+        }
 
-		var prevTime = null;
+        var prevTime = null;
 
-		for ( var i = 0; i !== nKeys; i ++ ) {
+        for ( var i = 0; i !== nKeys; i++ ) {
 
-			var currTime = times[ i ];
+            var currTime = times[ i ];
 
-			if ( typeof currTime === 'number' && isNaN( currTime ) ) {
+            if ( typeof currTime === 'number' && isNaN( currTime ) ) {
 
-				console.error( 'THREE.KeyframeTrack: Time is not a valid number.', this, i, currTime );
-				valid = false;
-				break;
+                console.error( 'THREE.KeyframeTrack: Time is not a valid number.', this, i, currTime );
+                valid = false;
+                break;
 
-			}
+            }
 
-			if ( prevTime !== null && prevTime > currTime ) {
+            if ( prevTime !== null && prevTime > currTime ) {
 
-				console.error( 'THREE.KeyframeTrack: Out of order keys.', this, i, currTime, prevTime );
-				valid = false;
-				break;
+                console.error( 'THREE.KeyframeTrack: Out of order keys.', this, i, currTime, prevTime );
+                valid = false;
+                break;
 
-			}
+            }
 
-			prevTime = currTime;
+            prevTime = currTime;
 
-		}
+        }
 
-		if ( values !== undefined ) {
+        if ( values !== undefined ) {
 
-			if ( AnimationUtils.isTypedArray( values ) ) {
+            if ( AnimationUtils.isTypedArray( values ) ) {
 
-				for ( var i = 0, n = values.length; i !== n; ++ i ) {
+                for ( var i = 0, n = values.length; i !== n; ++i ) {
 
-					var value = values[ i ];
+                    var value = values[ i ];
 
-					if ( isNaN( value ) ) {
+                    if ( isNaN( value ) ) {
 
-						console.error( 'THREE.KeyframeTrack: Value is not a valid number.', this, i, value );
-						valid = false;
-						break;
+                        console.error( 'THREE.KeyframeTrack: Value is not a valid number.', this, i, value );
+                        valid = false;
+                        break;
 
-					}
+                    }
 
-				}
+                }
 
-			}
+            }
 
-		}
+        }
 
-		return valid;
+        return valid;
 
-	},
+    },
 
-	// removes equivalent sequential keys as common in morph target sequences
-	// (0,0,0,0,1,1,1,0,0,0,0,0,0,0) --> (0,0,1,1,0,0)
-	optimize: function () {
+    // removes equivalent sequential keys as common in morph target sequences
+    // (0,0,0,0,1,1,1,0,0,0,0,0,0,0) --> (0,0,1,1,0,0)
+    optimize: function () {
 
-		var times = this.times,
-			values = this.values,
-			stride = this.getValueSize(),
+        var times = this.times,
+            values = this.values,
+            stride = this.getValueSize(),
 
-			smoothInterpolation = this.getInterpolation() === InterpolateSmooth,
+            smoothInterpolation = this.getInterpolation() === InterpolateSmooth,
 
-			writeIndex = 1,
-			lastIndex = times.length - 1;
+            writeIndex = 1,
+            lastIndex = times.length - 1;
 
-		for ( var i = 1; i < lastIndex; ++ i ) {
+        for ( var i = 1; i < lastIndex; ++i ) {
 
-			var keep = false;
+            var keep = false;
 
-			var time = times[ i ];
-			var timeNext = times[ i + 1 ];
+            var time = times[ i ];
+            var timeNext = times[ i + 1 ];
 
-			// remove adjacent keyframes scheduled at the same time
+            // remove adjacent keyframes scheduled at the same time
 
-			if ( time !== timeNext && ( i !== 1 || time !== time[ 0 ] ) ) {
+            if ( time !== timeNext && ( i !== 1 || time !== time[ 0 ] ) ) {
 
-				if ( ! smoothInterpolation ) {
+                if ( !smoothInterpolation ) {
 
-					// remove unnecessary keyframes same as their neighbors
+                    // remove unnecessary keyframes same as their neighbors
 
-					var offset = i * stride,
-						offsetP = offset - stride,
-						offsetN = offset + stride;
+                    var offset = i * stride,
+                        offsetP = offset - stride,
+                        offsetN = offset + stride;
 
-					for ( var j = 0; j !== stride; ++ j ) {
+                    for ( var j = 0; j !== stride; ++j ) {
 
-						var value = values[ offset + j ];
+                        var value = values[ offset + j ];
 
-						if ( value !== values[ offsetP + j ] ||
+                        if ( value !== values[ offsetP + j ] ||
 							value !== values[ offsetN + j ] ) {
 
-							keep = true;
-							break;
+                            keep = true;
+                            break;
 
-						}
+                        }
 
-					}
+                    }
 
-				} else {
+                } else {
 
-					keep = true;
+                    keep = true;
 
-				}
+                }
 
-			}
+            }
 
-			// in-place compaction
+            // in-place compaction
 
-			if ( keep ) {
+            if ( keep ) {
 
-				if ( i !== writeIndex ) {
+                if ( i !== writeIndex ) {
 
-					times[ writeIndex ] = times[ i ];
+                    times[ writeIndex ] = times[ i ];
 
-					var readOffset = i * stride,
-						writeOffset = writeIndex * stride;
+                    var readOffset = i * stride,
+                        writeOffset = writeIndex * stride;
 
-					for ( var j = 0; j !== stride; ++ j ) {
+                    for ( var j = 0; j !== stride; ++j ) {
 
-						values[ writeOffset + j ] = values[ readOffset + j ];
+                        values[ writeOffset + j ] = values[ readOffset + j ];
 
-					}
+                    }
 
-				}
+                }
 
-				++ writeIndex;
+                ++writeIndex;
 
-			}
+            }
 
-		}
+        }
 
-		// flush last keyframe (compaction looks ahead)
+        // flush last keyframe (compaction looks ahead)
 
-		if ( lastIndex > 0 ) {
+        if ( lastIndex > 0 ) {
 
-			times[ writeIndex ] = times[ lastIndex ];
+            times[ writeIndex ] = times[ lastIndex ];
 
-			for ( var readOffset = lastIndex * stride, writeOffset = writeIndex * stride, j = 0; j !== stride; ++ j ) {
+            for ( var readOffset = lastIndex * stride, writeOffset = writeIndex * stride, j = 0; j !== stride; ++j ) {
 
-				values[ writeOffset + j ] = values[ readOffset + j ];
+                values[ writeOffset + j ] = values[ readOffset + j ];
 
-			}
+            }
 
-			++ writeIndex;
+            ++writeIndex;
 
-		}
+        }
 
-		if ( writeIndex !== times.length ) {
+        if ( writeIndex !== times.length ) {
 
-			this.times = AnimationUtils.arraySlice( times, 0, writeIndex );
-			this.values = AnimationUtils.arraySlice( values, 0, writeIndex * stride );
+            this.times = AnimationUtils.arraySlice( times, 0, writeIndex );
+            this.values = AnimationUtils.arraySlice( values, 0, writeIndex * stride );
 
-		}
+        }
 
-		return this;
+        return this;
 
-	}
+    }
 
 } );
 

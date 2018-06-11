@@ -1,4 +1,4 @@
-import { Box3, Vector3, Vector2, BufferAttribute } from 'three';
+import { Box3, Vector3, Vector2, BufferAttribute } from './three';
 
 const box = new Box3();
 

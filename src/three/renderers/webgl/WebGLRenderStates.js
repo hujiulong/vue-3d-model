@@ -6,97 +6,96 @@ import { WebGLLights } from './WebGLLights.js';
 
 function WebGLRenderState() {
 
-	var lights = new WebGLLights();
+    var lights = new WebGLLights();
 
-	var lightsArray = [];
-	var shadowsArray = [];
-	var spritesArray = [];
+    var lightsArray = [];
+    var shadowsArray = [];
+    var spritesArray = [];
 
-	function init() {
+    function init() {
 
-		lightsArray.length = 0;
-		shadowsArray.length = 0;
-		spritesArray.length = 0;
+        lightsArray.length = 0;
+        shadowsArray.length = 0;
+        spritesArray.length = 0;
 
-	}
+    }
 
-	function pushLight( light ) {
+    function pushLight( light ) {
 
-		lightsArray.push( light );
+        lightsArray.push( light );
 
-	}
+    }
 
-	function pushShadow( shadowLight ) {
+    function pushShadow( shadowLight ) {
 
-		shadowsArray.push( shadowLight );
+        shadowsArray.push( shadowLight );
 
-	}
+    }
 
-	function pushSprite( shadowLight ) {
+    function pushSprite( shadowLight ) {
 
-		spritesArray.push( shadowLight );
+        spritesArray.push( shadowLight );
 
-	}
+    }
 
-	function setupLights( camera ) {
+    function setupLights( camera ) {
 
-		lights.setup( lightsArray, shadowsArray, camera );
+        lights.setup( lightsArray, shadowsArray, camera );
 
-	}
+    }
 
-	var state = {
-		lightsArray: lightsArray,
-		shadowsArray: shadowsArray,
-		spritesArray: spritesArray,
+    var state = {
+        lightsArray: lightsArray,
+        shadowsArray: shadowsArray,
+        spritesArray: spritesArray,
 
-		lights: lights
-	};
+        lights: lights
+    };
 
-	return {
-		init: init,
-		state: state,
-		setupLights: setupLights,
+    return {
+        init: init,
+        state: state,
+        setupLights: setupLights,
 
-		pushLight: pushLight,
-		pushShadow: pushShadow,
-		pushSprite: pushSprite
-	};
+        pushLight: pushLight,
+        pushShadow: pushShadow,
+        pushSprite: pushSprite
+    };
 
 }
 
 function WebGLRenderStates() {
 
-	var renderStates = {};
+    var renderStates = {};
 
-	function get( scene, camera ) {
+    function get( scene, camera ) {
 
-		var hash = scene.id + ',' + camera.id;
+        var hash = scene.id + ',' + camera.id;
 
-		var renderState = renderStates[ hash ];
+        var renderState = renderStates[ hash ];
 
-		if ( renderState === undefined ) {
+        if ( renderState === undefined ) {
 
-			renderState = new WebGLRenderState();
-			renderStates[ hash ] = renderState;
+            renderState = new WebGLRenderState();
+            renderStates[ hash ] = renderState;
 
-		}
+        }
 
-		return renderState;
+        return renderState;
 
-	}
+    }
 
-	function dispose() {
+    function dispose() {
 
-		renderStates = {};
+        renderStates = {};
 
-	}
+    }
 
-	return {
-		get: get,
-		dispose: dispose
-	};
+    return {
+        get: get,
+        dispose: dispose
+    };
 
 }
-
 
 export { WebGLRenderStates };

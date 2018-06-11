@@ -7,12 +7,12 @@ import { CubeReflectionMapping } from '../constants.js';
 
 function CubeTexture( images, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy, encoding ) {
 
-	images = images !== undefined ? images : [];
-	mapping = mapping !== undefined ? mapping : CubeReflectionMapping;
+    images = images !== undefined ? images : [];
+    mapping = mapping !== undefined ? mapping : CubeReflectionMapping;
 
-	Texture.call( this, images, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy, encoding );
+    Texture.call( this, images, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy, encoding );
 
-	this.flipY = false;
+    this.flipY = false;
 
 }
 
@@ -23,19 +23,18 @@ CubeTexture.prototype.isCubeTexture = true;
 
 Object.defineProperty( CubeTexture.prototype, 'images', {
 
-	get: function () {
+    get: function () {
 
-		return this.image;
+        return this.image;
 
-	},
+    },
 
-	set: function ( value ) {
+    set: function ( value ) {
 
-		this.image = value;
+        this.image = value;
 
-	}
+    }
 
 } );
-
 
 export { CubeTexture };

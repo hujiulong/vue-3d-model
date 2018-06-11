@@ -4,58 +4,57 @@
 
 function WebGLBufferRenderer( gl, extensions, info ) {
 
-	var mode;
+    var mode;
 
-	function setMode( value ) {
+    function setMode( value ) {
 
-		mode = value;
+        mode = value;
 
-	}
+    }
 
-	function render( start, count ) {
+    function render( start, count ) {
 
-		gl.drawArrays( mode, start, count );
+        gl.drawArrays( mode, start, count );
 
-		info.update( count, mode );
+        info.update( count, mode );
 
-	}
+    }
 
-	function renderInstances( geometry, start, count ) {
+    function renderInstances( geometry, start, count ) {
 
-		var extension = extensions.get( 'ANGLE_instanced_arrays' );
+        var extension = extensions.get( 'ANGLE_instanced_arrays' );
 
-		if ( extension === null ) {
+        if ( extension === null ) {
 
-			console.error( 'THREE.WebGLBufferRenderer: using THREE.InstancedBufferGeometry but hardware does not support extension ANGLE_instanced_arrays.' );
-			return;
+            console.error( 'THREE.WebGLBufferRenderer: using THREE.InstancedBufferGeometry but hardware does not support extension ANGLE_instanced_arrays.' );
+            return;
 
-		}
+        }
 
-		var position = geometry.attributes.position;
+        var position = geometry.attributes.position;
 
-		if ( position.isInterleavedBufferAttribute ) {
+        if ( position.isInterleavedBufferAttribute ) {
 
-			count = position.data.count;
+            count = position.data.count;
 
-			extension.drawArraysInstancedANGLE( mode, 0, count, geometry.maxInstancedCount );
+            extension.drawArraysInstancedANGLE( mode, 0, count, geometry.maxInstancedCount );
 
-		} else {
+        } else {
 
-			extension.drawArraysInstancedANGLE( mode, start, count, geometry.maxInstancedCount );
+            extension.drawArraysInstancedANGLE( mode, start, count, geometry.maxInstancedCount );
 
-		}
+        }
 
-		info.update( count, mode, geometry.maxInstancedCount );
+        info.update( count, mode, geometry.maxInstancedCount );
 
-	}
+    }
 
-	//
+    //
 
-	this.setMode = setMode;
-	this.render = render;
-	this.renderInstances = renderInstances;
+    this.setMode = setMode;
+    this.render = render;
+    this.renderInstances = renderInstances;
 
 }
-
 
 export { WebGLBufferRenderer };

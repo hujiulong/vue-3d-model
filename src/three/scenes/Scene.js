@@ -6,50 +6,48 @@ import { Object3D } from '../core/Object3D.js';
 
 function Scene() {
 
-	Object3D.call( this );
+    Object3D.call( this );
 
-	this.type = 'Scene';
+    this.type = 'Scene';
 
-	this.background = null;
-	this.fog = null;
-	this.overrideMaterial = null;
+    this.background = null;
+    this.fog = null;
+    this.overrideMaterial = null;
 
-	this.autoUpdate = true; // checked by the renderer
+    this.autoUpdate = true; // checked by the renderer
 
 }
 
 Scene.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
-	constructor: Scene,
+    constructor: Scene,
 
-	copy: function ( source, recursive ) {
+    copy: function ( source, recursive ) {
 
-		Object3D.prototype.copy.call( this, source, recursive );
+        Object3D.prototype.copy.call( this, source, recursive );
 
-		if ( source.background !== null ) this.background = source.background.clone();
-		if ( source.fog !== null ) this.fog = source.fog.clone();
-		if ( source.overrideMaterial !== null ) this.overrideMaterial = source.overrideMaterial.clone();
+        if ( source.background !== null ) this.background = source.background.clone();
+        if ( source.fog !== null ) this.fog = source.fog.clone();
+        if ( source.overrideMaterial !== null ) this.overrideMaterial = source.overrideMaterial.clone();
 
-		this.autoUpdate = source.autoUpdate;
-		this.matrixAutoUpdate = source.matrixAutoUpdate;
+        this.autoUpdate = source.autoUpdate;
+        this.matrixAutoUpdate = source.matrixAutoUpdate;
 
-		return this;
+        return this;
 
-	},
+    },
 
-	toJSON: function ( meta ) {
+    toJSON: function ( meta ) {
 
-		var data = Object3D.prototype.toJSON.call( this, meta );
+        var data = Object3D.prototype.toJSON.call( this, meta );
 
-		if ( this.background !== null ) data.object.background = this.background.toJSON( meta );
-		if ( this.fog !== null ) data.object.fog = this.fog.toJSON();
+        if ( this.background !== null ) data.object.background = this.background.toJSON( meta );
+        if ( this.fog !== null ) data.object.fog = this.fog.toJSON();
 
-		return data;
+        return data;
 
-	}
+    }
 
 } );
-
-
 
 export { Scene };

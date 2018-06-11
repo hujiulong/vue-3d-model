@@ -12,198 +12,197 @@ import { Matrix4 } from '../math/Matrix4.js';
 
 function SkinnedMesh( geometry, material ) {
 
-	Mesh.call( this, geometry, material );
+    Mesh.call( this, geometry, material );
 
-	this.type = 'SkinnedMesh';
+    this.type = 'SkinnedMesh';
 
-	this.bindMode = 'attached';
-	this.bindMatrix = new Matrix4();
-	this.bindMatrixInverse = new Matrix4();
+    this.bindMode = 'attached';
+    this.bindMatrix = new Matrix4();
+    this.bindMatrixInverse = new Matrix4();
 
-	var bones = this.initBones();
-	var skeleton = new Skeleton( bones );
+    var bones = this.initBones();
+    var skeleton = new Skeleton( bones );
 
-	this.bind( skeleton, this.matrixWorld );
+    this.bind( skeleton, this.matrixWorld );
 
-	this.normalizeSkinWeights();
+    this.normalizeSkinWeights();
 
 }
 
 SkinnedMesh.prototype = Object.assign( Object.create( Mesh.prototype ), {
 
-	constructor: SkinnedMesh,
+    constructor: SkinnedMesh,
 
-	isSkinnedMesh: true,
+    isSkinnedMesh: true,
 
-	initBones: function () {
+    initBones: function () {
 
-		var bones = [], bone, gbone;
-		var i, il;
+        var bones = [], bone, gbone;
+        var i, il;
 
-		if ( this.geometry && this.geometry.bones !== undefined ) {
+        if ( this.geometry && this.geometry.bones !== undefined ) {
 
-			// first, create array of 'Bone' objects from geometry data
+            // first, create array of 'Bone' objects from geometry data
 
-			for ( i = 0, il = this.geometry.bones.length; i < il; i ++ ) {
+            for ( i = 0, il = this.geometry.bones.length; i < il; i++ ) {
 
-				gbone = this.geometry.bones[ i ];
+                gbone = this.geometry.bones[ i ];
 
-				// create new 'Bone' object
+                // create new 'Bone' object
 
-				bone = new Bone();
-				bones.push( bone );
+                bone = new Bone();
+                bones.push( bone );
 
-				// apply values
+                // apply values
 
-				bone.name = gbone.name;
-				bone.position.fromArray( gbone.pos );
-				bone.quaternion.fromArray( gbone.rotq );
-				if ( gbone.scl !== undefined ) bone.scale.fromArray( gbone.scl );
+                bone.name = gbone.name;
+                bone.position.fromArray( gbone.pos );
+                bone.quaternion.fromArray( gbone.rotq );
+                if ( gbone.scl !== undefined ) bone.scale.fromArray( gbone.scl );
 
-			}
+            }
 
-			// second, create bone hierarchy
+            // second, create bone hierarchy
 
-			for ( i = 0, il = this.geometry.bones.length; i < il; i ++ ) {
+            for ( i = 0, il = this.geometry.bones.length; i < il; i++ ) {
 
-				gbone = this.geometry.bones[ i ];
+                gbone = this.geometry.bones[ i ];
 
-				if ( ( gbone.parent !== - 1 ) && ( gbone.parent !== null ) && ( bones[ gbone.parent ] !== undefined ) ) {
+                if ( ( gbone.parent !== -1 ) && ( gbone.parent !== null ) && ( bones[ gbone.parent ] !== undefined ) ) {
 
-					// subsequent bones in the hierarchy
+                    // subsequent bones in the hierarchy
 
-					bones[ gbone.parent ].add( bones[ i ] );
+                    bones[ gbone.parent ].add( bones[ i ] );
 
-				} else {
+                } else {
 
-					// topmost bone, immediate child of the skinned mesh
+                    // topmost bone, immediate child of the skinned mesh
 
-					this.add( bones[ i ] );
+                    this.add( bones[ i ] );
 
-				}
+                }
 
-			}
+            }
 
-		}
+        }
 
-		// now the bones are part of the scene graph and children of the skinned mesh.
-		// let's update the corresponding matrices
+        // now the bones are part of the scene graph and children of the skinned mesh.
+        // let's update the corresponding matrices
 
-		this.updateMatrixWorld( true );
+        this.updateMatrixWorld( true );
 
-		return bones;
+        return bones;
 
-	},
+    },
 
-	bind: function ( skeleton, bindMatrix ) {
+    bind: function ( skeleton, bindMatrix ) {
 
-		this.skeleton = skeleton;
+        this.skeleton = skeleton;
 
-		if ( bindMatrix === undefined ) {
+        if ( bindMatrix === undefined ) {
 
-			this.updateMatrixWorld( true );
+            this.updateMatrixWorld( true );
 
-			this.skeleton.calculateInverses();
+            this.skeleton.calculateInverses();
 
-			bindMatrix = this.matrixWorld;
+            bindMatrix = this.matrixWorld;
 
-		}
+        }
 
-		this.bindMatrix.copy( bindMatrix );
-		this.bindMatrixInverse.getInverse( bindMatrix );
+        this.bindMatrix.copy( bindMatrix );
+        this.bindMatrixInverse.getInverse( bindMatrix );
 
-	},
+    },
 
-	pose: function () {
+    pose: function () {
 
-		this.skeleton.pose();
+        this.skeleton.pose();
 
-	},
+    },
 
-	normalizeSkinWeights: function () {
+    normalizeSkinWeights: function () {
 
-		var scale, i;
+        var scale, i;
 
-		if ( this.geometry && this.geometry.isGeometry ) {
+        if ( this.geometry && this.geometry.isGeometry ) {
 
-			for ( i = 0; i < this.geometry.skinWeights.length; i ++ ) {
+            for ( i = 0; i < this.geometry.skinWeights.length; i++ ) {
 
-				var sw = this.geometry.skinWeights[ i ];
+                var sw = this.geometry.skinWeights[ i ];
 
-				scale = 1.0 / sw.manhattanLength();
+                scale = 1.0 / sw.manhattanLength();
 
-				if ( scale !== Infinity ) {
+                if ( scale !== Infinity ) {
 
-					sw.multiplyScalar( scale );
+                    sw.multiplyScalar( scale );
 
-				} else {
+                } else {
 
-					sw.set( 1, 0, 0, 0 ); // do something reasonable
+                    sw.set( 1, 0, 0, 0 ); // do something reasonable
 
-				}
+                }
 
-			}
+            }
 
-		} else if ( this.geometry && this.geometry.isBufferGeometry ) {
+        } else if ( this.geometry && this.geometry.isBufferGeometry ) {
 
-			var vec = new Vector4();
+            var vec = new Vector4();
 
-			var skinWeight = this.geometry.attributes.skinWeight;
+            var skinWeight = this.geometry.attributes.skinWeight;
 
-			for ( i = 0; i < skinWeight.count; i ++ ) {
+            for ( i = 0; i < skinWeight.count; i++ ) {
 
-				vec.x = skinWeight.getX( i );
-				vec.y = skinWeight.getY( i );
-				vec.z = skinWeight.getZ( i );
-				vec.w = skinWeight.getW( i );
+                vec.x = skinWeight.getX( i );
+                vec.y = skinWeight.getY( i );
+                vec.z = skinWeight.getZ( i );
+                vec.w = skinWeight.getW( i );
 
-				scale = 1.0 / vec.manhattanLength();
+                scale = 1.0 / vec.manhattanLength();
 
-				if ( scale !== Infinity ) {
+                if ( scale !== Infinity ) {
 
-					vec.multiplyScalar( scale );
+                    vec.multiplyScalar( scale );
 
-				} else {
+                } else {
 
-					vec.set( 1, 0, 0, 0 ); // do something reasonable
+                    vec.set( 1, 0, 0, 0 ); // do something reasonable
 
-				}
+                }
 
-				skinWeight.setXYZW( i, vec.x, vec.y, vec.z, vec.w );
+                skinWeight.setXYZW( i, vec.x, vec.y, vec.z, vec.w );
 
-			}
+            }
 
-		}
+        }
 
-	},
+    },
 
-	updateMatrixWorld: function ( force ) {
+    updateMatrixWorld: function ( force ) {
 
-		Mesh.prototype.updateMatrixWorld.call( this, force );
+        Mesh.prototype.updateMatrixWorld.call( this, force );
 
-		if ( this.bindMode === 'attached' ) {
+        if ( this.bindMode === 'attached' ) {
 
-			this.bindMatrixInverse.getInverse( this.matrixWorld );
+            this.bindMatrixInverse.getInverse( this.matrixWorld );
 
-		} else if ( this.bindMode === 'detached' ) {
+        } else if ( this.bindMode === 'detached' ) {
 
-			this.bindMatrixInverse.getInverse( this.bindMatrix );
+            this.bindMatrixInverse.getInverse( this.bindMatrix );
 
-		} else {
+        } else {
 
-			console.warn( 'THREE.SkinnedMesh: Unrecognized bindMode: ' + this.bindMode );
+            console.warn( 'THREE.SkinnedMesh: Unrecognized bindMode: ' + this.bindMode );
 
-		}
+        }
 
-	},
+    },
 
-	clone: function () {
+    clone: function () {
 
-		return new this.constructor( this.geometry, this.material ).copy( this );
+        return new this.constructor( this.geometry, this.material ).copy( this );
 
-	}
+    }
 
 } );
-
 
 export { SkinnedMesh };
