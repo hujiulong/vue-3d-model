@@ -6,8 +6,12 @@ export default {
     name: 'model-json',
     mixins: [ mixin ],
     data() {
+
+        const loader = new JSONLoader();
+        loader.setCrossOrigin( this.crossOrigin );
+
         return {
-            loader: new JSONLoader()
+            loader
         }
     }
 }

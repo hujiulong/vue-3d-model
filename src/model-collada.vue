@@ -36,6 +36,7 @@ export default {
     data() {
 
         const loader = new ColladaLoader();
+        loader.setCrossOrigin( this.crossOrigin );
 
         return {
             loader

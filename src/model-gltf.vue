@@ -25,8 +25,12 @@ export default {
         }
     },
     data() {
+
+        const loader = new GLTFLoader();
+        loader.setCrossOrigin( this.crossOrigin );
+
         return {
-            loader: new GLTFLoader()
+            loader
         }
     },
     methods: {

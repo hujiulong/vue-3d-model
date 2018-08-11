@@ -96,6 +96,9 @@ export default {
         controllable: {
             type: Boolean,
             default: true
+        },
+        crossOrigin: {
+            default: 'anonymous'
         }
     },
     data() {

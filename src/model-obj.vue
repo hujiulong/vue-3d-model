@@ -43,9 +43,15 @@ export default {
         }
     },
     data() {
+
+        const objLoader = new OBJLoader();
+        const mtlLoader = new MTLLoader();
+
+        mtlLoader.setCrossOrigin( this.crossOrigin );
+
         return {
-            loader: new OBJLoader(),
-            mtlLoader: new MTLLoader()
+            loader: objLoader,
+            mtlLoader
         }
     },
     watch: {
