@@ -99,6 +99,10 @@ export default {
         },
         crossOrigin: {
             default: 'anonymous'
+        },
+        gammaOutput: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -146,6 +150,7 @@ export default {
 
         this.renderer = new WebGLRenderer( { antialias: true, alpha: true, canvas: this.$refs.canvas } )
         this.renderer.shadowMap.enabled = true;
+        this.renderer.gammaOutput = this.gammaOutput;
 
         this.scene.add( this.wrapper )
 
