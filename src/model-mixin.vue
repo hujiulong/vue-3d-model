@@ -41,6 +41,10 @@ const suportWebGL = ( () => {
 
 export default {
     props: {
+        debug: {
+            type: Boolean,
+            default: false
+        },
         src: {
             type: String
         },
@@ -103,7 +107,18 @@ export default {
         gammaOutput: {
             type: Boolean,
             default: false
-        }
+        },cameraStartPosition: {
+            type: Object,
+            default() {
+                return {x: 0, y: 0, z: 0};
+            }
+        },
+        cameraStartRotation: {
+            type: Object,
+            default() {
+                return {x: 0, y: 0, z: 0};
+            }
+        },
     },
     data() {
         return {
@@ -336,7 +351,7 @@ export default {
 
                 const distance = getSize( object ).length();
 
-                camera.position.set( 0, 0, 0 );
+                camera.position.set( this.cameraStartPosition.x, this.cameraStartPosition.y, this.cameraStartPosition.z );
                 camera.position.z = distance;
                 camera.lookAt( new Vector3() );
 
@@ -502,6 +517,12 @@ export default {
         render() {
 
             this.renderer.render( this.scene, this.camera )
+
+            if (this.debug) {
+                window.$renderer = this.renderer;
+                window.$camera = this.camera;
+                window.$scene = this.scene;
+            }
 
         }
     }
