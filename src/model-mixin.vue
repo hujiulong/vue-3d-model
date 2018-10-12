@@ -107,16 +107,17 @@ export default {
         gammaOutput: {
             type: Boolean,
             default: false
-        },cameraStartPosition: {
+        },
+        cameraStartPosition: {
             type: Object,
             default() {
-                return {x: 0, y: 0, z: 0};
+                return { x: 0, y: 0, z: 0 };
             }
         },
         cameraStartRotation: {
             type: Object,
             default() {
-                return {x: 0, y: 0, z: 0};
+                return { x: 0, y: 0, z: 0 };
             }
         },
     },
@@ -518,7 +519,7 @@ export default {
 
             this.renderer.render( this.scene, this.camera )
 
-            if (this.debug) {
+            if ( this.debug ) {
                 window.$renderer = this.renderer;
                 window.$camera = this.camera;
                 window.$scene = this.scene;
