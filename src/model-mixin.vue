@@ -41,10 +41,6 @@ const suportWebGL = ( () => {
 
 export default {
     props: {
-        debug: {
-            type: Boolean,
-            default: false
-        },
         src: {
             type: String
         },
@@ -517,12 +513,6 @@ export default {
         render() {
 
             this.renderer.render( this.scene, this.camera )
-
-            if ( this.debug ) {
-                window.$renderer = this.renderer;
-                window.$camera = this.camera;
-                window.$scene = this.scene;
-            }
 
         }
     }
