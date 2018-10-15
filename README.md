@@ -68,11 +68,7 @@ Or
 | backgroundAlpha | number        | 1                    | 0.5                                        |  
 | controllable    | boolean       | true                 | true/false                                 |  
 | crossOrigin     | string        | anonymous            | anonymous/use-credentials                  |  
-| gammaOutput     | boolean       | false                | true/false                                 |  
-| cameraStartPosition| object     | { x: 0, y: 0, z: 0 } | { x: 1, y: 1.5, z: 1 }                                 | 
-| cameraStartRotation| object     | { x: 0, y: 0, z: 0 } | { x: 1, y: 2.5, z: 2 }                                 |  
-
-`debug: true` allows you to get current positions out of the console by using $renderer, $camera or $scene inside your developer console.
+| gammaOutput     | boolean       | false                | true/false                                 |
  
 ### events  
   
