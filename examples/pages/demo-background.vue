@@ -120,8 +120,8 @@ const htmlCode = `
             <button @click="bgAlpha = 0">0</button>
         </div>
         <model-obj
-            :backgroundAlpha="bgAlpha"
-            :backgroundColor="bgColor"
+            :background-alpha="bgAlpha"
+            :background-color="bgColor"
             src="static/models/obj/tree.obj"></model-obj>
     </div>
     #scripts#
