@@ -79,10 +79,16 @@ export default {
             }
         },
         cameraPosition: {
-            type: Object
+            type: Object,
+            default() {
+                return { x: 0, y: 0, z: 0 }
+            }
         },
         cameraRotation: {
-            type: Object
+            type: Object,
+            default() {
+                return { x: 0, y: 0, z: 0 }
+            }
         },
         cameraUp: {
             type: Object
@@ -107,19 +113,7 @@ export default {
         gammaOutput: {
             type: Boolean,
             default: false
-        },
-        cameraStartPosition: {
-            type: Object,
-            default() {
-                return { x: 0, y: 0, z: 0 };
-            }
-        },
-        cameraStartRotation: {
-            type: Object,
-            default() {
-                return { x: 0, y: 0, z: 0 };
-            }
-        },
+        }
     },
     data() {
         return {
@@ -346,14 +340,19 @@ export default {
             camera.aspect = this.size.width / this.size.height;
             camera.updateProjectionMatrix();
 
-            if ( !this.cameraLookAt && !this.cameraPosition && !this.cameraRotation && !this.cameraUp ) {
+            if ( !this.cameraLookAt && !this.cameraUp ) {
 
                 if ( !object ) return;
 
                 const distance = getSize( object ).length();
 
-                camera.position.set( this.cameraStartPosition.x, this.cameraStartPosition.y, this.cameraStartPosition.z );
-                camera.position.z = distance;
+                camera.position.set( this.cameraPosition.x, this.cameraPosition.y, this.cameraPosition.z );
+                camera.rotation.set( this.cameraRotation.x, this.cameraRotation.y, this.cameraRotation.z )
+
+                if ( this.cameraPosition.x === 0 && this.cameraPosition.y === 0 && this.cameraPosition.z === 0 ) {
+                    camera.position.z = distance;
+                }
+
                 camera.lookAt( new Vector3() );
 
             } else {
