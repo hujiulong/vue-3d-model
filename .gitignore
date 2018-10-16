@@ -7,3 +7,7 @@ docs/
 dist/
 dist/static/
 test/unit/coverage
+
+\.idea/
+
+package-lock\.json
