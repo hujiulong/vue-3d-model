@@ -56,7 +56,6 @@ Or
 ### props  
 | prop            | type          | default              |  example                                   |  
 | --------------- |---------------|----------------------|--------------------------------------------|    
-| debug			  | boolean       | false                | true/false                            |
 | src             | string        | -                    | './exapmle.obj'                            |
 | width           | number        | -                    | 300                                        |  
 | height          | number        | -                    | 300                                        |  
