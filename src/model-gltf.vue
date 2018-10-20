@@ -22,6 +22,10 @@ export default {
                     }
                 ]
             }
+        },
+        gammaOutput: {
+            type: Boolean,
+            default: true
         }
     },
     data() {
