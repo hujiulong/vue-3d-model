@@ -377,18 +377,18 @@ export default {
                 let light = null;
 
                 if ( type === 'ambient' || type === 'ambientlight' ) {
-
-                    const color = item.color || 0x404040;
-                    const intensity = item.intensity || 1;
+                    
+                    const color = item.color === 0x000000 ? item.color : item.color || 0x404040;
+                    const intensity = item.intensity === 0 ? item.intensity : item.intensity || 1;
 
                     light = new AmbientLight( color, intensity );
 
                 } else if ( type === 'point' || type === 'pointlight' ) {
 
-                    const color = item.color || 0xffffff;
-                    const intensity = item.intensity || 1;
+                    const color = item.color === 0x000000 ? item.color : item.color || 0xffffff;
+                    const intensity = item.intensity === 0 ? item.intensity : item.intensity || 1;
                     const distance = item.distance || 0;
-                    const decay = item.decay || 1;
+                    const decay = item.decay === 0 ? item.decay : item.decay || 1;
 
                     light = new PointLight( color, intensity, distance, decay );
 
@@ -398,8 +398,8 @@ export default {
 
                 } else if ( type === 'directional' || type === 'directionallight' ) {
 
-                    const color = item.color || 0xffffff;
-                    const intensity = item.intensity || 1;
+                    const color = item.color === 0x000000 ? item.color : item.color || 0xffffff;
+                    const intensity = item.intensity === 0 ? item.intensity : item.intensity || 1;
 
                     light = new DirectionalLight( color, intensity );
 
@@ -413,9 +413,9 @@ export default {
 
                 } else if ( type === 'hemisphere' || type === 'hemispherelight' ) {
 
-                    const skyColor = item.skyColor || 0xffffff;
-                    const groundColor = item.groundColor || 0xffffff;
-                    const intensity = item.intensity || 1;
+                    const skyColor = item.skyColor === 0x000000 ? item.skyColor : item.skyColor || 0xffffff;
+                    const groundColor = item.groundColor === 0x000000 ? item.groundColor : item.groundColor || 0xffffff;
+                    const intensity = item.intensity === 0 ? item.intensity : item.intensity || 1;
 
                     light = new HemisphereLight( skyColor, groundColor, intensity );
 
