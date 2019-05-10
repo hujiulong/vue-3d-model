@@ -12,12 +12,12 @@ export default {
                 return [
                     {
                         type: 'AmbientLight',
-                        color: 0xaaaaaa
+                        color: '0xaaaaaa'
                     },
                     {
                         type: 'DirectionalLight',
                         position: { x: 1, y: 1, z: 1 },
-                        color: 0xffffff,
+                        color: '0xffffff',
                         intensity: 0.8
                     }
                 ]

@@ -378,19 +378,19 @@ export default {
 
                 if ( type === 'ambient' || type === 'ambientlight' ) {
 
-                    const color = item.color || 0x404040;
+                    const color = item.color || '0x404040';
                     const intensity = item.intensity || 1;
 
-                    light = new AmbientLight( color, intensity );
+                    light = new AmbientLight( Number(color), intensity );
 
                 } else if ( type === 'point' || type === 'pointlight' ) {
 
-                    const color = item.color || 0xffffff;
+                    const color = item.color || '0xffffff';
                     const intensity = item.intensity || 1;
                     const distance = item.distance || 0;
                     const decay = item.decay || 1;
 
-                    light = new PointLight( color, intensity, distance, decay );
+                    light = new PointLight( Number(color), intensity, distance, decay );
 
                     if ( item.position ) {
                         light.position.copy( item.position );
@@ -398,10 +398,10 @@ export default {
 
                 } else if ( type === 'directional' || type === 'directionallight' ) {
 
-                    const color = item.color || 0xffffff;
+                    const color = item.color || '0xffffff';
                     const intensity = item.intensity || 1;
 
-                    light = new DirectionalLight( color, intensity );
+                    light = new DirectionalLight( Number(color), intensity );
 
                     if ( item.position ) {
                         light.position.copy( item.position );
@@ -413,11 +413,11 @@ export default {
 
                 } else if ( type === 'hemisphere' || type === 'hemispherelight' ) {
 
-                    const skyColor = item.skyColor || 0xffffff;
-                    const groundColor = item.groundColor || 0xffffff;
+                    const skyColor = item.skyColor || '0xffffff';
+                    const groundColor = item.groundColor || '0xffffff';
                     const intensity = item.intensity || 1;
 
-                    light = new HemisphereLight( skyColor, groundColor, intensity );
+                    light = new HemisphereLight( Number(skyColor), Number(groundColor), intensity );
 
                     if ( item.position ) {
                         light.position.copy( item.position );
