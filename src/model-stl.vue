@@ -1,5 +1,5 @@
 <script>
-import { STLLoader } from './loaders/STLLoader'
+import { STLLoader } from 'three/examples/jsm/loaders/STLLoader.js'
 import mixin from './model-mixin.vue'
 import {
     Mesh,

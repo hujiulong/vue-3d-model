@@ -1,6 +1,6 @@
 <script>
-import { OBJLoader } from './loaders/OBJLoader'
-import { MTLLoader } from './loaders/MTLLoader'
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
+import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js'
 import { toIndexed } from './util'
 import mixin from './model-mixin.vue'
 

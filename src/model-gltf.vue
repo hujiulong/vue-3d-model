@@ -1,5 +1,5 @@
 <script>
-import { GLTFLoader } from './loaders/GLTFLoader'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import mixin from './model-mixin.vue'
 
 export default {

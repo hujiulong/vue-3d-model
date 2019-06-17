@@ -1,5 +1,5 @@
 <script>
-import { ColladaLoader } from './loaders/ColladaLoader'
+import { ColladaLoader } from 'three/examples/jsm/loaders/ColladaLoader.js'
 import { toIndexed, getCenter } from './util'
 import mixin from './model-mixin.vue'
 import { Object3D } from 'three'
