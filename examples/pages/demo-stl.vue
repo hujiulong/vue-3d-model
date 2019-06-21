@@ -1,17 +1,15 @@
 <template>
-    <demo-block :vue-code="code" :html-code="htmlCode">
-        <template slot="preview">
-            <model-stl :backgroundAlpha="0"
-                @on-load="onLoad"
-                src="static/models/stl/gear.stl"></model-stl>
-            <div class="example-loading" v-show="loading"></div>
-        </template>
-    </demo-block>
+  <demo-block :vue-code="code" :html-code="htmlCode">
+    <template slot="preview">
+      <model-stl :backgroundAlpha="0" @on-load="onLoad" src="static/models/stl/gear.stl"></model-stl>
+      <div class="example-loading" v-show="loading"></div>
+    </template>
+  </demo-block>
 </template>
 
 <script>
-import DemoBlock from '../components/demo-block';
-import ModelStl from '../../src/model-stl.vue'
+import DemoBlock from '../components/demo-block.vue';
+import ModelStl from '../../src/model-stl.vue';
 
 const code = `
 <template>
@@ -27,7 +25,7 @@ const code = `
         }
     }
 <\/script>
-`
+`;
 
 const htmlCode = `
 <body>
@@ -41,25 +39,25 @@ const htmlCode = `
         })
     <\/script>
 </body>
-`
+`;
 
 export default {
-    name: 'demo-stl',
-    data() {
-        return {
-            code,
-            htmlCode,
-            loading: true
-        }
+  name: 'demo-stl',
+  data() {
+    return {
+      code,
+      htmlCode,
+      loading: true,
+    };
+  },
+  methods: {
+    onLoad() {
+      this.loading = false;
     },
-    methods: {
-        onLoad() {
-            this.loading = false;
-        }
-    },
-    components: {
-        ModelStl,
-        DemoBlock
-    }
-}
+  },
+  components: {
+    ModelStl,
+    DemoBlock,
+  },
+};
 </script>

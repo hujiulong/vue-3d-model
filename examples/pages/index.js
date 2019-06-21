@@ -1,28 +1,28 @@
-import DemoBasic from './demo-basic'
-import DemoEvent from './demo-event'
-import DemoBackground from './demo-background'
-import DemoRotate from './demo-rotate'
-import DemoObj from './demo-obj'
-import DemoObjMtl from './demo-obj-mtl'
-import DemoGltf from './demo-gltf'
-import DemoStl from './demo-stl'
-import DemoCollada from './demo-collada'
+import DemoBasic from './demo-basic.vue';
+import DemoEvent from './demo-event.vue';
+import DemoBackground from './demo-background.vue';
+import DemoRotate from './demo-rotate.vue';
+import DemoObj from './demo-obj.vue';
+import DemoObjMtl from './demo-obj-mtl.vue';
+import DemoGltf from './demo-gltf.vue';
+import DemoStl from './demo-stl.vue';
+import DemoCollada from './demo-collada.vue';
 // import DemoSea3d from './demo-sea3d'
-import DemoJson from './demo-json'
-import DemoPly from './demo-ply'
+import DemoJson from './demo-json.vue';
+import DemoPly from './demo-ply.vue';
 
 const pages = [
-    DemoBasic,
-    DemoEvent,
-    DemoBackground,
-    DemoRotate,
-    DemoObj,
-    DemoObjMtl,
-    DemoStl,
-    DemoCollada,
-    DemoJson,
-    DemoPly,
-    DemoGltf
-]
+  DemoBasic,
+  DemoEvent,
+  DemoBackground,
+  DemoRotate,
+  DemoObj,
+  DemoObjMtl,
+  DemoStl,
+  DemoCollada,
+  DemoJson,
+  DemoPly,
+  DemoGltf,
+];
 
-export { pages };
+export default pages;

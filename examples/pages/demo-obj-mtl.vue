@@ -1,18 +1,20 @@
 <template>
-    <demo-block :vue-code="code" :html-code="htmlCode">
-        <template slot="preview">
-            <model-obj :backgroundAlpha="0"
-                @on-load="onLoad"
-                src="static/models/obj/male02/male02.obj"
-                mtl="static/models/obj/male02/male02.mtl"></model-obj>
-            <div class="example-loading" v-show="loading"></div>
-        </template>
-    </demo-block>
+  <demo-block :vue-code="code" :html-code="htmlCode">
+    <template slot="preview">
+      <model-obj
+        :backgroundAlpha="0"
+        @on-load="onLoad"
+        src="static/models/obj/male02/male02.obj"
+        mtl="static/models/obj/male02/male02.mtl"
+      ></model-obj>
+      <div class="example-loading" v-show="loading"></div>
+    </template>
+  </demo-block>
 </template>
 
 <script>
-import DemoBlock from '../components/demo-block';
-import ModelObj from '../../src/model-obj.vue'
+import DemoBlock from '../components/demo-block.vue';
+import ModelObj from '../../src/model-obj.vue';
 
 const code = `
 <template>
@@ -30,7 +32,7 @@ const code = `
         }
     }
 <\/script>
-`
+`;
 
 const htmlCode = `
 <body>
@@ -46,25 +48,25 @@ const htmlCode = `
         })
     <\/script>
 </body>
-`
+`;
 
 export default {
-    name: 'demo-obj-mtl',
-    data() {
-        return {
-            code,
-            htmlCode,
-            loading: true
-        }
+  name: 'demo-obj-mtl',
+  data() {
+    return {
+      code,
+      htmlCode,
+      loading: true,
+    };
+  },
+  methods: {
+    onLoad() {
+      this.loading = false;
     },
-    methods: {
-        onLoad() {
-            this.loading = false;
-        }
-    },
-    components: {
-        ModelObj,
-        DemoBlock
-    }
-}
+  },
+  components: {
+    ModelObj,
+    DemoBlock,
+  },
+};
 </script>

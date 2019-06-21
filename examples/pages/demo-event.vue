@@ -1,19 +1,21 @@
 <template>
-    <demo-block :vue-code="code" :html-code="htmlCode">
-        <template slot="preview">
-            <model-obj :backgroundAlpha="0"
-                ref="model"
-                @on-load="onLoad"
-                @on-mousemove="onMouseMove"
-                src="static/models/obj/tree.obj"></model-obj>
-            <div class="example-loading" v-show="loading"></div>
-        </template>
-    </demo-block>
+  <demo-block :vue-code="code" :html-code="htmlCode">
+    <template slot="preview">
+      <model-obj
+        :backgroundAlpha="0"
+        ref="model"
+        @on-load="onLoad"
+        @on-mousemove="onMouseMove"
+        src="static/models/obj/tree.obj"
+      ></model-obj>
+      <div class="example-loading" v-show="loading"></div>
+    </template>
+  </demo-block>
 </template>
 
 <script>
-import DemoBlock from '../components/demo-block';
-import ModelObj from '../../src/model-obj.vue'
+import DemoBlock from '../components/demo-block.vue';
+import ModelObj from '../../src/model-obj.vue';
 
 const code = `
 
@@ -58,7 +60,7 @@ const code = `
     }
 <\/script>
 
-`
+`;
 
 const htmlCode = `
 <body>
@@ -97,43 +99,41 @@ const htmlCode = `
         })
     <\/script>
 </body>
-`
+`;
 
 export default {
-    name: 'demo-event',
-    data() {
-        return {
-            code,
-            htmlCode,
-            loading: true,
-            intersected: null
-        }
+  name: 'demo-event',
+  data() {
+    return {
+      code,
+      htmlCode,
+      loading: true,
+      intersected: null,
+    };
+  },
+  methods: {
+    onLoad() {
+      this.loading = false;
     },
-    methods: {
-        onLoad() {
-            this.loading = false;
-        },
-        onMouseMove( event ) {
+    onMouseMove(event) {
+      console.log(event);
 
-            console.log( event );
-
-            if ( !event ) {
-
-                if ( this.intersected ) {
-                    this.intersected.material.color.setStyle( '#fff' );
-                }
-
-                this.intersected = null;
-                return;
-            }
-
-            this.intersected = event.object;
-            this.intersected.material.color.setStyle( '#13ce66' );
+      if (!event) {
+        if (this.intersected) {
+          this.intersected.material.color.setStyle('#fff');
         }
+
+        this.intersected = null;
+        return;
+      }
+
+      this.intersected = event.object;
+      this.intersected.material.color.setStyle('#13ce66');
     },
-    components: {
-        ModelObj,
-        DemoBlock
-    }
-}
+  },
+  components: {
+    ModelObj,
+    DemoBlock,
+  },
+};
 </script>

@@ -1,17 +1,19 @@
 <template>
-    <demo-block :vue-code="code" :html-code="htmlCode">
-        <template slot="preview">
-            <model-gltf :backgroundAlpha="0"
-                @on-load="onLoad"
-                src="static/models/gltf/Duck/glTF/Duck.gltf"></model-gltf>
-            <div class="example-loading" v-show="loading"></div>
-        </template>
-    </demo-block>
+  <demo-block :vue-code="code" :html-code="htmlCode">
+    <template slot="preview">
+      <model-gltf
+        :backgroundAlpha="0"
+        @on-load="onLoad"
+        src="static/models/gltf/Duck/glTF/Duck.gltf"
+      ></model-gltf>
+      <div class="example-loading" v-show="loading"></div>
+    </template>
+  </demo-block>
 </template>
 
 <script>
-import DemoBlock from '../components/demo-block';
-import ModelGltf from '../../src/model-gltf.vue'
+import DemoBlock from '../components/demo-block.vue';
+import ModelGltf from '../../src/model-gltf.vue';
 
 const code = `
 
@@ -29,7 +31,7 @@ const code = `
     }
 <\/script>
 
-`
+`;
 
 const htmlCode = `
 <body>
@@ -46,25 +48,25 @@ const htmlCode = `
         })
     <\/script>
 </body>
-`
+`;
 
 export default {
-    name: 'demo-gltf',
-    data() {
-        return {
-            code,
-            htmlCode,
-            loading: true
-        }
+  name: 'demo-gltf',
+  data() {
+    return {
+      code,
+      htmlCode,
+      loading: true,
+    };
+  },
+  methods: {
+    onLoad() {
+      this.loading = false;
     },
-    methods: {
-        onLoad() {
-            this.loading = false;
-        }
-    },
-    components: {
-        ModelGltf,
-        DemoBlock
-    }
-}
+  },
+  components: {
+    ModelGltf,
+    DemoBlock,
+  },
+};
 </script>

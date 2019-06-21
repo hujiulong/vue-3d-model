@@ -1,18 +1,17 @@
 <script>
-import { ObjectLoader } from 'three'
-import mixin from './model-mixin.vue'
+import { ObjectLoader } from 'three';
+import mixin from './model-mixin.vue';
 
 export default {
-    name: 'model-three',
-    mixins: [ mixin ],
-    data() {
+  name: 'model-three',
+  mixins: [mixin],
+  data() {
+    const loader = new ObjectLoader();
+    loader.setCrossOrigin(this.crossOrigin);
 
-        const loader = new ObjectLoader();
-        loader.setCrossOrigin( this.crossOrigin );
-
-        return {
-            loader
-        }
-    }
-}
+    return {
+      loader,
+    };
+  },
+};
 </script>

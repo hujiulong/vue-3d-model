@@ -22,7 +22,7 @@
                 </li>
                 <li class="examples-menu-title">Model Formats</li>
                 <li class="examples-menu-item">
-                    <router-link to="demo-basic">JSON Model (.json)</router-link>
+                    <router-link to="demo-json">JSON Model (.json)</router-link>
                 </li>
                 <li class="examples-menu-item">
                     <router-link to="demo-obj">OBJ Model (.obj)</router-link>
@@ -53,8 +53,8 @@
 <script>
 
 export default {
-    name: 'app'
-}
+  name: 'app',
+};
 </script>
 <style>
 * {
