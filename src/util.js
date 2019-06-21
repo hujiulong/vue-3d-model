@@ -3,17 +3,15 @@ import { Box3, Vector3, Vector2, BufferAttribute } from 'three';
 const box = new Box3();
 
 function getSize( object ) {
-
     box.setFromObject( object );
 
-    return box.getSize();
+    return box.getSize(new Vector3());
 }
 
 function getCenter( object ) {
-
     box.setFromObject( object );
 
-    return box.getCenter();
+    return box.getCenter(new Vector3());
 }
 
 function lightsDiff( lights, oldLights ) {

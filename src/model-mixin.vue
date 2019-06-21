@@ -26,7 +26,7 @@ import {
     DirectionalLight
 } from 'three'
 import { getSize, getCenter } from './util'
-import { OrbitControls } from './controls/OrbitControls'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 const suportWebGL = ( () => {
 
@@ -343,7 +343,7 @@ export default {
                 const distance = getSize( object ).length();
 
                 camera.position.set( this.cameraPosition.x, this.cameraPosition.y, this.cameraPosition.z );
-                camera.rotation.set( this.cameraRotation.x, this.cameraRotation.y, this.cameraRotation.z )
+                camera.rotation.set( this.cameraRotation.x, this.cameraRotation.y, this.cameraRotation.z );
 
                 if ( this.cameraPosition.x === 0 && this.cameraPosition.y === 0 && this.cameraPosition.z === 0 ) {
                     camera.position.z = distance;

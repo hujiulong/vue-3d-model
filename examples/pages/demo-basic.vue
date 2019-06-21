@@ -3,7 +3,7 @@
         <template slot="preview">
             <model-three :backgroundAlpha="0"
                 @on-load="onLoad"
-                src="static/models/json/scene.json"></model-three>
+                src="static/models/json/lightmap.json"></model-three>
             <div class="example-loading" v-show="loading"></div>
         </template>
     </demo-block>
@@ -15,7 +15,7 @@ import ModelThree from '../../src/model-three.vue'
 
 const code = `
 <template>
-    <model-three src="static/models/json/scene.json"></model-three>
+    <model-three src="static/models/json/lightmap.json"></model-three>
 </template>
 
 <script>

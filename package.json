@@ -23,7 +23,7 @@
     "vue": ">=2.0.0"
   },
   "dependencies": {
-    "three": "^0.88.0"
+    "three": "^0.105.2"
   },
   "devDependencies": {
     "@hujiulong/eslint-config": "^0.0.5",

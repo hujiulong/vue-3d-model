@@ -1,5 +1,5 @@
 <script>
-import { PLYLoader } from './loaders/PLYLoader'
+import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js'
 import mixin from './model-mixin.vue'
 import {
     Mesh,
