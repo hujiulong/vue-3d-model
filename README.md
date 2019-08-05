@@ -80,6 +80,7 @@ Or
 | controllable    | boolean       | true                 | true/false                                 |
 | crossOrigin     | string        | anonymous            | anonymous/use-credentials                  |
 | gammaOutput     | boolean       | false                | true/false                                 |
+| glOptions       | object        | { antialias: true, alpha: true }  | see [WebGLRenderer Parameters](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer) |
 
 ### events
 
