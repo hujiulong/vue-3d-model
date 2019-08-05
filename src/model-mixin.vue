@@ -1,12 +1,12 @@
 <template>
-    <div style="width: 100%; height: 100%; margin: 0; border: 0; padding: 0;">
-        <canvas v-if="suportWebGL" ref="canvas" style="width: 100%; height: 100%;"></canvas>
-        <div v-else>
-            <slot>
-                Your browser does not seem to support <a href="http://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation" style="color:#000">WebGL</a>.<br/>'
-            </slot>
-        </div>
+  <div style="width: 100%; height: 100%; margin: 0; border: 0; padding: 0;">
+    <canvas v-if="suportWebGL" ref="canvas" style="width: 100%; height: 100%;"></canvas>
+    <div v-else>
+      <slot>
+        Your browser does not seem to support <a href="http://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation" style="color:#000">WebGL</a>.<br/>'
+      </slot>
     </div>
+  </div>
 </template>
 
 <script>
@@ -36,6 +36,11 @@ const suportWebGL = (() => {
     return false;
   }
 })();
+
+const DEFAULT_GL_OPTIONS = {
+  antialias: true,
+  alpha: true,
+};
 
 export default {
   props: {
@@ -108,6 +113,9 @@ export default {
       type: Boolean,
       default: false,
     },
+    glOptions: {
+      type: Object,
+    },
   },
   data() {
     return {
@@ -151,7 +159,11 @@ export default {
       };
     }
 
-    this.renderer = new WebGLRenderer({ antialias: true, alpha: true, canvas: this.$refs.canvas });
+    const options = Object.assign({}, DEFAULT_GL_OPTIONS, this.glOptions, {
+      canvas: this.$refs.canvas,
+    });
+
+    this.renderer = new WebGLRenderer(options);
     this.renderer.shadowMap.enabled = true;
     this.renderer.gammaOutput = this.gammaOutput;
 
