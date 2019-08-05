@@ -14,7 +14,7 @@
     "preview.gif",
     "README.md"
   ],
-  "version": "1.1.0-aplha.0",
+  "version": "1.1.1",
   "author": "Jiulong Hu <me@hujiulong.com>",
   "main": "dist/vue-3d-model.umd.js",
   "scripts": {
