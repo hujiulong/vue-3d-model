@@ -184,6 +184,13 @@ export default {
   beforeDestroy() {
     cancelAnimationFrame(this.reqId);
 
+    this.scene.dispose();
+    this.renderer.dispose();
+
+    if (this.controls) {
+      this.controls.dispose();
+    }
+
     this.$el.removeEventListener('mousedown', this.onMouseDown, false);
     this.$el.removeEventListener('mousemove', this.onMouseMove, false);
     this.$el.removeEventListener('mouseup', this.onMouseUp, false);
