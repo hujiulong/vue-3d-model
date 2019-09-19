@@ -1,5 +1,6 @@
 import DemoBasic from './demo-basic.vue';
 import DemoEvent from './demo-event.vue';
+import DemoSnapshot from './demo-snapshot.vue';
 import DemoBackground from './demo-background.vue';
 import DemoRotate from './demo-rotate.vue';
 import DemoObj from './demo-obj.vue';
@@ -14,6 +15,7 @@ import DemoPly from './demo-ply.vue';
 const pages = [
   DemoBasic,
   DemoEvent,
+  DemoSnapshot,
   DemoBackground,
   DemoRotate,
   DemoObj,
