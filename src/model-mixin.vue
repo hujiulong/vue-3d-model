@@ -106,6 +106,9 @@ export default {
       type: Boolean,
       default: true,
     },
+    controlsOptions: {
+      type: Object,
+    },
     crossOrigin: {
       default: 'anonymous',
     },
@@ -418,6 +421,13 @@ export default {
 
         this.controls = new OrbitControls(this.camera, this.$el);
         this.controls.type = 'orbit';
+        if (typeof this.controlsOptions === 'object'){
+          for (const key in this.controlsOptions) {
+            if (this.controlsOptions.hasOwnProperty(key)) {
+              this.controls[key] = this.controlsOptions[key];
+            }
+          }
+        }
       } else if (this.controls) {
         this.controls.dispose();
         this.controls = null;
