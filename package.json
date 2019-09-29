@@ -19,7 +19,7 @@
   "main": "dist/vue-3d-model.umd.js",
   "scripts": {
     "dev": "vue-cli-service serve examples/index.js",
-    "build-examples": "vue-cli-service build examples/index.js --dest docs",
+    "build-examples": "vue-cli-service build examples/index.js --dest examples-dist",
     "build": "vue-cli-service build --target lib --name vue-3d-model src/index.js",
     "lint": "vue-cli-service lint src/ tests/ examples/ --fix",
     "test": "vue-cli-service test:unit"
