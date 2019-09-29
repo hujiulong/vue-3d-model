@@ -4,19 +4,19 @@ on:
   push:
     branches:
       - master
-    paths:
-      - 'src/*'
-      - 'public/*'
-      - 'examples/*'
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: npm install
-      - run: npm run build-examples
-      - run: 
+      - uses: JamesIves/github-pages-deploy-action@master
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BASE_BRANCH: master
+          BRANCH: gh-pages
+          FOLDER: examples-dist
+          BUILD_SCRIPT: npm install && npm run build-examples
