@@ -421,12 +421,8 @@ export default {
 
         this.controls = new OrbitControls(this.camera, this.$el);
         this.controls.type = 'orbit';
-        if (typeof this.controlsOptions === 'object'){
-          for (const key in this.controlsOptions) {
-            if (this.controlsOptions.hasOwnProperty(key)) {
-              this.controls[key] = this.controlsOptions[key];
-            }
-          }
+        if (this.controlsOptions) {
+          Object.assing(this.controls, this.controlsOptions);
         }
       } else if (this.controls) {
         this.controls.dispose();
