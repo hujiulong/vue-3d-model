@@ -1,0 +1,22 @@
+name: Update Examples
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'src/*'
+      - 'public/*'
+      - 'examples/*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: npm install
+      - run: npm run build-examples
+      - run: 
