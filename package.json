@@ -1,5 +1,6 @@
 {
   "name": "vue-3d-model",
+  "version": "1.2.0",
   "description": "3D models viewer with vue.js",
   "keywords": [
     "vue",
@@ -14,7 +15,6 @@
     "preview.gif",
     "README.md"
   ],
-  "version": "1.1.1",
   "author": "Jiulong Hu <me@hujiulong.com>",
   "main": "dist/vue-3d-model.umd.js",
   "scripts": {
