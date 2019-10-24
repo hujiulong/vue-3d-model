@@ -3,6 +3,7 @@ import DemoEvent from './demo-event.vue';
 import DemoSnapshot from './demo-snapshot.vue';
 import DemoBackground from './demo-background.vue';
 import DemoRotate from './demo-rotate.vue';
+import DemoControls from './demo-controls.vue';
 import DemoObj from './demo-obj.vue';
 import DemoObjMtl from './demo-obj-mtl.vue';
 import DemoGltf from './demo-gltf.vue';
@@ -18,6 +19,7 @@ const pages = [
   DemoSnapshot,
   DemoBackground,
   DemoRotate,
+  DemoControls,
   DemoObj,
   DemoObjMtl,
   DemoStl,

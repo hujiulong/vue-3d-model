@@ -14,6 +14,9 @@
                     <router-link to="demo-rotate">rotate</router-link>
                 </li>
                 <li class="examples-menu-item">
+                    <router-link to="demo-controls">controls</router-link>
+                </li>
+                <li class="examples-menu-item">
                     <router-link to="demo-background">background</router-link>
                 </li>
                 <li class="examples-menu-item">
