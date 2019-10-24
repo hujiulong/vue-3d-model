@@ -102,10 +102,6 @@ export default {
       type: Number,
       default: 1,
     },
-    controllable: {
-      type: Boolean,
-      default: true,
-    },
     controlsOptions: {
       type: Object,
     },
@@ -169,6 +165,9 @@ export default {
     this.renderer = new WebGLRenderer(options);
     this.renderer.shadowMap.enabled = true;
     this.renderer.gammaOutput = this.gammaOutput;
+
+    this.controls = new OrbitControls(this.camera, this.$el);
+    this.controls.type = 'orbit';
 
     this.scene.add(this.wrapper);
 
@@ -239,8 +238,11 @@ export default {
         this.updateRenderer();
       },
     },
-    controllable() {
-      this.updateControls();
+    controlsOptions: {
+      deep: true,
+      handler() {
+        this.updateControls();
+      },
     },
     backgroundAlpha() {
       this.updateRenderer();
@@ -414,19 +416,8 @@ export default {
       });
     },
     updateControls() {
-      if (this.controllable && this.controls) return;
-
-      if (this.controllable) {
-        if (this.controls) return;
-
-        this.controls = new OrbitControls(this.camera, this.$el);
-        this.controls.type = 'orbit';
-        if (this.controlsOptions) {
-          Object.assing(this.controls, this.controlsOptions);
-        }
-      } else if (this.controls) {
-        this.controls.dispose();
-        this.controls = null;
+      if (this.controlsOptions) {
+        Object.assign(this.controls, this.controlsOptions);
       }
     },
     load() {
