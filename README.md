@@ -77,7 +77,6 @@ Or
 | lights          | array         | -                    |                                            |
 | backgroundColor | number/string | 0xffffff             | 0xffffff/'#f00'/'rgb(255,255,255)'         |
 | backgroundAlpha | number        | 1                    | 0.5                                        |
-| controllable    | boolean       | true                 | true/false                                 |
 | controlsOptions | object        | -                    | see [OrbitControls Properties](https://threejs.org/docs/#examples/en/controls/OrbitControls) |
 | crossOrigin     | string        | anonymous            | anonymous/use-credentials                  |
 | gammaOutput     | boolean       | false                | true/false                                 |
