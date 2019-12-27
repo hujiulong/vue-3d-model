@@ -29,7 +29,7 @@
     "vue": ">=2.0.0"
   },
   "dependencies": {
-    "three": "^0.105.2"
+    "three": "^0.112.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.1",
