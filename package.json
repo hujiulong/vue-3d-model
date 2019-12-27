@@ -29,12 +29,12 @@
     "vue": ">=2.0.0"
   },
   "dependencies": {
-    "three": "^0.105.2"
+    "three": "^0.112.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.1",
-    "@vue/cli-plugin-eslint": "^4.1.1",
-    "@vue/cli-plugin-unit-jest": "^3.0.1",
+    "@vue/cli-plugin-babel": "^4.1.1",
+    "@vue/cli-plugin-eslint": "^3.0.1",
+    "@vue/cli-plugin-unit-jest": "^4.1.1",
     "@vue/cli-service": "^3.0.1",
     "@vue/eslint-config-airbnb": "^4.0.0",
     "@vue/test-utils": "1.0.0-beta.29",
@@ -46,7 +46,7 @@
     "eslint-plugin-vue": "^5.0.0",
     "highlight.js": "^9.15.8",
     "less": "^3.0.4",
-    "less-loader": "^4.1.0",
+    "less-loader": "^5.0.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.6",
     "vue-template-compiler": "^2.6.10"
