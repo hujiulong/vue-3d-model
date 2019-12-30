@@ -41,7 +41,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
-    "core-js": "^2.6.9",
+    "core-js": "^3.6.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "highlight.js": "^9.15.8",
