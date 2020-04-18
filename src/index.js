@@ -1,6 +1,7 @@
 import Vue from 'vue';
 
 import ModelObj from './model-obj.vue';
+import ModelFbx from './model-fbx.vue';
 import ModelThree from './model-three.vue';
 import ModelStl from './model-stl.vue';
 import ModelPly from './model-ply.vue';
@@ -18,6 +19,7 @@ const ModelDae = Vue.extend(ModelCollada, {
 
 const components = [
   ModelObj,
+  ModelFbx,
   ModelThree,
   ModelJson,
   ModelStl,
@@ -41,6 +43,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
   install,
   ModelObj,
+  ModelFbx,
   ModelThree,
   ModelJson,
   ModelStl,
@@ -53,6 +56,7 @@ export default {
 export {
   install,
   ModelObj,
+  ModelFbx,
   ModelThree,
   ModelJson,
   ModelStl,

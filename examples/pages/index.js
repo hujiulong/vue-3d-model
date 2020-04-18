@@ -6,6 +6,7 @@ import DemoRotate from './demo-rotate.vue';
 import DemoControls from './demo-controls.vue';
 import DemoObj from './demo-obj.vue';
 import DemoObjMtl from './demo-obj-mtl.vue';
+import DemoFbx from './demo-fbx.vue';
 import DemoGltf from './demo-gltf.vue';
 import DemoStl from './demo-stl.vue';
 import DemoCollada from './demo-collada.vue';
@@ -22,6 +23,7 @@ const pages = [
   DemoControls,
   DemoObj,
   DemoObjMtl,
+  DemoFbx,
   DemoStl,
   DemoCollada,
   DemoJson,
