@@ -51,8 +51,6 @@ export default {
       }, (xhr) => {
         this.$emit('on-progress', xhr);
       }, (err) => {
-        console.log(err);
-
         this.$emit('on-error', err);
       });
     },

@@ -15,6 +15,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'prefer-destructuring': 'off',
     'no-param-reassign': 'off',
+    'linebreak-style': ['off', 'windows']
   },
   parserOptions: {
     parser: 'babel-eslint',

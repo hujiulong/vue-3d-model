@@ -2,12 +2,13 @@
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader';
 import { DDSLoader } from 'three/examples/jsm/loaders/DDSLoader';
-import * as THREE from 'three';
+import { LoadingManager } from 'three/src/loaders/LoadingManager';
 import { toIndexed } from './util';
 import mixin from './model-mixin.vue';
 
 // TODO: Better way to handle texture formats
-THREE.Loader.Handlers.add(/\.dds$/i, new DDSLoader());
+const manager = (new LoadingManager()); // 0.122+ new api
+manager.addHandler(/\.dds$/i, new DDSLoader());
 
 export default {
   name: 'model-obj',
@@ -45,8 +46,8 @@ export default {
     },
   },
   data() {
-    const objLoader = new OBJLoader();
-    const mtlLoader = new MTLLoader();
+    const objLoader = new OBJLoader(manager);
+    const mtlLoader = new MTLLoader(manager);
 
     mtlLoader.setCrossOrigin(this.crossOrigin);
 
