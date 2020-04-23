@@ -24,6 +24,7 @@ import {
   PointLight,
   HemisphereLight,
   DirectionalLight,
+  LinearEncoding,
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { getSize, getCenter } from './util';
@@ -108,9 +109,9 @@ export default {
     crossOrigin: {
       default: 'anonymous',
     },
-    gammaOutput: {
-      type: Boolean,
-      default: false,
+    outputEncoding: {
+      type: Number,
+      default: LinearEncoding,
     },
     glOptions: {
       type: Object,
@@ -164,7 +165,7 @@ export default {
 
     this.renderer = new WebGLRenderer(options);
     this.renderer.shadowMap.enabled = true;
-    this.renderer.gammaOutput = this.gammaOutput;
+    this.renderer.outputEncoding = this.outputEncoding;
 
     this.controls = new OrbitControls(this.camera, this.$el);
     this.controls.type = 'orbit';
