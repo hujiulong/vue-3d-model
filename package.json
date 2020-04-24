@@ -46,7 +46,7 @@
     "eslint-plugin-vue": "^6.1.1",
     "highlight.js": "^10.0.0",
     "less": "^3.0.4",
-    "less-loader": "^5.0.0",
+    "less-loader": "^6.0.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.6",
     "vue-template-compiler": "^2.6.10"
