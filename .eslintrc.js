@@ -14,7 +14,9 @@ module.exports = {
     'max-len': 'off',
     'import/no-extraneous-dependencies': 'off',
     'prefer-destructuring': 'off',
+    'prefer-object-spread': 'off',
     'no-param-reassign': 'off',
+    'arrow-parens': 'off',
     'linebreak-style': ['off', 'windows']
   },
   parserOptions: {
