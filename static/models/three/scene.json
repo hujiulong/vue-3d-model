@@ -1,0 +1,194 @@
+{
+	"metadata": {
+		"version": 4.4,
+		"type": "Object",
+		"generator": "Object3D.toJSON"
+	},
+	"geometries": [
+		{
+			"uuid": "4E209D79-F748-4682-8986-116E19C498F1",
+			"type": "PlaneBufferGeometry",
+			"width": 1.5,
+			"height": 2,
+			"widthSegments": 0,
+			"heightSegments": 0
+		},
+		{
+			"uuid": "AD5CC67C-0E65-4648-A42B-AEFA5A5743EB",
+			"type": "BoxBufferGeometry",
+			"width": 1,
+			"height": 1,
+			"depth": 1
+		},
+		{
+			"uuid": "50DB5EDE-7253-4443-936B-5B064823EFBE",
+			"type": "TorusKnotBufferGeometry",
+			"radius": 0.8,
+			"tube": 0.3,
+			"tubularSegments": 128,
+			"radialSegments": 24,
+			"p": 2,
+			"q": 3
+		},
+		{
+			"uuid": "325F0077-03D4-4DAB-9CB3-6A306E997407",
+			"type": "IcosahedronGeometry",
+			"radius": 10,
+			"detail": 1
+		}],
+	"materials": [
+		{
+			"uuid": "BC7A9C68-E94B-4F5E-80C4-9F53F68D46D2",
+			"type": "MeshStandardMaterial",
+			"color": 16777215,
+			"roughness": 0.9,
+			"metalness": 0.5,
+			"emissive": 0,
+			"depthFunc": 3,
+			"depthTest": true,
+			"depthWrite": true,
+			"skinning": false,
+			"morphTargets": false
+		},
+		{
+			"uuid": "9A3AC316-2A11-4A19-9347-9D797E45153C",
+			"type": "MeshStandardMaterial",
+			"color": 16717824,
+			"roughness": 0.18,
+			"metalness": 0.5,
+			"emissive": 0,
+			"depthFunc": 3,
+			"depthTest": true,
+			"depthWrite": true,
+			"skinning": false,
+			"morphTargets": false
+		},
+		{
+			"uuid": "ACFA2BA8-8926-4A3C-A8F0-DDA17D95F61F",
+			"type": "MeshStandardMaterial",
+			"color": 1375598,
+			"roughness": 0.18,
+			"metalness": 0,
+			"emissive": 0,
+			"depthFunc": 3,
+			"depthTest": true,
+			"depthWrite": true,
+			"skinning": false,
+			"morphTargets": false
+		},
+		{
+			"uuid": "7CEB878C-6C8E-48F1-B7E3-4A5FEE3340CE",
+			"type": "MeshStandardMaterial",
+			"color": 4544661,
+			"roughness": 0.75,
+			"metalness": 0,
+			"emissive": 0,
+			"shading": 1,
+			"side": 1,
+			"depthFunc": 3,
+			"depthTest": true,
+			"depthWrite": true,
+			"skinning": false,
+			"morphTargets": false
+		}],
+	"object": {
+		"uuid": "D87FC1EA-83EE-49CB-93CC-3A895C8104C6",
+		"type": "Scene",
+		"name": "Scene",
+		"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
+		"children": [
+			{
+				"uuid": "156C198E-8182-4708-80CC-5E0AE6CB2552",
+				"type": "Mesh",
+				"name": "Plane 2",
+				"receiveShadow": true,
+				"matrix": [4,0,0,0,0,8.881784197001252e-16,-4,0,0,4,8.881784197001252e-16,0,0,0,0,1],
+				"geometry": "4E209D79-F748-4682-8986-116E19C498F1",
+				"material": "BC7A9C68-E94B-4F5E-80C4-9F53F68D46D2"
+			},
+			{
+				"uuid": "DBA11CA2-C509-4239-9D75-8645341353A8",
+				"type": "Mesh",
+				"name": "Box 1",
+				"castShadow": true,
+				"receiveShadow": true,
+				"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,1,1.5,1],
+				"geometry": "AD5CC67C-0E65-4648-A42B-AEFA5A5743EB",
+				"material": "9A3AC316-2A11-4A19-9347-9D797E45153C"
+			},
+			{
+				"uuid": "29263E91-7F69-4315-A718-5B88F7FEFBFB",
+				"type": "Mesh",
+				"name": "TorusKnot 3",
+				"castShadow": true,
+				"receiveShadow": true,
+				"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,1.540846586227417,-1.5,1],
+				"geometry": "50DB5EDE-7253-4443-936B-5B064823EFBE",
+				"material": "ACFA2BA8-8926-4A3C-A8F0-DDA17D95F61F"
+			},
+			{
+				"uuid": "AF885EA8-50F6-4DCF-BB45-B750F4AF6660",
+				"type": "DirectionalLight",
+				"name": "DirectionalLight 1",
+				"castShadow": true,
+				"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,3,10,3,1],
+				"color": 11468634,
+				"intensity": 0.75,
+				"shadow": {
+					"radius": 2,
+					"camera": {
+						"uuid": "9078F015-75AE-4C90-BC53-C9BD4306D1D7",
+						"type": "OrthographicCamera",
+						"zoom": 1,
+						"left": -5,
+						"right": 5,
+						"top": 5,
+						"bottom": -5,
+						"near": 0.5,
+						"far": 500
+					}
+				}
+			},
+			{
+				"uuid": "99CCB064-F0D4-46DA-906D-52DEB027A472",
+				"type": "DirectionalLight",
+				"name": "DirectionalLight 3",
+				"castShadow": true,
+				"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,-3,10,-3,1],
+				"color": 6057471,
+				"intensity": 0.5,
+				"shadow": {
+					"radius": 2,
+					"camera": {
+						"uuid": "178A2108-C02C-4F89-A14B-68F0BE1F4405",
+						"type": "OrthographicCamera",
+						"zoom": 1,
+						"left": -5,
+						"right": 5,
+						"top": 5,
+						"bottom": -5,
+						"near": 0.5,
+						"far": 500
+					}
+				}
+			},
+			{
+				"uuid": "149875A6-F581-4DDE-8C33-E99C1BBAE12D",
+				"type": "HemisphereLight",
+				"name": "HemisphereLight 2",
+				"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,10,0,1],
+				"color": 4034815,
+				"intensity": 0.2,
+				"groundColor": 8846717
+			},
+			{
+				"uuid": "42867CCD-8D3E-4F72-B9BA-FCB6ED9830C5",
+				"type": "Mesh",
+				"name": "Icosahedron 1",
+				"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
+				"geometry": "325F0077-03D4-4DAB-9CB3-6A306E997407",
+				"material": "7CEB878C-6C8E-48F1-B7E3-4A5FEE3340CE"
+			}],
+		"background": 4605510
+	}
+}
