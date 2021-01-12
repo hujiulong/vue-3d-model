@@ -50,6 +50,8 @@ export default {
     const mtlLoader = new MTLLoader(manager);
 
     mtlLoader.setCrossOrigin(this.crossOrigin);
+    mtlLoader.setRequestHeader(this.requestHeader);
+    objLoader.setRequestHeader(this.requestHeader);
 
     return {
       loader: objLoader,
