@@ -79,6 +79,7 @@ Or
 | backgroundAlpha | number        | 1                    | 0.5                                        |
 | controlsOptions | object        | -                    | see [OrbitControls Properties](https://threejs.org/docs/#examples/en/controls/OrbitControls) |
 | crossOrigin     | string        | anonymous            | anonymous/use-credentials                  |
+| requestHeader   | object        | -                    | { 'Authorization: Bearer token' }          |
 | outputEncoding     | number       | THREE.LinearEncoding                | see [WebGLRenderer OutputEncoding](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer.outputEncoding)                                 |
 | glOptions       | object        | { antialias: true, alpha: true }  | see [WebGLRenderer Parameters](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer) |
 

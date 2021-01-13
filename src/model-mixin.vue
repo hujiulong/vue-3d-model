@@ -109,6 +109,9 @@ export default {
     crossOrigin: {
       default: 'anonymous',
     },
+    requestHeader: {
+      default: {},
+    },
     outputEncoding: {
       type: Number,
       default: LinearEncoding,
@@ -428,6 +431,7 @@ export default {
         this.wrapper.remove(this.object);
       }
 
+      this.loader.setRequestHeader(this.requestHeader);
       this.loader.load(this.src, (...args) => {
         const object = this.getObject(...args);
 

@@ -8,6 +8,7 @@ export default {
   data() {
     const loader = new ObjectLoader();
     loader.setCrossOrigin(this.crossOrigin);
+    loader.setRequestHeader(this.requestHeader);
 
     return {
       loader,
