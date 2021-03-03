@@ -29,7 +29,7 @@
     "vue": ">=2.0.0"
   },
   "dependencies": {
-    "three": "^0.121.1"
+    "three": "^0.126.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.8",
@@ -43,7 +43,7 @@
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-vue": "^7.1.0",
     "less": "^4.1.1",
-    "less-loader": "^7.0.2",
+    "less-loader": "^8.0.0",
     "vue": "^2.6.11",
     "vue-router": "^3.3.4",
     "vue-template-compiler": "^2.6.11"
