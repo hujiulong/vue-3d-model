@@ -43,7 +43,7 @@
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-vue": "^7.1.0",
     "less": "^4.1.1",
-    "less-loader": "^8.0.0",
+    "less-loader": "^9.0.0",
     "vue": "^2.6.11",
     "vue-router": "^3.3.4",
     "vue-template-compiler": "^2.6.11"
