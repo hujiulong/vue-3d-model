@@ -6,11 +6,3 @@ updates:
     interval: daily
     time: "21:00"
   open-pull-requests-limit: 10
-  ignore:
-  - dependency-name: three
-    versions:
-    - 0.125.1
-    - 0.125.2
-  - dependency-name: less
-    versions:
-    - 4.1.0
