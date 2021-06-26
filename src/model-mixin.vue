@@ -110,7 +110,7 @@ export default {
       default: 'anonymous',
     },
     requestHeader: {
-      default: {},
+      default: () => {},
     },
     outputEncoding: {
       type: Number,
