@@ -190,7 +190,6 @@ export default {
   beforeDestroy() {
     cancelAnimationFrame(this.reqId);
 
-    this.scene.dispose();
     this.renderer.dispose();
 
     if (this.controls) {
