@@ -17,7 +17,7 @@ module.exports = {
     'prefer-object-spread': 'off',
     'no-param-reassign': 'off',
     'arrow-parens': 'off',
-    'linebreak-style': ['off', 'windows']
+    'linebreak-style': ['off', 'windows'],
   },
   parserOptions: {
     parser: 'babel-eslint',
