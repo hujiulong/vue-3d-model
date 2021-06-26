@@ -12,11 +12,13 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 14
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build-examples
       - uses: JamesIves/github-pages-deploy-action@4.1.4
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BASE_BRANCH: master
-          BRANCH: gh-pages
-          FOLDER: examples-dist
-          BUILD_SCRIPT: npm install && npm run build-examples
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          branch: gh-pages
+          folder: examples-dist
