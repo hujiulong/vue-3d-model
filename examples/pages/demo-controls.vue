@@ -48,7 +48,14 @@ const code = `
             <button @click="toggle('zoom')">{{ enableZoom ? 'disable' : 'enable' }} zoom</button>
             <button @click="toggle('rotate')">{{ enableRotate ? 'disable' : 'enable' }} rotation</button>
         </div>
-        <model-obj src="static/models/obj/tree.obj"></model-obj>
+        <model-obj 
+        src="static/models/obj/tree.obj" 
+        :controlsOptions="{
+          enablePan,
+          enableZoom,
+          enableRotate,
+        }"
+        ></model-obj>
     </div>
 </template>
 
@@ -85,7 +92,14 @@ const htmlCode = `
             <button @click="toggle('zoom')">{{ enableZoom ? 'disable' : 'enable' }} zoom</button>
             <button @click="toggle('rotate')">{{ enableRotate ? 'disable' : 'enable' }} rotation</button>
         </div>
-        <model-obj src="static/models/obj/tree.obj"></model-obj>
+        <model-obj 
+          src="static/models/obj/tree.obj"
+          :controlsOptions="{
+            enablePan,
+            enableZoom,
+            enableRotate,
+          }"
+        ></model-obj>
     </div>
     #scripts#
     <script>
