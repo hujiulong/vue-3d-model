@@ -32,8 +32,12 @@ export default {
     },
   },
   data() {
+    const loader = new STLLoader();
+    loader.setCrossOrigin(this.crossOrigin);
+    loader.setWithCredentials(true);
+
     return {
-      loader: new STLLoader(),
+      loader,
     };
   },
   methods: {
