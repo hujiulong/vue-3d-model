@@ -45,7 +45,7 @@
     "@vue/eslint-config-airbnb": "^5.0.2",
     "@vue/test-utils": "^1.0.3",
     "babel-eslint": "^10.1.0",
-    "chalk": "^4.1.1",
+    "chalk": "^5.0.0",
     "conventional-changelog-cli": "^2.1.1",
     "enquirer": "^2.3.6",
     "eslint": "^7.5.0",
