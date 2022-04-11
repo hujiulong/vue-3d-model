@@ -26,6 +26,9 @@
                 <li class="examples-menu-item">
                     <router-link to="demo-event">mousemove</router-link>
                 </li>
+                <li class="examples-menu-item">
+                  <router-link to="demo-event-dblclick">dblclick</router-link>
+                </li>
                 <li class="examples-menu-title">Model Formats</li>
                 <li class="examples-menu-item">
                     <router-link to="demo-json">JSON Model (.json)</router-link>

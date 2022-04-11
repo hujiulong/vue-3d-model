@@ -147,7 +147,7 @@ export default {
       const events = this._events;
       const result = {};
 
-      ['on-mousemove', 'on-mouseup', 'on-mousedown', 'on-click'].forEach((name) => {
+      ['on-mousemove', 'on-mouseup', 'on-mousedown', 'on-click', 'on-dblclick'].forEach((name) => {
         result[name] = !!events[name] && events[name].length > 0;
       });
 
@@ -182,6 +182,7 @@ export default {
     this.$el.addEventListener('mousemove', this.onMouseMove, false);
     this.$el.addEventListener('mouseup', this.onMouseUp, false);
     this.$el.addEventListener('click', this.onClick, false);
+    this.$el.addEventListener('dblclick', this.onDblclick, false);
 
     window.addEventListener('resize', this.onResize, false);
 
@@ -200,6 +201,7 @@ export default {
     this.$el.removeEventListener('mousemove', this.onMouseMove, false);
     this.$el.removeEventListener('mouseup', this.onMouseUp, false);
     this.$el.removeEventListener('click', this.onClick, false);
+    this.$el.removeEventListener('dblclick', this.onDblclick, false);
 
     window.removeEventListener('resize', this.onResize, false);
   },
@@ -288,6 +290,12 @@ export default {
 
       const intersected = this.pick(event.clientX, event.clientY);
       this.$emit('on-click', intersected);
+    },
+    onDblclick(event) {
+      if (!this.hasListener['on-dblclick']) return;
+
+      const intersected = this.pick(event.clientX, event.clientY);
+      this.$emit('on-dblclick', intersected);
     },
     pick(x, y) {
       if (!this.object) return null;
