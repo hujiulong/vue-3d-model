@@ -50,7 +50,7 @@
     "enquirer": "^2.3.6",
     "eslint": "^7.5.0",
     "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-vue": "^7.1.0",
+    "eslint-plugin-vue": "^8.7.1",
     "execa": "^5.1.1",
     "less": "^4.1.1",
     "less-loader": "^10.0.0",
