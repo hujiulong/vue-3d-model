@@ -1,16 +1,3 @@
-## [1.4.1](https://github.com/wxsolo/vue-3d-model/compare/v1.4.0...v1.4.1) (2022-04-11)
-
-
-
-# [1.4.1](https://github.com/wxsolo/vue-3d-model/compare/v1.4.0...v1.4.1) (2022-04-11)
-
-
-### Features
-
-* add dblclick Event
-
-
-
 # [1.4.0](https://github.com/hujiulong/vue-3d-model/compare/v1.3.1...v1.4.0) (2021-06-26)
 
 

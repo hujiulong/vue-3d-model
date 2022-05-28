@@ -1,6 +1,6 @@
 {
-  "name": "@hujiulong/vue-3d-model",
-  "version": "1.4.1",
+  "name": "vue-3d-model",
+  "version": "1.4.0",
   "description": "3D models viewer with vue.js",
   "keywords": [
     "vue",
@@ -57,9 +57,8 @@
     "minimist": "^1.2.5",
     "semver": "^7.3.5",
     "vue": "^2.6.11",
-    "vue-router": "^3.3.4",
+    "vue-router": "^4.0.12",
     "vue-template-compiler": "^2.6.11",
-    "webpack": "^4.0.0",
     "yorkie": "^2.0.0"
   }
 }
