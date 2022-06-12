@@ -1,8 +1,9 @@
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
 import mixin from './model-mixin.vue';
 
-export default {
+export default defineComponent({
   name: 'model-fbx',
   mixins: [mixin],
   props: {
@@ -33,10 +34,10 @@ export default {
     };
   },
   methods: {
-    getObject(geometry) {
-      this.animations = geometry.animations;
+    getObject(geometry: any) {
+      (this as any).animations = geometry.animations;
       return geometry;
     },
   },
-};
+});
 </script>

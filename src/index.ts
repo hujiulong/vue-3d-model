@@ -1,4 +1,4 @@
-import Vue from 'vue';
+import { defineComponent, App } from 'vue';
 
 import ModelObj from './model-obj.vue';
 import ModelFbx from './model-fbx.vue';
@@ -9,12 +9,14 @@ import ModelCollada from './model-collada.vue';
 import ModelGltf from './model-gltf.vue';
 
 // alias
-const ModelJson = Vue.extend(ModelThree, {
+const ModelJson = defineComponent({
   name: 'model-json',
+  extends: ModelThree,
 });
 
-const ModelDae = Vue.extend(ModelCollada, {
+const ModelDae = defineComponent({
   name: 'model-dae',
+  extends: ModelCollada,
 });
 
 const components = [
@@ -29,16 +31,15 @@ const components = [
   ModelGltf,
 ];
 
+const INSTALLED_KEY = Symbol('VUE_3D_MODEL_INSTALLED');
+
 /* eslint-disable no-shadow */
-const install = (Vue) => {
+const install = (app: App) => {
+  if ((app as any)[INSTALLED_KEY]) return;
   components.forEach((component) => {
-    Vue.component(component.name, component);
+    app.component(component.name, component);
   });
 };
-
-if (typeof window !== 'undefined' && window.Vue) {
-  install(window.Vue);
-}
 
 export default {
   install,

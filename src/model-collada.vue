@@ -1,14 +1,15 @@
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import { ColladaLoader } from 'three/examples/jsm/loaders/ColladaLoader';
 import mixin from './model-mixin.vue';
 
-export default {
+export default defineComponent({
   name: 'model-collada',
   mixins: [mixin],
   props: {
     lights: {
       type: Array,
-      default() {
+      default: () => {
         return [
           {
             type: 'HemisphereLight',
@@ -40,9 +41,9 @@ export default {
     };
   },
   methods: {
-    getObject(collada) {
+    getObject(collada: any) {
       return collada.scene;
     },
   },
-};
+});
 </script>

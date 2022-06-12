@@ -1,14 +1,15 @@
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import mixin from './model-mixin.vue';
 
-export default {
+export default defineComponent({
   name: 'model-gltf',
   mixins: [mixin],
   props: {
     lights: {
       type: Array,
-      default() {
+      default: () => {
         return [
           {
             type: 'AmbientLight',
@@ -49,12 +50,12 @@ export default {
         this.addObject(data.scene);
 
         this.$emit('on-load');
-      }, (xhr) => {
-        this.$emit('on-progress', xhr);
-      }, (err) => {
-        this.$emit('on-error', err);
+      }, event => {
+        this.$emit('on-progress', event);
+      }, event => {
+        this.$emit('on-error', event);
       });
     },
   },
-};
+});
 </script>

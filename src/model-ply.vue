@@ -1,18 +1,20 @@
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader';
 import {
   Mesh,
   MeshStandardMaterial,
+  BufferGeometry
 } from 'three';
 import mixin from './model-mixin.vue';
 
-export default {
+export default defineComponent({
   name: 'model-ply',
   mixins: [mixin],
   props: {
     lights: {
       type: Array,
-      default() {
+      default: () => {
         return [
           {
             type: 'HemisphereLight',
@@ -37,11 +39,11 @@ export default {
     };
   },
   methods: {
-    getObject(geometry) {
+    getObject(geometry: BufferGeometry) {
       geometry.computeVertexNormals();
 
       return new Mesh(geometry, new MeshStandardMaterial());
     },
   },
-};
+});
 </script>

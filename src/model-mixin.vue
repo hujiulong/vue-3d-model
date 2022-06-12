@@ -3,13 +3,13 @@
     <canvas v-if="suportWebGL" ref="canvas" style="width: 100%; height: 100%;"></canvas>
     <div v-else>
       <slot>
-        Your browser does not seem to support <a href="http://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation" style="color:#000">WebGL</a>.<br/>'
+        Your browser does not seem to support <a href="http://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation" style="color:#000">WebGL</a>.'
       </slot>
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 
 import {
   Object3D,
@@ -17,6 +17,7 @@ import {
   Vector3,
   Color,
   Scene,
+  Light,
   Raycaster,
   WebGLRenderer,
   PerspectiveCamera,
@@ -25,9 +26,12 @@ import {
   HemisphereLight,
   DirectionalLight,
   LinearEncoding,
+  WebGLRendererParameters,
+  Loader,
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { getSize, getCenter } from './util';
+import { getSize, getCenter } from './utils';
+import { defineComponent, PropType } from 'vue';
 
 const suportWebGL = (() => {
   try {
@@ -43,7 +47,8 @@ const DEFAULT_GL_OPTIONS = {
   alpha: true,
 };
 
-export default {
+export default defineComponent({
+  
   props: {
     src: {
       type: String,
@@ -56,37 +61,40 @@ export default {
     },
     position: {
       type: Object,
-      default() {
+      default: () => {
         return { x: 0, y: 0, z: 0 };
       },
     },
     rotation: {
       type: Object,
-      default() {
+      default: () => {
         return { x: 0, y: 0, z: 0 };
       },
     },
     scale: {
       type: Object,
-      default() {
+      default: () => {
         return { x: 1, y: 1, z: 1 };
       },
     },
     lights: {
-      type: Array,
-      default() {
+      type: Array as PropType<{
+        type: string;
+        [key: string]: any;
+      }[]>,
+      default: () => {
         return [];
       },
     },
     cameraPosition: {
       type: Object,
-      default() {
+      default: () => {
         return { x: 0, y: 0, z: 0 };
       },
     },
     cameraRotation: {
       type: Object,
-      default() {
+      default: () => {
         return { x: 0, y: 0, z: 0 };
       },
     },
@@ -107,9 +115,11 @@ export default {
       type: Object,
     },
     crossOrigin: {
+      type: String,
       default: 'anonymous',
     },
     requestHeader: {
+      type: Object,
       default: () => {},
     },
     outputEncoding: {
@@ -127,25 +137,26 @@ export default {
         width: this.width,
         height: this.height,
       },
-      object: null,
+      object: null as null | Object3D,
       raycaster: new Raycaster(),
       mouse: new Vector2(),
       camera: new PerspectiveCamera(45, 1, 0.01, 100000),
       scene: new Scene(),
       wrapper: new Object3D(),
-      renderer: null,
-      controls: null,
-      allLights: [],
+      renderer: null as null | WebGLRenderer,
+      controls: null as null | OrbitControls,
+      allLights: [] as Light[],
       clock: typeof performance === 'undefined' ? Date : performance,
-      reqId: null, // requestAnimationFrame id
+      reqId: null as null | number, // requestAnimationFrame id,
+      loader: null as any as Loader,  // 会被具体实现的组件覆盖
     };
   },
   computed: {
     hasListener() {
       // 判断是否有鼠标事件监听，用于减少不必要的拾取判断
       /* eslint-disable no-underscore-dangle */
-      const events = this._events;
-      const result = {};
+      const events = (this as any)._events;
+      const result: Record<string, boolean> = {};
 
       ['on-mousemove', 'on-mouseup', 'on-mousedown', 'on-click'].forEach((name) => {
         result[name] = !!events[name] && events[name].length > 0;
@@ -157,49 +168,58 @@ export default {
   mounted() {
     if (this.width === undefined || this.height === undefined) {
       this.size = {
-        width: this.$el.offsetWidth,
-        height: this.$el.offsetHeight,
+        width: (this.$el as HTMLDivElement).offsetWidth,
+        height: (this.$el as HTMLDivElement).offsetHeight,
       };
     }
 
-    const options = Object.assign({}, DEFAULT_GL_OPTIONS, this.glOptions, {
-      canvas: this.$refs.canvas,
-    });
+    const options: WebGLRendererParameters = Object.assign(
+      {},
+      DEFAULT_GL_OPTIONS,
+      this.glOptions,
+      {
+        canvas: this.$refs.canvas as HTMLCanvasElement,
+      }
+    );
 
     this.renderer = new WebGLRenderer(options);
     this.renderer.shadowMap.enabled = true;
     this.renderer.outputEncoding = this.outputEncoding;
 
-    this.controls = new OrbitControls(this.camera, this.$el);
-    this.controls.type = 'orbit';
+    this.controls = new OrbitControls(this.camera, (this.$el as HTMLDivElement));
+    // this.controls.type = 'orbit';
 
     this.scene.add(this.wrapper);
 
     this.load();
     this.update();
 
-    this.$el.addEventListener('mousedown', this.onMouseDown, false);
-    this.$el.addEventListener('mousemove', this.onMouseMove, false);
-    this.$el.addEventListener('mouseup', this.onMouseUp, false);
-    this.$el.addEventListener('click', this.onClick, false);
+    const element = this.$el as HTMLDivElement;
+
+    element.addEventListener('mousedown', this.onMouseDown, false);
+    element.addEventListener('mousemove', this.onMouseMove, false);
+    element.addEventListener('mouseup', this.onMouseUp, false);
+    element.addEventListener('click', this.onClick, false);
 
     window.addEventListener('resize', this.onResize, false);
 
     this.animate();
   },
   beforeDestroy() {
-    cancelAnimationFrame(this.reqId);
+    cancelAnimationFrame(this.reqId!);
 
-    this.renderer.dispose();
+    this.renderer!.dispose();
 
     if (this.controls) {
       this.controls.dispose();
     }
 
-    this.$el.removeEventListener('mousedown', this.onMouseDown, false);
-    this.$el.removeEventListener('mousemove', this.onMouseMove, false);
-    this.$el.removeEventListener('mouseup', this.onMouseUp, false);
-    this.$el.removeEventListener('click', this.onClick, false);
+    const element = this.$el as HTMLDivElement;
+
+    element.removeEventListener('mousedown', this.onMouseDown, false);
+    element.removeEventListener('mousemove', this.onMouseMove, false);
+    element.removeEventListener('mouseup', this.onMouseUp, false);
+    element.removeEventListener('click', this.onClick, false);
 
     window.removeEventListener('resize', this.onResize, false);
   },
@@ -259,37 +279,37 @@ export default {
       if (this.width === undefined || this.height === undefined) {
         this.$nextTick(() => {
           this.size = {
-            width: this.$el.offsetWidth,
-            height: this.$el.offsetHeight,
+            width: (this.$el as HTMLDivElement).offsetWidth,
+            height: (this.$el as HTMLDivElement).offsetHeight,
           };
         });
       }
     },
-    onMouseDown(event) {
+    onMouseDown(event: MouseEvent) {
       if (!this.hasListener['on-mousedown']) return;
 
       const intersected = this.pick(event.clientX, event.clientY);
       this.$emit('on-mousedown', intersected);
     },
-    onMouseMove(event) {
+    onMouseMove(event: MouseEvent) {
       if (!this.hasListener['on-mousemove']) return;
 
       const intersected = this.pick(event.clientX, event.clientY);
       this.$emit('on-mousemove', intersected);
     },
-    onMouseUp(event) {
+    onMouseUp(event: MouseEvent) {
       if (!this.hasListener['on-mouseup']) return;
 
       const intersected = this.pick(event.clientX, event.clientY);
       this.$emit('on-mouseup', intersected);
     },
-    onClick(event) {
+    onClick(event: MouseEvent) {
       if (!this.hasListener['on-click']) return;
 
       const intersected = this.pick(event.clientX, event.clientY);
       this.$emit('on-click', intersected);
     },
-    pick(x, y) {
+    pick(x: number, y: number) {
       if (!this.object) return null;
 
       const rect = this.$el.getBoundingClientRect();
@@ -297,8 +317,8 @@ export default {
       x -= rect.left;
       y -= rect.top;
 
-      this.mouse.x = (x / this.size.width) * 2 - 1;
-      this.mouse.y = -(y / this.size.height) * 2 + 1;
+      this.mouse.x = (x / this.size.width!) * 2 - 1;
+      this.mouse.y = -(y / this.size.height!) * 2 + 1;
 
       this.raycaster.setFromCamera(this.mouse, this.camera);
 
@@ -328,19 +348,19 @@ export default {
     updateRenderer() {
       const { renderer } = this;
 
-      renderer.setSize(this.size.width, this.size.height);
-      renderer.setPixelRatio(window.devicePixelRatio || 1);
-      renderer.setClearColor(new Color(this.backgroundColor).getHex());
-      renderer.setClearAlpha(this.backgroundAlpha);
+      renderer!.setSize(this.size.width!, this.size.height!);
+      renderer!.setPixelRatio(window.devicePixelRatio || 1);
+      renderer!.setClearColor(new Color(this.backgroundColor).getHex());
+      renderer!.setClearAlpha(this.backgroundAlpha);
     },
     updateCamera() {
       const { camera } = this;
       const { object } = this;
 
-      camera.aspect = this.size.width / this.size.height;
+      camera.aspect = this.size.width! / this.size.height!;
       camera.updateProjectionMatrix();
 
-      if (!this.cameraLookAt && !this.cameraUp) {
+      if (!this.cameraLookAt || !this.cameraUp) {
         if (!object) return;
 
         const distance = getSize(object).length();
@@ -371,7 +391,7 @@ export default {
 
         const type = item.type.toLowerCase();
 
-        let light = null;
+        let light: null | Light = null;
 
         if (type === 'ambient' || type === 'ambientlight') {
           const color = item.color === 0x000000 ? item.color : item.color || 0x404040;
@@ -400,7 +420,7 @@ export default {
           }
 
           if (item.target) {
-            light.target.copy(item.target);
+            (light as DirectionalLight).target.copy(item.target);
           }
         } else if (type === 'hemisphere' || type === 'hemispherelight') {
           const skyColor = item.skyColor === 0x000000 ? item.skyColor : item.skyColor || 0xffffff;
@@ -414,13 +434,15 @@ export default {
           }
         }
 
-        this.allLights.push(light);
-        this.scene.add(light);
+        if (light) {
+          this.allLights.push(light);
+          this.scene.add(light);
+        }
       });
     },
     updateControls() {
       if (this.controlsOptions) {
-        Object.assign(this.controls, this.controlsOptions);
+        Object.assign(this.controls!, this.controlsOptions);
       }
     },
     load() {
@@ -431,26 +453,27 @@ export default {
       }
 
       this.loader.setRequestHeader(this.requestHeader);
-      this.loader.load(this.src, (...args) => {
-        const object = this.getObject(...args);
+      (this.loader as any).load(this.src, (...args: any) => {
+        const object = (this.getObject as any)(...args);
 
-        if (this.process) {
-          this.process(object);
-        }
+        this.process(object);
 
         this.addObject(object);
 
         this.$emit('on-load');
-      }, (xhr) => {
-        this.$emit('on-progress', xhr);
-      }, (err) => {
-        this.$emit('on-error', err);
+      }, (event: ProgressEvent) => {
+        this.$emit('on-progress', event);
+      }, (event: ErrorEvent) => {
+        this.$emit('on-error', event);
       });
     },
-    getObject(object) {
+    process(object: Object3D) {
       return object;
     },
-    addObject(object) {
+    getObject(object: Object3D) {
+      return object;
+    },
+    addObject(object: Object3D) {
       const center = getCenter(object);
 
       // correction position
@@ -467,9 +490,9 @@ export default {
       this.render();
     },
     render() {
-      this.renderer.render(this.scene, this.camera);
+      this.renderer!.render(this.scene, this.camera);
     },
   },
-};
+});
 
 </script>
