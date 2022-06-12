@@ -25,7 +25,9 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build && npm run bundle-types",
     "bundle-types": "vue-tsc --declaration --emitDeclarationOnly --outDir \"./dist/types\"",
-    "preview": "vite preview"
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs"
   },
   "gitHooks": {
     "commit-msg": "node scripts/verify-commit.js"
@@ -41,6 +43,7 @@
     "@vitejs/plugin-vue": "^2.3.3",
     "typescript": "^4.5.4",
     "vite": "^2.9.9",
+    "vitepress": "^1.0.0-alpha.1",
     "vue": "^3.2.37",
     "vue-tsc": "^0.34.7"
   }

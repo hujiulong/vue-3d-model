@@ -31,7 +31,7 @@ import {
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { getSize, getCenter } from './utils';
-import { defineComponent, PropType } from 'vue';
+import { defineComponent, PropType, toRaw } from 'vue';
 
 const suportWebGL = (() => {
   try {
@@ -131,7 +131,7 @@ export default defineComponent({
     },
   },
   data() {
-    return {
+    const result = {
       suportWebGL,
       size: {
         width: this.width,
@@ -150,20 +150,12 @@ export default defineComponent({
       reqId: null as null | number, // requestAnimationFrame id,
       loader: null as any as Loader,  // 会被具体实现的组件覆盖
     };
-  },
-  computed: {
-    hasListener() {
-      // 判断是否有鼠标事件监听，用于减少不必要的拾取判断
-      /* eslint-disable no-underscore-dangle */
-      const events = (this as any)._events;
-      const result: Record<string, boolean> = {};
 
-      ['on-mousemove', 'on-mouseup', 'on-mousedown', 'on-click'].forEach((name) => {
-        result[name] = !!events[name] && events[name].length > 0;
-      });
-
-      return result;
-    },
+    // 确保这些对象不被转为 vue reactive 对象，避免 three 渲染出错
+    Object.assign(this, result);
+  
+    // 为了保留类型信息，仍然返回 result 的 type
+    return {} as typeof result;
   },
   mounted() {
     if (this.width === undefined || this.height === undefined) {
@@ -286,25 +278,25 @@ export default defineComponent({
       }
     },
     onMouseDown(event: MouseEvent) {
-      if (!this.hasListener['on-mousedown']) return;
+      if (!this.$attrs.onMousedown) return;
 
       const intersected = this.pick(event.clientX, event.clientY);
       this.$emit('on-mousedown', intersected);
     },
     onMouseMove(event: MouseEvent) {
-      if (!this.hasListener['on-mousemove']) return;
+      if (!this.$attrs.onOnMousemove) return;
 
       const intersected = this.pick(event.clientX, event.clientY);
       this.$emit('on-mousemove', intersected);
     },
     onMouseUp(event: MouseEvent) {
-      if (!this.hasListener['on-mouseup']) return;
+      if (!this.$attrs.onMouseup) return;
 
       const intersected = this.pick(event.clientX, event.clientY);
       this.$emit('on-mouseup', intersected);
     },
     onClick(event: MouseEvent) {
-      if (!this.hasListener['on-click']) return;
+      if (!this.$attrs.onClick) return;
 
       const intersected = this.pick(event.clientX, event.clientY);
       this.$emit('on-click', intersected);
