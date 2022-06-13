@@ -6,6 +6,7 @@ import path from 'path';
 export default defineConfig({
   plugins: [vue()],
   build: {
+    chunkSizeWarningLimit: 1000,
     lib: {
       formats: ['es', 'cjs', 'iife'],
       entry: path.resolve(__dirname, 'src/index.ts'),
