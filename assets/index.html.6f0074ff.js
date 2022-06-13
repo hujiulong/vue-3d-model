@@ -1,1 +1,0 @@
-import{_ as a,o as t,c as r,b as e,d as c}from"./app.cf60ceb8.js";const n={},o=e("h1",{id:"api",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#api","aria-hidden":"true"},"#"),c(" API")],-1),s=[o];function d(_,i){return t(),r("div",null,s)}var l=a(n,[["render",d],["__file","index.html.vue"]]);export{l as default};
