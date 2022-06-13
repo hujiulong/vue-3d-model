@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-39525e00","path":"/en/examples/example-stl/","title":"STL Format","lang":"en-US","frontmatter":{"permalink":"/en/examples/example-stl"},"excerpt":"","headers":[],"git":{"updatedTime":1655119431000,"contributors":[{"name":"Jiulong Hu","email":"me@hujiulong.com","commits":1}]},"filePathRelative":"examples/example-stl.en-US.md"}');export{e as data};

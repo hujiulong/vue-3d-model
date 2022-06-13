@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-f2529248","path":"/en/examples/example-gltf/","title":"GLTF Format","lang":"en-US","frontmatter":{"permalink":"/en/examples/example-gltf"},"excerpt":"","headers":[],"git":{"updatedTime":1655119431000,"contributors":[{"name":"Jiulong Hu","email":"me@hujiulong.com","commits":1}]},"filePathRelative":"examples/example-gltf.en-US.md"}');export{e as data};

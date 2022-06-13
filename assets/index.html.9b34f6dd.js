@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-395eb3e2","path":"/en/examples/example-fbx/","title":"FBX Format","lang":"en-US","frontmatter":{"permalink":"/en/examples/example-fbx"},"excerpt":"","headers":[],"git":{"updatedTime":1655119431000,"contributors":[{"name":"Jiulong Hu","email":"me@hujiulong.com","commits":1}]},"filePathRelative":"examples/example-fbx.en-US.md"}');export{e as data};

@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-39555124","path":"/en/examples/example-ply/","title":"PLY Format","lang":"en-US","frontmatter":{"permalink":"/en/examples/example-ply"},"excerpt":"","headers":[],"git":{"updatedTime":1655119431000,"contributors":[{"name":"Jiulong Hu","email":"me@hujiulong.com","commits":1}]},"filePathRelative":"examples/example-ply.en-US.md"}');export{e as data};

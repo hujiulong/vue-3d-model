@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-4adc845d","path":"/en/examples/example-basic/","title":"Basic","lang":"en-US","frontmatter":{"permalink":"/en/examples/example-basic"},"excerpt":"","headers":[],"git":{"updatedTime":1655119431000,"contributors":[{"name":"Jiulong Hu","email":"me@hujiulong.com","commits":1}]},"filePathRelative":"examples/example-basic.en-US.md"}');export{e as data};

@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-511cb371","path":"/en/examples/example-event/","title":"Event","lang":"en-US","frontmatter":{"permalink":"/en/examples/example-event"},"excerpt":"","headers":[],"git":{"updatedTime":1655119431000,"contributors":[{"name":"Jiulong Hu","email":"me@hujiulong.com","commits":1}]},"filePathRelative":"examples/example-event.en-US.md"}');export{e as data};
