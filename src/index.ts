@@ -1,5 +1,5 @@
 import { defineComponent, App } from 'vue';
-
+import * as Three from 'three';
 import ModelObj from './model-obj.vue';
 import ModelFbx from './model-fbx.vue';
 import ModelThree from './model-three.vue';
@@ -7,6 +7,8 @@ import ModelStl from './model-stl.vue';
 import ModelPly from './model-ply.vue';
 import ModelCollada from './model-collada.vue';
 import ModelGltf from './model-gltf.vue';
+
+export { Three };
 
 // alias
 const ModelJson = defineComponent({

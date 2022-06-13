@@ -1,5 +1,8 @@
 <template>
-  <div style="width: 100%; height: 100%; margin: 0; border: 0; padding: 0;">
+  <div
+    style="width: 100%; height: 100%; margin: 0; border: 0; padding: 0;"
+    ref="container"
+  >
     <canvas v-if="suportWebGL" ref="canvas" style="width: 100%; height: 100%;"></canvas>
     <div v-else>
       <slot>
@@ -160,8 +163,8 @@ export default defineComponent({
   mounted() {
     if (this.width === undefined || this.height === undefined) {
       this.size = {
-        width: (this.$el as HTMLDivElement).offsetWidth,
-        height: (this.$el as HTMLDivElement).offsetHeight,
+        width: (this.$refs.container as HTMLDivElement).offsetWidth,
+        height: (this.$refs.container as HTMLDivElement).offsetHeight,
       };
     }
 
@@ -178,7 +181,7 @@ export default defineComponent({
     this.renderer.shadowMap.enabled = true;
     this.renderer.outputEncoding = this.outputEncoding;
 
-    this.controls = new OrbitControls(this.camera, (this.$el as HTMLDivElement));
+    this.controls = new OrbitControls(this.camera, (this.$refs.container as HTMLDivElement));
     // this.controls.type = 'orbit';
 
     this.scene.add(this.wrapper);
@@ -186,7 +189,7 @@ export default defineComponent({
     this.load();
     this.update();
 
-    const element = this.$el as HTMLDivElement;
+    const element = this.$refs.container as HTMLDivElement;
 
     element.addEventListener('mousedown', this.onMouseDown, false);
     element.addEventListener('mousemove', this.onMouseMove, false);
@@ -206,7 +209,7 @@ export default defineComponent({
       this.controls.dispose();
     }
 
-    const element = this.$el as HTMLDivElement;
+    const element = this.$refs.container as HTMLDivElement;
 
     element.removeEventListener('mousedown', this.onMouseDown, false);
     element.removeEventListener('mousemove', this.onMouseMove, false);
@@ -271,8 +274,8 @@ export default defineComponent({
       if (this.width === undefined || this.height === undefined) {
         this.$nextTick(() => {
           this.size = {
-            width: (this.$el as HTMLDivElement).offsetWidth,
-            height: (this.$el as HTMLDivElement).offsetHeight,
+            width: (this.$refs.container as HTMLDivElement).offsetWidth,
+            height: (this.$refs.container as HTMLDivElement).offsetHeight,
           };
         });
       }
@@ -281,30 +284,38 @@ export default defineComponent({
       if (!this.$attrs.onMousedown) return;
 
       const intersected = this.pick(event.clientX, event.clientY);
-      this.$emit('on-mousedown', intersected);
+      this.$emit('mousedown', event, intersected);
     },
     onMouseMove(event: MouseEvent) {
-      if (!this.$attrs.onOnMousemove) return;
+      console.log(this.$attrs)
+      if (!this.$attrs.onMousemove) return;
 
       const intersected = this.pick(event.clientX, event.clientY);
-      this.$emit('on-mousemove', intersected);
+      this.$emit('mousemove', event, intersected);
     },
     onMouseUp(event: MouseEvent) {
       if (!this.$attrs.onMouseup) return;
 
       const intersected = this.pick(event.clientX, event.clientY);
-      this.$emit('on-mouseup', intersected);
+      this.$emit('mouseup', event, intersected);
     },
     onClick(event: MouseEvent) {
       if (!this.$attrs.onClick) return;
 
       const intersected = this.pick(event.clientX, event.clientY);
-      this.$emit('on-click', intersected);
+      this.$emit('click', event, intersected);
+    },
+    onDblclick(event: MouseEvent) {
+      if (!this.$attrs.onDblclick) return;
+
+      const intersected = this.pick(event.clientX, event.clientY);
+      this.$emit('dblclick', event, intersected);
     },
     pick(x: number, y: number) {
       if (!this.object) return null;
+      if (!this.$refs.container) return;
 
-      const rect = this.$el.getBoundingClientRect();
+      const rect = (this.$refs.container as HTMLDivElement).getBoundingClientRect();
 
       x -= rect.left;
       y -= rect.top;
@@ -452,11 +463,11 @@ export default defineComponent({
 
         this.addObject(object);
 
-        this.$emit('on-load');
+        this.$emit('load');
       }, (event: ProgressEvent) => {
-        this.$emit('on-progress', event);
+        this.$emit('progress', event);
       }, (event: ErrorEvent) => {
-        this.$emit('on-error', event);
+        this.$emit('error', event);
       });
     },
     process(object: Object3D) {
