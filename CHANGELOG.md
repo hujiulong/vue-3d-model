@@ -1,3 +1,12 @@
+# [2.0.0-alpha.1](https://github.com/hujiulong/vue-3d-model/compare/v1.4.0...v2.0.0-alpha.1) (2022-06-13)
+
+
+### Features
+
+* support Vue 3 & refactor to TS ([54ed8d3](https://github.com/hujiulong/vue-3d-model/commit/54ed8d3b23d0499be489db97835c8cdad77c9fa3))
+
+
+
 # [1.4.0](https://github.com/hujiulong/vue-3d-model/compare/v1.3.1...v1.4.0) (2021-06-26)
 
 

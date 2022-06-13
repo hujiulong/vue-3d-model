@@ -1,6 +1,6 @@
 {
   "name": "vue-3d-model",
-  "version": "1.4.0",
+  "version": "2.0.0-alpha.1",
   "description": "3D models viewer with vue.js",
   "keywords": [
     "vue",
@@ -42,10 +42,10 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.3",
-    "chalk": "^5.0.1",
+    "chalk": "^4.1.2",
     "conventional-changelog-cli": "^2.2.2",
     "enquirer": "^2.3.6",
-    "execa": "^6.1.0",
+    "execa": "^5.1.1",
     "minimist": "^1.2.6",
     "semver": "^7.3.7",
     "typescript": "^4.5.4",
