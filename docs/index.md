@@ -1,12 +1,13 @@
-# Hello World
-
-
 <script setup>
-import {ModelObj} from '../src';
-
-function handleMouseMove(inst) {
-  console.log(inst);
+function redirect() {
+  if (typeof navigator === 'undefined' || !navigator || !navigator.language) return;
+  const [lang] = navigator.language.split('-');
+  if (lang === 'zh') {
+    document.location.replace('/zh/guide/installation/');
+    return;
+  }
+  document.location.replace('/en/guide/installation/');
 }
-</script>
 
-<model-obj src="static/models/obj/tree.obj" @on-mousemove="handleMouseMove" />
+redirect();
+</script>

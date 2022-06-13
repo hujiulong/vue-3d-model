@@ -1,0 +1,13 @@
+---
+permalink: /zh/examples/example-stl
+---
+
+# STL 格式
+
+<script setup>
+import ExampleStl from 'docs/examples/components/example-stl.vue';
+</script>
+
+<ExampleStl />
+
+@[code](./components/example-stl.vue)
