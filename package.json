@@ -28,7 +28,8 @@
     "build:docs": "vuepress build docs",
     "gpr-setup": "node scripts/gpr-setup.js",
     "release": "node scripts/release.js",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "test": ""
   },
   "gitHooks": {
     "commit-msg": "node scripts/verify-commit.js"
