@@ -46,14 +46,18 @@ export default defineComponent({
         this.wrapper.remove(this.object);
       }
 
+      this.reportProgress('start');
       this.loader.load(this.src, (data) => {
+        this.reportProgress('end');
         this.addObject(data.scene);
 
-        this.$emit('on-load');
+        this.$emit('load');
       }, event => {
-        this.$emit('on-progress', event);
+        this.reportProgress('progress', event);
+        this.$emit('progress', event);
       }, event => {
-        this.$emit('on-error', event);
+        this.reportProgress('end');
+        this.$emit('error', event);
       });
     },
   },

@@ -1,14 +1,33 @@
 <template>
   <div
-    style="width: 100%; height: 100%; margin: 0; border: 0; padding: 0;"
+    style="position: relative; width: 100%; height: 100%; margin: 0; border: 0; padding: 0;"
     ref="container"
   >
-    <canvas v-if="suportWebGL" ref="canvas" style="width: 100%; height: 100%;"></canvas>
-    <div v-else>
-      <slot>
-        Your browser does not seem to support <a href="http://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation" style="color:#000">WebGL</a>.'
-      </slot>
+    <slot
+      name="progress-bar"
+      :progress="progress"
+      v-if="progress.isComplete === false"
+    >
+      <div
+        style="position: absolute; z-index: 2; height: 3px; width: 100%; background-color: rgba(0, 0, 0, 0.04)"
+      >
+        <div
+          :style="{
+            width: `${loadProgressPercentage}%`,
+            height: '100%',
+            backgroundColor: '#1890ff',
+            transition: 'width .2s',
+          }"
+        />
+      </div>
+    </slot>
+    <div
+      v-if="isComplete === false"
+      style="position: absolute; z-index: 1; width: 100%; height: 100%;"
+    >
+      <slot name="poster" />
     </div>
+    <canvas ref="canvas" style="width: 100%; height: 100%;"></canvas>
   </div>
 </template>
 
@@ -35,15 +54,6 @@ import {
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { getSize, getCenter } from './utils';
 import { defineComponent, PropType, toRaw } from 'vue';
-
-const suportWebGL = (() => {
-  try {
-    const canvas = document.createElement('canvas');
-    return !!(window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')));
-  } catch (e) {
-    return false;
-  }
-})();
 
 const DEFAULT_GL_OPTIONS = {
   antialias: true,
@@ -135,7 +145,6 @@ export default defineComponent({
   },
   data() {
     const result = {
-      suportWebGL,
       size: {
         width: this.width,
         height: this.height,
@@ -158,7 +167,34 @@ export default defineComponent({
     Object.assign(this, result);
   
     // 为了保留类型信息，仍然返回 result 的 type
-    return {} as typeof result;
+    return {
+      progress: {
+        isComplete: false,
+        lengthComputable: false,
+        loaded: 0,
+      },
+    } as typeof result & {
+      progress: {
+        startedAt?: number;
+        endedAt?: number;
+        isComplete: boolean;
+        lengthComputable: boolean
+        loaded: number;
+        total: number;
+      };
+    };
+  },
+  computed: {
+    loadProgressPercentage() {
+      if (this.progress.isComplete) return 100;
+      if (this.progress.lengthComputable) {
+        // lengthComputable 为 false 时，total 无直接参考意义，但是这里仍然使用它 * 3来作为估计值
+        // 因为 gzip 压缩后的长度大约为三分之一
+        return Math.min(0.92, this.progress.loaded / (this.progress.total * 3)) * 100;
+      }
+
+      return Math.min(1, this.progress.loaded / this.progress.total) * 100;
+    }
   },
   mounted() {
     if (this.width === undefined || this.height === undefined) {
@@ -448,6 +484,25 @@ export default defineComponent({
         Object.assign(this.controls!, this.controlsOptions);
       }
     },
+    reportProgress(type: 'start' | 'end' | 'progress', data?: {
+      lengthComputable: boolean;
+      loaded: number;
+      total: number;
+    }) {
+      if (type === 'start') {
+        this.progress.isComplete = false;
+        this.progress.startedAt = Date.now();
+        this.progress.loaded = 0;
+        this.progress.total = 0;
+      } else if (type === 'end') {
+        this.progress.isComplete = true;
+        this.progress.endedAt = Date.now();
+      } else {
+        this.progress.lengthComputable = data?.lengthComputable ?? false;
+        this.progress.loaded = data?.loaded ?? 0;
+        this.progress.total = data?.total ?? 0;
+      }
+    },
     load() {
       if (!this.src) return;
 
@@ -456,7 +511,12 @@ export default defineComponent({
       }
 
       this.loader.setRequestHeader(this.requestHeader);
+
+      this.reportProgress('start');
+
       (this.loader as any).load(this.src, (...args: any) => {
+        this.reportProgress('end');
+
         const object = (this.getObject as any)(...args);
 
         this.process(object);
@@ -465,9 +525,10 @@ export default defineComponent({
 
         this.$emit('load');
       }, (event: ProgressEvent) => {
-        console.log(event);
+        this.reportProgress('progress', event);
         this.$emit('progress', event);
       }, (event: ErrorEvent) => {
+        this.reportProgress('end');
         this.$emit('error', event);
       });
     },

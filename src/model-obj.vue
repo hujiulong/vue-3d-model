@@ -84,22 +84,27 @@ export default defineComponent({
       }
 
       const onLoad = (object: Object3D) => {
+        this.reportProgress('end');
         if (this.process) {
           this.process(object);
         }
 
         this.addObject(object);
 
-        this.$emit('on-load');
+        this.$emit('load');
       };
 
       const onProgress = (event: ProgressEvent) => {
-        this.$emit('on-progress', event);
+        this.reportProgress('progress', event);
+        this.$emit('progress', event);
       };
 
       const onError = (event: ErrorEvent) => {
-        this.$emit('on-error', event);
+        this.reportProgress('end');
+        this.$emit('error', event);
       };
+
+      this.reportProgress('start');
 
       if (this.mtl) {
         let { mtlPath } = this;
