@@ -1,1 +1,0 @@
-import{e}from"./vue-3d-model.esm.e675a986.js";import{_ as a,o as r,h as p,u as s}from"./app.fc33e81b.js";const _={__name:"example-ply",setup(c){return(o,l)=>(r(),p(s(e),{src:"/static/models/ply/binary/Lucy100k.ply"}))}};var n=a(_,[["__file","example-ply.vue"]]);export{n as E};
