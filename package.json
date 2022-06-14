@@ -21,6 +21,7 @@
     "README.md"
   ],
   "author": "Jiulong Hu <me@hujiulong.com>",
+  "license": "MIT",
   "scripts": {
     "dev": "vuepress dev docs",
     "build": "vue-tsc --noEmit && vite build && npm run bundle-types",

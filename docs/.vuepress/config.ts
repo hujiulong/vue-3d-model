@@ -5,7 +5,6 @@ import path from 'path';
 export default defineUserConfig({
   title: 'Vue 3D Model',
   description: 'Vue 3D Model',
-  base: '/vue-3d-model/',
   alias: {
     'vue-3d-model': path.resolve(__dirname, '../../dist/vue-3d-model.esm.js'),
     'docs': path.resolve(__dirname, '../../docs'),
