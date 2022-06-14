@@ -465,6 +465,7 @@ export default defineComponent({
 
         this.$emit('load');
       }, (event: ProgressEvent) => {
+        console.log(event);
         this.$emit('progress', event);
       }, (event: ErrorEvent) => {
         this.$emit('error', event);

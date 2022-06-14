@@ -2,11 +2,13 @@ import { defineUserConfig } from 'vuepress';
 import { defaultTheme } from '@vuepress/theme-default';
 import path from 'path';
 
+const isDevMode = process.env.NODE_ENV === 'development';
+
 export default defineUserConfig({
   title: 'Vue 3D Model',
   description: 'Vue 3D Model',
   alias: {
-    'vue-3d-model': path.resolve(__dirname, '../../dist/vue-3d-model.esm.js'),
+    'vue-3d-model': isDevMode ? path.resolve(__dirname, '../../src') : path.resolve(__dirname, '../../dist/vue-3d-model.esm.js'),
     'docs': path.resolve(__dirname, '../../docs'),
   },
   locales: {
