@@ -1,3 +1,17 @@
+# [2.0.0-alpha.2](https://github.com/hujiulong/vue-3d-model/compare/v2.0.0-alpha.1...v2.0.0-alpha.2) (2022-06-14)
+
+
+### Bug Fixes
+
+* fix var name ([fb9f27d](https://github.com/hujiulong/vue-3d-model/commit/fb9f27d7a397f5b21fa09299eda915d47af26c64))
+
+
+### Features
+
+* support for setting progress bar and poster ([7534a22](https://github.com/hujiulong/vue-3d-model/commit/7534a22fd7b81010a6adbdd6b6dbd27763e3b752))
+
+
+
 # [2.0.0-alpha.1](https://github.com/hujiulong/vue-3d-model/compare/v1.4.0...v2.0.0-alpha.1) (2022-06-13)
 
 
