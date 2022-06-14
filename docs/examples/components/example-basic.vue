@@ -7,11 +7,7 @@
       z: 0,
     }"
     src="/static/models/collada/elf/elf.dae"
-  >
-    <template #poster>
-      <div>loading ...</div>
-    </template>
-  </model-collada>
+  />
 </template>
 <script setup>
 import { ModelCollada } from 'vue-3d-model';

@@ -36,4 +36,9 @@ permalink: /zh/guide/api
 | progress   |
 | error      |
 
+## 插槽
+| slots         |
+| ------------- |
+| progress-bar  |
+| poster  |
 

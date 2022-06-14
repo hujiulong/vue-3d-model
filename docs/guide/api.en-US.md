@@ -36,4 +36,8 @@ permalink: /en/guide/api
 | progress   |
 | error      |
 
-
+## Slots
+| slots         |
+| ------------- |
+| progress-bar  |
+| poster  |
