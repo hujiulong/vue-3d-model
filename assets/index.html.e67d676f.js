@@ -1,0 +1,15 @@
+import{E as n}from"./example-basic.fc240a9f.js";import{_ as s,o as t,c as e,b as p,a,d as l,e as c}from"./app.cbb72d4a.js";import"./vue-3d-model.esm.fcee883c.js";const o=a("h1",{id:"\u57FA\u7840\u793A\u4F8B",tabindex:"-1"},[a("a",{class:"header-anchor",href:"#\u57FA\u7840\u793A\u4F8B","aria-hidden":"true"},"#"),l(" \u57FA\u7840\u793A\u4F8B")],-1),i=c(`<div class="language-vue ext-vue line-numbers-mode"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>model-collada</span>
+    <span class="token attr-name">:backgroundAlpha</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>0<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:rotation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>{
+      x: - Math.PI / 2,
+      y: 0,
+      z: 0,
+    }<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/static/models/collada/elf/elf.dae<span class="token punctuation">&quot;</span></span>
+  <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">import</span> <span class="token punctuation">{</span> ModelCollada <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#39;vue-3d-model&#39;</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>`,1),u={__name:"index.html",setup(d){return(r,k)=>(t(),e("div",null,[o,p(n),i]))}};var b=s(u,[["__file","index.html.vue"]]);export{b as default};
