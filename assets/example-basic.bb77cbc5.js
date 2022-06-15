@@ -1,0 +1,1 @@
+import{a}from"./vue-3d-model.esm.1882188a.js";import{_ as e,o,i as r,u as s}from"./app.6583235d.js";const c={__name:"example-basic",setup(t){return(_,l)=>(o(),r(s(a),{backgroundAlpha:0,rotation:{x:-Math.PI/2,y:0,z:0},src:"/static/models/collada/elf/elf.dae"},null,8,["rotation"]))}};var p=e(c,[["__file","example-basic.vue"]]);export{p as E};
