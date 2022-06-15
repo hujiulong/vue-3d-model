@@ -61,7 +61,7 @@ const DEFAULT_GL_OPTIONS = {
 };
 
 export default defineComponent({
-
+  
   props: {
     src: {
       type: String,
@@ -165,7 +165,7 @@ export default defineComponent({
 
     // 确保这些对象不被转为 vue reactive 对象，避免 three 渲染出错
     Object.assign(this, result);
-
+    
     // 为了保留类型信息，仍然返回 result 的 type
     return {
       progress: {
