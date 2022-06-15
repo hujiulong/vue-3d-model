@@ -1,12 +1,14 @@
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import { STLLoader } from 'three/examples/jsm/loaders/STLLoader';
 import {
   Mesh,
   MeshPhongMaterial,
+  BufferGeometry,
 } from 'three';
 import mixin from './model-mixin.vue';
 
-export default {
+export default defineComponent({
   name: 'model-stl',
   mixins: [mixin],
   props: {
@@ -37,9 +39,9 @@ export default {
     };
   },
   methods: {
-    getObject(geometry) {
+    getObject(geometry: BufferGeometry) {
       return new Mesh(geometry, new MeshPhongMaterial());
     },
   },
-};
+});
 </script>

@@ -1,15 +1,37 @@
 <template>
-  <div style="width: 100%; height: 100%; margin: 0; border: 0; padding: 0;">
-    <canvas v-if="suportWebGL" ref="canvas" style="width: 100%; height: 100%;"></canvas>
-    <div v-else>
-      <slot>
-        Your browser does not seem to support <a href="http://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation" style="color:#000">WebGL</a>.<br/>'
-      </slot>
+  <div
+    style="position: relative; width: 100%; height: 100%; margin: 0; border: 0; padding: 0;"
+    ref="container"
+  >
+    <slot
+      name="progress-bar"
+      :progress="progress"
+      v-if="progress.isComplete === false"
+    >
+      <div
+        style="position: absolute; z-index: 2; height: 3px; width: 100%; background-color: rgba(0, 0, 0, 0.04)"
+      >
+        <div
+          :style="{
+            width: `${loadProgressPercentage}%`,
+            height: '100%',
+            backgroundColor: '#1890ff',
+            transition: 'width .2s',
+          }"
+        />
+      </div>
+    </slot>
+    <div
+      v-if="progress.isComplete === false"
+      style="position: absolute; z-index: 1; width: 100%; height: 100%;"
+    >
+      <slot name="poster" />
     </div>
+    <canvas ref="canvas" style="width: 100%; height: 100%;"></canvas>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 
 import {
   Object3D,
@@ -17,6 +39,7 @@ import {
   Vector3,
   Color,
   Scene,
+  Light,
   Raycaster,
   WebGLRenderer,
   PerspectiveCamera,
@@ -25,25 +48,20 @@ import {
   HemisphereLight,
   DirectionalLight,
   LinearEncoding,
+  WebGLRendererParameters,
+  Loader,
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { getSize, getCenter } from './util';
-
-const suportWebGL = (() => {
-  try {
-    const canvas = document.createElement('canvas');
-    return !!(window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')));
-  } catch (e) {
-    return false;
-  }
-})();
+import { getSize, getCenter } from './utils';
+import { defineComponent, PropType, toRaw } from 'vue';
 
 const DEFAULT_GL_OPTIONS = {
   antialias: true,
   alpha: true,
 };
 
-export default {
+export default defineComponent({
+  
   props: {
     src: {
       type: String,
@@ -56,37 +74,40 @@ export default {
     },
     position: {
       type: Object,
-      default() {
+      default: () => {
         return { x: 0, y: 0, z: 0 };
       },
     },
     rotation: {
       type: Object,
-      default() {
+      default: () => {
         return { x: 0, y: 0, z: 0 };
       },
     },
     scale: {
       type: Object,
-      default() {
+      default: () => {
         return { x: 1, y: 1, z: 1 };
       },
     },
     lights: {
-      type: Array,
-      default() {
+      type: Array as PropType<{
+        type: string;
+        [key: string]: any;
+      }[]>,
+      default: () => {
         return [];
       },
     },
     cameraPosition: {
       type: Object,
-      default() {
+      default: () => {
         return { x: 0, y: 0, z: 0 };
       },
     },
     cameraRotation: {
       type: Object,
-      default() {
+      default: () => {
         return { x: 0, y: 0, z: 0 };
       },
     },
@@ -107,9 +128,11 @@ export default {
       type: Object,
     },
     crossOrigin: {
+      type: String,
       default: 'anonymous',
     },
     requestHeader: {
+      type: Object,
       default: () => {},
     },
     outputEncoding: {
@@ -121,87 +144,113 @@ export default {
     },
   },
   data() {
-    return {
-      suportWebGL,
+    const result = {
       size: {
         width: this.width,
         height: this.height,
       },
-      object: null,
+      object: null as null | Object3D,
       raycaster: new Raycaster(),
       mouse: new Vector2(),
       camera: new PerspectiveCamera(45, 1, 0.01, 100000),
       scene: new Scene(),
       wrapper: new Object3D(),
-      renderer: null,
-      controls: null,
-      allLights: [],
+      renderer: null as null | WebGLRenderer,
+      controls: null as null | OrbitControls,
+      allLights: [] as Light[],
       clock: typeof performance === 'undefined' ? Date : performance,
-      reqId: null, // requestAnimationFrame id
+      reqId: null as null | number, // requestAnimationFrame id,
+      loader: null as any as Loader,  // 会被具体实现的组件覆盖
+    };
+
+    // 确保这些对象不被转为 vue reactive 对象，避免 three 渲染出错
+    Object.assign(this, result);
+  
+    // 为了保留类型信息，仍然返回 result 的 type
+    return {
+      progress: {
+        isComplete: false,
+        lengthComputable: false,
+        loaded: 0,
+      },
+    } as typeof result & {
+      progress: {
+        startedAt?: number;
+        endedAt?: number;
+        isComplete: boolean;
+        lengthComputable: boolean
+        loaded: number;
+        total: number;
+      };
     };
   },
   computed: {
-    hasListener() {
-      // 判断是否有鼠标事件监听，用于减少不必要的拾取判断
-      /* eslint-disable no-underscore-dangle */
-      const events = this._events;
-      const result = {};
+    loadProgressPercentage() {
+      if (this.progress.isComplete) return 100;
+      if (this.progress.lengthComputable) {
+        // lengthComputable 为 false 时，total 无直接参考意义，但是这里仍然使用它 * 3来作为估计值
+        // 因为 gzip 压缩后的长度大约为三分之一
+        return Math.min(0.92, this.progress.loaded / (this.progress.total * 3)) * 100;
+      }
 
-      ['on-mousemove', 'on-mouseup', 'on-mousedown', 'on-click', 'on-dblclick'].forEach((name) => {
-        result[name] = !!events[name] && events[name].length > 0;
-      });
-
-      return result;
-    },
+      return Math.min(1, this.progress.loaded / this.progress.total) * 100;
+    }
   },
   mounted() {
     if (this.width === undefined || this.height === undefined) {
       this.size = {
-        width: this.$el.offsetWidth,
-        height: this.$el.offsetHeight,
+        width: (this.$refs.container as HTMLDivElement).offsetWidth,
+        height: (this.$refs.container as HTMLDivElement).offsetHeight,
       };
     }
 
-    const options = Object.assign({}, DEFAULT_GL_OPTIONS, this.glOptions, {
-      canvas: this.$refs.canvas,
-    });
+    const options: WebGLRendererParameters = Object.assign(
+      {},
+      DEFAULT_GL_OPTIONS,
+      this.glOptions,
+      {
+        canvas: this.$refs.canvas as HTMLCanvasElement,
+      }
+    );
 
     this.renderer = new WebGLRenderer(options);
     this.renderer.shadowMap.enabled = true;
     this.renderer.outputEncoding = this.outputEncoding;
 
-    this.controls = new OrbitControls(this.camera, this.$el);
-    this.controls.type = 'orbit';
+    this.controls = new OrbitControls(this.camera, (this.$refs.container as HTMLDivElement));
+    // this.controls.type = 'orbit';
 
     this.scene.add(this.wrapper);
 
     this.load();
     this.update();
 
-    this.$el.addEventListener('mousedown', this.onMouseDown, false);
-    this.$el.addEventListener('mousemove', this.onMouseMove, false);
-    this.$el.addEventListener('mouseup', this.onMouseUp, false);
-    this.$el.addEventListener('click', this.onClick, false);
-    this.$el.addEventListener('dblclick', this.onDblclick, false);
+    const element = this.$refs.container as HTMLDivElement;
+
+    element.addEventListener('mousedown', this.onMouseDown, false);
+    element.addEventListener('mousemove', this.onMouseMove, false);
+    element.addEventListener('mouseup', this.onMouseUp, false);
+    element.addEventListener('click', this.onClick, false);
 
     window.addEventListener('resize', this.onResize, false);
 
     this.animate();
   },
   beforeDestroy() {
-    cancelAnimationFrame(this.reqId);
+    cancelAnimationFrame(this.reqId!);
 
-    this.renderer.dispose();
+    this.renderer!.dispose();
 
     if (this.controls) {
       this.controls.dispose();
     }
 
-    this.$el.removeEventListener('mousedown', this.onMouseDown, false);
-    this.$el.removeEventListener('mousemove', this.onMouseMove, false);
-    this.$el.removeEventListener('mouseup', this.onMouseUp, false);
-    this.$el.removeEventListener('click', this.onClick, false);
-    this.$el.removeEventListener('dblclick', this.onDblclick, false);
+    const element = this.$refs.container as HTMLDivElement;
+
+    element.removeEventListener('mousedown', this.onMouseDown, false);
+    element.removeEventListener('mousemove', this.onMouseMove, false);
+    element.removeEventListener('mouseup', this.onMouseUp, false);
+    element.removeEventListener('click', this.onClick, false);
 
     window.removeEventListener('resize', this.onResize, false);
   },
@@ -261,52 +310,54 @@ export default {
       if (this.width === undefined || this.height === undefined) {
         this.$nextTick(() => {
           this.size = {
-            width: this.$el.offsetWidth,
-            height: this.$el.offsetHeight,
+            width: (this.$refs.container as HTMLDivElement).offsetWidth,
+            height: (this.$refs.container as HTMLDivElement).offsetHeight,
           };
         });
       }
     },
-    onMouseDown(event) {
-      if (!this.hasListener['on-mousedown']) return;
+    onMouseDown(event: MouseEvent) {
+      if (!this.$attrs.onMousedown) return;
 
       const intersected = this.pick(event.clientX, event.clientY);
-      this.$emit('on-mousedown', intersected);
+      this.$emit('mousedown', event, intersected);
     },
-    onMouseMove(event) {
-      if (!this.hasListener['on-mousemove']) return;
+    onMouseMove(event: MouseEvent) {
+      console.log(this.$attrs)
+      if (!this.$attrs.onMousemove) return;
 
       const intersected = this.pick(event.clientX, event.clientY);
-      this.$emit('on-mousemove', intersected);
+      this.$emit('mousemove', event, intersected);
     },
-    onMouseUp(event) {
-      if (!this.hasListener['on-mouseup']) return;
+    onMouseUp(event: MouseEvent) {
+      if (!this.$attrs.onMouseup) return;
 
       const intersected = this.pick(event.clientX, event.clientY);
-      this.$emit('on-mouseup', intersected);
+      this.$emit('mouseup', event, intersected);
     },
-    onClick(event) {
-      if (!this.hasListener['on-click']) return;
+    onClick(event: MouseEvent) {
+      if (!this.$attrs.onClick) return;
 
       const intersected = this.pick(event.clientX, event.clientY);
-      this.$emit('on-click', intersected);
+      this.$emit('click', event, intersected);
     },
-    onDblclick(event) {
-      if (!this.hasListener['on-dblclick']) return;
+    onDblclick(event: MouseEvent) {
+      if (!this.$attrs.onDblclick) return;
 
       const intersected = this.pick(event.clientX, event.clientY);
-      this.$emit('on-dblclick', intersected);
+      this.$emit('dblclick', event, intersected);
     },
-    pick(x, y) {
+    pick(x: number, y: number) {
       if (!this.object) return null;
+      if (!this.$refs.container) return;
 
-      const rect = this.$el.getBoundingClientRect();
+      const rect = (this.$refs.container as HTMLDivElement).getBoundingClientRect();
 
       x -= rect.left;
       y -= rect.top;
 
-      this.mouse.x = (x / this.size.width) * 2 - 1;
-      this.mouse.y = -(y / this.size.height) * 2 + 1;
+      this.mouse.x = (x / this.size.width!) * 2 - 1;
+      this.mouse.y = -(y / this.size.height!) * 2 + 1;
 
       this.raycaster.setFromCamera(this.mouse, this.camera);
 
@@ -336,19 +387,19 @@ export default {
     updateRenderer() {
       const { renderer } = this;
 
-      renderer.setSize(this.size.width, this.size.height);
-      renderer.setPixelRatio(window.devicePixelRatio || 1);
-      renderer.setClearColor(new Color(this.backgroundColor).getHex());
-      renderer.setClearAlpha(this.backgroundAlpha);
+      renderer!.setSize(this.size.width!, this.size.height!);
+      renderer!.setPixelRatio(window.devicePixelRatio || 1);
+      renderer!.setClearColor(new Color(this.backgroundColor).getHex());
+      renderer!.setClearAlpha(this.backgroundAlpha);
     },
     updateCamera() {
       const { camera } = this;
       const { object } = this;
 
-      camera.aspect = this.size.width / this.size.height;
+      camera.aspect = this.size.width! / this.size.height!;
       camera.updateProjectionMatrix();
 
-      if (!this.cameraLookAt && !this.cameraUp) {
+      if (!this.cameraLookAt || !this.cameraUp) {
         if (!object) return;
 
         const distance = getSize(object).length();
@@ -379,7 +430,7 @@ export default {
 
         const type = item.type.toLowerCase();
 
-        let light = null;
+        let light: null | Light = null;
 
         if (type === 'ambient' || type === 'ambientlight') {
           const color = item.color === 0x000000 ? item.color : item.color || 0x404040;
@@ -408,7 +459,7 @@ export default {
           }
 
           if (item.target) {
-            light.target.copy(item.target);
+            (light as DirectionalLight).target.copy(item.target);
           }
         } else if (type === 'hemisphere' || type === 'hemispherelight') {
           const skyColor = item.skyColor === 0x000000 ? item.skyColor : item.skyColor || 0xffffff;
@@ -422,13 +473,34 @@ export default {
           }
         }
 
-        this.allLights.push(light);
-        this.scene.add(light);
+        if (light) {
+          this.allLights.push(light);
+          this.scene.add(light);
+        }
       });
     },
     updateControls() {
       if (this.controlsOptions) {
-        Object.assign(this.controls, this.controlsOptions);
+        Object.assign(this.controls!, this.controlsOptions);
+      }
+    },
+    reportProgress(type: 'start' | 'end' | 'progress', data?: {
+      lengthComputable: boolean;
+      loaded: number;
+      total: number;
+    }) {
+      if (type === 'start') {
+        this.progress.isComplete = false;
+        this.progress.startedAt = Date.now();
+        this.progress.loaded = 0;
+        this.progress.total = 0;
+      } else if (type === 'end') {
+        this.progress.isComplete = true;
+        this.progress.endedAt = Date.now();
+      } else {
+        this.progress.lengthComputable = data?.lengthComputable ?? false;
+        this.progress.loaded = data?.loaded ?? 0;
+        this.progress.total = data?.total ?? 0;
       }
     },
     load() {
@@ -439,26 +511,34 @@ export default {
       }
 
       this.loader.setRequestHeader(this.requestHeader);
-      this.loader.load(this.src, (...args) => {
-        const object = this.getObject(...args);
 
-        if (this.process) {
-          this.process(object);
-        }
+      this.reportProgress('start');
+
+      (this.loader as any).load(this.src, (...args: any) => {
+        this.reportProgress('end');
+
+        const object = (this.getObject as any)(...args);
+
+        this.process(object);
 
         this.addObject(object);
 
-        this.$emit('on-load');
-      }, (xhr) => {
-        this.$emit('on-progress', xhr);
-      }, (err) => {
-        this.$emit('on-error', err);
+        this.$emit('load');
+      }, (event: ProgressEvent) => {
+        this.reportProgress('progress', event);
+        this.$emit('progress', event);
+      }, (event: ErrorEvent) => {
+        this.reportProgress('end');
+        this.$emit('error', event);
       });
     },
-    getObject(object) {
+    process(object: Object3D) {
       return object;
     },
-    addObject(object) {
+    getObject(object: Object3D) {
+      return object;
+    },
+    addObject(object: Object3D) {
       const center = getCenter(object);
 
       // correction position
@@ -475,9 +555,9 @@ export default {
       this.render();
     },
     render() {
-      this.renderer.render(this.scene, this.camera);
+      this.renderer!.render(this.scene, this.camera);
     },
   },
-};
+});
 
 </script>

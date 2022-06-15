@@ -1,22 +1,24 @@
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
+import { Object3D } from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader';
 import { DDSLoader } from 'three/examples/jsm/loaders/DDSLoader';
 import { LoadingManager } from 'three/src/loaders/LoadingManager';
-import { toIndexed } from './util';
+import { toIndexed } from './utils';
 import mixin from './model-mixin.vue';
 
 // TODO: Better way to handle texture formats
 const manager = (new LoadingManager()); // 0.122+ new api
 manager.addHandler(/\.dds$/i, new DDSLoader());
 
-export default {
+export default defineComponent({
   name: 'model-obj',
   mixins: [mixin],
   props: {
     lights: {
       type: Array,
-      default() {
+      default: () => {
         return [
           {
             type: 'HemisphereLight',
@@ -45,7 +47,7 @@ export default {
       type: String,
     },
   },
-  data() {
+  data(this: any) {
     const objLoader = new OBJLoader(manager);
     const mtlLoader = new MTLLoader(manager);
 
@@ -64,9 +66,9 @@ export default {
     },
   },
   methods: {
-    process(object) {
+    process(object: Object3D) {
       if (this.smoothing) {
-        object.traverse((child) => {
+        object.traverse((child: any) => {
           if (child.geometry) {
             child.geometry = toIndexed(child.geometry);
             child.geometry.computeVertexNormals();
@@ -74,30 +76,35 @@ export default {
         });
       }
     },
-    load() {
+    load(this: any) {
       if (!this.src) return;
 
       if (this.object) {
         this.wrapper.remove(this.object);
       }
 
-      const onLoad = (object) => {
+      const onLoad = (object: Object3D) => {
+        this.reportProgress('end');
         if (this.process) {
           this.process(object);
         }
 
         this.addObject(object);
 
-        this.$emit('on-load');
+        this.$emit('load');
       };
 
-      const onProgress = (xhr) => {
-        this.$emit('on-progress', xhr);
+      const onProgress = (event: ProgressEvent) => {
+        this.reportProgress('progress', event);
+        this.$emit('progress', event);
       };
 
-      const onError = (err) => {
-        this.$emit('on-error', err);
+      const onError = (event: ErrorEvent) => {
+        this.reportProgress('end');
+        this.$emit('error', event);
       };
+
+      this.reportProgress('start');
 
       if (this.mtl) {
         let { mtlPath } = this;
@@ -116,17 +123,17 @@ export default {
           this.mtlLoader.setPath(mtlPath);
         }
 
-        this.mtlLoader.load(mtlSrc, (materials) => {
+        this.mtlLoader.load(mtlSrc, (materials: any) => {
           materials.preload();
 
           this.loader
             .setMaterials(materials)
-            .load(this.src, onLoad, onProgress, onError);
+            .load(this.src!, onLoad, onProgress, onError);
         }, () => {}, onError);
       } else {
         this.loader.load(this.src, onLoad, onProgress, onError);
       }
     },
   },
-};
+});
 </script>
