@@ -165,7 +165,7 @@ export default defineComponent({
 
     // 确保这些对象不被转为 vue reactive 对象，避免 three 渲染出错
     Object.assign(this, result);
-  
+    
     // 为了保留类型信息，仍然返回 result 的 type
     return {
       progress: {
@@ -231,6 +231,7 @@ export default defineComponent({
     element.addEventListener('mousemove', this.onMouseMove, false);
     element.addEventListener('mouseup', this.onMouseUp, false);
     element.addEventListener('click', this.onClick, false);
+    element.addEventListener('dblclick', this.onDblclick, false);
 
     window.addEventListener('resize', this.onResize, false);
 
@@ -251,6 +252,7 @@ export default defineComponent({
     element.removeEventListener('mousemove', this.onMouseMove, false);
     element.removeEventListener('mouseup', this.onMouseUp, false);
     element.removeEventListener('click', this.onClick, false);
+    element.removeEventListener('dblclick', this.onDblclick, false);
 
     window.removeEventListener('resize', this.onResize, false);
   },
