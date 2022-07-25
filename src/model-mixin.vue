@@ -145,10 +145,6 @@ export default defineComponent({
   },
   data() {
     const result = {
-      size: {
-        width: this.width,
-        height: this.height,
-      },
       object: null as null | Object3D,
       raycaster: new Raycaster(),
       mouse: new Vector2(),
@@ -165,9 +161,13 @@ export default defineComponent({
 
     // 确保这些对象不被转为 vue reactive 对象，避免 three 渲染出错
     Object.assign(this, result);
-    
+
     // 为了保留类型信息，仍然返回 result 的 type
     return {
+      size: {
+        width: this.width,
+        height: this.height,
+      },
       progress: {
         isComplete: false,
         lengthComputable: false,
