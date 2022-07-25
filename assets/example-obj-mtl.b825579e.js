@@ -1,1 +1,0 @@
-import{_ as e}from"./vue-3d-model.esm.1882188a.js";import{_ as a,o as m,i as o,u as t}from"./app.6583235d.js";const l={__name:"example-obj-mtl",setup(s){return(_,r)=>(m(),o(t(e),{src:"/static/models/obj/male02/male02.obj",mtl:"static/models/obj/male02/male02.mtl"}))}};var i=a(l,[["__file","example-obj-mtl.vue"]]);export{i as E};

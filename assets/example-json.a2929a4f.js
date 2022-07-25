@@ -1,0 +1,1 @@
+import{d as e}from"./vue-3d-model.esm.5b5a69ac.js";import{_ as s,o,i as a,u as r}from"./app.93e6ea6a.js";const _={__name:"example-json",setup(n){return(c,t)=>(o(),a(r(e),{src:"/static/models/json/scene.json"}))}};var f=s(_,[["__file","example-json.vue"]]);export{f as E};
