@@ -162,8 +162,7 @@ export default defineComponent({
     // 确保这些对象不被转为 vue reactive 对象，避免 three 渲染出错
     Object.assign(this, result);
 
-    // 为了保留类型信息，仍然返回 result 的 type
-    return {
+    const reactiveState = {
       size: {
         width: this.width,
         height: this.height,
@@ -172,17 +171,18 @@ export default defineComponent({
         isComplete: false,
         lengthComputable: false,
         loaded: 0,
-      },
-    } as typeof result & {
-      progress: {
+      } as {
         startedAt?: number;
         endedAt?: number;
         isComplete: boolean;
         lengthComputable: boolean
         loaded: number;
         total: number;
-      };
-    };
+      },
+    }
+
+    // 为了保留类型信息，仍然返回 result 的 type
+    return reactiveState as (typeof result & typeof reactiveState);
   },
   computed: {
     loadProgressPercentage() {
