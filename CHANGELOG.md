@@ -1,3 +1,12 @@
+## [1.4.1](https://github.com/hujiulong/vue-3d-model/compare/v1.4.0...v1.4.1) (2022-08-15)
+
+
+### Bug Fixes
+
+* fix order of calculations ([f58bf72](https://github.com/hujiulong/vue-3d-model/commit/f58bf72be93c7c088c73e64919deaea3f20301a1))
+
+
+
 # [1.4.0](https://github.com/hujiulong/vue-3d-model/compare/v1.3.1...v1.4.0) (2021-06-26)
 
 
