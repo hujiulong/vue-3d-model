@@ -1,3 +1,35 @@
+# [2.0.0-alpha.3](https://github.com/hujiulong/vue-3d-model/compare/v2.0.0-alpha.2...v2.0.0-alpha.3) (2022-08-15)
+
+
+### Bug Fixes
+
+* fix order of calculations ([bdddbd7](https://github.com/hujiulong/vue-3d-model/commit/bdddbd7178415e1845da9f76abb29cdd1219c408))
+* fix size update ([2d2f26f](https://github.com/hujiulong/vue-3d-model/commit/2d2f26ff7c582f72c94bf428db8b4d3d7b7e4cc0))
+* fix size update ([#421](https://github.com/hujiulong/vue-3d-model/issues/421)) ([a65fb74](https://github.com/hujiulong/vue-3d-model/commit/a65fb742f5b448041752199cfd90297679646d56))
+
+
+### Features
+
+* add dblclick event ([#381](https://github.com/hujiulong/vue-3d-model/issues/381)) ([e108b39](https://github.com/hujiulong/vue-3d-model/commit/e108b39ee58979e8834b0483ba939df998866553))
+
+
+
+# [2.0.0-alpha.3](https://github.com/hujiulong/vue-3d-model/compare/v2.0.0-alpha.2...v2.0.0-alpha.3) (2022-08-15)
+
+
+### Bug Fixes
+
+* fix order of calculations ([bdddbd7](https://github.com/hujiulong/vue-3d-model/commit/bdddbd7178415e1845da9f76abb29cdd1219c408))
+* fix size update ([2d2f26f](https://github.com/hujiulong/vue-3d-model/commit/2d2f26ff7c582f72c94bf428db8b4d3d7b7e4cc0))
+* fix size update ([#421](https://github.com/hujiulong/vue-3d-model/issues/421)) ([a65fb74](https://github.com/hujiulong/vue-3d-model/commit/a65fb742f5b448041752199cfd90297679646d56))
+
+
+### Features
+
+* add dblclick event ([#381](https://github.com/hujiulong/vue-3d-model/issues/381)) ([e108b39](https://github.com/hujiulong/vue-3d-model/commit/e108b39ee58979e8834b0483ba939df998866553))
+
+
+
 # [2.0.0-alpha.2](https://github.com/hujiulong/vue-3d-model/compare/v2.0.0-alpha.1...v2.0.0-alpha.2) (2022-06-14)
 
 

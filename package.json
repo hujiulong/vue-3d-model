@@ -1,6 +1,6 @@
 {
   "name": "vue-3d-model",
-  "version": "2.0.0-alpha.2",
+  "version": "2.0.0-alpha.3",
   "description": "3D models viewer with vue.js",
   "keywords": [
     "vue",
@@ -54,6 +54,7 @@
     "vite": "^2.9.9",
     "vue": "^3.2.37",
     "vue-tsc": "^0.34.7",
-    "vuepress": "^2.0.0-beta.48"
+    "vuepress": "^2.0.0-beta.48",
+    "yorkie": "^2.0.0"
   }
 }
