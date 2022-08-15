@@ -541,16 +541,16 @@ export default defineComponent({
       return object;
     },
     addObject(object: Object3D) {
-      const center = getCenter(object);
-
-      // correction position
-      this.wrapper.position.copy(center.negate());
-
       this.object = object;
       this.wrapper.add(object);
 
       this.updateCamera();
       this.updateModel();
+
+      const center = getCenter(object);
+
+      // correct position
+      this.wrapper.position.copy(center.negate());
     },
     animate() {
       this.reqId = requestAnimationFrame(this.animate);
