@@ -1,1 +1,0 @@
-import{b as e}from"./vue-3d-model.esm.5b5a69ac.js";import{_ as a,o as r,i as s,u as _}from"./app.93e6ea6a.js";const c={__name:"example-fbx",setup(o){return(t,f)=>(r(),s(_(e),{src:"/static/models/fbx/dancing.fbx"}))}};var x=a(c,[["__file","example-fbx.vue"]]);export{x as E};

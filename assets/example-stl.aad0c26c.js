@@ -1,1 +1,0 @@
-import{f as e}from"./vue-3d-model.esm.5b5a69ac.js";import{_ as s,o as a,i as t,u as r}from"./app.93e6ea6a.js";const _={__name:"example-stl",setup(o){return(c,l)=>(a(),t(r(e),{src:"/static/models/stl/gear.stl"}))}};var f=s(_,[["__file","example-stl.vue"]]);export{f as E};

@@ -1,1 +1,0 @@
-import{c as e}from"./vue-3d-model.esm.5b5a69ac.js";import{_ as t,o as a,i as c,u as r}from"./app.93e6ea6a.js";const s={__name:"example-gltf",setup(_){return(l,o)=>(a(),c(r(e),{src:"/static/models/gltf/Duck/glTF/Duck.gltf"}))}};var p=t(s,[["__file","example-gltf.vue"]]);export{p as E};
