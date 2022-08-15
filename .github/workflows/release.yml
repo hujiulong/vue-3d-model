@@ -10,7 +10,14 @@ jobs:
     name: Create release tag
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Get branch name
+        run: |
+          if [[ "${{ github.ref }}" == v1.* ]]
+          then
+            echo "BUILD_BRANCH=v1" >> $GITHUB_ENV
+          else
+            echo "BUILD_BRANCH=master" >> $GITHUB_ENV
+          fi
       - name: Create release tag
         id: release_tag
         uses: yyx990803/release-tag@master
@@ -19,14 +26,24 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           body: |
-            [CHANGELOG.md](https://github.com/hujiulong/vue-3d-model/blob/master/CHANGELOG.md)
+            [CHANGELOG.md](https://github.com/hujiulong/vue-3d-model/blob/${{ env.BUILD_BRANCH }}/CHANGELOG.md)
       
   publish-npm:
     name: Publish to NPM
     runs-on: ubuntu-latest
     needs: tag
     steps:
-      - uses: actions/checkout@v2
+      - name: Get branch name
+        run: |
+          if [[ "${{ github.ref }}" == v1.* ]]
+          then
+            echo "BUILD_BRANCH=v1" >> $GITHUB_ENV
+          else
+            echo "BUILD_BRANCH=master" >> $GITHUB_ENV
+          fi
+      - uses: actions/checkout@v3
+        with:
+          branch: ${{ env.BUILD_BRANCH }}
       - name: Setup node
         uses: actions/setup-node@v2
         with:
@@ -45,7 +62,17 @@ jobs:
     runs-on: ubuntu-latest
     needs: tag
     steps:
-      - uses: actions/checkout@v2
+      - name: Get branch name
+        run: |
+          if [[ "${{ github.ref }}" == v1.* ]]
+          then
+            echo "BUILD_BRANCH=v1" >> $GITHUB_ENV
+          else
+            echo "BUILD_BRANCH=master" >> $GITHUB_ENV
+          fi
+      - uses: actions/checkout@v3
+        with:
+          branch: ${{ env.BUILD_BRANCH }}
       - name: Setup node
         uses: actions/setup-node@v2
         with:
