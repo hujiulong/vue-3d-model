@@ -9,13 +9,14 @@
       v-if="progress.isComplete === false"
     >
       <div
-        style="position: absolute; z-index: 2; height: 3px; width: 100%; background-color: rgba(0, 0, 0, 0.04)"
+        style="position: absolute; z-index: 2; height: 3px; width: 100%;"
+        :style="{backgroundColor: progressBarBackgroundColor}"
       >
         <div
           :style="{
             width: `${loadProgressPercentage}%`,
             height: '100%',
-            backgroundColor: '#1890ff',
+            backgroundColor: progressBarColor,
             transition: 'width .2s',
           }"
         />
@@ -141,6 +142,14 @@ export default defineComponent({
     },
     glOptions: {
       type: Object,
+    },
+    progressBarColor: {
+      type: String,
+      default: '#1890ff',
+    },
+    progressBarBackgroundColor: {
+      type: String,
+      default: '#0000000a',
     },
   },
   data() {

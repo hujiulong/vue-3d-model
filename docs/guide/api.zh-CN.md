@@ -23,6 +23,8 @@ permalink: /zh/guide/api
 | requestHeader   | object        | -                    | { 'Authorization: Bearer token' }          |
 | outputEncoding     | number       | THREE.LinearEncoding                | see [WebGLRenderer OutputEncoding](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer.outputEncoding)                                 |
 | glOptions       | object        | { antialias: true, alpha: true }  | see [WebGLRenderer Parameters](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer) |
+| progressBarColor | string       | '#1890ff'             | '#1890ff'         |
+| progressBarBackgroundColor| string| '#0000000a'         | '#0000000a'         |
 
 ## 事件
 

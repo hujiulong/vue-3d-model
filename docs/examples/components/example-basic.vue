@@ -7,6 +7,7 @@
       z: 0,
     }"
     src="/static/models/collada/elf/elf.dae"
+    progressBarColor="42b883"
   />
 </template>
 <script setup>
